@@ -627,3 +627,100 @@ Load Cell
 ## 十九、一句話總結
 
 > 本專題利用線性滑軌與電磁鐵建立可重複落下機構，透過雙光閘量測撞擊前速度、ADXL375 量測撞擊加速度、Load Cell + HX711 量測底部傳遞受力，進而比較 STF、三浦摺疊與 EVA 等緩衝結構對峰值加速度、衝擊力、撞擊作用時間與結構變形的影響。
+
+---
+
+## 二十、2026-09-14 本次工作進度
+
+### 1. Git 版本控管與自動同步
+
+已完成：
+
+- 專案資料夾已建立 Git 儲存庫，主要分支為 `main`。
+- 已設定遠端：`https://github.com/chiangyih/Impact_Resistance_Test.git`。
+- 遠端原有的 `README.md` 已保留，並以一般合併方式整合，未使用強制推送。
+- 已建立 `auto-git-watch.ps1`，功能如下：
+  - 每 5 秒檢查專案檔案變更。
+  - 變更穩定 3 秒後執行 `git add --all`。
+  - 自動建立帶有時間的 commit。
+  - 自動執行 `git push`。
+  - 不執行 force push；push 失敗時保留本地 commit 並記錄錯誤。
+- Windows 工作排程建立受到目前權限限制，因此改用目前使用者的登入啟動項：
+  `Impact_Resistance_Test_AutoGit`。
+- 監看紀錄位置：
+  `%LOCALAPPDATA%\Impact_Resistance_Test\auto-git-watch.log`
+- 已完成端到端驗證：自動產生 commit `c0c4dee` 並成功推送；目前本地 `main` 與 `origin/main` 同步。
+- Git 認證沿用 Windows Git Credential Manager，未將密碼、Token 或私鑰寫入專案檔案。
+
+目前專案檔案：
+
+- `README.md`
+- `handoff.md`
+- `auto-git-watch.ps1`
+- `零件1.stp`
+- `零件1.stl`
+
+### 2. ESP32 感測電路第一版規劃
+
+目前以 NodeMCU-32S、3.3 V 邏輯為基準：
+
+| 功能 | ESP32 腳位 | 接線規劃 |
+|---|---:|---|
+| ADXL375 SDA | GPIO21 | I²C SDA |
+| ADXL375 SCL | GPIO22 | I²C SCL |
+| HX711 DOUT | GPIO32 | 資料輸出 |
+| HX711 SCK | GPIO33 | 時脈輸入 |
+| 雙光閘 1 | GPIO34 | 光電晶體管輸出 |
+| 雙光閘 2 | GPIO35 | 光電晶體管輸出 |
+| ADXL375 INT1（選配） | GPIO16 | Data Ready／FIFO 中斷 |
+
+ADXL375：
+
+- VDD／VDD I/O 使用 3.3 V，GND 共地。
+- `CS` 拉至 3.3 V 以使用 I²C。
+- `SDO` 接 GND 時使用位址 `0x53`；接 3.3 V 時使用位址 `0x1D`。
+- 若模組沒有 I²C 上拉電阻，SDA、SCL 各加 4.7 kΩ 拉至 3.3 V。
+- 若後續需要較高資料率，再評估改用 SPI。
+
+HX711 與 Load Cell：
+
+- HX711 VCC 使用 3.3 V，DOUT 接 GPIO32，SCK 接 GPIO33。
+- Load Cell 的激勵線接 `E+`／`E-`，訊號線接 `A+`／`A-`。
+- 紅／黑／綠／白線色僅作初步參考，實際仍須依 Load Cell 資料表或電阻量測確認。
+- HX711 適合相對受力與低速荷重比較，不將其結果宣稱為毫秒級真實瞬時峰值力。
+
+### 3. OS25B10 雙光閘修正
+
+已確認目前選用的 `OS25B10` 是四腳裸式槽型光電元件，不是具備 `VCC/GND/OUT` 的數位模組。每個光閘建議使用：
+
+```text
+3.3 V ── 220 Ω ── IR LED Anode
+IR LED Cathode ── GND
+
+3.3 V ── 10 kΩ ── Collector ── ESP32 GPIO34／GPIO35
+Emitter ── GND
+```
+
+- 光閘 1 輸出接 GPIO34，光閘 2 輸出接 GPIO35。
+- GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉電阻，因此必須使用外接 10 kΩ。
+- 未遮光時光電晶體管導通，輸出通常為 LOW；遮光時輸出被拉高為 HIGH。
+- 四根腳位的實際順序尚未完成確認；正式焊接前須用二極體檔找出 LED 腳位，再確認 Collector／Emitter。
+- 不可將 OS25B10 的任何輸出上拉至 5 V，也不可把 LED 直接接到 3.3 V。
+
+### 4. 已驗證與待完成事項
+
+已驗證：
+
+1. Git 儲存庫、遠端 `origin` 與 `main` 分支正常。
+2. 自動檔案監看、commit 與 push 已實際成功執行。
+3. 目前尚未對 ESP32、ADXL375、HX711、Load Cell 或 OS25B10 進行實體接線與量測。
+
+待完成：
+
+1. 確認 OS25B10 實際腳位順序與遮光輸出波形。
+2. 確認 ADXL375 實際 breakout 板的電源與腳位標示。
+3. 完成雙光閘原理圖與必要的比較器／施密特觸發器評估。
+4. 完成 ADXL375 單獨讀值測試。
+5. 完成 Load Cell＋HX711 靜態校正。
+6. 完成 ESP32 時間同步、雙光閘中斷與資料記錄程式。
+7. 先進行低高度、低重量測試，再進行正式緩衝材料比較。
