@@ -7,6 +7,7 @@
     under .git. Changes are debounced, staged with git add --all, committed,
     and pushed through the configured upstream. It never force-pushes.
 #>
+# This script is launched by the current-user startup entry configured for this project.
 [CmdletBinding()]
 param(
     [int]$PollSeconds = 5,
