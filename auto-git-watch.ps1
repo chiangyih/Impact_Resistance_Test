@@ -113,11 +113,11 @@ try {
     $pendingPush = $false
 
     while ($true) {
-        $statusLines = Get-StatusLines
+        $statusLines = @(Get-StatusLines)
 
         if ($statusLines.Count -gt 0) {
             Start-Sleep -Seconds $DebounceSeconds
-            $statusLines = Get-StatusLines
+            $statusLines = @(Get-StatusLines)
 
             if ($statusLines.Count -gt 0) {
                 $addResult = Invoke-Git -Arguments @('add', '--all')
