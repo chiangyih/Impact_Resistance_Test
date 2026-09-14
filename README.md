@@ -1,1 +1,135 @@
 # Impact_Resistance_Test
+
+STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
+
+## 專案目的
+
+建立可重複的垂直落下衝擊量測系統，比較不同緩衝結構對下列指標的影響：
+
+- 掉落物撞擊前近似速度
+- ADXL375 峰值加速度與撞擊作用時間
+- Load Cell 傳遞至底座的相對受力
+- 緩衝材料的壓縮與永久變形
+
+預計比較的組別包括無緩衝、EVA、PP 三浦摺疊、STF，以及 STF＋三浦摺疊＋EVA 複合結構。
+
+## 系統架構
+
+```text
+NodeMCU-32S (ESP32)
+├─ ADXL375       → 掉落平台三軸加速度
+├─ HX711
+│  └─ Load Cell  → 底座相對受力
+├─ OS25B10 × 2   → 雙光閘，量測撞擊前速度
+└─ USB Serial    → 資料傳輸
+```
+
+目前階段先完成感測電路；電磁鐵釋放、Relay 控制、microSD 與正式資料記錄程式列為後續工作。
+
+## ESP32 第一版腳位配置
+
+| 功能 | NodeMCU-32S 腳位 | 說明 |
+|---|---:|---|
+| ADXL375 SDA | GPIO21 | I²C SDA |
+| ADXL375 SCL | GPIO22 | I²C SCL |
+| HX711 DOUT | GPIO32 | 資料輸出 |
+| HX711 SCK | GPIO33 | 時脈 |
+| 雙光閘 1 | GPIO34 | 輸入專用腳位 |
+| 雙光閘 2 | GPIO35 | 輸入專用腳位 |
+| ADXL375 INT1（選配） | GPIO16 | Data Ready／FIFO 中斷 |
+
+所有感測器使用 3.3 V 邏輯並與 ESP32 共地。GPIO34／GPIO35 沒有內建上拉電阻，需使用外接上拉電阻。
+
+## 接線重點
+
+### ADXL375（I²C）
+
+- VDD／VDD I/O → 3.3 V
+- GND → ESP32 GND
+- SDA → GPIO21
+- SCL → GPIO22
+- CS → 3.3 V，啟用 I²C
+- SDO → GND 使用位址 `0x53`；接 3.3 V 使用位址 `0x1D`
+- 若模組沒有內建上拉，SDA、SCL 各加 4.7 kΩ 至 3.3 V
+
+ADXL375 應牢固固定在掉落平台上，盡量靠近重心。若後續需要較高資料率，再評估改用 SPI。
+
+### HX711 與 Load Cell
+
+HX711 使用 3.3 V 供電：
+
+- VCC → 3.3 V
+- GND → ESP32 GND
+- DOUT／DT → GPIO32
+- SCK／PD_SCK → GPIO33
+
+Load Cell 接線：
+
+| Load Cell 功能 | HX711 端子 |
+|---|---|
+| 激勵正 | E+ |
+| 激勵負 | E− |
+| 訊號正 | A+ |
+| 訊號負 | A− |
+
+紅／黑／綠／白線色只作初步參考，正式接線前須依 Load Cell 資料表或電阻量測確認。HX711 適合相對受力比較，不宜宣稱為毫秒級真實瞬時峰值力。
+
+### OS25B10 雙光閘
+
+OS25B10 是四腳裸式槽型光電元件，不是具備 `VCC/GND/OUT` 的數位模組。每個光閘需要一組 LED 限流電阻與光電晶體管上拉電阻：
+
+```text
+紅外線 LED：
+3.3 V ── 220 Ω ── LED Anode
+LED Cathode ── GND
+
+光電晶體管：
+3.3 V ── 10 kΩ ──┬── Collector ── GPIO34 或 GPIO35
+                  │
+              Emitter ── GND
+```
+
+- 光閘 1 的 Collector 接 GPIO34。
+- 光閘 2 的 Collector 接 GPIO35。
+- 未遮光時輸出通常為 LOW；遮光時由上拉電阻拉成 HIGH。
+- 四根腳位的實際順序尚未確認，焊接前須用二極體檔找出 LED 腳位，再確認 Collector／Emitter。
+- 不可將光電晶體管輸出上拉至 5 V，也不可將 LED 直接接至 3.3 V。
+
+程式應以兩個 GPIO 中斷記錄相同邊緣的時間戳，並使用 `micros()` 計算兩個光閘之間的平均速度。這個速度是「撞擊前近似速度」，不是精確撞擊瞬間速度。
+
+## 量測與資料品質限制
+
+- 雙光閘應盡量靠近撞擊面；第二光閘到撞擊面的距離需固定或做修正。
+- HX711 的取樣率有限，主要用於不同材料組別的相對比較。
+- Load Cell 應一端固定、一端受力，並在上方配置剛性上壓板。
+- Load Cell 線使用雙絞線，遠離 ESP32、USB 與高電流／繼電器線路。
+- ADXL375、HX711 與光閘電源附近建議配置 0.1 µF 去耦電容；HX711 電源可再加 10 µF。
+- 目前尚未完成實體接線、感測器讀值、Load Cell 校正或正式落下測試。
+
+## 目前檔案
+
+- `handoff.md`：完整專題交接紀錄、設計背景與後續工作。
+- `auto-git-watch.ps1`：檔案變更自動 commit／push 監看器。
+- `零件1.stp`：STEP 機械模型。
+- `零件1.stl`：STL 網格模型。
+
+## Git 自動同步
+
+遠端儲存庫：<https://github.com/chiangyih/Impact_Resistance_Test>
+
+目前已設定目前 Windows 使用者登入時啟動自動監看器。監看器每 5 秒檢查變更，等待 3 秒後自動建立 commit 並推送至 `origin/main`；不使用 force push。紀錄位於：
+
+```text
+%LOCALAPPDATA%\Impact_Resistance_Test\auto-git-watch.log
+```
+
+所有新增或修改的檔案都可能被自動提交，請勿將密碼、Token、私鑰或其他秘密放入此專案資料夾。
+
+## 後續工作
+
+1. 確認 OS25B10 四腳實際腳位與遮光波形。
+2. 完成雙光閘原理圖與必要的比較器／施密特觸發器評估。
+3. 完成 ADXL375 單獨讀值測試。
+4. 完成 Load Cell＋HX711 靜態校正。
+5. 完成 ESP32 時間同步、中斷與資料記錄程式。
+6. 先進行低高度、低重量測試，再進入緩衝材料比較實驗。
