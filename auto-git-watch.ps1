@@ -35,7 +35,9 @@ function Invoke-Git {
     param([Parameter(Mandatory)][string[]]$Arguments)
 
     $previousPromptSetting = $env:GIT_TERMINAL_PROMPT
+    $previousInteractiveSetting = $env:GCM_INTERACTIVE
     $env:GIT_TERMINAL_PROMPT = '0'
+    $env:GCM_INTERACTIVE = 'Never'
     try {
         $output = @(& git -C $ProjectRoot @Arguments 2>&1)
         return [pscustomobject]@{
@@ -55,6 +57,12 @@ function Invoke-Git {
         }
         else {
             $env:GIT_TERMINAL_PROMPT = $previousPromptSetting
+        }
+        if ($null -eq $previousInteractiveSetting) {
+            Remove-Item Env:GCM_INTERACTIVE -ErrorAction SilentlyContinue
+        }
+        else {
+            $env:GCM_INTERACTIVE = $previousInteractiveSetting
         }
     }
 }
