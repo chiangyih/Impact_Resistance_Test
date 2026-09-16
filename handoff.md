@@ -899,3 +899,15 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 - Adafruit ADXL375 Pinouts：<https://learn.adafruit.com/adafruit-adxl375/pinouts>
 - Seeed Studio OS25B10 Photo Interrupter：<https://wiki.seeedstudio.com/ja/Photo_interrupter_OS25B10/>
 - Arduino-ESP32 NodeMCU-32S 腳位定義：<https://github.com/espressif/arduino-esp32/blob/master/variants/nodemcu-32s/pins_arduino.h>
+
+### 10. 2026-09-16 第一版簡易測試程式
+
+已新增 `01-irt/01-irt.ino`，這是目前第一版的簡易測試程式，目的只在確認 ESP32 能收到三類實際元件的資料，不包含正式落下測試、速度計算、校正、資料記錄或 Relay 控制。程式每一個非空程式碼行均附正體中文註解。
+
+測試內容：
+
+1. ADXL375 使用 GPIO21／GPIO22 的 I²C，先掃描匯流排，再以預設位址 `0x53` 初始化，週期性輸出 X／Y／Z 加速度，單位為 `m/s²`。
+2. HX711 使用 GPIO32／GPIO33，以 A 通道增益 128 讀取原始 ADC 值；程式不執行重量校正，並對 DATA 未就緒加入 1 秒逾時保護，避免接線錯誤造成永久卡住。
+3. OS25B10 光閘一／二分別讀取 GPIO34／GPIO35，輸出實際 HIGH／LOW；依目前電路預期未遮光為 LOW、遮光為 HIGH，但仍須以實物量測確認極性。
+
+本機已用 `C:\Program Files\Arduino CLI\arduino-cli.exe` 搭配 `esp32:esp32:nodemcu-32s` 編譯通過。編譯函式庫為 `Adafruit ADXL375`、`Adafruit HX711` 及其相依函式庫。當次 `board list` 僅辨識到 `COM1 Unknown`，尚未完成 NodeMCU-32S 實機燒錄與感測器讀值驗證。

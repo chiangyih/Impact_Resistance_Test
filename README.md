@@ -212,8 +212,29 @@ $cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
 
 正式編譯前先以 `board list` 確認實際 COM 埠，並確認已安裝 ESP32 Arduino core 與 `nodemcu-32s` FQBN。
 
+### 01-irt.ino 第一版簡易測試程式
+
+程式位置為 `01-irt/01-irt.ino`，用途是先確認 ESP32 能否收到下列元件資料：
+
+- Adafruit ADXL375：I²C 掃描、初始化與 X／Y／Z 加速度（m/s²）。
+- Adafruit HX711：A 通道增益 128 的原始 ADC 值；未校正、未換算重量。
+- OS25B10 光閘一／二：GPIO34／GPIO35 的 HIGH／LOW 狀態。
+
+本測試程式需要安裝 `Adafruit ADXL375`、`Adafruit HX711` 及其相依函式庫；Arduino CLI 可使用下列指令編譯：
+
+```powershell
+$cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
+& $cli lib install 'Adafruit ADXL375' 'Adafruit HX711'
+& $cli compile --fqbn esp32:esp32:nodemcu-32s .\01-irt
+& $cli upload --port COMx --fqbn esp32:esp32:nodemcu-32s .\01-irt
+& $cli monitor --port COMx --config baudrate=115200
+```
+
+燒錄前先以 `board list` 確認 `COMx`；序列埠監控視窗應設定為 115200 baud。若 HX711 未就緒，程式等待 1 秒後輸出逾時並繼續顯示其他感測器；OS25B10 必須依接線規格使用外接 10 kΩ 上拉，不能只靠程式設定內建上拉。
+
 ## 目前檔案
 
+- `01-irt/01-irt.ino`：第一版簡易感測器接線測試程式，所有程式碼行均附正體中文註解。
 - `handoff.md`：完整專題交接紀錄、設計背景與接線修訂。
 - `auto-git-watch.ps1`：檔案變更自動 commit／push 監看器。
 - `圖片/`：目前取得的元件與機構照片。
