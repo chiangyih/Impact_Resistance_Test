@@ -16,7 +16,7 @@
 
 ---
 
-## 二、目前預計使用的主要硬體
+## 二、目前使用／規劃的主要硬體
 
 ### 1. ESP32
 用途：
@@ -30,21 +30,25 @@
 - 可搭配 microSD 儲存 CSV
 - 可透過 USB Serial 傳輸資料到電腦
 
-建議腳位：
-- ADXL375 SDA → GPIO21
-- ADXL375 SCL → GPIO22
-- HX711 DOUT → GPIO32
-- HX711 CLK → GPIO33
-- 光閘1 → GPIO34
-- 光閘2 → GPIO35
-- Relay IN → GPIO26
-- 釋放按鈕 → GPIO27
-- microSD CS（若使用）→ GPIO5
+NodeMCU-32S 的目前接線配置如下；完整端子對照與注意事項見本文件末尾「實際元件接線修訂」及 `README.md`：
+- ADXL375 `VIN` → 3V3；`SDA` → GPIO21；`SCL` → GPIO22
+- ADXL375 `INT` → GPIO16（選配）；`I2` → GPIO17（選配）
+- ADXL375 `CS` → 3V3（I²C）；`SDO` → GND（I²C 位址 `0x53`）
+- HX711 `VIN` → 3V3；`DATA` → GPIO32；`SCK` → GPIO33
+- HX711 `RATE` 不占用 GPIO，使用板上開關；`H` 為 80 SPS、`L` 為 10 SPS
+- OS25B10 光閘 1 Collector 節點 → GPIO34；光閘 2 Collector 節點 → GPIO35
+- Relay `IN` → GPIO26
+- 釋放按鈕 → GPIO27，按鈕另一端接 GND，使用 `INPUT_PULLUP`
+- microSD（後續選配）：SCK → GPIO18、MISO → GPIO19、MOSI → GPIO23、CS → GPIO5
+
+所有感測器邏輯使用 3.3 V 並與 ESP32 共地。GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉／下拉，OS25B10 必須外接 10 kΩ 上拉電阻。
 
 ### 2. ADXL375
 用途：
 - 高 g 值三軸加速度感測器
 - 量測掉落滑塊撞擊瞬間的加速度
+
+本專案實際使用照片中的 Adafruit ADXL375 ±200 g breakout。使用 I²C 時，`VIN` 接 NodeMCU-32S 的 3V3，`SDA` 接 GPIO21，`SCL` 接 GPIO22；`CS` 維持高電位以啟用 I²C，`SDO` 接 GND 使用預設位址 `0x53`。`3Vo` 是板上穩壓器輸出，不可當作電源輸入。此板 SDA／SCL 已有板載 10 kΩ 上拉，通常不需再並接 4.7 kΩ。
 
 可取得：
 - X 軸加速度 ax
@@ -68,10 +72,10 @@ a_total = sqrt(ax^2 + ay^2 + az^2)
 - 安裝於底部衝擊平台
 - 量測撞擊後傳遞至底部平台的受力
 
-目前建議：
-- 不使用 1 kg 量程
-- 第一版建議 50 kg Load Cell
-- 若未來重量更大，可考慮 100 kg
+目前實物：
+- 照片中的荷重元銘牌可讀到 `CAP: 180 kg`；額定容量仍須以完整銘牌／資料表確認
+- 不再沿用前版「50 kg」的暫定假設
+- 正式測試前需完成荷重元線色確認、機械安裝檢查與 HX711 校正
 
 可量測：
 - 荷重元受力原始訊號
@@ -91,17 +95,20 @@ a_total = sqrt(ax^2 + ay^2 + az^2)
 訊號鏈：
 Load Cell → HX711 → ESP32
 
-常見接線：
-- Load Cell 紅線 → E+
-- 黑線 → E-
-- 綠線 → A+
-- 白線 → A-
+目前接線起點（線色仍須量測確認）：
+- Load Cell 紅線 → HX711 `E+`
+- 黑線 → `E-`
+- 綠線 → `A+`
+- 白線 → `A-`
+- 單一荷重元不使用 `B+`／`B-`
 
 HX711 接 ESP32：
-- VCC → 3.3V
-- GND → GND
-- DOUT / DT → GPIO32
-- CLK / SCK → GPIO33
+- `VIN` → 3.3V
+- `GND` → GND
+- `DATA` → GPIO32
+- `SCK` → GPIO33
+- `RATE` 不接 GPIO，使用板上滑動開關；`H` 為 80 SPS、`L` 為 10 SPS
+- `VIO`（若有引出）為板上輸出，保持不接
 
 重要限制：
 - HX711 取樣率有限
@@ -657,10 +664,11 @@ Load Cell
 - `README.md`
 - `handoff.md`
 - `auto-git-watch.ps1`
+- `圖片/`（元件與機構照片）
 - `零件1.stp`
 - `零件1.stl`
 
-### 2. ESP32 感測電路第一版規劃
+### 2. ESP32 感測電路第一版規劃（已依實物修訂）
 
 目前以 NodeMCU-32S、3.3 V 邏輯為基準：
 
@@ -668,36 +676,56 @@ Load Cell
 |---|---:|---|
 | ADXL375 SDA | GPIO21 | I²C SDA |
 | ADXL375 SCL | GPIO22 | I²C SCL |
-| HX711 DOUT | GPIO32 | 資料輸出 |
+| HX711 DATA | GPIO32 | 資料輸出 |
 | HX711 SCK | GPIO33 | 時脈輸入 |
 | 雙光閘 1 | GPIO34 | 光電晶體管輸出 |
 | 雙光閘 2 | GPIO35 | 光電晶體管輸出 |
-| ADXL375 INT1（選配） | GPIO16 | Data Ready／FIFO 中斷 |
+| ADXL375 INT（選配） | GPIO16 | Data Ready／FIFO／事件中斷 |
+| ADXL375 I2（選配） | GPIO17 | 第二組中斷 |
+| Relay IN | GPIO26 | 電磁鐵釋放控制 |
+| 釋放按鈕 | GPIO27 | 按鈕另一端接 GND，使用 INPUT_PULLUP |
+| microSD SCK（選配） | GPIO18 | VSPI |
+| microSD MISO（選配） | GPIO19 | VSPI |
+| microSD MOSI（選配） | GPIO23 | VSPI |
+| microSD CS（選配） | GPIO5 | VSPI；GPIO5 為啟動相關腳位 |
 
 ADXL375：
 
-- VDD／VDD I/O 使用 3.3 V，GND 共地。
-- `CS` 拉至 3.3 V 以使用 I²C。
-- `SDO` 接 GND 時使用位址 `0x53`；接 3.3 V 時使用位址 `0x1D`。
-- 若模組沒有 I²C 上拉電阻，SDA、SCL 各加 4.7 kΩ 拉至 3.3 V。
+- 本專案實際使用 Adafruit ADXL375 ±200 g breakout，I²C 預設位址為 `0x53`。
+- 開發板 `VIN` → NodeMCU-32S 3.3 V，`GND` 共地；`3Vo` 是板上輸出，保持不接。
+- `SDA` → GPIO21，`SCL` → GPIO22。
+- `CS` 拉至 3.3 V 以使用 I²C；`SDO` 接 GND 使用 `0x53`，接 3.3 V 則使用 `0x1D`。
+- 此 Adafruit breakout 的 SDA／SCL 已有板載 10 kΩ 上拉與電平轉換，通常不需再加 4.7 kΩ。
+- `INT` 可接 GPIO16，`I2` 可接 GPIO17；只使用 I²C 輪詢時可不接。
 - 若後續需要較高資料率，再評估改用 SPI。
 
 HX711 與 Load Cell：
 
-- HX711 VCC 使用 3.3 V，DOUT 接 GPIO32，SCK 接 GPIO33。
+- 本專案實際使用 Adafruit HX711 breakout；`VIN` 使用 3.3 V，`DATA` 接 GPIO32，`SCK` 接 GPIO33，GND 共地。
+- `RATE` 不占用 ESP32 GPIO，使用板上滑動開關；`H` 為 80 SPS、`L` 為 10 SPS。
+- `VIO`（若有引出）是板上數位電源輸出，保持不接。
 - Load Cell 的激勵線接 `E+`／`E-`，訊號線接 `A+`／`A-`。
-- 紅／黑／綠／白線色僅作初步參考，實際仍須依 Load Cell 資料表或電阻量測確認。
+- 照片中的四線荷重元銘牌可讀到 `CAP: 180 kg`；紅／黑／綠／白線色僅作接線起點，實際仍須依荷重元資料表或電阻量測確認。
+- 單一荷重元不使用 `B+`／`B-`。
 - HX711 適合相對受力與低速荷重比較，不將其結果宣稱為毫秒級真實瞬時峰值力。
 
 ### 3. OS25B10 雙光閘修正
 
-已確認目前選用的 `OS25B10` 是四腳裸式槽型光電元件，不是具備 `VCC/GND/OUT` 的數位模組。每個光閘建議使用：
+已確認目前選用的 `OS25B10` 是四腳槽型光電開關／光遮斷器，不是具備 `VCC/GND/OUT` 的數位模組；實物參考照片為 `圖片/OS25B10-紅外線對射光電開關.png`。每個光閘建議使用：
 
 ```text
+光閘 1（獨立一組電阻）：
 3.3 V ── 220 Ω ── IR LED Anode
 IR LED Cathode ── GND
+3.3 V ── 10 kΩ ──┬── Collector
+                 └── 輸出節點 ── GPIO34
+Emitter ── GND
 
-3.3 V ── 10 kΩ ── Collector ── ESP32 GPIO34／GPIO35
+光閘 2（獨立一組電阻）：
+3.3 V ── 220 Ω ── IR LED Anode
+IR LED Cathode ── GND
+3.3 V ── 10 kΩ ──┬── Collector
+                 └── 輸出節點 ── GPIO35
 Emitter ── GND
 ```
 
@@ -713,14 +741,161 @@ Emitter ── GND
 
 1. Git 儲存庫、遠端 `origin` 與 `main` 分支正常。
 2. 自動檔案監看、commit 與 push 已實際成功執行。
-3. 目前尚未對 ESP32、ADXL375、HX711、Load Cell 或 OS25B10 進行實體接線與量測。
+3. 目前尚未對 ESP32、ADXL375、HX711、Load Cell 或 OS25B10 進行完整實體接線與量測；元件型號與照片辨識已完成初步確認。
 
 待完成：
 
 1. 確認 OS25B10 實際腳位順序與遮光輸出波形。
-2. 確認 ADXL375 實際 breakout 板的電源與腳位標示。
-3. 完成雙光閘原理圖與必要的比較器／施密特觸發器評估。
-4. 完成 ADXL375 單獨讀值測試。
-5. 完成 Load Cell＋HX711 靜態校正。
+2. 完成雙光閘原理圖與必要的比較器／施密特觸發器評估。
+3. 以 I²C scanner 確認 ADXL375 位址並完成單獨讀值測試。
+4. 依荷重元規格確認線色與額定容量，完成 Load Cell＋HX711 靜態校正。
+5. 確認 Relay 模組額定電壓與 HIGH／LOW trigger，完成電磁鐵空載釋放測試。
 6. 完成 ESP32 時間同步、雙光閘中斷與資料記錄程式。
-7. 先進行低高度、低重量測試，再進行正式緩衝材料比較。
+7. 使用 Arduino CLI 進行 NodeMCU-32S 編譯與燒錄測試。
+8. 先進行低高度、低重量測試，再進行正式緩衝材料比較。
+
+---
+
+## 二十一、2026-09-16 實際元件接線對應修訂
+
+本節為目前最具體的接線版本，並覆蓋前文僅以「建議」描述的腳位。`README.md` 也已同步更新。
+
+### 1. 已由照片確認的元件
+
+- NodeMCU-32S／ESP32-WROOM-32：主控制器。
+- Adafruit ADXL375 紫色 breakout：±200 g 三軸加速度計，使用 I²C。
+- Adafruit HX711 黑色 breakout：24-bit ADC，使用 A 通道讀取荷重元。
+- 四線式 Load Cell：照片銘牌可讀到 `CAP: 180 kg`；完整額定規格與線色仍須再確認。
+- 圖片資料夾內另可見線性滑軌、鋁合金基座與安裝零件。
+
+OS25B10 的實物照片已補充為 `圖片/OS25B10-紅外線對射光電開關.png`，可確認其為四腳槽型光電開關／光遮斷器，內含紅外線 LED 與光電晶體管；但四腳實體順序仍需依實物量測確認。Relay、釋放按鈕與 microSD 的功能已納入系統規劃，其中 Relay 型號／觸發邏輯及 microSD 模組目前仍需依實物確認。
+
+### 2. NodeMCU-32S 腳位總表
+
+| NodeMCU-32S | 實際／規劃元件端子 | 方向 | 說明 |
+|---|---|---|---|
+| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 電源 | 感測器使用 3.3 V；不可接 12 V |
+| GND | ADXL375 GND、HX711 GND、OS25B10、按鈕、Relay 邏輯側 | 電源 | 邏輯側共地，建議星狀接地 |
+| GPIO21 | ADXL375 SDA | I/O | I²C SDA |
+| GPIO22 | ADXL375 SCL | I/O | I²C SCL |
+| GPIO16 | ADXL375 INT（選配） | 輸入 | Data Ready／FIFO／事件中斷 |
+| GPIO17 | ADXL375 I2（選配） | 輸入 | 第二組中斷 |
+| GPIO32 | HX711 DATA | 輸入 | HX711 資料輸出 |
+| GPIO33 | HX711 SCK | 輸出 | HX711 時脈 |
+| GPIO34 | OS25B10 光閘 1 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO35 | OS25B10 光閘 2 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO26 | Relay IN | 輸出 | 電磁鐵釋放；需設定高／低觸發 |
+| GPIO27 | 釋放按鈕 | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
+| GPIO18 | microSD SCK（選配） | 輸出 | VSPI clock |
+| GPIO19 | microSD MISO（選配） | 輸入 | VSPI MISO |
+| GPIO23 | microSD MOSI（選配） | 輸出 | VSPI MOSI |
+| GPIO5 | microSD CS（選配） | 輸出 | VSPI CS；開機時需保持適當高電位 |
+
+### 3. Adafruit ADXL375 實際接法
+
+| ADXL375 端子 | NodeMCU-32S | 備註 |
+|---|---|---|
+| `VIN` | 3V3 | 供電；`3Vo` 是板上輸出，不可拿來供電 |
+| `GND` | GND | 共地 |
+| `SDA` | GPIO21 | I²C 資料 |
+| `SCL` | GPIO22 | I²C 時脈 |
+| `CS` | 3V3 | I²C 模式；板上預設已拉高，可保持原設定 |
+| `SDO` | GND | I²C 位址 `0x53`；接 3V3 則為 `0x1D` |
+| `INT` | GPIO16（選配） | 可不接，輪詢模式不需要 |
+| `I2` | GPIO17（選配） | 第二組中斷，可不接 |
+| `3Vo` | 不接 | 穩壓器 3.3 V 輸出 |
+
+Adafruit breakout 的 SDA／SCL 已有板載 10 kΩ 上拉與電平轉換，通常不需再並接外部 4.7 kΩ。正式上電後先以 I²C scanner 確認 `0x53`。
+
+### 4. Adafruit HX711 與荷重元實際接法
+
+HX711：
+
+- `VIN` → NodeMCU-32S `3V3`
+- `GND` → `GND`
+- `DATA` → GPIO32
+- `SCK` → GPIO33
+- `RATE` 不接 GPIO，使用板上滑動開關；`H` 為 80 SPS，`L` 為 10 SPS
+- `VIO`（若有引出）為板上輸出，保持不接
+
+單一四線式荷重元使用 A 通道：
+
+| 荷重元功能／照片線色（暫定） | HX711 端子 |
+|---|---|
+| 激勵正／紅線 | `E+` |
+| 激勵負／黑線 | `E-` |
+| 訊號正／綠線 | `A+` |
+| 訊號負／白線 | `A-` |
+| 未使用的第二通道 | `B+`、`B-` 保持不接 |
+
+上述紅／黑／綠／白僅為照片與常見配置的接線起點；正式上電前仍要用資料表或電阻量測確認。照片可讀到 `CAP: 180 kg`，在規格確認完成前不得把此容量視為已驗證值。HX711 最高 80 SPS，量測結果僅作相對受力比較。
+
+### 5. OS25B10 雙光閘電路
+
+OS25B10 是四腳槽型光電開關／光遮斷器，每顆各使用一組 220 Ω LED 限流電阻與 10 kΩ 光電晶體管上拉電阻；實物照片為 `圖片/OS25B10-紅外線對射光電開關.png`：
+
+```text
+光閘 1（獨立一組電阻）：
+3.3 V ── 220 Ω ── IR LED Anode
+IR LED Cathode ── GND
+3.3 V ── 10 kΩ ──┬── Collector
+                 └── 輸出節點 ── GPIO34
+Emitter ── GND
+
+光閘 2（獨立一組電阻）：
+3.3 V ── 220 Ω ── IR LED Anode
+IR LED Cathode ── GND
+3.3 V ── 10 kΩ ──┬── Collector
+                 └── 輸出節點 ── GPIO35
+Emitter ── GND
+```
+
+上圖的兩個 Collector 節點是分開的兩組電路，不是互相短接。GPIO34／GPIO35 沒有內建上拉，且輸出節點只能拉到 3.3 V。預期未遮光為 LOW、遮光為 HIGH，但實際極性需單獨量測確認。四腳實體順序尚未確認，焊接前先用萬用電表二極體檔找出 LED 腳位，再確認 Collector／Emitter。
+
+### 6. Relay、電磁鐵與按鈕
+
+Relay 邏輯側目前預留：
+
+- `IN` → GPIO26
+- `GND` → ESP32 GND（非隔離模組）
+- `VCC` → Relay 實物標示的額定電源；目前以 5 V 模組為基準
+
+電磁鐵負載側使用獨立 12 V：
+
+```text
+12 V+ ── Relay COM
+Relay NO ── 電磁鐵正極
+電磁鐵負極 ── 12 V−
+```
+
+電磁鐵兩端並聯飛輪二極體，陰極（有色環端）接正極，陽極接負極。Relay 型號與 HIGH／LOW trigger 尚未確認，程式需保留 `RELAY_ACTIVE_LOW` 設定。
+
+釋放按鈕接法：
+
+```text
+GPIO27 ── 按鈕 ── GND
+```
+
+程式使用 `INPUT_PULLUP`，按下為 LOW，並加入去彈跳。
+
+### 7. microSD 選配接法
+
+目前未由照片確認 microSD 模組。若後續使用 3.3 V 邏輯相容的 SPI 模組，接 `SCK/GPIO18`、`MISO/GPIO19`、`MOSI/GPIO23`、`CS/GPIO5`、`VCC/3V3`、`GND/GND`；GPIO5 為啟動相關腳位，需確認 CS 開機時不被強制拉低。
+
+### 8. Arduino CLI 工具
+
+ESP32 程式使用：
+
+```text
+C:\Program Files\Arduino CLI\arduino-cli.exe
+```
+
+編譯與燒錄前先用 `board list` 確認 COM 埠，並確認 ESP32 Arduino core 與 `esp32:esp32:nodemcu-32s` FQBN 已安裝。所有實體接線與感測器讀值仍須先完成低風險測試，再進行正式落下試驗。
+
+### 9. 官方參考
+
+- Adafruit HX711：<https://learn.adafruit.com/adafruit-hx711-24-bit-adc>
+- Adafruit HX711 Pinouts：<https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts>
+- Adafruit ADXL375 Pinouts：<https://learn.adafruit.com/adafruit-adxl375/pinouts>
+- Seeed Studio OS25B10 Photo Interrupter：<https://wiki.seeedstudio.com/ja/Photo_interrupter_OS25B10/>
+- Arduino-ESP32 NodeMCU-32S 腳位定義：<https://github.com/espressif/arduino-esp32/blob/master/variants/nodemcu-32s/pins_arduino.h>
