@@ -908,3 +908,53 @@ HX711 模組目前直接插在麵包板；DATA 與 SCK 分別以兩條紫線接�
 4. 若已知上下光閘距離 `d`，可再計算兩點間平均速度：`v = d / Δt`。
 
 本次只記錄目前提供的線材與電阻配置；電阻另一端的接法、供電電壓、OS25B10 輸出波形及 ESP32 觸發邊緣尚待實際量測確認。
+
+---
+
+## 二十二、2026-09-18 01-irt 通訊測試改寫、編譯與上傳結果
+
+### 程式改寫內容
+
+已重新改寫 `01-irt/01-irt.ino`，目的限定為確認感測器與 ESP32 之間的基本通訊：
+
+1. ADXL375 使用 GPIO21／GPIO22 的 I²C，初始化成功後週期性輸出 X／Y／Z 加速度。
+2. HX711 使用 GPIO32／GPIO33，以 A 通道增益 128 讀取原始值；DATA 尚未就緒時立即輸出狀態，不讓主迴圈永久等待。
+3. 上方／下方 OS25B10 分別讀取 GPIO34／GPIO35 的 HIGH／LOW 電位。
+4. 程式不包含落下計時、速度計算、校正、資料儲存或 Relay 控制；所有非空程式碼行均附正體中文註解。
+
+### 編譯結果
+
+- Arduino CLI：`C:\Program Files\Arduino CLI\arduino-cli.exe`，版本為 2026-09-18 nightly。
+- ESP32 核心：`esp32:esp32` 3.1.1。
+- FQBN：`esp32:esp32:nodemcu-32s`。
+- 函式庫：`Adafruit ADXL375` 1.1.2、`Adafruit HX711` 1.0.2，以及 `Adafruit ADXL343`、`Adafruit Unified Sensor`、`Adafruit BusIO` 相依函式庫。
+- 編譯成功：程式使用 324,564 bytes（24%）Flash，Global variables 使用 20,544 bytes（6%）RAM。
+
+### 上傳結果與目前限制
+
+`board list` 辨識 COM5 為 USB Serial；上傳時 ESP32 可進入 bootloader，並讀到晶片 `ESP32-D0WD-V3`、MAC `e0:8c:fe:a8:42:bc`。但 esptool 回報無法與 Flash 通訊；唯讀 `flash_id` 的結果為製造商 `ff`、裝置 `ffff`、容量未知。以 115200 baud 及 FlashFreq=40 重試後仍在寫入資料時出現 `Packet content transfer stopped (received 8 bytes)`，上傳命令回傳錯誤碼 2。
+
+因此本次已確認程式可編譯且 USB 可連到 ESP32 bootloader，但韌體尚未成功寫入，不能據此宣稱 ESP32 已執行新版程式或感測器讀值已完成驗證。下一次上傳前應先暫時移除 ESP32 外接模組／訊號線，確認 USB 供電、麵包板電源與 Flash 相關實體線路，再重新執行 `flash_id` 與上傳；目前接線表所列 GPIO21、22、32、33、34、35 並未直接指向 Flash 腳位，實際干擾來源仍待現場隔離確認。
+
+---
+
+## 二十三、2026-09-18 重新燒錄成功與序列埠驗證
+
+### 重新燒錄結果
+
+依本次要求重新編譯並上傳 `01-irt/01-irt.ino`：
+
+- 編譯仍使用 `esp32:esp32:nodemcu-32s`，結果成功，Flash 使用 24%、RAM 使用 6%。
+- `board list` 顯示 COM5 為 USB Serial，晶片可進入 ESP32 bootloader。
+- 使用 `UploadSpeed=115200`、`FlashFreq=40` 上傳成功。
+- bootloader 回報各寫入區段完成，且每一段均出現 `Hash of data verified`；最後顯示 `New upload port: COM5 (serial)`。
+
+### 重置後序列埠結果
+
+以 115200 baud 讀取重置後輸出，確認新版程式已執行：
+
+1. ADXL375 回報 `[ADXL375] 通訊成功`，並輸出 X／Y／Z，例如 `X=-6.73、Y=3.36、Z=-9.13 m/s^2`。
+2. HX711 可讀取 A 通道增益 128 原始值，例如 `A128_RAW=3048`、`3775`、`3791`、`4051`。
+3. 上方與下方 OS25B10 當次讀值皆為 `LOW`。
+
+本次已確認新版韌體成功寫入，且 ADXL375、HX711、OS25B10 的 ESP32 通訊讀取路徑均已執行；OS25B10 的遮光 HIGH／LOW 極性、上下光閘觸發順序、兩點時間差與正式落下測試仍須在實際操作時另行驗證。

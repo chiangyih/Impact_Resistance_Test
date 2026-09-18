@@ -164,7 +164,7 @@ GPIO27 ── 釋放按鈕 ── GND
 - Load Cell 應一端固定、一端受力，並在上方配置剛性上壓板。
 - Load Cell 線使用雙絞線，遠離 ESP32、USB 與高電流／繼電器線路。
 - ADXL375、HX711 與光閘電源附近建議配置 0.1 µF 去耦電容；HX711 電源可再加 10 µF。
-- OS25B10 已完成麵包板初步接線；尚未完成 ADXL375、HX711 等其他感測器實體接線、OS25B10 輸出波形／讀值確認、Load Cell 校正或正式落下測試。
+- ADXL375、HX711 與 OS25B10 均已有目前麵包板接線紀錄；尚未完成各感測器實體讀值確認、OS25B10 輸出波形量測、Load Cell 校正或正式落下測試。
 - ADXL375 應固定牢靠，避免感測器本體晃動造成假峰值。
 - Load Cell 線與 I²C 線遠離 USB、Relay 與電磁鐵高電流線路。
 
@@ -187,11 +187,11 @@ $cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
 
 正式編譯前先以 `board list` 確認實際 COM 埠，並確認已安裝 ESP32 Arduino core 與 `nodemcu-32s` FQBN。
 
-### 01-irt.ino 第一版簡易測試程式
+### 01-irt.ino 目前版簡易感測器通訊測試程式
 
 程式位置為 `01-irt/01-irt.ino`，用途是先確認 ESP32 能否收到下列元件資料：
 
-- Adafruit ADXL375：I²C 掃描、初始化與 X／Y／Z 加速度（m/s²）。
+- Adafruit ADXL375：I²C 初始化與 X／Y／Z 加速度（m/s²）。
 - Adafruit HX711：A 通道增益 128 的原始 ADC 值；未校正、未換算重量。
 - OS25B10 光閘一／二：GPIO34／GPIO35 的 HIGH／LOW 狀態。
 
@@ -199,17 +199,20 @@ $cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
 
 ```powershell
 $cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
-& $cli lib install 'Adafruit ADXL375' 'Adafruit HX711'
-& $cli compile --fqbn esp32:esp32:nodemcu-32s .\01-irt
-& $cli upload --port COMx --fqbn esp32:esp32:nodemcu-32s .\01-irt
-& $cli monitor --port COMx --config baudrate=115200
+$cfg = 'C:\Users\tseng\AppData\Local\Arduino15'
+& $cli --config-dir $cfg lib install 'Adafruit ADXL375' 'Adafruit HX711'
+& $cli --config-dir $cfg compile --fqbn esp32:esp32:nodemcu-32s .\01-irt
+& $cli --config-dir $cfg upload --port COMx --fqbn esp32:esp32:nodemcu-32s .\01-irt
+& $cli --config-dir $cfg monitor --port COMx --config baudrate=115200
 ```
 
-燒錄前先以 `board list` 確認 `COMx`；序列埠監控視窗應設定為 115200 baud。若 HX711 未就緒，程式等待 1 秒後輸出逾時並繼續顯示其他感測器；OS25B10 必須依目前接線使用外接 6.8 kΩ 電阻，不能只靠程式設定內建上拉。
+燒錄前先以 `board list` 確認 `COMx`；序列埠監控視窗應設定為 115200 baud。若 HX711 未就緒，程式會輸出 `DATA 未就緒` 並繼續顯示其他感測器；OS25B10 必須依目前接線使用外接 6.8 kΩ 電阻，不能只靠程式設定內建上拉。
+
+2026-09-18 重新以 COM5、`UploadSpeed=115200` 與 `FlashFreq=40` 上傳成功，所有寫入區段均回報 `Hash of data verified`。重置後序列輸出確認 `[ADXL375] 通訊成功`，HX711 可讀得 A128 原始值，兩個 OS25B10 當次讀值均為 LOW；正式落下測試與光閘觸發極性仍未驗證。
 
 ## 目前檔案
 
-- `01-irt/01-irt.ino`：第一版簡易感測器接線測試程式，所有程式碼行均附正體中文註解。
+- `01-irt/01-irt.ino`：目前版簡易感測器通訊測試程式，所有非空程式碼行均附正體中文註解。
 - `handoff.md`：完整專題交接紀錄、設計背景與接線修訂。
 - `auto-git-watch.ps1`：檔案變更自動 commit／push 監看器。
 - `圖片/`：目前取得的元件與機構照片。
