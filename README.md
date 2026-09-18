@@ -32,7 +32,7 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 
 這是目前採用的單一腳位配置。未來程式、接線圖與測試紀錄都應以此表為準。
 
-| NodeMCU-32S | 對應元件端子 | ADXL375 線色 | 方向 | 用途／備註 |
+| NodeMCU-32S | 對應元件端子 | 線材顏色（ADXL375／HX711） | 方向 | 用途／備註 |
 |---|---|---|---|---|
 | 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 黑（VCC） | 電源輸出 | 感測器邏輯電源；不可接 12 V |
 | GND | ADXL375 GND、SDO、OS25B10 Emitter／LED Cathode、按鈕、Relay GND | 白（GND）；綠（SDO） | 電源回路 | 邏輯側共地，SDO 接地時使用 I²C 位址 `0x53` |
@@ -40,12 +40,14 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 | GPIO22 | ADXL375 SCL | 棕（SCL） | I/O | I²C SCL |
 | GPIO16 | ADXL375 INT | 淡咖啡（INT） | 輸入（選配） | Data Ready／FIFO／事件中斷；基本輪詢可不接 |
 | GPIO17 | ADXL375 I2 | — | 輸入（選配） | 第二組中斷；目前可不接 |
-| GPIO32 | HX711 DATA | — | 輸入 | HX711 serial data output |
-| GPIO33 | HX711 SCK | — | 輸出 | HX711 serial clock |
+| GPIO32 | HX711 DATA | 紫（HX711 DATA） | 輸入 | HX711 serial data output |
+| GPIO33 | HX711 SCK | 紫（HX711 SCK） | 輸出 | HX711 serial clock |
 | GPIO34 | OS25B10 光閘 1 Collector 節點 | — | 輸入 | ESP32 輸入專用，沒有內建上拉 |
 | GPIO35 | OS25B10 光閘 2 Collector 節點 | — | 輸入 | ESP32 輸入專用，沒有內建上拉 |
 | GPIO26 | Relay IN | — | 輸出 | 電磁鐵釋放控制；程式需設定高／低觸發 |
 | GPIO27 | 釋放按鈕另一端 | — | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
+
+HX711 模組目前直接插在麵包板；DATA 與 SCK 分別以兩條紫線接至 ESP32 的 GPIO32 與 GPIO33。
 GPIO34、GPIO35 只能作輸入，且沒有軟體內建上拉／下拉；目前麵包板的 OS25B10 輸出使用外接 6.8 kΩ 電阻。ADXL375 與 HX711 都使用 3.3 V 邏輯。NodeMCU-32S 不可把 12 V 電磁鐵電源接到 3V3、5V 或 VIN。
 
 ## 電源與接地
