@@ -747,20 +747,20 @@ OS25B10 的實物照片已補充為 `圖片/OS25B10-紅外線對射光電開關.
 
 ### 2. NodeMCU-32S 腳位總表
 
-| NodeMCU-32S | 實際／規劃元件端子 | 方向 | 說明 |
-|---|---|---|---|
-| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 電源 | 感測器使用 3.3 V；不可接 12 V |
-| GND | ADXL375 GND、HX711 GND、OS25B10、按鈕、Relay 邏輯側 | 電源 | 邏輯側共地，建議星狀接地 |
-| GPIO21 | ADXL375 SDA | I/O | I²C SDA |
-| GPIO22 | ADXL375 SCL | I/O | I²C SCL |
-| GPIO16 | ADXL375 INT（選配） | 輸入 | Data Ready／FIFO／事件中斷 |
-| GPIO17 | ADXL375 I2（選配） | 輸入 | 第二組中斷 |
-| GPIO32 | HX711 DATA | 輸入 | HX711 資料輸出 |
-| GPIO33 | HX711 SCK | 輸出 | HX711 時脈 |
-| GPIO34 | OS25B10 光閘 1 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
-| GPIO35 | OS25B10 光閘 2 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
-| GPIO26 | Relay IN | 輸出 | 電磁鐵釋放；需設定高／低觸發 |
-| GPIO27 | 釋放按鈕 | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
+| NodeMCU-32S | 實際／規劃元件端子 | ADXL375 線色 | 方向 | 說明 |
+|---|---|---|---|---|
+| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 黑（VCC） | 電源 | 感測器使用 3.3 V；不可接 12 V |
+| GND | ADXL375 GND、SDO、OS25B10、按鈕、Relay 邏輯側 | 白（GND）；綠（SDO） | 電源 | 邏輯側共地，SDO 接地時使用 I²C 位址 `0x53` |
+| GPIO21 | ADXL375 SDA | 橘（SDA） | I/O | I²C SDA |
+| GPIO22 | ADXL375 SCL | 棕（SCL） | I/O | I²C SCL |
+| GPIO16 | ADXL375 INT（選配） | 淡咖啡（INT） | 輸入 | Data Ready／FIFO／事件中斷 |
+| GPIO17 | ADXL375 I2（選配） | — | 輸入 | 第二組中斷 |
+| GPIO32 | HX711 DATA | — | 輸入 | HX711 資料輸出 |
+| GPIO33 | HX711 SCK | — | 輸出 | HX711 時脈 |
+| GPIO34 | OS25B10 光閘 1 Collector 節點 | — | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO35 | OS25B10 光閘 2 Collector 節點 | — | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO26 | Relay IN | — | 輸出 | 電磁鐵釋放；需設定高／低觸發 |
+| GPIO27 | 釋放按鈕 | — | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
 
 ### 3. Adafruit ADXL375 實際接法
 
@@ -884,19 +884,6 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 ## 二十一、2026-09-18 本次更新
 
 本節為目前使用線材與麵包板接線現況，優先於前面較早日期的 OS25B10 規劃。
-
-### ADXL375 線材顏色註記
-
-目前使用的 ADXL375 線材顏色對應如下：
-
-| 線色 | ADXL375 腳位 |
-|---|---|
-| 黑 | VCC |
-| 白 | GND |
-| 橘 | SDA |
-| 棕 | SCL |
-| 綠 | SDO |
-| 淡咖啡 | INT |
 
 ### OS25B10 目前麵包板接線與計時流程
 
