@@ -308,18 +308,6 @@ $cfg = 'C:\Users\tseng\AppData\Local\Arduino15'
 
 這些結果證明程式可編譯、韌體已寫入且基本通訊路徑可執行；不代表 OS25B10 的遮光極性、正式計時精度或落體試驗結果已完成驗證。
 
-## Git 與自動同步
-
-遠端儲存庫：<https://github.com/chiangyih/Impact_Resistance_Test>
-
-本機保留 `auto-git-watch.ps1`，目前設定為 Windows 使用者登入時啟動監看器。此檔案已加入 `.gitignore`，只在本機執行，不會上傳到 GitHub。監看器每 5 秒檢查變更，等待 3 秒後自動建立 commit 並推送至 `origin/main`，不使用 force push。紀錄位於：
-
-```text
-%LOCALAPPDATA%\Impact_Resistance_Test\auto-git-watch.log
-```
-
-此專案資料夾不要放入密碼、Token、私鑰、PSK 或其他秘密；自動監看器可能將新增或修改的檔案提交並推送。
-
 ## 後續工作
 
 1. 用萬用電表確認兩顆 OS25B10 的 LED、Collector、Emitter 實體腳位。
