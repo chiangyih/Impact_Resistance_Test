@@ -1,85 +1,174 @@
-# Impact_Resistance_Test
+# 落體衝擊量測平台（Impact_Resistance_Test）
 
-STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
+本專案是以 NodeMCU-32S（ESP32-WROOM-32）為核心的垂直落體衝擊量測平台，用來比較 STF、三浦摺疊、EVA 及複合緩衝結構的衝擊反應。
 
-本專案以 NodeMCU-32S（ESP32-WROOM-32）作為控制與資料擷取核心，使用 Adafruit ADXL375 量測掉落平台加速度，使用 Adafruit HX711 搭配荷重元量測底部相對受力，並以兩組 OS25B10 四腳槽型光電開關量測撞擊前近似速度。
+系統目前規劃以三類感測資料互相對照：
+
+- Adafruit ADXL375：量測掉落平台的三軸高 G 加速度。
+- HX711 搭配四線式 Load Cell：量測底部相對受力。
+- 上、下兩組 OS25B10：以通過兩個光閘的時間差估算兩點間平均速度。
+
+## 目前狀態
+
+> **最新驗證日期：2026-09-18**
+>
+> `01-irt/01-irt.ino` 已重新編譯並成功燒錄到 COM5 的 ESP32。重置後序列輸出確認 ADXL375 通訊成功、HX711 可讀取 A 通道原始值，且兩個 OS25B10 均能回報數位電位。
+
+目前完成：
+
+- ADXL375、HX711、OS25B10 的目前接線與 ESP32 GPIO 對應已記錄。
+- `01-irt` 簡易程式已成功編譯、燒錄並以 115200 baud 讀取序列輸出。
+- ADXL375 已讀到 X／Y／Z 加速度，HX711 已讀到 A128 原始值。
+- 上方 OS25B10 對應 GPIO34，下方 OS25B10 對應 GPIO35。
+
+尚待完成：
+
+- OS25B10 實際遮光極性、輸出波形與電阻另一端接法的量測。
+- 上、下光閘觸發順序與兩點時間差的正式測試。
+- Load Cell 線色、額定容量與 HX711 靜態校正的確認。
+- Relay、12 V 電磁鐵與釋放按鈕的實機安全測試。
+- 正式低高度、低重量測試，以及後續資料記錄程式。
+
+## 目錄
+
+1. [專案目的](#專案目的)
+2. [檔案結構](#檔案結構)
+3. [系統架構](#系統架構)
+4. [硬體清單與狀態](#硬體清單與狀態)
+5. [NodeMCU-32S 接腳配置表](#nodemcu-32s-接腳配置表)
+6. [電源與接地](#電源與接地)
+7. [ADXL375 接線](#adxl375-接線)
+8. [HX711 與 Load Cell 接線](#hx711-與-load-cell-接線)
+9. [OS25B10 雙光閘](#os25b10-雙光閘)
+10. [Relay、電磁鐵與釋放按鈕](#relay電磁鐵與釋放按鈕)
+11. [量測設計與限制](#量測設計與限制)
+12. [01-irt 通訊測試程式](#01-irt-通訊測試程式)
+13. [Git 與自動同步](#git-與自動同步)
+14. [後續工作](#後續工作)
+15. [參考資料](#參考資料)
 
 ## 專案目的
 
 建立可重複的垂直落下衝擊量測系統，比較不同緩衝結構對下列指標的影響：
 
-- 掉落物撞擊前近似速度
-- ADXL375 峰值加速度與撞擊作用時間
-- Load Cell 傳遞至底座的相對受力
-- 緩衝材料的壓縮與永久變形
+- 掉落物通過上下光閘的平均速度。
+- ADXL375 的峰值加速度與撞擊作用時間。
+- Load Cell 傳遞至底座的相對受力。
+- 緩衝材料的壓縮與永久變形。
 
 預計比較的組別包括無緩衝、EVA、PP 三浦摺疊、STF，以及 STF＋三浦摺疊＋EVA 複合結構。
 
-## 實際元件與目前狀態
+## 檔案結構
 
-| 元件 | 目前狀態與用途 |
-|---|---|
-| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial 資料傳輸 |
-| Adafruit ADXL375 | ±200 g 三軸加速度計，使用 I²C；照片中的紫色開發板與此型號相符 |
-| Adafruit HX711 24-bit ADC | 讀取荷重元；使用 A 通道，RATE 開關規劃使用 80 SPS |
-| 四線式 Load Cell | 照片銘牌可讀到 `CAP: 180 kg`；正式校正前仍須以銘牌／資料表確認額定容量與線色 |
-| OS25B10 × 2 | 四腳槽型光電開關／光遮斷器，內含紅外線 LED 與光電晶體管；需外接 LED 限流電阻與 Collector 上拉電阻 |
-| Relay＋12 V 電磁鐵 | 釋放掉落平台；Relay 型號與觸發邏輯尚待依實物標示確認 |
-| 釋放按鈕 | GPIO27，使用內建上拉，按下為 LOW |
+```text
+Impact_Resistance_Test/
+├── 01-irt/
+│   └── 01-irt.ino                         # ESP32 感測器通訊測試程式
+├── 圖片/
+│   ├── OS25B10-紅外線對射光電開關.png       # OS25B10 元件參考圖
+│   ├── PXL_*.jpg                           # 元件、麵包板與機構照片
+│   └── PXL_*.MP.jpg                        # 元件、麵包板與機構照片
+├── .gitignore                               # Git 忽略規則；排除本機自動同步腳本
+├── README.md                               # 專案入口說明、接線與操作方式
+├── handoff.md                              # 依日期追加的完整交接與驗證紀錄
+├── auto-git-watch.ps1                      # 本機限定；不納入 GitHub
+├── 零件1.stp                               # 機構 STEP 模型
+└── 零件1.stl                               # 機構 STL 網格模型
+```
 
-## NodeMCU-32S 腳位總表
-<img width="742" height="710" alt="image" src="https://github.com/user-attachments/assets/39465e60-bec3-457f-a59a-a3e007bff801" />
-<img width="1057" height="539" alt="image" src="https://github.com/user-attachments/assets/d8f0d139-59c4-497e-bd9b-5dd688afef42" />
+### 檔案使用原則
 
-這是目前採用的單一腳位配置。未來程式、接線圖與測試紀錄都應以此表為準。
+- `README.md`：閱讀專案目前架構、接線、測試指令與已知限制的入口文件。
+- `handoff.md`：保留時間順序與歷史狀態；新的量測、燒錄或接線結果應追加在檔案末端，不覆寫舊紀錄。
+- `01-irt/01-irt.ino`：目前只用於確認感測器與 ESP32 的基本通訊，不是正式落下試驗程式。
+- `auto-git-watch.ps1`：僅供本機自動同步使用，已加入 `.gitignore`，不應提交到 GitHub。
+- `圖片/`：保存目前取得的實物與機構照片；照片不能取代電表量測或資料表確認。
+- `零件1.stp`、`零件1.stl`：保存機構設計模型，與 ESP32 韌體分開管理。
 
-| NodeMCU-32S | 對應元件端子 | 線材顏色（ADXL375／HX711） | 方向 | 用途／備註 |
+## 系統架構
+
+```text
+USB 供電／序列埠
+        │
+        ▼
+NodeMCU-32S（ESP32）
+   ├─ I²C GPIO21／GPIO22 ── ADXL375
+   ├─ GPIO32／GPIO33 ─────── HX711 ── Load Cell
+   ├─ GPIO34 ─────────────── 上方 OS25B10
+   ├─ GPIO35 ─────────────── 下方 OS25B10
+   ├─ GPIO26（預留）──────── Relay ── 獨立 12 V 電磁鐵
+   └─ GPIO27（預留）──────── 釋放按鈕
+```
+
+資料目前由 ESP32 透過 USB Serial 輸出。`01-irt` 只讀取感測器，尚未控制 Relay、執行正式落下計時或完成校正。
+
+## 硬體清單與狀態
+
+| 元件 | 用途 | 目前狀態 |
+|---|---|---|
+| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial | 已以 COM5 成功燒錄 `01-irt` |
+| Adafruit ADXL375 | ±200 g 三軸加速度計，I²C | 已初始化成功並讀到 X／Y／Z |
+| Adafruit HX711 24-bit ADC | 讀取 Load Cell | 已讀到 A 通道原始值，尚未校正 |
+| 四線式 Load Cell | 底部相對受力 | 照片可讀到 `CAP: 180 kg`，額定容量與線色仍待確認 |
+| OS25B10 × 2 | 上、下光閘 | 已接至麵包板；當次序列測試兩路皆為 LOW |
+| Relay＋12 V 電磁鐵 | 釋放掉落平台 | 接線與觸發邏輯尚待依實物確認 |
+| 釋放按鈕 | 啟動釋放流程 | 預留 GPIO27，尚未納入 `01-irt` |
+
+## NodeMCU-32S 接腳配置表
+
+下表是目前接線與程式所採用的單一配置。ADXL375 線材顏色與 HX711 紫線已整合在同一張表中；若實物接線改變，應同步更新本表、程式與 `handoff.md`。
+
+| NodeMCU-32S | 對應元件端子 | 線材顏色／接線 | 方向 | 用途與備註 |
 |---|---|---|---|---|
-| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 黑（VCC） | 電源輸出 | 感測器邏輯電源；不可接 12 V |
-| GND | ADXL375 GND、SDO、OS25B10 Emitter／LED Cathode、按鈕、Relay GND | 白（GND）；綠（SDO） | 電源回路 | 邏輯側共地，SDO 接地時使用 I²C 位址 `0x53` |
-| GPIO21 | ADXL375 SDA | 橘（SDA） | I/O | I²C SDA |
-| GPIO22 | ADXL375 SCL | 棕（SCL） | I/O | I²C SCL |
-| GPIO16 | ADXL375 INT | 淡咖啡（INT） | 輸入（選配） | Data Ready／FIFO／事件中斷；基本輪詢可不接 |
-| GPIO17 | ADXL375 I2 | — | 輸入（選配） | 第二組中斷；目前可不接 |
-| GPIO32 | HX711 DATA | 紫（HX711 DATA） | 輸入 | HX711 serial data output |
-| GPIO33 | HX711 SCK | 紫（HX711 SCK） | 輸出 | HX711 serial clock |
-| GPIO34 | OS25B10 光閘 1 Collector 節點 | — | 輸入 | ESP32 輸入專用，沒有內建上拉 |
-| GPIO35 | OS25B10 光閘 2 Collector 節點 | — | 輸入 | ESP32 輸入專用，沒有內建上拉 |
-| GPIO26 | Relay IN | — | 輸出 | 電磁鐵釋放控制；程式需設定高／低觸發 |
-| GPIO27 | 釋放按鈕另一端 | — | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
+| 3V3 | ADXL375 VCC、HX711 VIN、OS25B10 邏輯側 | ADXL375 黑：VCC | 電源輸出 | 感測器邏輯電源；不可接 12 V |
+| GND | ADXL375 GND、SDO、HX711 GND、OS25B10 回路 | ADXL375 白：GND；綠：SDO | 電源回路 | SDO 接低電位時，程式預期 I²C 位址為 `0x53` |
+| GPIO21 | ADXL375 SDA | ADXL375 橘：SDA | I/O | I²C SDA |
+| GPIO22 | ADXL375 SCL | ADXL375 棕：SCL | I/O | I²C SCL |
+| GPIO16 | ADXL375 INT | ADXL375 淡咖啡：INT | 輸入（選配） | Data Ready／FIFO／事件中斷；目前程式使用輪詢 |
+| GPIO17 | ADXL375 I2 | — | 輸入（選配） | 第二組中斷；目前不接 |
+| GPIO32 | HX711 DATA | 紫：HX711 DATA | 輸入 | HX711 serial data output；HX711 直接插在麵包板 |
+| GPIO33 | HX711 SCK | 紫：HX711 SCK | 輸出 | HX711 serial clock；HX711 直接插在麵包板 |
+| GPIO34 | 上方 OS25B10 Collector 節點 | 紫線對應上方 OS25B10 | 輸入 | ESP32 輸入專用，沒有內建上拉 |
+| GPIO35 | 下方 OS25B10 Collector 節點 | 橘線對應下方 OS25B10 | 輸入 | ESP32 輸入專用，沒有內建上拉 |
+| GPIO26 | Relay IN | — | 輸出（預留） | 電磁鐵釋放控制；觸發高低電位尚待確認 |
+| GPIO27 | 釋放按鈕另一端 | — | 輸入（預留） | 按鈕另一端接 GND，規劃使用 `INPUT_PULLUP` |
 
-HX711 模組目前直接插在麵包板；DATA 與 SCK 分別以兩條紫線接至 ESP32 的 GPIO32 與 GPIO33。
-GPIO34、GPIO35 只能作輸入，且沒有軟體內建上拉／下拉；目前麵包板的 OS25B10 輸出使用外接 6.8 kΩ 電阻。ADXL375 與 HX711 都使用 3.3 V 邏輯。NodeMCU-32S 不可把 12 V 電磁鐵電源接到 3V3、5V 或 VIN。
+### NodeMCU-32S 腳位圖
+
+![NodeMCU-32S 腳位參考圖](https://github.com/user-attachments/assets/39465e60-bec3-457f-a59a-a3e007bff801)
+
+![NodeMCU-32S 腳位配置參考圖](https://github.com/user-attachments/assets/d8f0d139-59c4-497e-bd9b-5dd688afef42)
 
 ## 電源與接地
 
-- NodeMCU-32S 由 USB 供電；感測器由 NodeMCU-32S 的 3V3 供電。
-- ADXL375、HX711、OS25B10、按鈕與 Relay 的邏輯側共用 GND。
-- 電磁鐵使用獨立 12 V 電源；不要由 ESP32 腳位或 USB 直接供電。
-- Relay 模組的 VCC 需依實物標示接額定電源；目前規劃以 5 V Relay 模組為基準。若為非隔離模組，Relay GND 與 ESP32 GND 共地。
-- 12 V 高電流線、Relay 線與 Load Cell／I²C 線分開走線，並以星狀方式回到電源地，降低衝擊雜訊。
+- NodeMCU-32S 目前由 USB 供電；感測器邏輯側使用 NodeMCU-32S 的 3V3。
+- ADXL375、HX711、OS25B10、按鈕與 Relay 邏輯側應共用 GND。
+- 電磁鐵使用獨立 12 V 電源，不可由 ESP32 GPIO、USB 或 3V3 直接供電。
+- Relay 的 VCC 必須依實物標示接額定電源；非隔離模組才需要依模組電路與 ESP32 共地。
+- 12 V 高電流線、Relay 線與 Load Cell／I²C 線分開走線，降低衝擊雜訊。
+- GPIO34、GPIO35 沒有內建上拉／下拉；OS25B10 輸出需依目前麵包板配置使用外接 6.8 kΩ 電阻。
 
-## ADXL375（Adafruit，I²C）
+## ADXL375 接線
 
-照片中的紫色板為 Adafruit ADXL375 高 G 加速度計。板上 I²C 預設位址為 `0x53`；I²C 的 SDA、SCL 已有板載上拉與電平轉換，NodeMCU-32S 使用 3.3 V 即可。
+ADXL375 使用 I²C。程式目前以 `0x53` 初始化，這代表 SDO 應為低電位；若 SDO 接 3V3，位址會變成 `0x1D`，需同步修改程式或接線。
 
 | ADXL375 端子 | NodeMCU-32S | 說明 |
 |---|---|---|
 | VIN | 3V3 | 供電；依板面標示使用 `VIN`，不是 `3Vo` |
-| GND | GND | 共地 |
-| SDA | GPIO21 | I²C 資料 |
-| SCL | GPIO22 | I²C 時脈 |
-| CS | 3V3 | I²C 模式；此板預設已拉高，若保持原板設定可不另接 |
-| SDO | GND | 使用 I²C 位址 `0x53`；接 3V3 則為 `0x1D` |
-| INT | GPIO16（選配） | Data Ready／FIFO／事件中斷 |
-| I2 | GPIO17（選配） | 第二組中斷，目前可不接 |
-| 3Vo | 不接 | 板上穩壓器的 3.3 V 輸出，不可當作電源輸入 |
+| GND | GND | 共地；線色為白 |
+| SDA | GPIO21 | I²C 資料；線色為橘 |
+| SCL | GPIO22 | I²C 時脈；線色為棕 |
+| CS | 3V3 | 選擇 I²C 模式；實物接法仍應確認 |
+| SDO | GND | 使用 I²C 位址 `0x53`；線色為綠 |
+| INT | GPIO16（選配） | Data Ready／FIFO／事件中斷；線色為淡咖啡 |
+| I2 | GPIO17（選配） | 第二組中斷，目前不接 |
+| 3Vo | 不接 | 板上穩壓器的 3.3 V 輸出，不作為電源輸入 |
 
-ADXL375 應牢固固定在掉落平台上，盡量靠近重心。程式使用 I²C 輪詢時可不接 INT／I2；若要用 Data Ready 或 FIFO 中斷，再接 GPIO16。正式上電前仍應以 I²C scanner 確認 `0x53`。
+ADXL375 應牢固固定在掉落平台上，盡量靠近重心。正式上電前，應以 I²C scanner 或目前測試程式確認 `0x53` 有回應。
 
-## HX711（Adafruit）與 Load Cell
+## HX711 與 Load Cell 接線
 
-照片中的黑色板為 Adafruit HX711 24-bit ADC，板上端子名稱為 `E-`、`A-`、`A+`、`B+`、`B-`、`E+`，邏輯端子為 `VIN`、`GND`、`DATA`、`SCK`、`RATE`。單一四線式荷重元使用 A 通道，B 通道留空。
+HX711 模組目前直接插在麵包板，DATA 與 SCK 使用兩條紫線接到 ESP32。程式使用 A 通道增益 128 讀取原始值，不進行重量換算。
 
 ### HX711 與 NodeMCU-32S
 
@@ -87,58 +176,56 @@ ADXL375 應牢固固定在掉落平台上，盡量靠近重心。程式使用 I�
 |---|---|---|
 | VIN | 3V3 | 供電；依實物標示使用 `VIN` |
 | GND | GND | 共地 |
-| DATA | GPIO32 | 資料輸出 |
-| SCK | GPIO33 | 時脈輸入 |
-| RATE | 不接 GPIO | 使用板上滑動開關；切到 `H` 為 80 SPS，`L` 為 10 SPS |
-| VIO（若板上有引出） | 不接 | 板上數位電源穩壓輸出，不是 NodeMCU 電源輸入 |
+| DATA | GPIO32 | 資料輸出；紫線 |
+| SCK | GPIO33 | 時脈輸入；紫線 |
+| RATE | 不接 GPIO | 使用板上開關；`H` 為 80 SPS、`L` 為 10 SPS |
+| VIO（若有引出） | 不接 | 板上數位電源輸出，不作為 NodeMCU 電源輸入 |
 
 ### Load Cell 與 HX711 端子
 
 | Load Cell 功能／目前照片線色 | HX711 端子 | 備註 |
 |---|---|---|
-| 激勵正／紅線（暫定） | E+ | 以實際規格或電阻量測確認 |
-| 激勵負／黑線（暫定） | E- | 以實際規格或電阻量測確認 |
+| 激勵正／紅線（暫定） | E+ | 需以資料表或電阻量測確認 |
+| 激勵負／黑線（暫定） | E- | 需以資料表或電阻量測確認 |
 | 訊號正／綠線（暫定） | A+ | HX711 A 通道 |
 | 訊號負／白線（暫定） | A- | HX711 A 通道 |
-| B 通道 | B+、B- | 單一荷重元不接 |
+| B 通道 | B+、B- | 單一荷重元先不接 |
 
-紅／黑／綠／白只可作目前接線起點，正式上電前須依荷重元資料表或電阻量測確認。照片銘牌可讀到 `CAP: 180 kg`，因此校正與機構安全檢查暫以 180 kg 額定容量作為待確認資料，不把它當作已完成規格驗證。
-
-Load Cell 機械上應一端固定、一端受力，上方設置剛性壓板；不可將整支樑完全夾死。HX711 最高 80 SPS，適合組別間相對受力比較，不應宣稱為毫秒級真實瞬時峰值力。
+照片銘牌可讀到 `CAP: 180 kg`，但在完成規格與線色確認前，只能視為待確認資料。Load Cell 機械上應一端固定、一端受力，上方配置剛性壓板，不可將整支樑完全夾死。
 
 ## OS25B10 雙光閘
 
-OS25B10 是四腳槽型光電開關／光遮斷器，不是具有 `VCC/GND/OUT` 的數位模組。專案中的實物參考照片為 [OS25B10-紅外線對射光電開關.png](圖片/OS25B10-紅外線對射光電開關.png)。目前整組雙光閘已拉出 4 條線，均接於麵包板：
+OS25B10 是四腳槽型光電開關／光遮斷器，不是具有 `VCC/GND/OUT` 標示的數位模組。實物參考圖：[OS25B10-紅外線對射光電開關.png](圖片/OS25B10-紅外線對射光電開關.png)。
 
-| 線色 | 接線／用途 |
+目前整組雙光閘已拉出 4 條線，均接於麵包板：
+
+| 線色 | 目前記錄的接線／用途 |
 |---|---|
-| 紅 | 接 180 Ω 電阻（色環：棕灰棕） |
+| 紅 | 接 180 Ω 電阻，色環為棕灰棕 |
 | 黑 | GND |
-| 紫 | 接 6.8 kΩ 電阻（色環：藍灰紅），對應上方 OS25B10 |
-| 橘 | 接 6.8 kΩ 電阻（色環：藍灰紅），對應下方 OS25B10 |
+| 紫 | 接 6.8 kΩ 電阻，色環為藍灰紅；對應上方 OS25B10 |
+| 橘 | 接 6.8 kΩ 電阻，色環為藍灰紅；對應下方 OS25B10 |
 
-掉落測試的計時流程：
+### 掉落測試計時概念
 
-1. 掉落物通過上方 OS25B10 時開始計時，記錄 `t_upper`。
-2. 掉落物到達下方 OS25B10 時停止計時，記錄 `t_lower`。
-3. 計算兩點間時間：`Δt = t_lower - t_upper`。
-4. 若已知上下光閘距離 `d`，可再計算兩點間平均速度：`v = d / Δt`。
+1. 掉落物通過上方 OS25B10 時記錄 `t_upper`，開始計時。
+2. 掉落物到達下方 OS25B10 時記錄 `t_lower`，停止計時。
+3. 兩點間時間為 `Δt = t_lower - t_upper`。
+4. 若上下光閘距離為 `d`，兩點間平均速度可估算為 `v = d / Δt`。
 
-本次紀錄未自行推定電阻另一端的接法、供電電壓或輸出邏輯；OS25B10 的實際輸出波形與 ESP32 觸發邊緣仍需後續量測確認。
+目前 `01-irt` 只讀取 GPIO34／GPIO35 的 HIGH／LOW，尚未實作上述計時。電阻另一端的接法、供電電壓、輸出波形、遮光極性與 ESP32 觸發邊緣，仍需以實物量測確認。
 
 ## Relay、電磁鐵與釋放按鈕
 
-### Relay 與 12 V 電磁鐵
+這一部分目前是預留設計，尚未納入 `01-irt` 通訊測試程式。
 
-Relay 模組的實際型號與觸發邏輯尚待從實物標示確認；目前預留接法如下：
+### Relay 與 12 V 電磁鐵
 
 | Relay 端子 | NodeMCU-32S／電源 | 說明 |
 |---|---|---|
-| IN | GPIO26 | 程式以 `RELAY_ACTIVE_LOW` 選擇高／低觸發 |
-| GND | GND | 非隔離模組需共地 |
-| VCC | 5 V／VIN 或模組額定電源 | 以 Relay 實物標示為準，不由 GPIO 供電 |
-
-電磁鐵負載側：
+| IN | GPIO26 | 釋放控制；HIGH／LOW 觸發需依實物確認 |
+| GND | GND | 非隔離模組需依電路確認共地 |
+| VCC | 模組額定電源 | 依 Relay 實物標示，不由 GPIO 供電 |
 
 ```text
 獨立 12 V+ ── Relay COM
@@ -146,7 +233,7 @@ Relay NO ── 電磁鐵正極
 電磁鐵負極 ── 獨立 12 V−
 ```
 
-電磁鐵兩端並聯飛輪二極體：陰極（有色環端）接電磁鐵正極，陽極接電磁鐵負極。電磁鐵應固定在上方支架，不裝在移動掉落平台上。
+電磁鐵兩端應並聯飛輪二極體：陰極（有色環端）接正極，陽極接負極。電磁鐵應固定於上方支架，不裝在移動掉落平台上。
 
 ### 釋放按鈕
 
@@ -154,92 +241,94 @@ Relay NO ── 電磁鐵正極
 GPIO27 ── 釋放按鈕 ── GND
 ```
 
-程式設定 `pinMode(27, INPUT_PULLUP)`，按下時讀值為 LOW，並加入按鍵去彈跳。
+按鈕規劃使用 `INPUT_PULLUP`，按下時讀值為 LOW，並應加入去彈跳。
 
-## 量測與資料品質限制
+## 量測設計與限制
 
+- 雙光閘得到的是兩閘間平均速度，不能直接視為撞擊瞬間速度。
 - 雙光閘應盡量靠近撞擊面；第二光閘到撞擊面的距離需固定或做修正。
-- 雙光閘計算的是兩閘間平均速度，不能直接當作撞擊瞬間速度。
-- HX711 的取樣率有限，主要用於不同材料組別的相對比較。
-- Load Cell 應一端固定、一端受力，並在上方配置剛性上壓板。
-- Load Cell 線使用雙絞線，遠離 ESP32、USB 與高電流／繼電器線路。
-- ADXL375、HX711 與光閘電源附近建議配置 0.1 µF 去耦電容；HX711 電源可再加 10 µF。
-- ADXL375、HX711 與 OS25B10 均已有目前麵包板接線紀錄；尚未完成各感測器實體讀值確認、OS25B10 輸出波形量測、Load Cell 校正或正式落下測試。
+- HX711 取樣率有限，主要適合不同材料組別的相對受力比較，不應直接宣稱為毫秒級瞬時峰值力。
 - ADXL375 應固定牢靠，避免感測器本體晃動造成假峰值。
-- Load Cell 線與 I²C 線遠離 USB、Relay 與電磁鐵高電流線路。
+- Load Cell 線與 I²C 線應遠離 USB、Relay 及電磁鐵高電流線路。
+- ADXL375、HX711 與光閘電源附近可配置 0.1 µF 去耦電容；HX711 電源可再加 10 µF。
+- 正式試驗前應先做低高度、低重量、單一變因測試，確認訊號極性、機構安全與資料格式。
 
-## Arduino CLI 編譯與燒錄
+## 01-irt 通訊測試程式
 
-本專案使用下列 Arduino CLI 執行檔：
+程式位置：`01-irt/01-irt.ino`。
+
+### 測試範圍
+
+| 測試對象 | 程式行為 |
+|---|---|
+| ADXL375 | 以 GPIO21／GPIO22 的 I²C 位址 `0x53` 初始化，週期性輸出 X／Y／Z 加速度 |
+| HX711 | 以 GPIO32／GPIO33 讀取 A 通道增益 128 的原始值，不換算重量 |
+| 上方 OS25B10 | 讀取 GPIO34 的 HIGH／LOW |
+| 下方 OS25B10 | 讀取 GPIO35 的 HIGH／LOW |
+
+程式不包含正式落下計時、速度計算、校正、Relay 控制或資料記錄；所有非空程式碼行均附正體中文註解。
+
+### Arduino CLI 編譯與燒錄
+
+本專案使用：
 
 ```text
 C:\Program Files\Arduino CLI\arduino-cli.exe
 ```
 
-PowerShell 範例：
+目前使用的 Arduino CLI 設定目錄與 ESP32 核心：
 
-```powershell
-$cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
-& $cli board list
-& $cli compile --fqbn esp32:esp32:nodemcu-32s <sketch-folder>
-& $cli upload --port COMx --fqbn esp32:esp32:nodemcu-32s <sketch-folder>
+```text
+設定目錄：C:\Users\tseng\AppData\Local\Arduino15
+ESP32 核心：esp32:esp32 3.1.1
+FQBN：esp32:esp32:nodemcu-32s
 ```
 
-正式編譯前先以 `board list` 確認實際 COM 埠，並確認已安裝 ESP32 Arduino core 與 `nodemcu-32s` FQBN。
-
-### 01-irt.ino 目前版簡易感測器通訊測試程式
-
-程式位置為 `01-irt/01-irt.ino`，用途是先確認 ESP32 能否收到下列元件資料：
-
-- Adafruit ADXL375：I²C 初始化與 X／Y／Z 加速度（m/s²）。
-- Adafruit HX711：A 通道增益 128 的原始 ADC 值；未校正、未換算重量。
-- OS25B10 光閘一／二：GPIO34／GPIO35 的 HIGH／LOW 狀態。
-
-本測試程式需要安裝 `Adafruit ADXL375`、`Adafruit HX711` 及其相依函式庫；Arduino CLI 可使用下列指令編譯：
+PowerShell 指令如下，`COMx` 請替換成 `board list` 顯示的實際埠號：
 
 ```powershell
 $cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
 $cfg = 'C:\Users\tseng\AppData\Local\Arduino15'
+
+& $cli --config-dir $cfg board list
 & $cli --config-dir $cfg lib install 'Adafruit ADXL375' 'Adafruit HX711'
 & $cli --config-dir $cfg compile --fqbn esp32:esp32:nodemcu-32s .\01-irt
-& $cli --config-dir $cfg upload --port COMx --fqbn esp32:esp32:nodemcu-32s .\01-irt
+& $cli --config-dir $cfg upload --port COMx --fqbn 'esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40' .\01-irt
 & $cli --config-dir $cfg monitor --port COMx --config baudrate=115200
 ```
 
-燒錄前先以 `board list` 確認 `COMx`；序列埠監控視窗應設定為 115200 baud。若 HX711 未就緒，程式會輸出 `DATA 未就緒` 並繼續顯示其他感測器；OS25B10 必須依目前接線使用外接 6.8 kΩ 電阻，不能只靠程式設定內建上拉。
+### 最近一次編譯與燒錄結果
 
-2026-09-18 重新以 COM5、`UploadSpeed=115200` 與 `FlashFreq=40` 上傳成功，所有寫入區段均回報 `Hash of data verified`。重置後序列輸出確認 `[ADXL375] 通訊成功`，HX711 可讀得 A128 原始值，兩個 OS25B10 當次讀值均為 LOW；正式落下測試與光閘觸發極性仍未驗證。
+- 2026-09-18 編譯成功：Flash 使用 324,564 bytes（24%），RAM 使用 20,544 bytes（6%）。
+- 使用 COM5、`UploadSpeed=115200`、`FlashFreq=40` 上傳成功。
+- 所有寫入區段均回報 `Hash of data verified`。
+- 重置後序列輸出確認 `[ADXL375] 通訊成功`。
+- HX711 已讀到例如 `A128_RAW=3048`、`3775`、`3791`、`4051` 的原始值。
+- 當次測試中，上方與下方 OS25B10 均讀到 `LOW`。
 
-## 目前檔案
+這些結果證明程式可編譯、韌體已寫入且基本通訊路徑可執行；不代表 OS25B10 的遮光極性、正式計時精度或落體試驗結果已完成驗證。
 
-- `01-irt/01-irt.ino`：目前版簡易感測器通訊測試程式，所有非空程式碼行均附正體中文註解。
-- `handoff.md`：完整專題交接紀錄、設計背景與接線修訂。
-- `auto-git-watch.ps1`：檔案變更自動 commit／push 監看器。
-- `圖片/`：目前取得的元件與機構照片。
-- `零件1.stp`：STEP 機械模型。
-- `零件1.stl`：STL 網格模型。
-
-## Git 自動同步
+## Git 與自動同步
 
 遠端儲存庫：<https://github.com/chiangyih/Impact_Resistance_Test>
 
-目前已設定目前 Windows 使用者登入時啟動自動監看器。監看器每 5 秒檢查變更，等待 3 秒後自動建立 commit 並推送至 `origin/main`；不使用 force push。紀錄位於：
+本機保留 `auto-git-watch.ps1`，目前設定為 Windows 使用者登入時啟動監看器。此檔案已加入 `.gitignore`，只在本機執行，不會上傳到 GitHub。監看器每 5 秒檢查變更，等待 3 秒後自動建立 commit 並推送至 `origin/main`，不使用 force push。紀錄位於：
 
 ```text
 %LOCALAPPDATA%\Impact_Resistance_Test\auto-git-watch.log
 ```
 
-所有新增或修改的檔案都可能被自動提交，請勿將密碼、Token、私鑰或其他秘密放入此專案資料夾。
+此專案資料夾不要放入密碼、Token、私鑰、PSK 或其他秘密；自動監看器可能將新增或修改的檔案提交並推送。
 
 ## 後續工作
 
-1. 用萬用電表確認兩顆 OS25B10 的 LED／Collector／Emitter 實體腳位。
-2. 完成雙光閘輸出波形與必要的比較器／施密特觸發器評估。
-3. 以 I²C scanner 與 Adafruit Arduino library 完成 ADXL375 單獨讀值測試。
-4. 依 Load Cell 規格確認線色、額定容量，完成 HX711 靜態校正。
-5. 確認 Relay 模組額定電壓與 HIGH／LOW trigger，完成電磁鐵空載釋放測試。
-6. 完成 ESP32 時間同步、雙光閘中斷與資料記錄程式。
-7. 先進行低高度、低重量測試，再進入緩衝材料比較實驗。
+1. 用萬用電表確認兩顆 OS25B10 的 LED、Collector、Emitter 實體腳位。
+2. 量測雙光閘輸出波形，確認是否需要比較器或施密特觸發器。
+3. 確認 ADXL375 的 CS、SDO 實際接法，並完成單獨 I²C 讀值測試。
+4. 依 Load Cell 資料表確認線色、額定容量，完成 HX711 靜態校正。
+5. 確認 Relay 額定電壓與觸發邏輯，完成電磁鐵空載釋放測試。
+6. 將上下光閘的觸發時間、時間差與必要資料記錄納入正式測試程式。
+7. 先完成低高度、低重量測試，再進入緩衝材料比較實驗。
 
 ## 參考資料
 
