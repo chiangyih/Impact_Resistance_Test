@@ -29,6 +29,7 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 | microSD | 尚未由目前照片確認，列為後續選配資料儲存裝置 |
 
 ## NodeMCU-32S 腳位總表
+<img width="742" height="710" alt="image" src="https://github.com/user-attachments/assets/39465e60-bec3-457f-a59a-a3e007bff801" />
 
 這是目前採用的單一腳位配置。未來程式、接線圖與測試紀錄都應以此表為準。
 
