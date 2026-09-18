@@ -29,6 +29,7 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 
 ## NodeMCU-32S 腳位總表
 <img width="742" height="710" alt="image" src="https://github.com/user-attachments/assets/39465e60-bec3-457f-a59a-a3e007bff801" />
+<img width="1057" height="539" alt="image" src="https://github.com/user-attachments/assets/d8f0d139-59c4-497e-bd9b-5dd688afef42" />
 
 這是目前採用的單一腳位配置。未來程式、接線圖與測試紀錄都應以此表為準。
 
