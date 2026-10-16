@@ -27,12 +27,10 @@
 - 讀取雙光閘
 - 記錄釋放與通過光閘的時間
 - 計算速度、合成加速度等資料
-- 可搭配 microSD 儲存 CSV
 - 可透過 USB Serial 傳輸資料到電腦
 
 NodeMCU-32S 的目前接線配置如下；完整端子對照與注意事項見本文件末尾「實際元件接線修訂」及 `README.md`：
 - ADXL375 `VIN` → 3V3；`SDA` → GPIO21；`SCL` → GPIO22
-- OLED `VCC` → 3V3；`GND` → GND；`SCK` → GPIO22；`SDA` → GPIO21（與 ADXL375 共用 I²C）
 - ADXL375 `INT` → GPIO16（選配）；`I2` → GPIO17（選配）
 - ADXL375 `CS` → 3V3（I²C）；`SDO` → GND（I²C 位址 `0x53`）
 - HX711 `VIN` → 3V3；`DATA` → GPIO32；`SCK` → GPIO33
@@ -40,9 +38,8 @@ NodeMCU-32S 的目前接線配置如下；完整端子對照與注意事項見�
 - OS25B10 光閘 1 Collector 節點 → GPIO34；光閘 2 Collector 節點 → GPIO35
 - Relay `IN` → GPIO26
 - 釋放按鈕 → GPIO27，按鈕另一端接 GND，使用 `INPUT_PULLUP`
-- microSD（後續選配）：SCK → GPIO18、MISO → GPIO19、MOSI → GPIO23、CS → GPIO5
 
-所有感測器邏輯使用 3.3 V 並與 ESP32 共地。OLED 的實際供電範圍仍須依模組規格確認。GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉／下拉，OS25B10 必須外接 10 kΩ 上拉電阻。
+所有感測器邏輯使用 3.3 V 並與 ESP32 共地。GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉／下拉；目前麵包板的 OS25B10 輸出使用外接 6.8 kΩ 電阻。
 
 ### 2. ADXL375
 用途：
@@ -503,8 +500,7 @@ t = ...      撞擊結束
 
 建議：
 - 使用 micros()
-- microSD 儲存 CSV
-- 或 USB Serial 傳至電腦
+- 透過 USB Serial 傳至電腦
 
 ---
 
@@ -538,27 +534,7 @@ READY
 
 ---
 
-## 十五、microSD 建議
-
-建議 CSV 欄位：
-
-trial_id,group,time_us,release_state,gate1,gate2,ax_g,ay_g,az_g,a_total_g,hx711_raw,force_N
-
-每次實驗摘要：
-- trial_id
-- group
-- mass_g
-- height_cm
-- v_actual
-- impact_energy_J
-- peak_acceleration_g
-- peak_force_N
-- impact_duration_ms
-- permanent_deformation_mm
-
----
-
-## 十六、目前最重要的技術注意事項
+## 十五、目前最重要的技術注意事項
 
 1. ADXL375 要牢固固定在掉落滑塊。
 2. Load Cell 上方應設剛性上壓板。
@@ -578,7 +554,7 @@ trial_id,group,time_us,release_state,gate1,gate2,ax_g,ay_g,az_g,a_total_g,hx711_
 
 ---
 
-## 十七、目前專題整體架構
+## 十六、目前專題整體架構
 
 ESP32
 ├─ ADXL375 → 加速度
@@ -586,7 +562,7 @@ ESP32
 ├─ 光閘1
 ├─ 光閘2 → 撞擊前速度
 ├─ Relay → 12V 電磁鐵 → 滑塊釋放
-└─ microSD（建議）→ CSV 資料記錄
+└─ USB Serial → 電腦資料傳輸
 
 機械結構：
 
@@ -615,7 +591,7 @@ Load Cell
 
 ---
 
-## 十八、後續建議優先工作
+## 十七、後續建議優先工作
 
 1. 確認 MGN12 滑軌與兩滑塊實際機械尺寸
 2. 設計掉落平台與撞擊頭
@@ -632,13 +608,13 @@ Load Cell
 
 ---
 
-## 十九、一句話總結
+## 十八、一句話總結
 
 > 本專題利用線性滑軌與電磁鐵建立可重複落下機構，透過雙光閘量測撞擊前速度、ADXL375 量測撞擊加速度、Load Cell + HX711 量測底部傳遞受力，進而比較 STF、三浦摺疊與 EVA 等緩衝結構對峰值加速度、衝擊力、撞擊作用時間與結構變形的影響。
 
 ---
 
-## 二十、2026-09-14 本次工作進度
+## 十九、2026-09-14 本次工作進度
 
 ### 1. Git 版本控管與自動同步
 
@@ -685,10 +661,6 @@ Load Cell
 | ADXL375 I2（選配） | GPIO17 | 第二組中斷 |
 | Relay IN | GPIO26 | 電磁鐵釋放控制 |
 | 釋放按鈕 | GPIO27 | 按鈕另一端接 GND，使用 INPUT_PULLUP |
-| microSD SCK（選配） | GPIO18 | VSPI |
-| microSD MISO（選配） | GPIO19 | VSPI |
-| microSD MOSI（選配） | GPIO23 | VSPI |
-| microSD CS（選配） | GPIO5 | VSPI；GPIO5 為啟動相關腳位 |
 
 ADXL375：
 
@@ -752,12 +724,14 @@ Emitter ── GND
 4. 依荷重元規格確認線色與額定容量，完成 Load Cell＋HX711 靜態校正。
 5. 確認 Relay 模組額定電壓與 HIGH／LOW trigger，完成電磁鐵空載釋放測試。
 6. 完成 ESP32 時間同步、雙光閘中斷與資料記錄程式。
+
+---
 7. 使用 Arduino CLI 進行 NodeMCU-32S 編譯與燒錄測試。
 8. 先進行低高度、低重量測試，再進行正式緩衝材料比較。
 
 ---
 
-## 二十一、2026-09-16 實際元件接線對應修訂
+## 二十、2026-09-16 實際元件接線對應修訂
 
 本節為目前最具體的接線版本，並覆蓋前文僅以「建議」描述的腳位。`README.md` 也已同步更新。
 
@@ -765,33 +739,28 @@ Emitter ── GND
 
 - NodeMCU-32S／ESP32-WROOM-32：主控制器。
 - Adafruit ADXL375 紫色 breakout：±200 g 三軸加速度計，使用 I²C。
-- 四腳 I²C OLED 顯示模組：照片端子標示為 `VCC/GND/SCK/SDA`，控制器、解析度與位址仍待確認。
 - Adafruit HX711 黑色 breakout：24-bit ADC，使用 A 通道讀取荷重元。
 - 四線式 Load Cell：照片銘牌可讀到 `CAP: 180 kg`；完整額定規格與線色仍須再確認。
 - 圖片資料夾內另可見線性滑軌、鋁合金基座與安裝零件。
 
-OS25B10 的實物照片已補充為 `圖片/OS25B10-紅外線對射光電開關.png`，可確認其為四腳槽型光電開關／光遮斷器，內含紅外線 LED 與光電晶體管；但四腳實體順序仍需依實物量測確認。Relay、釋放按鈕與 microSD 的功能已納入系統規劃，其中 Relay 型號／觸發邏輯及 microSD 模組目前仍需依實物確認。
+OS25B10 的實物照片已補充為 `圖片/OS25B10-紅外線對射光電開關.png`，可確認其為四腳槽型光電開關／光遮斷器，內含紅外線 LED 與光電晶體管；但四腳實體順序仍需依實物量測確認。Relay 與釋放按鈕的功能已納入系統規劃，其中 Relay 型號與觸發邏輯目前仍需依實物確認。
 
 ### 2. NodeMCU-32S 腳位總表
 
-| NodeMCU-32S | 實際／規劃元件端子 | 方向 | 說明 |
-|---|---|---|---|
-| 3V3 | ADXL375 VIN、OLED VCC、HX711 VIN、OS25B10 電路 | 電源 | 感測器使用 3.3 V；OLED 電壓仍須依規格確認；不可接 12 V |
-| GND | ADXL375 GND、OLED GND、HX711 GND、OS25B10、按鈕、Relay 邏輯側 | 電源 | 邏輯側共地，建議星狀接地 |
-| GPIO21 | ADXL375 SDA、OLED SDA | I/O | I²C SDA，共用匯流排 |
-| GPIO22 | ADXL375 SCL、OLED SCK | I/O | I²C SCL；OLED 實物端子標示為 SCK |
-| GPIO16 | ADXL375 INT（選配） | 輸入 | Data Ready／FIFO／事件中斷 |
-| GPIO17 | ADXL375 I2（選配） | 輸入 | 第二組中斷 |
-| GPIO32 | HX711 DATA | 輸入 | HX711 資料輸出 |
-| GPIO33 | HX711 SCK | 輸出 | HX711 時脈 |
-| GPIO34 | OS25B10 光閘 1 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
-| GPIO35 | OS25B10 光閘 2 Collector 節點 | 輸入 | 輸入專用，沒有內建上拉 |
-| GPIO26 | Relay IN | 輸出 | 電磁鐵釋放；需設定高／低觸發 |
-| GPIO27 | 釋放按鈕 | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
-| GPIO18 | microSD SCK（選配） | 輸出 | VSPI clock |
-| GPIO19 | microSD MISO（選配） | 輸入 | VSPI MISO |
-| GPIO23 | microSD MOSI（選配） | 輸出 | VSPI MOSI |
-| GPIO5 | microSD CS（選配） | 輸出 | VSPI CS；開機時需保持適當高電位 |
+| NodeMCU-32S | 實際／規劃元件端子 | 線材顏色（ADXL375／HX711） | 方向 | 說明 |
+|---|---|---|---|---|
+| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 黑（VCC） | 電源 | 感測器使用 3.3 V；不可接 12 V |
+| GND | ADXL375 GND、SDO、OS25B10、按鈕、Relay 邏輯側 | 白（GND）；綠（SDO） | 電源 | 邏輯側共地，SDO 接地時使用 I²C 位址 `0x53` |
+| GPIO21 | ADXL375 SDA | 橘（SDA） | I/O | I²C SDA |
+| GPIO22 | ADXL375 SCL | 棕（SCL） | I/O | I²C SCL |
+| GPIO16 | ADXL375 INT（選配） | 淡咖啡（INT） | 輸入 | Data Ready／FIFO／事件中斷 |
+| GPIO17 | ADXL375 I2（選配） | — | 輸入 | 第二組中斷 |
+| GPIO32 | HX711 DATA | 紫（HX711 DATA） | 輸入 | HX711 資料輸出 |
+| GPIO33 | HX711 SCK | 紫（HX711 SCK） | 輸出 | HX711 時脈 |
+| GPIO34 | OS25B10 光閘 1 Collector 節點 | — | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO35 | OS25B10 光閘 2 Collector 節點 | — | 輸入 | 輸入專用，沒有內建上拉 |
+| GPIO26 | Relay IN | — | 輸出 | 電磁鐵釋放；需設定高／低觸發 |
+| GPIO27 | 釋放按鈕 | — | 輸入 | 按鈕另一端接 GND，使用 `INPUT_PULLUP` |
 
 ### 3. Adafruit ADXL375 實際接法
 
@@ -880,11 +849,7 @@ GPIO27 ── 按鈕 ── GND
 
 程式使用 `INPUT_PULLUP`，按下為 LOW，並加入去彈跳。
 
-### 7. microSD 選配接法
-
-目前未由照片確認 microSD 模組。若後續使用 3.3 V 邏輯相容的 SPI 模組，接 `SCK/GPIO18`、`MISO/GPIO19`、`MOSI/GPIO23`、`CS/GPIO5`、`VCC/3V3`、`GND/GND`；GPIO5 為啟動相關腳位，需確認 CS 開機時不被強制拉低。
-
-### 8. Arduino CLI 工具
+### 7. Arduino CLI 工具
 
 ESP32 程式使用：
 
@@ -894,7 +859,7 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 
 編譯與燒錄前先用 `board list` 確認 COM 埠，並確認 ESP32 Arduino core 與 `esp32:esp32:nodemcu-32s` FQBN 已安裝。所有實體接線與感測器讀值仍須先完成低風險測試，再進行正式落下試驗。
 
-### 9. 官方參考
+### 8. 官方參考
 
 - Adafruit HX711：<https://learn.adafruit.com/adafruit-hx711-24-bit-adc>
 - Adafruit HX711 Pinouts：<https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts>
@@ -902,7 +867,7 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 - Seeed Studio OS25B10 Photo Interrupter：<https://wiki.seeedstudio.com/ja/Photo_interrupter_OS25B10/>
 - Arduino-ESP32 NodeMCU-32S 腳位定義：<https://github.com/espressif/arduino-esp32/blob/master/variants/nodemcu-32s/pins_arduino.h>
 
-### 10. 2026-09-16 第一版簡易測試程式
+### 9. 2026-09-16 第一版簡易測試程式
 
 已新增 `01-irt/01-irt.ino`，這是目前第一版的簡易測試程式，目的只在確認 ESP32 能收到三類實際元件的資料，不包含正式落下測試、速度計算、校正、資料記錄或 Relay 控制。程式每一個非空程式碼行均附正體中文註解。
 
@@ -914,15 +879,98 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 
 本機已用 `C:\Program Files\Arduino CLI\arduino-cli.exe` 搭配 `esp32:esp32:nodemcu-32s` 編譯通過。編譯函式庫為 `Adafruit ADXL375`、`Adafruit HX711` 及其相依函式庫。程式檔案標頭與開機訊息均已註明「尚未實際燒錄驗證」。當次 `board list` 僅辨識到 `COM1 Unknown`，尚未完成 NodeMCU-32S 實機燒錄與感測器讀值驗證。
 
-### 11. 2026-10-16 新增 I²C OLED 實物照片
+---
+
+## 二十一、2026-09-18 本次更新
+
+本節為目前使用線材與麵包板接線現況，優先於前面較早日期的 OS25B10 規劃。
+
+### HX711 目前麵包板接線
+
+HX711 模組目前直接插在麵包板；DATA 與 SCK 分別以兩條紫線接至 ESP32 的 GPIO32 與 GPIO33。
+
+### OS25B10 目前麵包板接線與計時流程
+
+依目前現場回報，整組雙光閘已拉出 4 條線，均接於麵包板。線色與配置如下：
+
+| 線色 | 接線／用途 |
+|---|---|
+| 紅 | 接 180 Ω 電阻（色環：棕灰棕） |
+| 黑 | GND |
+| 紫 | 接 6.8 kΩ 電阻（色環：藍灰紅），對應上方 OS25B10 |
+| 橘 | 接 6.8 kΩ 電阻（色環：藍灰紅），對應下方 OS25B10 |
+
+掉落測試時：
+
+1. 通過上方 OS25B10 時開始計時，記錄 `t_upper`。
+2. 到達下方 OS25B10 時停止計時，記錄 `t_lower`。
+3. 計算兩點間時間：`Δt = t_lower - t_upper`。
+4. 若已知上下光閘距離 `d`，可再計算兩點間平均速度：`v = d / Δt`。
+
+本次只記錄目前提供的線材與電阻配置；電阻另一端的接法、供電電壓、OS25B10 輸出波形及 ESP32 觸發邊緣尚待實際量測確認。
+
+---
+
+## 二十二、2026-09-18 01-irt 通訊測試改寫、編譯與上傳結果
+
+### 程式改寫內容
+
+已重新改寫 `01-irt/01-irt.ino`，目的限定為確認感測器與 ESP32 之間的基本通訊：
+
+1. ADXL375 使用 GPIO21／GPIO22 的 I²C，初始化成功後週期性輸出 X／Y／Z 加速度。
+2. HX711 使用 GPIO32／GPIO33，以 A 通道增益 128 讀取原始值；DATA 尚未就緒時立即輸出狀態，不讓主迴圈永久等待。
+3. 上方／下方 OS25B10 分別讀取 GPIO34／GPIO35 的 HIGH／LOW 電位。
+4. 程式不包含落下計時、速度計算、校正、資料儲存或 Relay 控制；所有非空程式碼行均附正體中文註解。
+
+### 編譯結果
+
+- Arduino CLI：`C:\Program Files\Arduino CLI\arduino-cli.exe`，版本為 2026-09-18 nightly。
+- ESP32 核心：`esp32:esp32` 3.1.1。
+- FQBN：`esp32:esp32:nodemcu-32s`。
+- 函式庫：`Adafruit ADXL375` 1.1.2、`Adafruit HX711` 1.0.2，以及 `Adafruit ADXL343`、`Adafruit Unified Sensor`、`Adafruit BusIO` 相依函式庫。
+- 編譯成功：程式使用 324,564 bytes（24%）Flash，Global variables 使用 20,544 bytes（6%）RAM。
+
+### 上傳結果與目前限制
+
+`board list` 辨識 COM5 為 USB Serial；上傳時 ESP32 可進入 bootloader，並讀到晶片 `ESP32-D0WD-V3`、MAC `e0:8c:fe:a8:42:bc`。但 esptool 回報無法與 Flash 通訊；唯讀 `flash_id` 的結果為製造商 `ff`、裝置 `ffff`、容量未知。以 115200 baud 及 FlashFreq=40 重試後仍在寫入資料時出現 `Packet content transfer stopped (received 8 bytes)`，上傳命令回傳錯誤碼 2。
+
+因此本次已確認程式可編譯且 USB 可連到 ESP32 bootloader，但韌體尚未成功寫入，不能據此宣稱 ESP32 已執行新版程式或感測器讀值已完成驗證。下一次上傳前應先暫時移除 ESP32 外接模組／訊號線，確認 USB 供電、麵包板電源與 Flash 相關實體線路，再重新執行 `flash_id` 與上傳；目前接線表所列 GPIO21、22、32、33、34、35 並未直接指向 Flash 腳位，實際干擾來源仍待現場隔離確認。
+
+---
+
+## 二十三、2026-09-18 重新燒錄成功與序列埠驗證
+
+### 重新燒錄結果
+
+依本次要求重新編譯並上傳 `01-irt/01-irt.ino`：
+
+- 編譯仍使用 `esp32:esp32:nodemcu-32s`，結果成功，Flash 使用 24%、RAM 使用 6%。
+- `board list` 顯示 COM5 為 USB Serial，晶片可進入 ESP32 bootloader。
+- 使用 `UploadSpeed=115200`、`FlashFreq=40` 上傳成功。
+- bootloader 回報各寫入區段完成，且每一段均出現 `Hash of data verified`；最後顯示 `New upload port: COM5 (serial)`。
+
+### 重置後序列埠結果
+
+以 115200 baud 讀取重置後輸出，確認新版程式已執行：
+
+1. ADXL375 回報 `[ADXL375] 通訊成功`，並輸出 X／Y／Z，例如 `X=-6.73、Y=3.36、Z=-9.13 m/s^2`。
+2. HX711 可讀取 A 通道增益 128 原始值，例如 `A128_RAW=3048`、`3775`、`3791`、`4051`。
+3. 上方與下方 OS25B10 當次讀值皆為 `LOW`。
+
+本次已確認新版韌體成功寫入，且 ADXL375、HX711、OS25B10 的 ESP32 通訊讀取路徑均已執行；OS25B10 的遮光 HIGH／LOW 極性、上下光閘觸發順序、兩點時間差與正式落下測試仍須在實際操作時另行驗證。
+
+---
+
+## 二十四、2026-10-16 新增 I²C OLED 實物照片
 
 圖片資料夾新增 `圖片/Snipaste_2026-10-16_22-30-35.png`，照片可辨識為四腳 OLED 模組，端子標示為 `VCC`、`GND`、`SCK`、`SDA`。目前接線規劃如下：
 
 | OLED 端子 | NodeMCU-32S | 備註 |
 |---|---|---|
-| `VCC` | `3V3` | 先以 3.3 V 規劃，正式供電前須確認模組規格 |
+| `VCC` | `3V3` | 先以 3.3 V 規劃，正式供電前須確認模組實際規格 |
 | `GND` | `GND` | 與 ESP32、ADXL375、HX711 共地 |
 | `SCK` | GPIO22 | 視為 I²C SCL，與 ADXL375 共用 |
 | `SDA` | GPIO21 | I²C SDA，與 ADXL375 共用 |
 
-照片只能確認端子標示，尚不能確認 OLED 控制器、尺寸、解析度、供電範圍或 I²C 位址。常見位址 `0x3C`／`0x3D` 僅供後續掃描參考，不視為本模組已驗證資料。現有 `01-irt` 程式尚未加入 OLED 畫面初始化與輸出功能；後續應先確認電壓與位址，再新增顯示程式。
+照片只能確認端子標示，尚不能確認 OLED 控制器、尺寸、解析度、供電範圍或 I²C 位址。常見位址 `0x3C`／`0x3D` 僅供後續掃描參考，不視為本模組已驗證資料。現有 `01-irt` 程式尚未加入 OLED 初始化與畫面輸出功能；後續應先確認電壓與位址，再新增顯示程式。
+
