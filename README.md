@@ -2,7 +2,7 @@
 
 STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 
-本專案以 NodeMCU-32S（ESP32-WROOM-32）作為控制與資料擷取核心，使用 Adafruit ADXL375 量測掉落平台加速度，使用 Adafruit HX711 搭配荷重元量測底部相對受力，並以兩組 OS25B10 四腳槽型光電開關量測撞擊前近似速度。
+本專案以 NodeMCU-32S（ESP32-WROOM-32）作為控制與資料擷取核心，使用 Adafruit ADXL375 量測掉落平台加速度，使用 Adafruit HX711 搭配荷重元量測底部相對受力，並以兩組 OS25B10 四腳槽型光電開關量測撞擊前近似速度；另新增一個四腳 I²C OLED 顯示模組作為後續狀態顯示介面。
 
 ## 專案目的
 
@@ -21,6 +21,7 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 |---|---|
 | NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial 資料傳輸 |
 | Adafruit ADXL375 | ±200 g 三軸加速度計，使用 I²C；照片中的紫色開發板與此型號相符 |
+| I²C OLED 顯示模組 | 新增照片可辨識為 `VCC/GND/SCK/SDA` 四腳模組；控制器、解析度與 I²C 位址尚待確認 |
 | Adafruit HX711 24-bit ADC | 讀取荷重元；使用 A 通道，RATE 開關規劃使用 80 SPS |
 | 四線式 Load Cell | 照片銘牌可讀到 `CAP: 180 kg`；正式校正前仍須以銘牌／資料表確認額定容量與線色 |
 | OS25B10 × 2 | 四腳槽型光電開關／光遮斷器，內含紅外線 LED 與光電晶體管；需外接 LED 限流電阻與 Collector 上拉電阻 |
@@ -34,10 +35,10 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 
 | NodeMCU-32S | 對應元件端子 | 方向 | 用途／備註 |
 |---|---|---|---|
-| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 電源輸出 | 感測器邏輯電源；不可接 12 V |
-| GND | ADXL375 GND、HX711 GND、OS25B10 Emitter／LED Cathode、按鈕、Relay GND | 電源回路 | 邏輯側共地，建議星狀接地 |
-| GPIO21 | ADXL375 SDA | I/O | I²C SDA |
-| GPIO22 | ADXL375 SCL | I/O | I²C SCL |
+| 3V3 | ADXL375 VIN、OLED VCC、HX711 VIN、OS25B10 電路 | 電源輸出 | 感測器邏輯電源；不可接 12 V |
+| GND | ADXL375 GND、OLED GND、HX711 GND、OS25B10 Emitter／LED Cathode、按鈕、Relay GND | 電源回路 | 邏輯側共地，建議星狀接地 |
+| GPIO21 | ADXL375 SDA、OLED SDA | I/O | I²C SDA，共用同一條匯流排 |
+| GPIO22 | ADXL375 SCL、OLED SCK | I/O | I²C SCL，共用同一條匯流排；OLED 板上標示為 SCK |
 | GPIO16 | ADXL375 INT | 輸入（選配） | Data Ready／FIFO／事件中斷；基本輪詢可不接 |
 | GPIO17 | ADXL375 I2 | 輸入（選配） | 第二組中斷；目前可不接 |
 | GPIO32 | HX711 DATA | 輸入 | HX711 serial data output |
@@ -51,12 +52,12 @@ STF、三浦摺疊與 EVA 落體衝擊緩衝材料試驗平台。
 | GPIO23 | microSD MOSI（選配） | 輸出 | VSPI MOSI |
 | GPIO5 | microSD CS（選配） | 輸出 | VSPI CS；GPIO5 是啟動相關腳位，SD 模組 CS 應保持上拉 |
 
-GPIO34、GPIO35 只能作輸入，且沒有軟體內建上拉／下拉；OS25B10 必須各自使用外接 10 kΩ 上拉電阻。ADXL375 與 HX711 都使用 3.3 V 邏輯。NodeMCU-32S 不可把 12 V 電磁鐵電源接到 3V3、5V 或 VIN。
+GPIO34、GPIO35 只能作輸入，且沒有軟體內建上拉／下拉；OS25B10 必須各自使用外接 10 kΩ 上拉電阻。ADXL375、OLED 與 HX711 都應使用 3.3 V 邏輯；OLED 的實際供電範圍仍須依背面規格確認。NodeMCU-32S 不可把 12 V 電磁鐵電源接到 3V3、5V 或 VIN。
 
 ## 電源與接地
 
 - NodeMCU-32S 由 USB 供電；感測器由 NodeMCU-32S 的 3V3 供電。
-- ADXL375、HX711、OS25B10、按鈕與 Relay 的邏輯側共用 GND。
+- ADXL375、OLED、HX711、OS25B10、按鈕與 Relay 的邏輯側共用 GND。
 - 電磁鐵使用獨立 12 V 電源；不要由 ESP32 腳位或 USB 直接供電。
 - Relay 模組的 VCC 需依實物標示接額定電源；目前規劃以 5 V Relay 模組為基準。若為非隔離模組，Relay GND 與 ESP32 GND 共地。
 - 12 V 高電流線、Relay 線與 Load Cell／I²C 線分開走線，並以星狀方式回到電源地，降低衝擊雜訊。
@@ -78,6 +79,23 @@ GPIO34、GPIO35 只能作輸入，且沒有軟體內建上拉／下拉；OS25B10
 | 3Vo | 不接 | 板上穩壓器的 3.3 V 輸出，不可當作電源輸入 |
 
 ADXL375 應牢固固定在掉落平台上，盡量靠近重心。程式使用 I²C 輪詢時可不接 INT／I2；若要用 Data Ready 或 FIFO 中斷，再接 GPIO16。正式上電前仍應以 I²C scanner 確認 `0x53`。
+
+## OLED 顯示模組（I²C，規格待確認）
+
+新增的實物照片為 [Snipaste_2026-10-16_22-30-35.png](圖片/Snipaste_2026-10-16_22-30-35.png)：
+
+![新增的四腳 I²C OLED 模組](圖片/Snipaste_2026-10-16_22-30-35.png)
+
+照片可辨識上方四個端子標示為 `1 VCC`、`2 GND`、`3 SCK`、`4 SDA`。其中 `SCK` 應視為 I²C 的 SCL 時脈腳位；目前僅依照片確認端子標示，OLED 控制器型號、尺寸、解析度、供電範圍與 I²C 位址尚未由規格或實機掃描確認。
+
+| OLED 端子 | NodeMCU-32S | 目前用途／注意事項 |
+|---|---|---|
+| VCC | 3V3 | 先以 3.3 V 邏輯規劃；正式供電前確認模組規格 |
+| GND | GND | 與 ESP32、ADXL375、HX711 共地 |
+| SCK | GPIO22 | 與 ADXL375 SCL 共用 I²C 時脈線 |
+| SDA | GPIO21 | 與 ADXL375 SDA 共用 I²C 資料線 |
+
+OLED 與 ADXL375 可共用 GPIO21／GPIO22 的 I²C 匯流排，但必須先確認兩者位址不同；常見 OLED 位址可能為 `0x3C` 或 `0x3D`，不可直接視為本模組已驗證位址。現有 `01-irt` 簡易測試程式只掃描 I²C 並測試 ADXL375，尚未加入 OLED 初始化或畫面輸出功能。
 
 ## HX711（Adafruit）與 Load Cell
 

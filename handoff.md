@@ -32,6 +32,7 @@
 
 NodeMCU-32S 的目前接線配置如下；完整端子對照與注意事項見本文件末尾「實際元件接線修訂」及 `README.md`：
 - ADXL375 `VIN` → 3V3；`SDA` → GPIO21；`SCL` → GPIO22
+- OLED `VCC` → 3V3；`GND` → GND；`SCK` → GPIO22；`SDA` → GPIO21（與 ADXL375 共用 I²C）
 - ADXL375 `INT` → GPIO16（選配）；`I2` → GPIO17（選配）
 - ADXL375 `CS` → 3V3（I²C）；`SDO` → GND（I²C 位址 `0x53`）
 - HX711 `VIN` → 3V3；`DATA` → GPIO32；`SCK` → GPIO33
@@ -41,7 +42,7 @@ NodeMCU-32S 的目前接線配置如下；完整端子對照與注意事項見�
 - 釋放按鈕 → GPIO27，按鈕另一端接 GND，使用 `INPUT_PULLUP`
 - microSD（後續選配）：SCK → GPIO18、MISO → GPIO19、MOSI → GPIO23、CS → GPIO5
 
-所有感測器邏輯使用 3.3 V 並與 ESP32 共地。GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉／下拉，OS25B10 必須外接 10 kΩ 上拉電阻。
+所有感測器邏輯使用 3.3 V 並與 ESP32 共地。OLED 的實際供電範圍仍須依模組規格確認。GPIO34／GPIO35 為輸入專用腳位，沒有內建上拉／下拉，OS25B10 必須外接 10 kΩ 上拉電阻。
 
 ### 2. ADXL375
 用途：
@@ -764,6 +765,7 @@ Emitter ── GND
 
 - NodeMCU-32S／ESP32-WROOM-32：主控制器。
 - Adafruit ADXL375 紫色 breakout：±200 g 三軸加速度計，使用 I²C。
+- 四腳 I²C OLED 顯示模組：照片端子標示為 `VCC/GND/SCK/SDA`，控制器、解析度與位址仍待確認。
 - Adafruit HX711 黑色 breakout：24-bit ADC，使用 A 通道讀取荷重元。
 - 四線式 Load Cell：照片銘牌可讀到 `CAP: 180 kg`；完整額定規格與線色仍須再確認。
 - 圖片資料夾內另可見線性滑軌、鋁合金基座與安裝零件。
@@ -774,10 +776,10 @@ OS25B10 的實物照片已補充為 `圖片/OS25B10-紅外線對射光電開關.
 
 | NodeMCU-32S | 實際／規劃元件端子 | 方向 | 說明 |
 |---|---|---|---|
-| 3V3 | ADXL375 VIN、HX711 VIN、OS25B10 電路 | 電源 | 感測器使用 3.3 V；不可接 12 V |
-| GND | ADXL375 GND、HX711 GND、OS25B10、按鈕、Relay 邏輯側 | 電源 | 邏輯側共地，建議星狀接地 |
-| GPIO21 | ADXL375 SDA | I/O | I²C SDA |
-| GPIO22 | ADXL375 SCL | I/O | I²C SCL |
+| 3V3 | ADXL375 VIN、OLED VCC、HX711 VIN、OS25B10 電路 | 電源 | 感測器使用 3.3 V；OLED 電壓仍須依規格確認；不可接 12 V |
+| GND | ADXL375 GND、OLED GND、HX711 GND、OS25B10、按鈕、Relay 邏輯側 | 電源 | 邏輯側共地，建議星狀接地 |
+| GPIO21 | ADXL375 SDA、OLED SDA | I/O | I²C SDA，共用匯流排 |
+| GPIO22 | ADXL375 SCL、OLED SCK | I/O | I²C SCL；OLED 實物端子標示為 SCK |
 | GPIO16 | ADXL375 INT（選配） | 輸入 | Data Ready／FIFO／事件中斷 |
 | GPIO17 | ADXL375 I2（選配） | 輸入 | 第二組中斷 |
 | GPIO32 | HX711 DATA | 輸入 | HX711 資料輸出 |
@@ -911,3 +913,16 @@ C:\Program Files\Arduino CLI\arduino-cli.exe
 3. OS25B10 光閘一／二分別讀取 GPIO34／GPIO35，輸出實際 HIGH／LOW；依目前電路預期未遮光為 LOW、遮光為 HIGH，但仍須以實物量測確認極性。
 
 本機已用 `C:\Program Files\Arduino CLI\arduino-cli.exe` 搭配 `esp32:esp32:nodemcu-32s` 編譯通過。編譯函式庫為 `Adafruit ADXL375`、`Adafruit HX711` 及其相依函式庫。程式檔案標頭與開機訊息均已註明「尚未實際燒錄驗證」。當次 `board list` 僅辨識到 `COM1 Unknown`，尚未完成 NodeMCU-32S 實機燒錄與感測器讀值驗證。
+
+### 11. 2026-10-16 新增 I²C OLED 實物照片
+
+圖片資料夾新增 `圖片/Snipaste_2026-10-16_22-30-35.png`，照片可辨識為四腳 OLED 模組，端子標示為 `VCC`、`GND`、`SCK`、`SDA`。目前接線規劃如下：
+
+| OLED 端子 | NodeMCU-32S | 備註 |
+|---|---|---|
+| `VCC` | `3V3` | 先以 3.3 V 規劃，正式供電前須確認模組規格 |
+| `GND` | `GND` | 與 ESP32、ADXL375、HX711 共地 |
+| `SCK` | GPIO22 | 視為 I²C SCL，與 ADXL375 共用 |
+| `SDA` | GPIO21 | I²C SDA，與 ADXL375 共用 |
+
+照片只能確認端子標示，尚不能確認 OLED 控制器、尺寸、解析度、供電範圍或 I²C 位址。常見位址 `0x3C`／`0x3D` 僅供後續掃描參考，不視為本模組已驗證資料。現有 `01-irt` 程式尚未加入 OLED 畫面初始化與輸出功能；後續應先確認電壓與位址，再新增顯示程式。
