@@ -7,13 +7,14 @@
 - Adafruit ADXL375：量測掉落平台的三軸高 G 加速度。
 - HX711 搭配四線式 Load Cell：量測底部相對受力。
 - 上、下兩組 OS25B10：以通過兩個光閘的時間差估算兩點間平均速度。
-- 四腳 I²C OLED：新增的狀態顯示模組，控制器、解析度與 I²C 位址尚待確認。
+
+四腳 I²C OLED 顯示上述感測器讀值；`02-irt_oled` 預設以 SSD1306 128×64 驅動，自動檢查 `0x3C`／`0x3D`，實物控制器與畫面仍須確認。
 
 ## 目前狀態
 
-> **最新驗證日期：2026-09-18**
+> **最新韌體驗證日期：2026-10-16**
 >
-> `01-irt/01-irt.ino` 已重新編譯並成功燒錄到 COM5 的 ESP32。重置後序列輸出確認 ADXL375 通訊成功、HX711 可讀取 A 通道原始值，且兩個 OS25B10 均能回報數位電位。
+> `02-irt_oled/02-irt_oled.ino` 已成功編譯、燒錄到 COM3 並通過寫入校驗。重置後確認 ADXL375 回應、OLED 位址 `0x3C` 與畫面傳送計數增加，兩路光閘皆讀到 LOW；HX711 目前讀到 `-8388608`，已標示 `SAT`。OLED 畫面仍待目視確認。
 
 目前完成：
 
@@ -21,10 +22,13 @@
 - `01-irt` 簡易程式已成功編譯、燒錄並以 115200 baud 讀取序列輸出。
 - ADXL375 已讀到 X／Y／Z 加速度，HX711 已讀到 A128 原始值。
 - 上方 OS25B10 對應 GPIO34，下方 OS25B10 對應 GPIO35。
+- `02-irt_oled` 已加入 OLED 同頁讀值、逐行正體中文註解與資料狀態，並完成編譯、燒錄與序列埠檢查。
 
 尚待完成：
 
 - OS25B10 實際遮光極性、輸出波形與電阻另一端接法的量測。
+- 確認 OLED 實際畫面與控制器是否符合預設 SSD1306 128×64。
+- 排查 HX711 固定為負滿量程 `-8388608`（`SAT`）的原因，再進行荷重校正。
 - 上、下光閘觸發順序與兩點時間差的正式測試。
 - Load Cell 線色、額定容量與 HX711 靜態校正的確認。
 - Relay、12 V 電磁鐵與釋放按鈕的實機安全測試。
@@ -44,7 +48,7 @@
 10. [Relay、電磁鐵與釋放按鈕](#relay電磁鐵與釋放按鈕)
 11. [量測設計與限制](#量測設計與限制)
 12. [01-irt 通訊測試程式](#01-irt-通訊測試程式)
-13. [Git 與自動同步](#git-與自動同步)
+13. [02-irt_oled OLED 簡易測試程式](#02-irt_oled-oled-簡易測試程式)
 14. [後續工作](#後續工作)
 15. [參考資料](#參考資料)
 
@@ -65,6 +69,8 @@
 Impact_Resistance_Test/
 ├── 01-irt/
 │   └── 01-irt.ino                         # ESP32 感測器通訊測試程式
+├── 02-irt_oled/
+│   └── 02-irt_oled.ino                    # OLED 與序列埠感測器讀值測試程式
 ├── 圖片/
 │   ├── OS25B10-紅外線對射光電開關.png       # OS25B10 元件參考圖
 │   ├── Snipaste_2026-10-16_22-30-35.png     # 四腳 I²C OLED 實物照片
@@ -83,6 +89,7 @@ Impact_Resistance_Test/
 - `README.md`：閱讀專案目前架構、接線、測試指令與已知限制的入口文件。
 - `handoff.md`：保留時間順序與歷史狀態；新的量測、燒錄或接線結果應追加在檔案末端，不覆寫舊紀錄。
 - `01-irt/01-irt.ino`：目前只用於確認感測器與 ESP32 的基本通訊，不是正式落下試驗程式。
+- `02-irt_oled/02-irt_oled.ino`：以 `01-irt` 為基礎另存的 OLED 簡易測試程式，同時顯示 ADXL375、HX711 與兩路 OS25B10；每個非空程式碼行均附正體中文註解。
 - `auto-git-watch.ps1`：僅供本機自動同步使用，已加入 `.gitignore`，不應提交到 GitHub。
 - `圖片/`：保存目前取得的實物與機構照片；照片不能取代電表量測或資料表確認。
 - `零件1.stp`、`零件1.stl`：保存機構設計模型，與 ESP32 韌體分開管理。
@@ -102,16 +109,16 @@ NodeMCU-32S（ESP32）
    └─ GPIO27（預留）──────── 釋放按鈕
 ```
 
-資料目前由 ESP32 透過 USB Serial 輸出。`01-irt` 只讀取感測器，尚未控制 Relay、執行正式落下計時或完成校正。
+資料可由 ESP32 透過 USB Serial 輸出；`02-irt_oled` 另提供 OLED 畫面。兩版皆為簡易通訊測試，尚未控制 Relay、執行正式落下計時或完成校正。
 
 ## 硬體清單與狀態
 
 | 元件 | 用途 | 目前狀態 |
 |---|---|---|
-| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial | 已以 COM5 成功燒錄 `01-irt` |
+| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial | 2026-10-16 已以 COM3 成功燒錄 `02-irt_oled` |
 | Adafruit ADXL375 | ±200 g 三軸加速度計，I²C | 已初始化成功並讀到 X／Y／Z |
-| 四腳 I²C OLED | 後續狀態顯示 | 已由照片確認端子為 `VCC/GND/SCK/SDA`；型號、解析度、電壓與位址待確認 |
-| Adafruit HX711 24-bit ADC | 讀取 Load Cell | 已讀到 A 通道原始值，尚未校正 |
+| 四腳 I²C OLED | 顯示三軸加速度、荷重原始值與雙光閘 | 已在 `0x3C` 回應並持續送出畫面；預設 SSD1306 128×64，實際畫面待確認 |
+| Adafruit HX711 24-bit ADC | 讀取 Load Cell | 本次固定為負滿量程 `-8388608`（`SAT`），待排查並校正 |
 | 四線式 Load Cell | 底部相對受力 | 照片可讀到 `CAP: 180 kg`，額定容量與線色仍待確認 |
 | OS25B10 × 2 | 上、下光閘 | 已接至麵包板；當次序列測試兩路皆為 LOW |
 | Relay＋12 V 電磁鐵 | 釋放掉落平台 | 接線與觸發邏輯尚待依實物確認 |
@@ -185,7 +192,7 @@ ADXL375 應牢固固定在掉落平台上，盡量靠近重心。正式上電前
 | `SCK` | GPIO22 | 視為 I²C SCL，與 ADXL375 共用 |
 | `SDA` | GPIO21 | I²C SDA，與 ADXL375 共用 |
 
-OLED 與 ADXL375 共用 GPIO21／GPIO22 的 I²C 匯流排時，必須先確認兩者位址不同。常見 OLED 位址 `0x3C` 或 `0x3D` 只能作為掃描參考，不代表本模組已驗證。現有 `01-irt` 程式尚未初始化 OLED 或輸出畫面，只會在 I²C 掃描時列出回應位址。
+OLED 與 ADXL375 共用 GPIO21／GPIO22 的 I²C 匯流排。`02-irt_oled` 會列出回應位址，並在 `0x3C`／`0x3D` 中選擇 OLED 候選位址（兩者都有回應時優先 `0x3C`）；ADXL375 維持 `0x53`。I²C 回應不會識別 OLED 控制器或解析度，實際畫面仍須目視確認。原有 `01-irt` 保留感測器測試功能，沒有 OLED 驅動。
 
 ## HX711 與 Load Cell 接線
 
@@ -289,7 +296,7 @@ GPIO27 ── 釋放按鈕 ── GND
 
 程式不包含正式落下計時、速度計算、校正、Relay 控制或資料記錄；所有非空程式碼行均附正體中文註解。
 
-現有 `01-irt` 尚未加入 OLED 初始化與畫面輸出；OLED 目前只完成實物照片建檔與接線規劃。
+`01-irt` 保留原版感測器通訊測試；需要 OLED 顯示時請編譯下述 `02-irt_oled`。
 
 ### Arduino CLI 編譯與燒錄
 
@@ -331,6 +338,64 @@ $cfg = 'C:\Users\tseng\AppData\Local\Arduino15'
 
 這些結果證明程式可編譯、韌體已寫入且基本通訊路徑可執行；不代表 OS25B10 的遮光極性、正式計時精度或落體試驗結果已完成驗證。
 
+## 02-irt_oled OLED 簡易測試程式
+
+程式位置：`02-irt_oled/02-irt_oled.ino`。原有 `01-irt/01-irt.ino` 保留不動。新檔與資料夾同名，以符合 Arduino sketch 規則；每個非空程式碼行均有正體中文註解。
+
+畫面每 250 毫秒更新一次，序列埠以 115200 baud 每秒回報一次。畫面使用英數字型，顯示內容如下（僅為格式示意）：
+
+```text
+02-irt OLED TEST
+ADXL375 m/s^2
+X:     0.00
+Y:     0.00
+Z:     9.81
+HX RAW:3048
+UP:LOW DN:LOW
+HX:OK OLED:3C
+```
+
+| 欄位／狀態 | 意義 |
+|---|---|
+| X／Y／Z | ADXL375 三軸加速度（m/s²）；讀取失敗時顯示 `ERROR` 與 `--` |
+| HX RAW | HX711 A 通道增益 128 最近一筆原始值，未去皮或換算 kg／N |
+| HX:WAIT | 開機後尚未收到 HX711 資料 |
+| HX:STALE | 超過 1 秒沒有新 HX711 資料；畫面上的原始值為最後一筆快取 |
+| HX:SAT | HX711 原始值到達 24-bit 正負極限，須檢查輸入或荷重元接線 |
+| HX:OK | 最近 1 秒收到未達正負極限的原始值，不代表校正或類比接線已驗證 |
+| UP／DN | 上方 GPIO34／下方 GPIO35 的實際 HIGH／LOW；遮光極性仍待量測 |
+| OLED | 七位元 I²C 位址；序列埠另輸出畫面傳送次數 `frames` |
+
+OLED 預設採用 U8g2 的 `SSD1306 128×64` 驅動；若確認實物為 `SH1106 128×64`，將程式頂部 `OLED_USE_SH1106` 改成 `1` 後重新編譯、燒錄。`0x3C`／`0x3D` 的 ACK 只能證明該位址有裝置回應，不能證明驅動型號正確或畫面已正常顯示。OLED 未回應時每 3 秒重試，感測器與序列埠仍持續運作。
+
+HX711 在主迴圈中僅於 DATA 就緒時讀取，短暫保護讀取時脈以避免 ESP32 中斷拉長脈衝；ADXL375 以單次交易讀取三軸並檢查交易結果。此程式為接線與顯示測試，畫面更新會占用 I²C 時間，不適用於正式撞擊峰值或高速光閘計時。
+
+### 編譯與自動燒錄指令
+
+使用 `C:\Program Files\Arduino CLI\arduino-cli.exe`。下列指令使用本機目前的預設設定與已安裝函式庫，`COM3` 是本次辨識到的 ESP32；再次執行前可用 `board list` 確認埠號。
+
+```powershell
+$cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
+$board = 'esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40'
+& $cli board list
+& $cli lib install 'Adafruit ADXL375' 'Adafruit HX711' 'U8g2'
+& $cli compile --jobs 2 --fqbn $board .\02-irt_oled
+if ($LASTEXITCODE -eq 0) {
+    & $cli upload --port COM3 --fqbn $board .\02-irt_oled
+}
+& $cli monitor --port COM3 --config baudrate=115200
+```
+
+### 本次驗證（2026-10-16）
+
+- 已確認 COM3 的 CH340 裝置連接同一塊 ESP32-D0WD-V3（MAC `e0:8c:fe:a8:42:bc`）。
+- 本次使用 Arduino CLI 1.5.1、ESP32 core 3.3.11、U8g2 2.36.19、Adafruit ADXL375 1.1.2 與 Adafruit HX711 1.0.2。
+- 編譯通過：Flash 312,416 bytes（23%），RAM 24,924 bytes（7%）。
+- 已以 COM3、`UploadSpeed=115200`、`FlashFreq=40` 燒錄成功，各寫入區段皆回報 `Hash of data verified`。
+- 重置後讀取約 10 秒序列輸出，確認新版標題、I²C `0x3C`／`0x53` 回應與 `frames=1` 增至 `34`；OLED 畫面仍待目視確認，不能只憑 ACK 判定顯示正確。
+- ADXL375 持續輸出三軸數值，例如 `X=1.44 Y=1.92 Z=-1.92 m/s^2`；上、下 OS25B10 皆為 LOW，尚未測試遮擋變化。
+- HX711 每次讀到 `A128_RAW=-8388608 [SAT]`，表示負滿量程；本次尚未確認其原因，不能視為有效荷重讀值。
+
 ## 後續工作
 
 1. 用萬用電表確認兩顆 OS25B10 的 LED、Collector、Emitter 實體腳位。
@@ -349,4 +414,6 @@ $cfg = 'C:\Users\tseng\AppData\Local\Arduino15'
 - [Seeed Studio OS25B10 Photo Interrupter](https://wiki.seeedstudio.com/ja/Photo_interrupter_OS25B10/)
 - [Espressif Arduino-ESP32 NodeMCU-32S variant](https://github.com/espressif/arduino-esp32/blob/master/variants/nodemcu-32s/pins_arduino.h)
 - [Espressif ESP32-WROOM-32 datasheet](https://documentation.espressif.com/esp32-wroom-32_datasheet_en.html)
+- [U8g2 OLED 控制器與建構子設定](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp)
+- [U8g2 API（含 I²C 位址與畫面緩衝）](https://github.com/olikraus/u8g2/wiki/u8g2reference)
 
