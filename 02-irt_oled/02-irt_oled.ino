@@ -1,6 +1,7 @@
 // 02-irt_oled.ino：以 01-irt 為基礎的第二版 OLED 簡易測試程式。 // 說明程式名稱與用途。
-// OLED 預設使用 SH1106 128×64，依 SSD1306 畫面異常回報調整，控制器仍待確認。 // 說明目前採用的顯示設定。
-// 若確認實物為 SSD1306 128×64，將下方 OLED_USE_SH1106 設為 0。 // 說明切換顯示控制器的方法。
+// OLED 使用 SH1106 128×64 設定，使用者已確認此診斷畫面正常且無缺邊。 // 說明目前採用的顯示設定。
+// 若更換為 SSD1306 128×64 模組，可將下方 OLED_USE_SH1106 設為 0。 // 說明替代顯示控制器的切換方法。
+// OLED VCC 接 ESP32 3V3、GND 共地；本次已依使用者回報確認改接。 // 記錄目前供電接法。
 // OLED 的 I²C 回應只能證明通訊，實際畫面仍須目視驗證。 // 區分通訊結果與畫面驗證。
 // 實際編譯、燒錄及感測器驗證狀態請見 README 與交接紀錄。 // 指向持續更新的驗證結果。
 // 本程式顯示三軸加速度、未校正的荷重原始值與兩路光閘電位。 // 說明輸出資料。
@@ -15,7 +16,7 @@
 #include <U8g2lib.h> // 載入 OLED 畫面緩衝、字型與繪圖功能。
 
 #ifndef OLED_USE_SH1106 // 允許編譯參數覆寫 OLED 控制器選項。
-#define OLED_USE_SH1106 1 // 設為一使用目前測試的 SH1106，設為零使用 SSD1306，兩者皆為 128×64。
+#define OLED_USE_SH1106 1 // 設為一使用已通過完整診斷畫面觀察的 SH1106，設為零使用 SSD1306。
 #endif // 結束 OLED 控制器預設值設定。
 
 const uint8_t I2C_SDA_PIN = 21; // ADXL375 SDA 與 OLED SDA 同接 GPIO21。
@@ -135,6 +136,8 @@ void initializeOled() { // 搜尋常見位址後啟動所選的 OLED 驅動。
   oled.setI2CAddress(oled_address << 1); // U8g2 要求將七位元位址向左移一位。
   oled.setBusClock(I2C_CLOCK_HZ); // 保持 OLED 與 ADXL375 使用相同的匯流排速度。
   oled.begin(); // 送出選定控制器的初始化指令，此函式不能驗證實際畫面。
+  oled.setPowerSave(0); // 明確開啟面板輸出，與成功的專用診斷設定一致。
+  oled.setContrast(255); // 使用與成功診斷相同的對比度，方便觀察簡易測試讀值。
   Wire.setTimeOut(25); // 在顯示函式庫初始化匯流排後維持通訊逾時設定。
   oled.setFont(u8g2_font_5x7_tr); // 選用七像素高的英數字型，讓八行文字各占八像素。
   oled.setFontPosBaseline(); // 以字型基線定位八行文字。
