@@ -1,6 +1,6 @@
 // 02-irt_oled.ino：以 01-irt 為基礎的第二版 OLED 簡易測試程式。 // 說明程式名稱與用途。
-// OLED 預設使用 SSD1306 128×64，控制器仍須依實物確認。 // 說明目前採用的顯示設定。
-// 若實物為 SH1106 128×64，將下方 OLED_USE_SH1106 設為 1。 // 說明切換顯示控制器的方法。
+// OLED 預設使用 SH1106 128×64，依 SSD1306 畫面異常回報調整，控制器仍待確認。 // 說明目前採用的顯示設定。
+// 若確認實物為 SSD1306 128×64，將下方 OLED_USE_SH1106 設為 0。 // 說明切換顯示控制器的方法。
 // OLED 的 I²C 回應只能證明通訊，實際畫面仍須目視驗證。 // 區分通訊結果與畫面驗證。
 // 實際編譯、燒錄及感測器驗證狀態請見 README 與交接紀錄。 // 指向持續更新的驗證結果。
 // 本程式顯示三軸加速度、未校正的荷重原始值與兩路光閘電位。 // 說明輸出資料。
@@ -15,7 +15,7 @@
 #include <U8g2lib.h> // 載入 OLED 畫面緩衝、字型與繪圖功能。
 
 #ifndef OLED_USE_SH1106 // 允許編譯參數覆寫 OLED 控制器選項。
-#define OLED_USE_SH1106 0 // 設為零使用 SSD1306，設為一使用 SH1106，兩者皆為 128×64。
+#define OLED_USE_SH1106 1 // 設為一使用目前測試的 SH1106，設為零使用 SSD1306，兩者皆為 128×64。
 #endif // 結束 OLED 控制器預設值設定。
 
 const uint8_t I2C_SDA_PIN = 21; // ADXL375 SDA 與 OLED SDA 同接 GPIO21。
@@ -34,7 +34,7 @@ const uint32_t OLED_RETRY_MS = 3000; // OLED 未連線時每三秒重新檢查�
 #if OLED_USE_SH1106 // 依編譯選項建立 SH1106 的硬體 I²C 顯示物件。
 U8G2_SH1106_128X64_NONAME_F_HW_I2C oled(U8G2_R0, U8X8_PIN_NONE, I2C_SCL_PIN, I2C_SDA_PIN); // 使用整頁緩衝與既定腳位。
 const char *OLED_DRIVER_NAME = "SH1106"; // 保存目前選用的控制器名稱供序列埠顯示。
-#else // 未啟用 SH1106 時使用預設的 SSD1306。
+#else // 未啟用 SH1106 時使用 SSD1306。
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C oled(U8G2_R0, U8X8_PIN_NONE, I2C_SCL_PIN, I2C_SDA_PIN); // 使用整頁緩衝與既定腳位。
 const char *OLED_DRIVER_NAME = "SSD1306"; // 保存目前選用的控制器名稱供序列埠顯示。
 #endif // 結束 OLED 控制器選擇。
