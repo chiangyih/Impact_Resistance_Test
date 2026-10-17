@@ -1139,3 +1139,33 @@ HX711 的 `-8388608 [SAT]` 問題不因更換偵測器而視為解決，前節�
 - [Joy-IT SEN-KY033LT](https://joy-it.net/en/products/SEN-KY033LT)：僅用於解釋同類反射偵測原理，不套用其規格為本案實物規格。
 - [Espressif ESP32 資料表](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)：GPIO34／35 無內建上拉／下拉、輸入電壓限制。
 
+---
+
+## 三十、2026-10-17 新增 03-irt_tracker（僅編譯，尚未實際燒錄驗證）
+
+### 使用者要求與程式變更
+
+使用者要求由 `02-irt_oled.ino` 另存 `03-irt_tracker.ino`，改用兩顆 Tracker Sensor、保留 OLED 及其他感測器功能，每行附正體中文註解；編譯確認並更新文件後 commit、push，明確要求「先不要燒錄」。
+
+已新增 `03-irt_tracker/03-irt_tracker.ino`，資料夾與 sketch 同名；原 `01-irt/01-irt.ino`、`02-irt_oled/02-irt_oled.ino` 均未修改。新檔開頭明確標示第三版簡易測試程式、尚未實際燒錄驗證及本次只編譯。232 行中 216 個非空行均有中文註解。
+
+- 上方改為 `TRACKER_UPPER_PIN = 34`，下方為 `TRACKER_LOWER_PIN = 35`，均以 `INPUT` 讀取 OUT；不預設反射觸發極性、不反轉原始 HIGH／LOW，也不使用不存在的 GPIO34／35 內建上拉。
+- 保留 SH1106 128×64 預設與可選 SSD1306、I²C GPIO21／22、OLED 候選位址 `0x3C`／`0x3D`、八行畫面、250 ms 快照更新及 OLED 斷線重試。
+- OLED 標題改為 `03-irt TRACK TEST`，UP／DN 表示兩顆 Tracker Sensor 的原始電位；序列啟動識別改為 `03-irt_tracker`，資料列改用 `TRACKER UP=... DOWN=...`，115200 baud 每秒輸出一次。
+- 保留 ADXL375 的 `0x53` 初始化、100 Hz 設定、三軸換算與讀取錯誤處理；保留 HX711 GPIO32／33、A128、資料就緒檢查、短暫時脈保護及 WAIT／STALE／SAT／OK 提示。
+- 未新增落下計時、速度計算、校正或電磁鐵控制。Tracker Sensor 型號、供電及 OUT 電壓仍未確認，需符合前節接線條件後才能實機測試；250 ms 快照可能漏掉快速通過。
+
+### 編譯與靜態檢查
+
+使用 `C:\Program Files\Arduino CLI\arduino-cli.exe` 1.5.1、ESP32 core 3.3.11，執行 `compile --jobs 2 --fqbn esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40` 編譯第三版，輸出放在系統暫存目錄。沿用 Adafruit ADXL375 1.1.2、Adafruit HX711 1.0.2、U8g2 2.36.19 及既有相依函式庫，未安裝或更新函式庫。
+
+編譯成功（結束碼 0）：Flash 312,612 bytes（23%，上限 1,310,720），RAM 24,924 bytes（7%，上限 327,680），剩餘 RAM 302,756 bytes。二進位編譯產物未納入版本控制。
+
+逐行中文註解、Tracker 腳位／輸入模式、未燒錄標示、版本識別、八行 OLED 座標及 README 圖片連結檢查通過。另將新舊命名與識別字串正規化後，對照 `i2cResponds`、`scanI2C`、`initializeOled`、`pollHx711`、`hx711Status`、`sampleSensors`、`updateOled`、`printSensorData` 八個輔助函式，確認既有程式邏輯保留。
+
+### 裝置與待驗證狀態
+
+嚴格依使用者要求，本次**沒有燒錄**，亦未執行 monitor、序列埠讀取或裝置重置；未改動裝置上前次已確認的第二版韌體。第三版只有來源與編譯確認，不能沿用第二版畫面成功紀錄宣稱本版畫面或 Tracker Sensor 已實測。
+
+README 已加入第三版檔案、功能、腳位、畫面格式示意、僅編譯指令與本次結果。第三版尚未實際燒錄驗證；HX711 固定 `-8388608 [SAT]` 也仍待原有電壓量測與類比端排查，不能視為本次改版已修復。
+
