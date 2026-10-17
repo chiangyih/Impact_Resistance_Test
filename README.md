@@ -6,7 +6,7 @@
 
 - Adafruit ADXL375：量測掉落平台的三軸高 G 加速度。
 - HX711 搭配四線式 Load Cell：量測底部相對受力。
-- 上、下兩組 OS25B10：以通過兩個光閘的時間差估算兩點間平均速度。
+- 上、下兩顆 Tracker Sensor：規劃取代 OS25B10，以同一掉落物反射標記通過兩個偵測點的時間差估算兩點間平均速度；尚未完成換裝與驗證。
 
 四腳 I²C OLED 顯示上述感測器讀值；`02-irt_oled` 使用 SH1106 128×64 設定，使用者已確認完整版八行資料正常且無缺邊。程式自動檢查 `0x3C`／`0x3D`，本機實測位址為 `0x3C`。
 
@@ -15,21 +15,23 @@
 > **最新韌體驗證日期：2026-10-16**
 >
 > `02-irt_oled/02-irt_oled.ino` 已成功編譯、燒錄到 COM3 並通過寫入校驗。OLED VCC 改接 3V3、採用 SH1106 128×64 設定後，使用者已確認完整版八行資料正常且無缺邊。ADXL375 有三軸數值，兩路光閘皆讀到 LOW。HX711 數位讀取已完成獨立對照，但仍回報 `0x800000`（`-8388608`／`SAT`）；具體類比輸入、激勵供電或接線原因待現場核對，尚未修復。
+>
+> **2026-10-17 硬體規劃更新：**使用者已決定以 Tracker Sensor 取代 OS25B10，並確認已購買兩顆相同模組。新模組規劃沿用上方 GPIO34、下方 GPIO35；目前僅確認照片中的 GND／VCC／OUT 標示，實際供電範圍、OUT 電位與觸發極性仍待確認。這不是已完成換裝或驗證的紀錄，現有 `01-irt`／`02-irt_oled` 保留舊版 OS25B10 命名與韌體。
 
 目前完成：
 
-- ADXL375、HX711、OS25B10 的目前接線與 ESP32 GPIO 對應已記錄。
+- ADXL375、HX711、舊版 OS25B10 接線，以及新版 Tracker Sensor 的待驗證接線規劃已記錄。
 - `01-irt` 簡易程式已成功編譯、燒錄並以 115200 baud 讀取序列輸出。
 - ADXL375 已讀到 X／Y／Z 加速度，HX711 已讀到 A128 原始值。
-- 上方 OS25B10 對應 GPIO34，下方 OS25B10 對應 GPIO35。
+- 兩顆 Tracker Sensor 已由使用者確認購入，規劃沿用上方 GPIO34、下方 GPIO35。
 - `02-irt_oled` 已加入 OLED 同頁讀值、逐行正體中文註解與資料狀態，並完成編譯、燒錄與序列埠檢查。
 - 使用者已目視確認 `02-irt_oled` 完整版的八行資料、底部狀態列均正常顯示且無缺邊。
 
 尚待完成：
 
-- OS25B10 實際遮光極性、輸出波形與電阻另一端接法的量測。
+- 確認 Tracker Sensor 的供電範圍、輸出形式、OUT 電位與反射觸發極性，再完成兩路換裝；不沿用 OS25B10 裸元件的接法。
 - 排查 HX711 固定為負滿量程 `-8388608`（`SAT`）的原因，再進行荷重校正。
-- 上、下光閘觸發順序與兩點時間差的正式測試。
+- 上、下反射偵測點的安裝、觸發順序、重複性與兩點時間差正式測試。
 - Load Cell 線色、額定容量與 HX711 靜態校正的確認。
 - Relay、12 V 電磁鐵與釋放按鈕的實機安全測試。
 - 正式低高度、低重量測試，以及後續資料記錄程式。
@@ -44,7 +46,7 @@
 6. [電源與接地](#電源與接地)
 7. [ADXL375 接線](#adxl375-接線)
 8. [HX711 與 Load Cell 接線](#hx711-與-load-cell-接線)
-9. [OS25B10 雙光閘](#os25b10-雙光閘)
+9. [Tracker Sensor 雙偵測點](#tracker-sensor-雙偵測點)
 10. [Relay、電磁鐵與釋放按鈕](#relay電磁鐵與釋放按鈕)
 11. [量測設計與限制](#量測設計與限制)
 12. [01-irt 通訊測試程式](#01-irt-通訊測試程式)
@@ -56,7 +58,7 @@
 
 建立可重複的垂直落下衝擊量測系統，比較不同緩衝結構對下列指標的影響：
 
-- 掉落物通過上下光閘的平均速度。
+- 掉落物通過上下偵測點的平均速度。
 - ADXL375 的峰值加速度與撞擊作用時間。
 - Load Cell 傳遞至底座的相對受力。
 - 緩衝材料的壓縮與永久變形。
@@ -74,6 +76,8 @@ Impact_Resistance_Test/
 ├── 圖片/
 │   ├── OS25B10-紅外線對射光電開關.png       # OS25B10 元件參考圖
 │   ├── Snipaste_2026-10-16_22-30-35.png     # 四腳 I²C OLED 實物照片
+│   ├── Snipaste_2026-10-17_22-18-33.png     # Tracker Sensor 接腳標示面
+│   ├── Snipaste_2026-10-17_22-18-47.png     # Tracker Sensor 元件面
 │   ├── PXL_*.jpg                           # 元件、麵包板與機構照片
 │   └── PXL_*.MP.jpg                        # 元件、麵包板與機構照片
 ├── .gitignore                               # Git 忽略規則；排除本機自動同步腳本
@@ -103,8 +107,8 @@ USB 供電／序列埠
 NodeMCU-32S（ESP32）
    ├─ I²C GPIO21／GPIO22 ── ADXL375、OLED
    ├─ GPIO32／GPIO33 ─────── HX711 ── Load Cell
-   ├─ GPIO34 ─────────────── 上方 OS25B10
-   ├─ GPIO35 ─────────────── 下方 OS25B10
+   ├─ GPIO34 ─────────────── 上方 Tracker Sensor OUT（待電氣確認與換裝）
+   ├─ GPIO35 ─────────────── 下方 Tracker Sensor OUT（待電氣確認與換裝）
    ├─ GPIO26（預留）──────── Relay ── 獨立 12 V 電磁鐵
    └─ GPIO27（預留）──────── 釋放按鈕
 ```
@@ -120,26 +124,27 @@ NodeMCU-32S（ESP32）
 | 四腳 I²C OLED | 顯示三軸加速度、荷重原始值與雙光閘 | VCC 接 3V3，位址 `0x3C`；使用者確認 SH1106 128×64 完整版八行資料正常且無缺邊 |
 | Adafruit HX711 24-bit ADC | 讀取 Load Cell | 函式庫與獨立讀取在增益 128／64 均為負滿量程；需核對類比供電與荷重元接線 |
 | 四線式 Load Cell | 底部相對受力 | 照片可讀到 `CAP: 180 kg`，額定容量與線色仍待確認 |
-| OS25B10 × 2 | 上、下光閘 | 已接至麵包板；當次序列測試兩路皆為 LOW |
+| Tracker Sensor × 2 | 新版上、下反射偵測點 | 已確認購入兩顆相同模組；規劃取代 OS25B10，供電與輸出規格、接線及實測尚待確認 |
+| OS25B10 × 2（舊版） | 舊版上、下光閘 | 保留歷史接線與程式；曾讀到兩路 LOW，不等於 Tracker Sensor 已通過測試 |
 | Relay＋12 V 電磁鐵 | 釋放掉落平台 | 接線與觸發邏輯尚待依實物確認 |
 | 釋放按鈕 | 啟動釋放流程 | 預留 GPIO27，尚未納入 `01-irt` |
 
 ## NodeMCU-32S 接腳配置表
 
-下表是目前接線與程式所採用的單一配置。ADXL375 線材顏色與 HX711 紫線已整合在同一張表中；若實物接線改變，應同步更新本表、程式與 `handoff.md`。
+下表整合既有接線及 2026-10-17 Tracker Sensor 換裝規劃。新模組相關列屬待驗證規劃，並非已接妥；現有程式仍保留 OS25B10 名稱。ADXL375、HX711 與 OLED 的配置不變；換裝前須先完成新模組的電氣確認。
 
 | NodeMCU-32S | 對應元件端子 | 線材顏色／接線 | 方向 | 用途與備註 |
 |---|---|---|---|---|
-| 3V3 | ADXL375 VCC、OLED VCC、HX711 VIN、OS25B10 邏輯側 | ADXL375 黑：VCC；OLED：— | 電源輸出 | 感測器邏輯電源；OLED 電壓須依規格確認；不可接 12 V |
-| GND | ADXL375 GND、SDO、OLED GND、HX711 GND、OS25B10 回路 | ADXL375 白：GND；綠：SDO；OLED：— | 電源回路 | SDO 接低電位時，程式預期 I²C 位址為 `0x53` |
+| 3V3 | ADXL375 VCC、OLED VCC、HX711 VIN；Tracker Sensor VCC 為條件式規劃 | ADXL375 黑：VCC；新模組線色未指定 | 電源輸出 | Tracker Sensor 僅在確認支援 3.3 V 後才接此電源；不可接 12 V |
+| GND | ADXL375 GND、SDO、OLED GND、HX711 GND、兩顆 Tracker Sensor GND | ADXL375 白：GND；綠：SDO；新模組線色未指定 | 電源回路 | 新模組規劃共地；SDO 接低電位時，程式預期 I²C 位址為 `0x53` |
 | GPIO21 | ADXL375 SDA、OLED SDA | ADXL375 橘：SDA；OLED：— | I/O | I²C SDA，共用匯流排 |
 | GPIO22 | ADXL375 SCL、OLED SCK | ADXL375 棕：SCL；OLED：— | I/O | I²C SCL；OLED 實物端子標示為 SCK |
 | GPIO16 | ADXL375 INT | ADXL375 淡咖啡：INT | 輸入（選配） | Data Ready／FIFO／事件中斷；目前程式使用輪詢 |
 | GPIO17 | ADXL375 I2 | — | 輸入（選配） | 第二組中斷；目前不接 |
 | GPIO32 | HX711 DATA | 紫：HX711 DATA | 輸入 | HX711 serial data output；HX711 直接插在麵包板 |
 | GPIO33 | HX711 SCK | 紫：HX711 SCK | 輸出 | HX711 serial clock；HX711 直接插在麵包板 |
-| GPIO34 | 上方 OS25B10 Collector 節點 | 紫線對應上方 OS25B10 | 輸入 | ESP32 輸入專用，沒有內建上拉 |
-| GPIO35 | 下方 OS25B10 Collector 節點 | 橘線對應下方 OS25B10 | 輸入 | ESP32 輸入專用，沒有內建上拉 |
+| GPIO34 | 上方 Tracker Sensor OUT（規劃） | 新線色未指定；舊版 OS25B10 為紫線 | 輸入 | 確認 OUT 為 3.3 V 相容數位訊號後接入；沒有內建上拉 |
+| GPIO35 | 下方 Tracker Sensor OUT（規劃） | 新線色未指定；舊版 OS25B10 為橘線 | 輸入 | 確認 OUT 為 3.3 V 相容數位訊號後接入；沒有內建上拉 |
 | GPIO26 | Relay IN | — | 輸出（預留） | 電磁鐵釋放控制；觸發高低電位尚待確認 |
 | GPIO27 | 釋放按鈕另一端 | — | 輸入（預留） | 按鈕另一端接 GND，規劃使用 `INPUT_PULLUP` |
 
@@ -151,13 +156,13 @@ NodeMCU-32S（ESP32）
 
 ## 電源與接地
 
-- NodeMCU-32S 目前由 USB 供電；感測器邏輯側使用 NodeMCU-32S 的 3V3。
-- ADXL375、OLED、HX711、OS25B10、按鈕與 Relay 邏輯側應共用 GND。
+- NodeMCU-32S 目前由 USB 供電；既有 ADXL375、OLED、HX711 使用 NodeMCU-32S 的 3V3。新 Tracker Sensor 須先確認支援 3.3 V，不能直接套用其他型號規格。
+- ADXL375、OLED、HX711、Tracker Sensor、按鈕與 Relay 邏輯側應共用 GND。
 - 本次已由使用者確認 OLED VCC 接 3V3、GND 共地；更換模組前仍須確認其實際供電範圍。
 - 電磁鐵使用獨立 12 V 電源，不可由 ESP32 GPIO、USB 或 3V3 直接供電。
 - Relay 的 VCC 必須依實物標示接額定電源；非隔離模組才需要依模組電路與 ESP32 共地。
 - 12 V 高電流線、Relay 線與 Load Cell／I²C 線分開走線，降低衝擊雜訊。
-- GPIO34、GPIO35 沒有內建上拉／下拉；OS25B10 輸出需依目前麵包板配置使用外接 6.8 kΩ 電阻。
+- GPIO34、GPIO35 沒有內建上拉／下拉。新模組是否需要外接上拉，取決於 OUT 電路；若確認為開集極且無板載合適上拉，才加上拉到 3V3。不可沿用舊版電阻網路而未核對。
 
 ## ADXL375 接線
 
@@ -252,11 +257,38 @@ HX711 模組目前直接插在麵包板，DATA 與 SCK 使用兩條紫線接到 
 
 原廠規範的共模範圍為 `AGND + 1.2 V` 至 `AVDD − 1.3 V`，差動滿量程為 `±0.5 × AVDD / gain`；Adafruit 板的 E+ 來自類比電源輸出。取得上述電壓後，才能分辨失去激勵、輸入共模不合法、差動過大或其他類比故障。這些量測目前尚未完成，SAT 尚未宣告排除。供電與端子定義見 [Adafruit HX711 Pinouts](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts)。
 
-## OS25B10 雙光閘
+## Tracker Sensor 雙偵測點
+
+2026-10-17，使用者決定以兩顆相同的 Tracker Sensor 取代 OS25B10，兩顆均已購入。照片為 [接腳標示面](圖片/Snipaste_2026-10-17_22-18-33.png)及[元件面](圖片/Snipaste_2026-10-17_22-18-47.png)，可辨識 `GND`、`VCC`、`OUT`。依發射與接收頭並列的外觀，初步判斷為單路紅外反射式循跡模組，不是槽型對射光閘；尚未確認廠牌、料號、內部比較器或輸出型式。
+
+同類原理可參考 [Joy-IT SEN-KY033LT](https://joy-it.net/en/products/SEN-KY033LT)：利用表面對紅外光的反射差異輸出狀態。但這只是原理參考，不能據此認定本案模組就是 KY-033，亦不能直接套用其供電、偵測距離或極性。
+
+### 待電氣確認後採用的接線
+
+| 模組位置／端子 | NodeMCU-32S 對應 | 接線條件 |
+|---|---|---|
+| 上、下兩顆 GND | GND | 與 ESP32 共地 |
+| 上、下兩顆 VCC | 3V3（條件式規劃） | 僅在確認實物支援 3.3 V 後使用；不經舊版 180 Ω LED 電阻 |
+| 上方 OUT | GPIO34 | 先確認數位輸出及 HIGH／LOW 電壓符合 ESP32 規格 |
+| 下方 OUT | GPIO35 | 同上；兩路 OUT 不可併接 |
+
+- 換裝先斷開 USB 與其他電源，將舊 OS25B10 及其專用電阻網路與 GPIO34／35 斷開，不必刪除舊照片或歷史程式。
+- 先查實物規格；OUT 尚未接 ESP32 前，以模組額定電源供電並量測無目標／有反射目標時的 OUT–GND 電壓。3.3 V 系統的設計目標為 LOW 接近 0 V、HIGH 接近 3.3 V，不是只確認「不超過 5 V」。
+- ESP32 的輸入高電位上限為所屬電源域的 `VDD + 0.3 V`，不可將 5 V OUT 直接接入。若實物必須用 5 V，應先確認輸出電路，再設計電平轉換；僅增加到 3V3 的上拉並不能消除模組內部既有的 5 V 上拉。依據：[Espressif ESP32 資料表](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)。
+- GPIO34／35 使用 `INPUT`；這兩腳沒有內建上拉／下拉，不能靠 `INPUT_PULLUP` 解決懸空。推挽輸出或已有合適板載上拉時，不任意追加電阻；確認開集極且無上拉時，才依電路加到 3V3 的外接上拉。
+- 不預設「反射即 LOW」或「遮擋即 HIGH」。先分別記錄兩顆的空閒／觸發電位、反應延遲及是否抖動，再決定正式計時邊緣。
+
+### 安裝與測試限制
+
+兩顆感測頭應朝向同一掉落物上的固定反射標記，兩處採用一致的側向間距與角度，並量測實際等效觸發位置的間距。不能把兩顆互相對射，或沿用「物體遮斷光束」的槽型光閘安裝方式。先慢速移動反射標記驗證穩定切換，再評估正式落下速度下的脈衝寬度、漏偵測與環境光影響；未完成重複性測試前，不宣稱能等效取代原光閘的計時精度。
+
+現有 `01-irt`／`02-irt_oled` 只讀 GPIO34／35 的實際 HIGH／LOW，仍保留 OS25B10 命名，本次未改程式或燒錄。電氣條件確認後可用現有程式先做慢速電位檢查，但不代表已完成 Tracker Sensor 移植或驗證。`02-irt_oled` 約每 250 ms 更新一次偵測點快照，可能漏掉快速通過；正式計時需另行實作事件擷取，不可用 OLED／序列埠更新時間作為通過時間。
+
+### 舊版 OS25B10 接線（歷史參考）
 
 OS25B10 是四腳槽型光電開關／光遮斷器，不是具有 `VCC/GND/OUT` 標示的數位模組。實物參考圖：[OS25B10-紅外線對射光電開關.png](圖片/OS25B10-紅外線對射光電開關.png)。
 
-目前整組雙光閘已拉出 4 條線，均接於麵包板：
+換裝決定前，整組雙光閘已拉出 4 條線，均接於麵包板；下列不是 Tracker Sensor 的接法：
 
 | 線色 | 目前記錄的接線／用途 |
 |---|---|
@@ -267,12 +299,12 @@ OS25B10 是四腳槽型光電開關／光遮斷器，不是具有 `VCC/GND/OUT` 
 
 ### 掉落測試計時概念
 
-1. 掉落物通過上方 OS25B10 時記錄 `t_upper`，開始計時。
-2. 掉落物到達下方 OS25B10 時記錄 `t_lower`，停止計時。
+1. 同一掉落物標記觸發上方偵測點時記錄 `t_upper`，開始計時。
+2. 該標記觸發下方偵測點時記錄 `t_lower`，停止計時。
 3. 兩點間時間為 `Δt = t_lower - t_upper`。
-4. 若上下光閘距離為 `d`，兩點間平均速度可估算為 `v = d / Δt`。
+4. 若上下等效觸發位置距離為 `d`，兩點間平均速度可估算為 `v = d / Δt`。
 
-目前 `01-irt` 只讀取 GPIO34／GPIO35 的 HIGH／LOW，尚未實作上述計時。電阻另一端的接法、供電電壓、輸出波形、遮光極性與 ESP32 觸發邊緣，仍需以實物量測確認。
+目前 `01-irt`／`02-irt_oled` 只讀取 GPIO34／GPIO35 的 HIGH／LOW，尚未實作上述計時。舊 OS25B10 的電阻另一端接法與遮光極性未完成確認，不應視為 Tracker Sensor 的驗證依據。
 
 ## Relay、電磁鐵與釋放按鈕
 
@@ -304,8 +336,8 @@ GPIO27 ── 釋放按鈕 ── GND
 
 ## 量測設計與限制
 
-- 雙光閘得到的是兩閘間平均速度，不能直接視為撞擊瞬間速度。
-- 雙光閘應盡量靠近撞擊面；第二光閘到撞擊面的距離需固定或做修正。
+- 雙偵測點得到的是兩點間平均速度，不能直接視為撞擊瞬間速度。
+- 雙偵測點應盡量靠近撞擊面；第二偵測點到撞擊面的距離需固定或做修正。反射式觸發位置還須驗證表面、角度與環境光造成的偏移。
 - HX711 取樣率有限，主要適合不同材料組別的相對受力比較，不應直接宣稱為毫秒級瞬時峰值力。
 - ADXL375 應固定牢靠，避免感測器本體晃動造成假峰值。
 - Load Cell 線與 I²C 線應遠離 USB、Relay 及電磁鐵高電流線路。
@@ -430,12 +462,12 @@ if ($LASTEXITCODE -eq 0) {
 
 ## 後續工作
 
-1. 用萬用電表確認兩顆 OS25B10 的 LED、Collector、Emitter 實體腳位。
-2. 量測雙光閘輸出波形，確認是否需要比較器或施密特觸發器。
+1. 確認兩顆 Tracker Sensor 的型號、3.3 V 相容性、OUT 電路與反射觸發極性，再依規劃換裝到 GPIO34／35。
+2. 固定兩個反射偵測點及掉落物標記，量測輸出波形、延遲與重複性，評估是否需要訊號整形及能否用於預定速度。
 3. 確認 ADXL375 的 CS、SDO 實際接法，並完成單獨 I²C 讀值測試。
 4. 依 Load Cell 資料表確認線色、額定容量，完成 HX711 靜態校正。
 5. 確認 Relay 額定電壓與觸發邏輯，完成電磁鐵空載釋放測試。
-6. 將上下光閘的觸發時間、時間差與必要資料記錄納入正式測試程式。
+6. 更新感測器程式命名，將上下反射偵測事件的觸發時間、時間差與必要資料記錄納入正式測試程式；保留舊版驗證紀錄。
 7. 先完成低高度、低重量測試，再進入緩衝材料比較實驗。
 
 ## 參考資料
@@ -444,6 +476,8 @@ if ($LASTEXITCODE -eq 0) {
 - [Adafruit HX711 Pinouts](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts)
 - [Adafruit ADXL375 Pinouts](https://learn.adafruit.com/adafruit-adxl375/pinouts)
 - [Seeed Studio OS25B10 Photo Interrupter](https://wiki.seeedstudio.com/ja/Photo_interrupter_OS25B10/)
+- [Joy-IT 紅外反射循跡模組原理參考（非本案型號認定）](https://joy-it.net/en/products/SEN-KY033LT)
+- [Espressif ESP32 資料表：GPIO34／35 與電氣特性](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
 - [Espressif Arduino-ESP32 NodeMCU-32S variant](https://github.com/espressif/arduino-esp32/blob/master/variants/nodemcu-32s/pins_arduino.h)
 - [Espressif ESP32-WROOM-32 datasheet](https://documentation.espressif.com/esp32-wroom-32_datasheet_en.html)
 - [U8g2 OLED 控制器與建構子設定](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp)
