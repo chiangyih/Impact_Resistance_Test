@@ -1169,3 +1169,42 @@ HX711 的 `-8388608 [SAT]` 問題不因更換偵測器而視為解決，前節�
 
 README 已加入第三版檔案、功能、腳位、畫面格式示意、僅編譯指令與本次結果。第三版尚未實際燒錄驗證；HX711 固定 `-8388608 [SAT]` 也仍待原有電壓量測與類比端排查，不能視為本次改版已修復。
 
+---
+
+## 三十一、2026-10-17 第三版完整接線表、自動編譯與燒錄
+
+### 本次要求與接線文件
+
+使用者要求提供 `03-irt_tracker` 的完整接線表，包含兩顆 Tracker Sensor、OLED、ADXL375、HX711，以及供電與上拉電阻注意事項，並自動編譯後燒錄。此新要求取代前一輪「先不要燒錄」，不能再將第三版標為僅有編譯、未燒錄。
+
+README 第三版章節新增逐端子完整接線表與荷重元端子表：上方 Tracker OUT → GPIO34、下方 OUT → GPIO35；OLED／ADXL375 SDA → GPIO21、SCL（OLED 標為 SCK）→ GPIO22；ADXL375 CS → 3V3、SDO → GND，使用 `0x53`；HX711 DATA → GPIO32、SCK → GPIO33。各模組 GND 共地，既有 OLED／ADXL375 VIN／HX711 VIN 均為 3V3；Tracker VCC 仍屬確認支援 3.3 V 後的條件式接法，並未取得新的供電或 OUT 電壓量測。
+
+文件補充：GPIO34／35 無內建上拉，若確認開集極且缺少合適板載上拉，才可每路各用 10 kΩ 拉到 3V3 作低速起點；推挽或已適當上拉的模組不任意追加。Adafruit ADXL375 SDA／SCL 各有板載 10 kΩ 上拉，OLED 也可能有上拉，先沿用既有正常 I²C 匯流排並核對拉高電源，不盲目再並聯 4.7 kΩ。5 V OUT 不可直入 ESP32，也不能靠外加 3V3 上拉消除模組內部的 5 V 上拉。舊 OS25B10 的 LED 限流及訊號電阻網路不直接套用到 Tracker；HX711 DATA／SCK 亦不套用 I²C 上拉。
+
+第三版僅更新註解：將上一輪「本次只編譯、不上傳」及過期的畫面待驗證描述改為查閱最新紀錄；未修改執行邏輯、GPIO 設定或輸出字串，`01`、`02` 未修改。程式仍為簡易測試，不控制 Relay 或電磁鐵；兩路 Tracker GPIO 始終以 `INPUT` 讀取，燒錄不會代替供電確認或電平轉換。
+
+### 編譯與寫入結果
+
+- Arduino CLI 1.5.1、ESP32 core 3.3.11；FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`，`compile --jobs 2` 成功，Flash 312,612 bytes（23%）、RAM 24,924 bytes（7%）。沿用既有相依函式庫，產物置於系統暫存目錄，不提交二進位檔。
+- `board list` 確認 COM3 為 CH340（VID `0x1A86`、PID `0x7523`）；esptool 5.3.1 讀取 MAC，確認 ESP32-D0WD-V3、MAC `e0:8c:fe:a8:42:bc`，與前次同一塊板。
+- 使用上述編譯目錄的產物，以 COM3、115200 baud 寫入第三版。bootloader、分割表、boot_app0 及程式均通過 `Hash of data verified`，上傳結束碼 0 並重置。
+- 重置後以 115200 baud 擷取約 9 秒序列輸出，確認第三版啟動識別、SH1106／OLED `0x3C`、ADXL375 `0x53`，畫面計數由 1 增至 30，三軸數值持續更新。
+- 使用者確認 OLED 後，僅更新過期註解並再次編譯成功；程式 `.bin` 的 SHA256 與已燒錄產物完全相同（`707195F05DFD02D0DEC1FDE4408215033AE8E33D15BF8E8A11338587A1C9FA8F`），因此無需再次寫入，即與本次最終來源一致。
+
+實際輸出節錄：
+
+```text
+=== 03-irt_tracker Tracker Sensor OLED 簡易測試程式 ===
+[OLED] I2C_ACK 0x3C，驅動 SH1106 128x64；畫面待目視確認
+[ADXL375] 通訊成功，位址 0x53
+[資料] t=3248 ms | ADXL375: X=1.92 Y=1.92 Z=-1.92 m/s^2 | HX711 A128_RAW=8388607 [SAT] | TRACKER UP=LOW DOWN=LOW | OLED=0x3C frames=10
+[資料] t=5248 ms | ADXL375: X=0.96 Y=2.40 Z=-1.92 m/s^2 | HX711 A128_RAW=-2049 [OK] | TRACKER UP=LOW DOWN=LOW | OLED=0x3C frames=18
+[資料] t=8248 ms | ADXL375: X=1.92 Y=1.92 Z=-1.44 m/s^2 | HX711 A128_RAW=8388607 [SAT] | TRACKER UP=LOW DOWN=LOW | OLED=0x3C frames=30
+```
+
+### 目視確認與仍待驗證事項
+
+使用者已針對第三版回覆「八行正常且無缺邊」，確認 `03-irt TRACK TEST`、X／Y／Z、HX RAW、UP／DN 與底部狀態列的實際顯示。第三版目前已完成編譯、燒錄校驗、啟動輸出及 OLED 目視確認。
+
+Tracker 兩路僅觀察到 LOW，未取得供電／OUT 電壓或反射切換結果，不可宣稱兩顆模組功能正常。HX711 本次先 WAIT，再多次正滿量程 SAT，期間一筆非飽和 `-2049 [OK]`；不能以單筆 OK 判定接線或荷重元恢復正常，原有四項電壓量測與類比端排查仍待完成。
+

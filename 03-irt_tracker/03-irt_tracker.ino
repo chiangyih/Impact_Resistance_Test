@@ -1,7 +1,7 @@
 // 03-irt_tracker.ino：由 02-irt_oled 另存的第三版 Tracker Sensor 簡易測試程式。
-// 本版尚未實際燒錄驗證；依使用者要求，本次只編譯，不上傳至 ESP32。
+// 本程式用於接線檢查；實際編譯、燒錄與各項驗證狀態請見 README 及交接紀錄。
 // 保留 OLED、ADXL375 與 HX711 功能，將兩路偵測改為 Tracker Sensor 的原始數位電位。
-// OLED 沿用第二版已目視確認的 SH1106 128×64 設定，但本版畫面仍待實機驗證。
+// OLED 沿用 SH1106 128×64 設定；各版本的實際畫面確認結果請見最新驗證紀錄。
 // 若更換為 SSD1306 128×64 模組，可將下方 OLED_USE_SH1106 設為零。
 // OLED VCC 接 ESP32 3V3、GND 共地，與 ADXL375 共用 SDA=GPIO21、SCL=GPIO22。
 // 上方 Tracker Sensor OUT 規劃接 GPIO34，下方 OUT 規劃接 GPIO35，兩路不可併接。
@@ -218,7 +218,7 @@ void updateOled() { // 將各元件讀值排成八行並送至 OLED。
   ++frame_count; // 累計畫面傳送次數。
 } // 結束 OLED 畫面更新。
 
-void printSensorData() { // 輸出與畫面共用的數據，供未來獲准燒錄後進行診斷。
+void printSensorData() { // 輸出與畫面共用的數據，供實機接線診斷。
   Serial.printf("[資料] t=%lu ms | ADXL375: ", static_cast<unsigned long>(millis())); // 顯示時間與感測器名稱。
   if (acceleration_valid) { // 本輪三軸讀取成功時輸出數值。
     Serial.printf("X=%.2f Y=%.2f Z=%.2f m/s^2", acceleration_x, acceleration_y, acceleration_z); // 顯示三軸加速度。

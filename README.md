@@ -8,17 +8,17 @@
 - HX711 搭配四線式 Load Cell：量測底部相對受力。
 - 上、下兩顆 Tracker Sensor：規劃取代 OS25B10，以同一掉落物反射標記通過兩個偵測點的時間差估算兩點間平均速度；尚未完成換裝與驗證。
 
-四腳 I²C OLED 顯示上述感測器讀值；`02-irt_oled` 使用 SH1106 128×64 設定，使用者已確認完整版八行資料正常且無缺邊。新版 `03-irt_tracker` 沿用此 OLED 設定並改讀兩顆 Tracker Sensor，但尚未實際燒錄驗證。程式自動檢查 `0x3C`／`0x3D`，第二版本機實測位址為 `0x3C`。
+四腳 I²C OLED 顯示上述感測器讀值；`02-irt_oled` 與新版 `03-irt_tracker` 使用 SH1106 128×64 設定，使用者已分別確認兩版八行資料正常且無缺邊。第三版已編譯、燒錄到 COM3，改讀兩顆 Tracker Sensor；模組實際反射切換仍待驗證。程式自動檢查 `0x3C`／`0x3D`，本機實測位址為 `0x3C`。
 
 ## 目前狀態
 
-> **最新實機燒錄驗證日期：2026-10-16**
+> **最新實機燒錄驗證日期：2026-10-17**
 >
-> `02-irt_oled/02-irt_oled.ino` 已成功編譯、燒錄到 COM3 並通過寫入校驗。OLED VCC 改接 3V3、採用 SH1106 128×64 設定後，使用者已確認完整版八行資料正常且無缺邊。ADXL375 有三軸數值，兩路光閘皆讀到 LOW。HX711 數位讀取已完成獨立對照，但仍回報 `0x800000`（`-8388608`／`SAT`）；具體類比輸入、激勵供電或接線原因待現場核對，尚未修復。
+> `03-irt_tracker/03-irt_tracker.ino` 已成功編譯、燒錄到 COM3 並通過寫入校驗；使用者確認第三版 OLED 八行資料正常且無缺邊。啟動後確認 OLED `0x3C`、ADXL375 `0x53` 與三軸數值；兩路 Tracker 皆讀到 LOW，尚未確認反射切換。HX711 先 WAIT、之後多次讀到正滿量程 `8388607 [SAT]`，期間一筆為 `-2049 [OK]`；與較早固定負滿量程不同，但不能認定已修復，仍待供電、橋路與類比端量測。
 >
 > **2026-10-17 硬體規劃更新：**使用者已決定以 Tracker Sensor 取代 OS25B10，並確認已購買兩顆相同模組。新模組規劃沿用上方 GPIO34、下方 GPIO35；目前僅確認照片中的 GND／VCC／OUT 標示，實際供電範圍、OUT 電位與觸發極性仍待確認。這不是已完成換裝或驗證的紀錄，現有 `01-irt`／`02-irt_oled` 保留舊版 OS25B10 命名與韌體。
 >
-> **2026-10-17 第三版程式：**已由 `02-irt_oled` 另存 `03-irt_tracker/03-irt_tracker.ino`，保留 OLED、ADXL375、HX711 並改讀兩路 Tracker Sensor 原始 HIGH／LOW。已通過編譯，Flash 312,612 bytes（23%）、RAM 24,924 bytes（7%）。依使用者要求**不燒錄**；本版尚未完成實機與畫面驗證，裝置不會因新增此檔而更新韌體。
+> **2026-10-17 第三版程式：**由 `02-irt_oled` 另存，保留 OLED、ADXL375、HX711 並改讀兩路 Tracker Sensor 原始 HIGH／LOW。初次僅編譯，之後依使用者新的要求完成自動編譯及燒錄；Flash 312,612 bytes（23%）、RAM 24,924 bytes（7%）。燒錄與 OLED 畫面已驗證，不等同 Tracker 模組接線、供電或實際反射偵測已驗證。
 
 目前完成：
 
@@ -28,12 +28,12 @@
 - 兩顆 Tracker Sensor 已由使用者確認購入，規劃沿用上方 GPIO34、下方 GPIO35。
 - `02-irt_oled` 已加入 OLED 同頁讀值、逐行正體中文註解與資料狀態，並完成編譯、燒錄與序列埠檢查。
 - 使用者已目視確認 `02-irt_oled` 完整版的八行資料、底部狀態列均正常顯示且無缺邊。
-- `03-irt_tracker` 已另存完成、逐行附正體中文註解並通過編譯，尚未燒錄；上方 OUT 使用 GPIO34，下方 OUT 使用 GPIO35，保留實際 HIGH／LOW、不預設反射極性。
+- `03-irt_tracker` 已逐行附正體中文註解，完成編譯、COM3 燒錄、啟動輸出與 OLED 八行目視驗證；上方 OUT 使用 GPIO34，下方 OUT 使用 GPIO35，保留實際 HIGH／LOW、不預設反射極性。
 
 尚待完成：
 
 - 確認 Tracker Sensor 的供電範圍、輸出形式、OUT 電位與反射觸發極性，再完成兩路換裝；不沿用 OS25B10 裸元件的接法。
-- 排查 HX711 固定為負滿量程 `-8388608`（`SAT`）的原因，再進行荷重校正。
+- 排查 HX711 飽和與不穩定讀值：曾固定為負滿量程 `-8388608`，第三版啟動後又出現 WAIT、正滿量程 `8388607` 及一筆非飽和值；仍未修復，確認後再進行荷重校正。
 - 上、下反射偵測點的安裝、觸發順序、重複性與兩點時間差正式測試。
 - Load Cell 線色、額定容量與 HX711 靜態校正的確認。
 - Relay、12 V 電磁鐵與釋放按鈕的實機安全測試。
@@ -78,7 +78,7 @@ Impact_Resistance_Test/
 ├── 02-irt_oled/
 │   └── 02-irt_oled.ino                    # OLED 與序列埠感測器讀值測試程式
 ├── 03-irt_tracker/
-│   └── 03-irt_tracker.ino                 # 雙 Tracker Sensor 與 OLED 簡易測試；尚未燒錄驗證
+│   └── 03-irt_tracker.ino                 # 已燒錄；雙 Tracker Sensor 反射功能仍待驗證
 ├── 圖片/
 │   ├── OS25B10-紅外線對射光電開關.png       # OS25B10 元件參考圖
 │   ├── Snipaste_2026-10-16_22-30-35.png     # 四腳 I²C OLED 實物照片
@@ -100,7 +100,7 @@ Impact_Resistance_Test/
 - `handoff.md`：保留時間順序與歷史狀態；新的量測、燒錄或接線結果應追加在檔案末端，不覆寫舊紀錄。
 - `01-irt/01-irt.ino`：目前只用於確認感測器與 ESP32 的基本通訊，不是正式落下試驗程式。
 - `02-irt_oled/02-irt_oled.ino`：以 `01-irt` 為基礎另存的 OLED 簡易測試程式，同時顯示 ADXL375、HX711 與兩路 OS25B10；每個非空程式碼行均附正體中文註解。
-- `03-irt_tracker/03-irt_tracker.ino`：由 `02-irt_oled` 另存，保留其他感測器與 OLED 功能，改為兩顆 Tracker Sensor；每個非空行均有正體中文註解，尚未實際燒錄驗證。原 `01`、`02` 保留不動。
+- `03-irt_tracker/03-irt_tracker.ino`：由 `02-irt_oled` 另存，保留其他感測器與 OLED 功能，改為兩顆 Tracker Sensor；每個非空行均有正體中文註解。已完成燒錄與 OLED 目視驗證，Tracker 反射功能仍待測試；原 `01`、`02` 保留不動。
 - `auto-git-watch.ps1`：僅供本機自動同步使用，已加入 `.gitignore`，不應提交到 GitHub。
 - `圖片/`：保存目前取得的實物與機構照片；照片不能取代電表量測或資料表確認。
 - `零件1.stp`、`零件1.stl`：保存機構設計模型，與 ESP32 韌體分開管理。
@@ -120,18 +120,18 @@ NodeMCU-32S（ESP32）
    └─ GPIO27（預留）──────── 釋放按鈕
 ```
 
-資料可由 ESP32 透過 USB Serial 輸出；`02-irt_oled` 與新版 `03-irt_tracker` 另提供 OLED 畫面，第三版尚未燒錄。三版皆為簡易通訊測試，尚未控制 Relay、執行正式落下計時或完成校正。
+資料可由 ESP32 透過 USB Serial 輸出；`02-irt_oled` 與新版 `03-irt_tracker` 另提供 OLED 畫面，裝置目前已燒錄第三版。三版皆為簡易通訊測試，尚未控制 Relay、執行正式落下計時或完成校正。
 
 ## 硬體清單與狀態
 
 | 元件 | 用途 | 目前狀態 |
 |---|---|---|
-| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial | 2026-10-16 已以 COM3 成功燒錄 `02-irt_oled` |
+| NodeMCU-32S／ESP32-WROOM-32 | 主控制器、時間戳與 USB Serial | 2026-10-17 已以 COM3 成功燒錄 `03-irt_tracker` |
 | Adafruit ADXL375 | ±200 g 三軸加速度計，I²C | 已初始化成功並讀到 X／Y／Z |
-| 四腳 I²C OLED | 顯示三軸加速度、荷重原始值與雙光閘 | VCC 接 3V3，位址 `0x3C`；使用者確認 SH1106 128×64 完整版八行資料正常且無缺邊 |
-| Adafruit HX711 24-bit ADC | 讀取 Load Cell | 函式庫與獨立讀取在增益 128／64 均為負滿量程；需核對類比供電與荷重元接線 |
+| 四腳 I²C OLED | 顯示三軸加速度、荷重原始值與雙偵測點 | VCC 接 3V3，位址 `0x3C`；使用者確認第二、第三版 SH1106 128×64 八行資料正常且無缺邊 |
+| Adafruit HX711 24-bit ADC | 讀取 Load Cell | 舊對照測試為負滿量程；第三版啟動後多次為正滿量程，仍需核對類比供電與荷重元接線 |
 | 四線式 Load Cell | 底部相對受力 | 照片可讀到 `CAP: 180 kg`，額定容量與線色仍待確認 |
-| Tracker Sensor × 2 | 新版上、下反射偵測點 | 已確認購入兩顆相同模組；`03-irt_tracker` 已通過編譯但未燒錄，供電與輸出規格、接線及實測尚待確認 |
+| Tracker Sensor × 2 | 新版上、下反射偵測點 | 已購入兩顆相同模組；第三版已燒錄並讀到兩路 LOW，供電、OUT 電位與反射切換仍待確認 |
 | OS25B10 × 2（舊版） | 舊版上、下光閘 | 保留歷史接線與程式；曾讀到兩路 LOW，不等於 Tracker Sensor 已通過測試 |
 | Relay＋12 V 電磁鐵 | 釋放掉落平台 | 接線與觸發邏輯尚待依實物確認 |
 | 釋放按鈕 | 啟動釋放流程 | 預留 GPIO27，尚未納入 `01-irt` |
@@ -289,7 +289,7 @@ HX711 模組目前直接插在麵包板，DATA 與 SCK 使用兩條紫線接到 
 
 兩顆感測頭應朝向同一掉落物上的固定反射標記，兩處採用一致的側向間距與角度，並量測實際等效觸發位置的間距。不能把兩顆互相對射，或沿用「物體遮斷光束」的槽型光閘安裝方式。先慢速移動反射標記驗證穩定切換，再評估正式落下速度下的脈衝寬度、漏偵測與環境光影響；未完成重複性測試前，不宣稱能等效取代原光閘的計時精度。
 
-新 `03-irt_tracker` 由 `02-irt_oled` 另存，已將 GPIO34／35 的命名、接線註解及序列輸出改為 Tracker Sensor，仍只回報實際 HIGH／LOW；原 `01-irt`／`02-irt_oled` 保留不動。第三版尚未實際燒錄驗證，須先完成電氣確認才可進行慢速電位檢查。`02-irt_oled` 與 `03-irt_tracker` 都約每 250 ms 更新一次偵測點快照，可能漏掉快速通過；正式計時需另行實作事件擷取，不可用 OLED／序列埠更新時間作為通過時間。
+新 `03-irt_tracker` 由 `02-irt_oled` 另存，已將 GPIO34／35 的命名、接線註解及序列輸出改為 Tracker Sensor，仍只回報實際 HIGH／LOW；原 `01-irt`／`02-irt_oled` 保留不動。第三版已完成燒錄與畫面確認，但目前只觀察到兩路 LOW，仍須完成 Tracker 電氣確認及反射切換測試。`02-irt_oled` 與 `03-irt_tracker` 都約每 250 ms 更新一次偵測點快照，可能漏掉快速通過；正式計時需另行實作事件擷取，不可用 OLED／序列埠更新時間作為通過時間。
 
 ### 舊版 OS25B10 接線（歷史參考）
 
@@ -366,7 +366,7 @@ GPIO27 ── 釋放按鈕 ── GND
 
 程式不包含正式落下計時、速度計算、校正、Relay 控制或資料記錄；所有非空程式碼行均附正體中文註解。
 
-`01-irt` 保留原版感測器通訊測試；舊 OS25B10 搭配 OLED 使用下述 `02-irt_oled`，新版 Tracker Sensor 搭配 OLED 使用 `03-irt_tracker`，第三版目前只完成編譯、不燒錄。
+`01-irt` 保留原版感測器通訊測試；舊 OS25B10 搭配 OLED 使用下述 `02-irt_oled`，新版 Tracker Sensor 搭配 OLED 使用已燒錄的 `03-irt_tracker`，但新模組電氣條件與反射功能仍須確認。
 
 ### Arduino CLI 編譯與燒錄
 
@@ -469,13 +469,13 @@ if ($LASTEXITCODE -eq 0) {
 
 ## 03-irt_tracker Tracker Sensor 簡易測試程式
 
-程式位置：`03-irt_tracker/03-irt_tracker.ino`。此檔由 `02-irt_oled/02-irt_oled.ino` 另存，資料夾與 sketch 同名以符合 Arduino 規則；原版 `01`、`02` 均未修改。本版為**簡易測試程式，尚未實際燒錄驗證**，本次只編譯、不上傳，也未開啟序列埠或重置裝置。
+程式位置：`03-irt_tracker/03-irt_tracker.ino`。此檔由 `02-irt_oled/02-irt_oled.ino` 另存，資料夾與 sketch 同名以符合 Arduino 規則；原版 `01`、`02` 均未修改。本版為**簡易測試程式**，初次依要求只編譯；同日後續使用者已改為要求燒錄，現已完成 COM3 寫入校驗、啟動輸出與 OLED 八行目視確認。Tracker 實際反射切換與 HX711 正常荷重讀值尚未通過驗證。
 
 ### 保留功能與 Tracker Sensor 對應
 
 | 項目 | 第三版行為 |
 |---|---|
-| OLED | 沿用 SH1106 128×64、GPIO21／22、候選位址 `0x3C`／`0x3D`、八行顯示與斷線重試；本版畫面待驗證 |
+| OLED | 沿用 SH1106 128×64、GPIO21／22、候選位址 `0x3C`／`0x3D`、八行顯示與斷線重試；本版八行畫面已由使用者確認 |
 | ADXL375 | 保留 `0x53` 初始化、100 Hz 設定、三軸換算與讀取失敗提示 |
 | HX711 | 保留 GPIO32／33、A128 原始值、非忙碌才讀取、時脈保護與 WAIT／STALE／SAT／OK 狀態 |
 | 上方 Tracker Sensor | `TRACKER_UPPER_PIN = 34`，以 `INPUT` 讀取 OUT 原始 HIGH／LOW |
@@ -483,6 +483,57 @@ if ($LASTEXITCODE -eq 0) {
 | 更新週期 | 保留 250 ms 快照／OLED 更新、115200 baud 每秒序列輸出；不是高速計時程式 |
 
 Tracker Sensor 不需要另加通訊函式庫；接線電位與外接上拉需求仍依[雙偵測點接線條件](#tracker-sensor-雙偵測點)確認。本版不反轉讀值、不預設 HIGH 或 LOW 等於「偵測到物體」，也不新增自動校正、落下計時或 Relay 控制。每個非空行均有正體中文註解。
+
+### 03-irt_tracker 完整接線對應表
+
+此表依第三版程式常數與本案實物端子標示整理，所有電源地共接 ESP32 GND；**Tracker Sensor 的 3.3 V 供電能力及 OUT 電位仍待實物確認，條件式接法不是已完成量測的宣告**。換線前先拔除 USB 與其他電源，對照模組絲印接線，不以照片方向或常見線色代替端子標示。
+
+| 元件 | 元件端子 | NodeMCU-32S 對應 | 供電／訊號與注意事項 |
+|---|---|---|---|
+| 上方 Tracker Sensor | VCC | 3V3（條件式） | 先確認模組支援 3.3 V；不經舊 OS25B10 的 LED 電阻 |
+| 上方 Tracker Sensor | GND | GND | 共地 |
+| 上方 Tracker Sensor | OUT | GPIO34 | 程式為 `INPUT`；只接 3.3 V 相容數位訊號 |
+| 下方 Tracker Sensor | VCC | 3V3（條件式） | 供電條件同上方模組 |
+| 下方 Tracker Sensor | GND | GND | 共地 |
+| 下方 Tracker Sensor | OUT | GPIO35 | 程式為 `INPUT`；不得與上方 OUT 併接 |
+| OLED | VCC | 3V3 | 沿用本案已正常顯示的供電接法，不改接 5 V |
+| OLED | GND | GND | 與 ADXL375、HX711、Tracker Sensor 共地 |
+| OLED | SDA | GPIO21 | 與 ADXL375 SDA 共用 I²C |
+| OLED | SCK（即 SCL） | GPIO22 | 與 ADXL375 SCL 共用 I²C；不是 HX711 SCK |
+| Adafruit ADXL375 | VIN | 3V3 | 電源輸入，依板面標示接 VIN，不接 3Vo |
+| Adafruit ADXL375 | GND | GND | 共地 |
+| Adafruit ADXL375 | SDA | GPIO21 | I²C 資料；既有線色為橘 |
+| Adafruit ADXL375 | SCL | GPIO22 | I²C 時脈；既有線色為棕 |
+| Adafruit ADXL375 | CS | 3V3 | 維持 HIGH 選 I²C；此板亦有預設上拉 |
+| Adafruit ADXL375 | SDO | GND | 配合程式使用 `0x53`；既有線色為綠 |
+| Adafruit ADXL375 | 3Vo | 不接 | 板上穩壓器輸出，不當電源輸入 |
+| Adafruit ADXL375 | INT／I2 | 不必接 | 第三版採輪詢；既有 GPIO16／17 選配線不被本程式使用 |
+| Adafruit HX711 | VIN | 3V3 | 模組供電輸入，使用者已確認此接點 |
+| Adafruit HX711 | GND | GND | 使用者已確認與 ESP32 共地 |
+| Adafruit HX711 | DATA | GPIO32 | HX711 輸出至 ESP32，既有為紫線 |
+| Adafruit HX711 | SCK | GPIO33 | ESP32 輸出至 HX711，既有為另一條紫線 |
+| Adafruit HX711 | RATE | 不接 GPIO | 使用板上開關，H＝80 SPS、L＝10 SPS |
+| Adafruit HX711 | VIO | 不接 | 板上電源輸出，不接 ESP32 3V3 或 5 V 作外部輸入 |
+
+ADXL375 的 VIN、CS 與板載 I²C 上拉依據：[Adafruit ADXL375 Pinouts](https://learn.adafruit.com/adafruit-adxl375/pinouts)。HX711 的 VIN、VIO、DATA／SCK 與荷重元端子依據：[Adafruit HX711 Pinouts](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts)。
+
+HX711 另一側接荷重元，不接 ESP32 GPIO：
+
+| HX711 端子 | 本案荷重元接線 | 確認程度 |
+|---|---|---|
+| E+ | 紅線（激勵正，暫定） | 依既有規劃；實際荷重元線色功能仍待規格確認 |
+| E− | 黑線（激勵負，暫定） | 黑線接點已由使用者確認，功能仍待荷重元規格確認 |
+| A+ | 綠線（訊號正，暫定） | 依既有規劃 |
+| A− | 白線（訊號負，暫定） | 白線接點已由使用者確認，功能仍待荷重元規格確認 |
+| B+／B− | 不接 | 程式只讀 A 通道增益 128 |
+
+### 供電與上拉電阻注意事項
+
+1. ESP32 由 USB 供電，既有 OLED、ADXL375、HX711 沿用板上 3V3；感測器不由 GPIO 腳供電。Tracker 僅在確認支援 3.3 V 後接 3V3，供電能力也須涵蓋 ESP32 與各模組負載，不以 USB 的 5 V 直接取代感測器邏輯電源。
+2. GPIO34／35 沒有內建上拉／下拉，程式的 `INPUT` 不會自行固定未連接腳位。若 Tracker OUT 確認為開集極、且板上沒有合適上拉，可從每路 OUT **各接一顆 10 kΩ 到 3V3**作低速測試起點，再依波形調整；已有板載上拉或推挽輸出時，不預設必須另加。這是條件式建議，不表示已確認本案輸出電路。
+3. Tracker 供電若必須為 5 V，須先核對 OUT 電路並使用適當電平轉換，不能把 5 V OUT 接 ESP32，也不能靠加一顆 3V3 上拉來抵消內部 5 V 上拉。接 GPIO 前先量測 OUT–GND，LOW 目標接近 0 V、HIGH 目標接近 3.3 V；GPIO 電氣限制見 [Espressif ESP32 資料表](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)。
+4. I²C 的 SDA、SCL 應各有拉至相容電源的上拉，不是在 SDA 與 SCL 之間接電阻。Adafruit ADXL375 板上 SDA／SCL 各有 10 kΩ 上拉，本案 VIN 使用 3V3；OLED 也可能已有上拉，因此先沿用既有正常匯流排，不任意再並聯 4.7 kΩ。核對所有板載上拉供電及空閒電位，避免拉至 5 V；多組並聯會降低等效阻值。
+5. HX711 DATA／SCK 不是 I²C，正常接法不需另套用 I²C 上拉；舊 OS25B10 的 180 Ω LED 限流與 6.8 kΩ 訊號網路不直接沿用到新 Tracker 模組。未接 Tracker 時讀到 HIGH／LOW 可能是懸空，不代表有偵測到反射。
 
 OLED 格式如下，僅為示意，**不是本版實機截圖或讀值**：
 
@@ -510,13 +561,45 @@ if ($LASTEXITCODE -ne 0) { throw '03-irt_tracker 編譯失敗' }
 
 本節刻意不包含 upload 或 monitor 指令。本版編譯通過也不代表 Tracker Sensor 供電、接線、極性或第三版 OLED 畫面已驗證；HX711 已知的 `-8388608 [SAT]` 原因仍未解決。
 
-### 編譯確認（2026-10-17，未燒錄）
+### 首次編譯紀錄（2026-10-17，當時未燒錄）
 
 - 使用 Arduino CLI 1.5.1、ESP32 core 3.3.11，FQBN 為 `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`。
 - 沿用 Adafruit ADXL375 1.1.2、Adafruit HX711 1.0.2、U8g2 2.36.19 及既有相依函式庫。
 - 編譯成功：Flash 312,612／1,310,720 bytes（23%），RAM 24,924／327,680 bytes（7%）。產物保存在系統暫存目錄，未提交二進位檔。
 - 232 行中的 216 個非空行均含中文註解；Tracker 腳位、`INPUT` 模式、版本識別及 OLED 八行座標檢查通過。除 Tracker 命名與識別文字外，八個既有輔助函式的程式邏輯與第二版一致。
 - 原 `01-irt`、`02-irt_oled` 未修改；本次沒有執行 upload、monitor、序列埠讀取或裝置重置。第三版的供電、接線、讀值及畫面仍為**尚未實際燒錄驗證**。
+
+### 編譯後燒錄指令（同日後續要求）
+
+使用者後續已明確要求自動編譯後燒錄，取代前一輪「先不要燒錄」的限制。下列 COM3 為本案目前連接埠，執行前應先確認板子身分與接線安全；供電及 OUT 電位未知的 Tracker 不應接入 ESP32。
+
+```powershell
+$cli = 'C:\Program Files\Arduino CLI\arduino-cli.exe'
+$board = 'esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40'
+& $cli compile --jobs 2 --fqbn $board .\03-irt_tracker
+if ($LASTEXITCODE -ne 0) { throw '編譯失敗，不執行燒錄' }
+& $cli upload --port COM3 --fqbn $board .\03-irt_tracker
+if ($LASTEXITCODE -ne 0) { throw '燒錄失敗，請保留診斷輸出' }
+```
+
+### 後續燒錄與實機確認（2026-10-17）
+
+- 已確認 COM3 為原 ESP32-D0WD-V3，MAC `e0:8c:fe:a8:42:bc`；重新編譯成功，Flash 312,612 bytes、RAM 24,924 bytes。
+- 使用同一編譯產物以 115200 baud 燒錄，bootloader、分割表、boot_app0 與程式各區段均通過 `Hash of data verified`，最後重置啟動。
+- 以 115200 baud 擷取重置後約 9 秒資料，確認啟動識別為 `03-irt_tracker`、OLED `0x3C`／SH1106、ADXL375 `0x53`，`frames` 由 1 增至 30，三軸數值持續更新。
+- 使用者回覆第三版「八行正常且無缺邊」，確認標題、X／Y／Z、HX RAW、UP／DN 與底部狀態列皆正常。
+- 兩路 Tracker 均讀到 LOW；尚未取得實際供電、OUT 電壓及反射切換結果，不宣稱模組已正常工作。
+- HX711 開機先為 WAIT，之後多次為 `8388607 [SAT]`，中間一筆 `-2049 [OK]`。雖與較早負滿量程不同，單筆未飽和值不代表接線、橋路或校正已正常，仍待類比端排查。
+
+本次實際序列輸出節錄（不是上述畫面示意值）：
+
+```text
+=== 03-irt_tracker Tracker Sensor OLED 簡易測試程式 ===
+[OLED] I2C_ACK 0x3C，驅動 SH1106 128x64；畫面待目視確認
+[ADXL375] 通訊成功，位址 0x53
+[資料] t=3248 ms | ADXL375: X=1.92 Y=1.92 Z=-1.92 m/s^2 | HX711 A128_RAW=8388607 [SAT] | TRACKER UP=LOW DOWN=LOW | OLED=0x3C frames=10
+[資料] t=5248 ms | ADXL375: X=0.96 Y=2.40 Z=-1.92 m/s^2 | HX711 A128_RAW=-2049 [OK] | TRACKER UP=LOW DOWN=LOW | OLED=0x3C frames=18
+```
 
 ## 後續工作
 
@@ -525,7 +608,7 @@ if ($LASTEXITCODE -ne 0) { throw '03-irt_tracker 編譯失敗' }
 3. 確認 ADXL375 的 CS、SDO 實際接法，並完成單獨 I²C 讀值測試。
 4. 依 Load Cell 資料表確認線色、額定容量，完成 HX711 靜態校正。
 5. 確認 Relay 額定電壓與觸發邏輯，完成電磁鐵空載釋放測試。
-6. 完成電氣檢查且獲准燒錄後，驗證 `03-irt_tracker` 的畫面與兩路讀值，再另行實作反射事件擷取、觸發時間、時間差與資料記錄；保留舊版驗證紀錄。
+6. 第三版燒錄及 OLED 畫面已通過確認，接著完成電氣檢查與兩路反射測試，再另行實作事件擷取、觸發時間、時間差與資料記錄；保留舊版驗證紀錄。
 7. 先完成低高度、低重量測試，再進入緩衝材料比較實驗。
 
 ## 參考資料
