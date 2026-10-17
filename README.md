@@ -14,6 +14,8 @@
 
 > **最新實機燒錄驗證日期：2026-10-17**
 >
+> **HX711 接線重要更正（2026-10-17）：**先前「VIO 是輸出、保持不接」的說明有誤。官方 PCB 的 VIO 接 HX711 第 16 腳 DVDD，是數位供電端；本案應將 **VIN 與 VIO 都接同一個 ESP32 3V3**。若背面 VIN–VIO 焊橋未閉合，僅接 VIN 並不能為 DVDD 正常供電。此項已列為 SAT／STALE／跳值的優先疑點，尚待使用者完成接線後對照確認。
+>
 > `03-irt_tracker/03-irt_tracker.ino` 已成功編譯、燒錄到 COM3 並通過寫入校驗；使用者確認第三版 OLED 八行資料正常且無缺邊。啟動後確認 OLED `0x3C`、ADXL375 `0x53` 與三軸數值；使用者後續確認 Tracker VCC 改接 3V3，兩路能各自反射切換。HX711 曾出現 WAIT、正負滿量程 SAT、STALE 及非飽和值，仍未修復，待供電、橋路與類比端量測。
 >
 > **2026-10-17 硬體更新：**使用者已購買兩顆相同 Tracker Sensor，回報 VCC 改接 3V3、上方 OUT 接 GPIO34、下方 OUT 接 GPIO35，並確認兩路可各自慢速反射切換。正式型號、額定供電範圍、實際 OUT 電壓與觸發極性仍待補查；不能把慢速功能測試當成完整電氣或高速驗證。舊 `01-irt`／`02-irt_oled` 保留 OS25B10 命名與韌體。
@@ -143,7 +145,7 @@ NodeMCU-32S（ESP32）
 
 | NodeMCU-32S | 對應元件端子 | 線材顏色／接線 | 方向 | 用途與備註 |
 |---|---|---|---|---|
-| 3V3 | ADXL375 VCC、OLED VCC、HX711 VIN、兩顆 Tracker Sensor VCC | ADXL375 黑：VCC；新模組線色未指定 | 電源輸出 | Tracker VCC 改接已由使用者回報，額定範圍與實際電壓待補查；不可接 12 V |
+| 3V3 | ADXL375 VCC、OLED VCC、HX711 VIN 與 VIO、兩顆 Tracker Sensor VCC | ADXL375 黑：VCC；新模組線色未指定 | 電源輸出 | HX711 VIN／VIO 同接 3V3，不依賴背面焊橋；Tracker 額定範圍與實際電壓待補查；不可接 12 V |
 | GND | ADXL375 GND、SDO、OLED GND、HX711 GND、兩顆 Tracker Sensor GND | ADXL375 白：GND；綠：SDO；新模組線色未指定 | 電源回路 | 新模組規劃共地；SDO 接低電位時，程式預期 I²C 位址為 `0x53` |
 | GPIO21 | ADXL375 SDA、OLED SDA | ADXL375 橘：SDA；OLED：— | I/O | I²C SDA，共用匯流排 |
 | GPIO22 | ADXL375 SCL、OLED SCK | ADXL375 棕：SCL；OLED：— | I/O | I²C SCL；OLED 實物端子標示為 SCK |
@@ -165,6 +167,7 @@ NodeMCU-32S（ESP32）
 ## 電源與接地
 
 - NodeMCU-32S 目前由 USB 供電；既有 ADXL375、OLED、HX711 使用 NodeMCU-32S 的 3V3。新 Tracker Sensor 須先確認支援 3.3 V，不能直接套用其他型號規格。
+- HX711 的 VIN 與 VIO 都須有適當供電；本案統一接同一個 3V3。VIO 不是可隨意懸空的穩壓器輸出，背面焊橋是否閉合仍須核對。
 - ADXL375、OLED、HX711、Tracker Sensor、按鈕與 Relay 邏輯側應共用 GND。
 - 本次已由使用者確認 OLED VCC 接 3V3、GND 共地；更換模組前仍須確認其實際供電範圍。
 - 電磁鐵使用獨立 12 V 電源，不可由 ESP32 GPIO、USB 或 3V3 直接供電。
@@ -222,7 +225,17 @@ HX711 模組目前直接插在麵包板，DATA 與 SCK 使用兩條紫線接到 
 | DATA | GPIO32 | 資料輸出；紫線 |
 | SCK | GPIO33 | 時脈輸入；紫線 |
 | RATE | 不接 GPIO | 使用板上開關；`H` 為 80 SPS、`L` 為 10 SPS |
-| VIO（若有引出） | 不接 | 板上數位電源輸出，不作為 NodeMCU 電源輸入 |
+| VIO | 3V3 | 數位供電 DVDD 輸入；與 VIN 同接 3V3，不保持懸空 |
+
+### VIO 數位供電更正與優先檢查
+
+先前本文件將 VIO 誤列為輸出且不接，現已更正。HX711 原廠資料表將第 16 腳 DVDD 定義為數位電源；Adafruit 官方原理圖顯示 `VDDIO` 連至 HX711 的 DVDD、排針 JP1 第 2 腳、去耦 C2 與焊橋 SJ1，沒有連到類比穩壓器輸出。SJ1 的另一端連 VIN，官方說明也指出背面焊橋預設開路。
+
+因此，**VIO 不接且 SJ1 開路時，DVDD 缺少正常供電**。這可合理解釋數位輸出不可靠，列為本次正負 SAT、STALE 與跳值的優先待驗證原因；尚未量測 VIO 或確認實物焊橋，不宣稱已證實或修復。
+
+先拔除 USB 與外接電源，確認本案 VIN 仍為 3V3，再用可拆跳線將 VIO 接到同一個 3V3；GND、DATA=GPIO32、SCK=GPIO33 不變，不必焊接 SJ1。若 SJ1 已閉合，VIN 與 VIO 本來就直接相連；**不可在焊橋閉合時讓 VIN 接 5 V、VIO 接 3V3**，也不可把 VIO 接 5 V 後直連 ESP32 訊號。
+
+依據：[HX711 原廠資料表](https://cdn.sparkfun.com/datasheets/Sensors/ForceFlex/hx711_english.pdf)、[Adafruit 官方原理圖（固定版本）](https://github.com/adafruit/Adafruit-HX711-24-bit-ADC-PCB/blob/4444b42fc47d665fcd6694097690cfbf6c609b43/Adafruit%20HX711%20ADC%20Breakout.sch)、[VIO 焊橋說明](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts#vio-jumper)。Pinouts 頁的 Power Pins 段落與其 VIO Jumper 段落、正式原理圖存在不一致，接線以晶片資料表及 PCB 線網為準。
 
 ### Load Cell 與 HX711 端子
 
@@ -514,9 +527,9 @@ Tracker Sensor 不需要另加通訊函式庫；接線電位與外接上拉需�
 | Adafruit HX711 | DATA | GPIO32 | HX711 輸出至 ESP32，既有為紫線 |
 | Adafruit HX711 | SCK | GPIO33 | ESP32 輸出至 HX711，既有為另一條紫線 |
 | Adafruit HX711 | RATE | 不接 GPIO | 使用板上開關，H＝80 SPS、L＝10 SPS |
-| Adafruit HX711 | VIO | 不接 | 板上電源輸出，不接 ESP32 3V3 或 5 V 作外部輸入 |
+| Adafruit HX711 | VIO | 3V3 | 數位電源 DVDD 輸入，與 VIN 同接 3V3；更正舊版不接的錯誤 |
 
-ADXL375 的 VIN、CS 與板載 I²C 上拉依據：[Adafruit ADXL375 Pinouts](https://learn.adafruit.com/adafruit-adxl375/pinouts)。HX711 的 VIN、VIO、DATA／SCK 與荷重元端子依據：[Adafruit HX711 Pinouts](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts)。
+ADXL375 的 VIN、CS 與板載 I²C 上拉依據：[Adafruit ADXL375 Pinouts](https://learn.adafruit.com/adafruit-adxl375/pinouts)。HX711 的 VIO 依[官方原理圖](https://github.com/adafruit/Adafruit-HX711-24-bit-ADC-PCB/blob/4444b42fc47d665fcd6694097690cfbf6c609b43/Adafruit%20HX711%20ADC%20Breakout.sch)及晶片 DVDD 定義更正；其他端子參考 [Adafruit HX711 Pinouts](https://learn.adafruit.com/adafruit-hx711-24-bit-adc/pinouts)。
 
 HX711 另一側接荷重元，不接 ESP32 GPIO：
 
