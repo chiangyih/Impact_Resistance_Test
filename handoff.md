@@ -4,6 +4,8 @@
 
 > 2026-10-20 荷重元接線更正：本案實測為 **黑→E+、白→E−、綠→A+、紅→A−**；下方歷史的紅E+／黑E−／綠A+／白A−暫定配線不再適用。第四版 SCK＝GPIO32、DATA＝GPIO33，改接後約15秒、15筆快照全OK，未見SAT／STALE／TIMEOUT；**尚未校正**，亦非長時間或正式受力驗證。詳見第三十八節，既有歷史內容保留。
 
+> 2026-10-20 NMK99實板更正：使用者確認板子為NMK99v1、未接相機／TFT／SD，已斷電將HX711改為 **SCK25／DATA33**，GPIO32專用板載WS2812。最新05 layout2已燒錄，使用者確認WS已熄滅、OLED八行正常無缺邊；HX與ADXL近期狀態均OK，仍尚未校正。舊章節GPIO32／33與NodeMCU-32S描述保留為歷史，不可直接照接或燒回舊版；詳見第四十二節。
+
 ## 專題交接紀錄：STF＋三浦摺疊衝擊緩衝試驗台
 
 ### 一、專題核心目標
@@ -1445,4 +1447,179 @@ README 已補第四版專用接線表、版本差異、診斷欄位、編譯／�
 **尚未校正。**目前約−161000是未校正原始計數，不是公斤或牛頓，也不能把負RAW當成負滿量程。已知小荷重反應、固定安裝與受力方向、去皮／比例係數、準確度／重複性、長時間穩定性、第三版整合回歸及正式動態衝擊驗證均未完成；不以15秒資料取代上述驗證。
 
 README已更正各現行荷重元接線表、第四版狀態、供電與訊號重測結果、歷史照片警示及後續工作；本文件在檔首加更正，第一至三十七節內容保留追溯。本次只更新README與交接紀錄，未改動四個`.ino`，未另行編譯、燒錄、讀取序列埠或重置裝置。
+
+---
+
+## 三十九、2026-10-20 第五版整合量測程式與差動電壓單位補充
+
+### 最新量測補充
+
+使用者進一步明確回覆「電表顯示0V」：第三十八節的新接法第④項，紅表筆A+、黑表筆A−，單位現在確認為V。當時「未附單位」是歷史狀態；最新應記為電表顯示0V、檔位與解析度仍未確認，不能推成精確零差動或已完成重量校正。README已更新現行電壓表，舊交接正文保留。
+
+### 本次要求與實作範圍
+
+使用者要求設計完整量測程式，存為05-test.ino，編譯後自動燒錄。新增`05-test/05-test.ino`以符合Arduino同名資料夾規則，整合ADXL375、HX711、上下Tracker、SH1106 OLED、手動校正、單次試驗原始緩衝及CSV匯出；原01～04不改動，每個非空白韌體行附正體中文註解。
+
+沿用目前已確認的第四版接法：HX711 SCK32／DATA33，VIN、VIO均3V3、GND共地；荷重元黑E+、白E−、綠A+、紅A−。OLED與ADXL375共用SDA21／SCL22，OLED SH1106 128×64位址0x3C／0x3D、ADXL 0x53；Tracker上34、下35、3V3，保留原始電位。沒有啟用26／27、Relay、電磁鐵或無線，也不假設未接管的繼電器會安全維持何種狀態。落體固定、外部電磁鐵電源隔離後才作韌體驗證。
+
+### 流程、資料品質與安全界線
+
+- 開機IDLE，不自動ARM、去皮或填入重量係數；距離0（未知）、上下觸發極性−1（未設定）。已詢問使用者等效觸發位置間距及兩路標記進入時HIGH／LOW，未收到資料前不猜測；極性未設定不能ARM，距離0可記時間但速度輸出NA。
+- ADXL375採100Hz、串流FIFO、六位元組完整三軸交易及至少5µs讀間隔；每筆記主機讀出時間，不宣稱FIFO樣本與HX711同步。記錄I²C錯誤及FIFO滿載／可能漏樣，無法推算精確遺失筆數。
+- HX711延續第四版有界25脈衝A128、明確二十四位補數、讀後DATA回高及WAIT／TIMEOUT／LINK_ERR／STALE／SAT／OK；每個高脈衝才關本核心中斷，低電位允許Tracker中斷。未以示波器驗證脈寬或計時偏差，不用濾波掩蓋SAT。
+- Tracker使用CHANGE中斷後按各自POL篩選進入緣；鎖定第一次上、下時間，重複有效緣只計數。下閘先到、間隔不足200µs、等上閘10秒／等下閘2秒逾時、STOP或緩衝滿進FAULT；下閘後錄2秒完成。ARM只開始記錄，不觸發釋放；STOP不是物理急停。
+- ARM期間暫停OLED及一般序列輸出。加速度2048筆、荷重1536筆緩衝滿即中止，DONE／FAULT保留資料；明確DUMP匯出、CLEAR才清除。距離、極性、去皮及比例僅在RAM，斷電全失，不使用NVS存放未驗證係數。
+- 手動TARE／CAL收集32筆新有效荷重框、最多8秒；飽和、握手錯、STALE、跨度>2000counts或比例訊號<100counts會拒絕。TARE成功使舊比例失效；CAL成功只標CAL_USER，非獨立校正認證。本次未執行TARE／CAL。
+- DUMP匯出設定、時間差／有條件速度、原始CSV及品質旗標。加速度名義g與合成峰值包含重力，峰值視窗為整次ARM，不自動辨識撞擊段；HX原始極值不是瞬時衝擊峰值力。未校正或SAT框的靜態等效克數為NA，缺樣也不輸出假零。
+
+README補充完整第五版接線、供電／上拉注意、所有命令、操作流程、CSV欄位與量測限制。現有100Hz加速度、HX10／80SPS及未量測高速反射性能不足以保證毫秒衝擊峰值，不能把整合程式稱為已驗證正式儀器。依據ADXL375與HX711原廠資料表，連結見README第五版小節。
+
+### 邏輯檢查、編譯與燒錄狀態
+
+新增`tests/05-test.test.cjs`，以Node從實際第五版來源抽取函式，有限轉譯C++型別／無號算術作主機模擬；14組檢查通過，涵蓋補數、極性、上下順序、重複觸發、最短間隔、逾時、32位微秒溢位、各HX狀態、32筆去皮／正反比例與異常保護。也檢查每個非空白行中文註解、記錄期間不送OLED、輸出缺值及無Relay腳位初始化。這不是實體脈衝或完整ESP32排程測試。
+
+檢查時修正兩項潛在時序問題：主迴圈先取得gate保護區才讀micros，避免中斷新時間戳與舊時鐘快照相減誤判逾時；ARM提示及OLED傳送全部完成後才清FIFO，避免提示傳輸期間的舊樣本被當成ARM後資料。沒有為此改動前四版。
+
+使用既有Arduino CLI 1.5.1及ESP32 core3.3.11、FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`、jobs2編譯成功、結束碼0，未安裝或升級函式庫。Flash＝331600bytes（25%）、RAM＝68636bytes（20%）、剩餘259044bytes；主機14組檢查再次全數通過。暫存產物位置`C:\Users\tseng\AppData\Local\Temp\irt-05-ab7ec2dddcc54b0dbab73dd2cdca1fa7`，程式bin的SHA256為`D367362D77BA2EDA8AB65E67B1895E8CF79ED5CA4DE47D4007287CE0AC527010`，二進位檔未加入版本控制。
+
+燒錄前嘗試開COM3讀取原韌體診斷，系統回報找不到COM3；Arduino CLI後續兩次重新列舉都只剩COM1，未擷取到新感測資料，亦未改用COM1猜測裝置或執行燒錄。已請使用者固定落體、接回ESP32 USB後回覆；編譯已完成，待目標裝置重新出現並確認身分，才執行使用者授權的自動燒錄。第五版目前尚未燒錄、啟動／序列埠或目視驗證，未在硬體上執行設定、TARE／CAL或ARM。
+
+---
+
+## 四十、2026-10-20 Tracker間距225mm，第五版燒錄成功及ADXL待查
+
+### 使用者確認與預設值更新
+
+使用者回覆上方Tracker接GPIO34、下方接GPIO35、相距22.5cm，並確認ESP32 USB已接回。依此將第五版`distance_mm`預設改為225.0mm，沒有將公分直接當毫米；反射等效觸發位置偏移仍未驗證。上下反射進入極性沒有提供，保持−1／−1，不猜測或自動ARM；重量仍尚未校正，沒有自動去皮或控制釋放。
+
+新增22.5cm→225mm、速度單位及極性保持未設定的主機檢查；共15組來源轉譯邏輯模擬全部通過。原01～04未更改。重新編譯成功、結束碼0：Flash331616bytes（25%）、RAM68644bytes（20%）、剩餘259036bytes。FQBN、套件及暫存產物路徑沿用第三十九節，沒有安裝或升級函式庫。
+
+本次225mm版程式bin SHA256為`FC6B47B7C8E455AD96B6D942FAF6B7894D16FA8BDC795AF86E2A6DE35B4FE5D4`；第三十九節D367開頭雜湊是較早距離0版編譯，不是本次燒錄檔。
+
+### 目標身分、上傳與校驗
+
+Arduino CLI重新列舉COM3：USB Serial、VID0x1A86／PID0x7523。esptool5.3.1先讀MAC，確認原ESP32-D0WD-V3、revision3.1、MAC `e0:8c:fe:a8:42:bc`，再使用同一個新編譯產物透過Arduino CLI上傳COM3、115200baud。bootloader、partitions、boot_app0及程式均通過`Hash of data verified`；程式實際寫入331760bytes，整體結束碼0並由RTS重置。未對COM1或未知裝置試寫。
+
+### 燒錄後約12秒序列實測
+
+COM3／115200baud開啟後只送`STATUS`與`HELP`，不執行POL、DIST、TARE、CAL、ARM或DUMP；取得13筆STATUS（含明確查詢及週期輸出），摘要如下：
+
+| 項目 | 本次結果 |
+|---|---|
+| 第五版預設與狀態 | `IDLE、reason=NONE、CAL=UNCAL、DIST_mm=225.000、POL=-1/-1` |
+| HX711狀態 | 十三筆全OK，未見SAT／STALE／TIMEOUT |
+| HX RAW | `-161681～-161513` |
+| HX RX、ERR、AGE | `152→258`、`0`、`1～45ms` |
+| Tracker快照 | UP＝0、DN＝0，尚未驗證靠近反射標記時的進入極性 |
+| ADXL375 | 重試均`ADXL375=ERROR address=0x53`，STATUS為`ADXL=MISSING` |
+| ADXL輪詢計數 | AERR＝0、FIFO_FULL＝0；未進入正常讀取，不能據此宣告正常或無漏樣 |
+| OLED | 沿用SH1106程式設定，尚待使用者第五版八行目視確認 |
+
+實際首、最小RAW及末筆節錄：
+
+```text
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161594 RX=152 ERR=0 AGE_ms=45 ADXL=MISSING AERR=0 FIFO_FULL=0 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161681 RX=183 ERR=0 AGE_ms=5 ADXL=MISSING AERR=0 FIFO_FULL=0 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161632 RX=258 ERR=0 AGE_ms=5 ADXL=MISSING AERR=0 FIFO_FULL=0 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000
+```
+
+### 待使用者核對，不宣告全系統驗證通過
+
+第五版已編譯及燒錄、基本序列診斷可執行、HX711在本段快照仍未飽和；**ADXL375尚未正常初始化**，不能宣稱三軸、整合計時或動態量測已通過。初始化失敗的具體階段／原因未定位，不直接認定感測器損壞或程式錯誤。
+
+已詢問ADXL目前是否已接回，請核對VIN→3V3、GND→GND、SDA→21、SCL→22、CS→3V3、SDO→GND；若需補接或換線，先拔除USB與外接電源再操作。另詢問OLED是否八行正常無缺邊，以及固定落體、慢速用標記靠近時U／D各變0或1。等待回覆期間不猜極性、不ARM、不釋放落體。README已更新225mm預設、燒錄證據及上述未解問題，原歷史正文保留。
+
+---
+
+## 四十一、2026-10-20 OLED無畫面後重燒成功，ADXL仍MISSING
+
+使用者明確回覆ADXL375「已接回，接法如上」：VIN→3V3、GND→GND、SDA→GPIO21、SCL→GPIO22、CS→3V3、SDO→GND；並回報OLED「沒畫面，請重新燒錄」。此為新的現場狀態，不能再把第五版畫面記為未回覆或目視通過。上下Tracker反射進入極性仍未提供，不改POL、不ARM。
+
+本輪先核對現有第五版與前次交接，未修改程式、接腳、225mm預設、校正或前四版來源。15組主機邏輯檢查全數通過，沿用既有Arduino CLI、套件、FQBN、jobs2及暫存目錄重新編譯成功、結束碼0：Flash331616bytes（25%）、RAM68644bytes（20%）、剩餘259036bytes。bin SHA256仍為`FC6B47B7C8E455AD96B6D942FAF6B7894D16FA8BDC795AF86E2A6DE35B4FE5D4`，與前次實際燒錄版本相同；不宣稱相同程式重燒已能修好OLED。
+
+初次重新列舉時Arduino CLI只有COM1；Windows `.NET SerialPort.GetPortNames()`及PnP查詢也只有原ACPI通訊埠COM1，未見連接的CH340／USB-SERIAL／VID1A86／PID7523。不是已確認COM3被其他程式占用，也尚不能確定USB線、供電、插座或主板哪一項有問題。此階段未改用COM1試寫、未安裝或重設驅動，當時尚未再次上傳或取得新序列資料。
+
+先告知缺少COM3並請使用者確認USB、電源燈與實際COM埠；稍後本輪最後列舉時COM3與CH340 VID1A86／PID7523已恢復。未定位USB暫時缺席的原因，不直接判定硬體損壞。
+
+### COM3恢復後的重新上傳
+
+esptool5.3.1再次讀MAC確認原ESP32-D0WD-V3、revision3.1、`e0:8c:fe:a8:42:bc`，並核對編譯bin仍為前述FC6開頭SHA256，才執行Arduino CLI upload至COM3。本輪上傳結束碼0並RTS重置；對相同bootloader、partitions與主程式，esptool回報`No changed sectors found`後驗證Flash相符而略過重寫；boot_app0寫入8192bytes並通過Hash校驗。這是完成重新上傳／校驗程序，不是修改韌體或保證OLED已修好。
+
+### 重啟後約10秒診斷
+
+COM3／115200baud只送一次STATUS，約10秒收11筆STATUS，結果如下：
+
+| 項目 | 結果 |
+|---|---|
+| 狀態／設定 | 全部IDLE、NONE、UNCAL、DIST_mm＝225.000、POL＝−1／−1 |
+| HX711 | 十一筆全OK、RAW＝`-160523～-160439` |
+| RX／ERR／AGE | `241→331`／`0`／`1～72ms` |
+| SAT／STALE／TIMEOUT | 本段快照均未見，不代表所有中間框或長期均正常 |
+| ADXL375 | 重試仍ERROR、STATUS仍MISSING，AERR／FIFO_FULL＝0不能當作讀值正常證據 |
+| Tracker | UP＝0、DN＝0，未確認進入極性，未ARM |
+| OLED | 重燒前使用者回報無畫面；重啟後已再次詢問，尚未取得目視回覆 |
+
+首末實際節錄：
+
+```text
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-160523 RX=241 ERR=0 AGE_ms=72 ADXL=MISSING AERR=0 FIFO_FULL=0 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-160515 RX=331 ERR=0 AGE_ms=5 ADXL=MISSING AERR=0 FIFO_FULL=0 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000
+```
+
+本輪未修改程式或接腳、未執行POL、TARE、CAL、ARM、DUMP，未啟用釋放機構。README更新為重燒已完成及新的實測結果，舊交接保留。**第五版仍尚未校正；ADXL初始化失敗仍未排除，OLED是否恢復不能由Flash校驗或HX711正常推定。**
+
+---
+
+## 四十二、2026-10-20 NMK99實板辨識、WS2812關閉及OLED版面修正
+
+### 新回報與GPIO32共用問題
+
+使用者確認COM3已出現、OLED有畫面但文字錯位／缺邊，另要求關閉ESP32板上WS2812。先不猜GPIO，詢問型號後，使用者提供「NMK99二合一開發板」及標示NMK99v1（4M／80MHz）、OV3660、WS2812的圖片。照片標示不等於已取得完整原理圖；先前以NodeMCU-32S稱呼實板不精確，FQBN仍保留為現有ESP32編譯設定，不因此任改Flash頻率或假定其板載周邊腳位。
+
+原設計者文章`https://www.nmking.io/index.php/2024/01/09/1369/`說明NMK99為其整合ESP32／相機設計；其NMK99教材短連結當時無法讀取，未宣稱已讀到原廠原理圖。教學作者實作頁`https://chenlung88.github.io/ESP32-NMK99/`列單顆全彩LED為32，與現有HX711 SCK32共用。這足以要求先核對／分離接線，不能直接在同腳加RGB全黑資料而干擾HX時脈，也不能把LED_BUILTIN=2當WS2812資料腳。未實測舊HX時脈是否造成特定燈色，不將其認定為SAT或OLED的唯一根因。
+
+使用者先明確同意改接並確認未接相機／TFT／SD，才請其拔除USB與所有外接電源，將HX711 SCK從32移至25、DATA保持33，其餘不動；之後收到明確回覆「SCK已改GPIO25、DATA33，已接USB」，才執行修訂版燒錄。GPIO25以本案現有配置及無上述周邊為前提，不是所有NMK99使用情境的通用空腳保證。
+
+### 第五版程式修訂
+
+- 修改`05-test/05-test.ino`為NMK99 `v1-layout2`：HX SCK25／DATA33，WS2812使用32，編譯期static_assert拒絕RGB與感測腳位重疊。原01～04來源保持不變，不能不核對接線就燒回舊版，尤其舊SCK33會接到目前HX資料輸出33。
+- setup以既有ESP32 core的rgbLedWrite送一次全黑，等待300µs鎖存，之後GPIO32保持LOW，主迴圈不再送RGB；沒有另裝NeoPixel函式庫，沒有在HX仍接32時燒錄此關燈程式。這是控制燈色，不是切斷板上電源，也不控制電源指示燈。
+- OLED保留SH1106 128×64與100kHz，改4x6字型、正常橫向／字向、透明繪字及明確繪色。新增drawOledLine：四邊留白，x4～123、y4～59，八行基線9／16／23／30／37／44／51／58；最多30個ASCII字元且依getStrWidth限120像素，超長只裁本行、不換行。ARM提示同樣使用此函式，資料與警示不被清除或偽造。
+- OLED啟動回報ACK與版面；ADXL新增0x53／0x1D ACK、晶片識別及RATE／FIFO讀回診斷，不自動更換位址。STATUS新增OLED位址、SCK／DATA實際常數、RGB要求關閉與LAYOUT=2；CSV接腳也由常數輸出，避免移腳後仍印舊值。
+- 仍為225mm、未設定Tracker極性、不自動去皮／校正、不自動ARM、不控制相機／TFT／SD／Relay／電磁鐵。每個非空白程式行都有正體中文註解。繪字API與已安裝U8g2介面比對，另查官方`https://github.com/olikraus/u8g2/wiki/u8g2reference`。
+
+### 主機檢查、最終編譯與實際燒錄
+
+新增RGB與HX分腳／只開機送全黑、OLED方向／字型／八行及有界單行繪字主機模擬；從實際函式轉譯，驗證長字串、不同模擬字寬、四邊界線及第九行拒絕。共18組全部通過；此非示波器、實體光學或完整ESP32排程驗證。
+
+建立新暫存目錄`C:\Users\tseng\AppData\Local\Temp\irt-05-nmk99-layout2`完成初次編譯後，又將最終基線修正為9～58並補STATUS版次，重新編譯且核對生成CPP確含最終基線／SCK25／LAYOUT2才燒錄，未上傳中間版本。
+
+最終編譯結束碼0：Flash349629bytes（26%）、RAM69340bytes（21%）、剩餘258340bytes。沿用Arduino CLI1.5.1、ESP32 core3.3.11、既有函式庫、jobs2、FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`，沒有安裝／升級套件。bin SHA256：`2C3D9AC1A1FD5D64B5D5FD9AC690D439D8F4402112BE9CA8F89DD7A99EFED79C`。
+
+確認COM3原ESP32-D0WD-V3、MAC `e0:8c:fe:a8:42:bc`後，以同一產物上傳；bootloader、partitions、boot_app0及程式都通過Hash校驗，程式實際寫入349776bytes，結束碼0並RTS重置。
+
+### 最新約12秒序列結果與目視確認
+
+上傳後只送一次STATUS，約12秒取得13筆STATUS：
+
+| 項目 | 實際結果 |
+|---|---|
+| 狀態與設定 | 全IDLE／NONE／UNCAL、225mm、POL＝−1／−1、SCK25／DATA33、RGB32、LAYOUT2 |
+| HX711 | 十三筆均OK，RAW＝`-159032～-158862` |
+| RX／ERR／AGE | `10→116`／`0`／`10～208ms` |
+| ADXL375 | 十三筆近期狀態均OK、AERR＝0，表示近期三軸交易成功，非個別加速度校正 |
+| FIFO_FULL | 首筆即1、全段維持1；未取得精確發生時刻，不能作無漏樣證據 |
+| OLED通訊 | `0x3C` |
+| 使用者回覆 | **「WS2812已熄滅」及「八行正常，無缺邊」** |
+
+首末實際輸出：
+
+```text
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-159030 RX=10 ERR=0 AGE_ms=10 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-158896 RX=116 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=225.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+```
+
+本段快照未見SAT／STALE／TIMEOUT；不把近期OK推成所有中間框或長期皆正常。舊ADXL初始化失敗在本次觀察已不再出現，但前後亦涉及使用者接回／改線、USB重接、重啟與程式修訂，不能證明哪一項是唯一根因。尚未獨立記錄本輪三軸數值或作示波器時序驗證。
+
+使用者已確認WS熄滅及OLED版面正常，完成本輪兩項目視驗證。**仍尚未校正**，未執行POL、TARE、CAL、ARM、DUMP或正式釋放；FIFO警示、反射進入極性、加速度／荷重校正、長時間與動態衝擊均待後續。README更新實際NMK99板型、最新版接線、歷史接線警示及以上證據，交接第一至四十一節正文保留。
 
