@@ -1315,3 +1315,52 @@ README 已加入原始量測值、差動超量程估算、L 檔時序說明與�
 
 README 已更新單獨線材結果、復接後三條板端量測路徑與照片需求；量測方法沿用上一節的 [Fluke 指南](https://www.fluke.com/en-us/learn/blog/digital-multimeters/how-to-measure-resistance)。本輪未改動 `01`、`02`、`03` 程式，未重新編譯、燒錄、讀取序列埠或重置裝置，SAT／STALE 仍待現場量測排查。
 
+---
+
+## 三十七、2026-10-20 第四版 HX711 單獨測試、OLED 與自動燒錄
+
+### 新要求與接腳差異
+
+使用者改為先寫只使用 HX711、沿用 OLED 的測試程式，指定名稱 `04-HX711-test.ino`，編譯成功後自動燒錄。本次明確指定 HX711 SCK＝GPIO32、DATA＝GPIO33，與原 `01`～`03` 的 DATA＝32、SCK＝33 相反，依最新要求實作，不沿用舊接腳假設。
+
+新增 `04-HX711-test/04-HX711-test.ino`，使用同名資料夾以符合 Arduino 規則，原三版未修改。沿用 SH1106 128×64、OLED SDA＝21、SCL＝22、3V3、候選位址 0x3C／0x3D、100 kHz；不初始化 ADXL375、Tracker、繼電器或無線功能。每個非空白程式行附正體中文註解，明確標為簡易測試，不宣稱已完成接回 HX711 的實機驗證。
+
+### 隔離後才燒錄
+
+先前供電電壓與完整路徑仍未釐清，且對調腳位後舊韌體可能將時脈輸出接到 HX711 DATA 輸出端，故先請使用者拔除 USB／外接電源，暫時將 HX711 VIN、VIO、GND、SCK、DATA 全部隔離，僅保留 ESP32 與已正常的 OLED 後接 USB。使用者先回答「HX711 VCC 已改接 3.3V」，未將此當成完全隔離；追問後使用者明確確認「已隔離 HX711，ESP32／OLED 已接 USB」，才操作 esptool 與上傳。
+
+### 第四版讀取與診斷
+
+使用獨立、固定長度的逐位元讀取，不依賴 Adafruit HX711 函式庫；DATA 高即返回，保護區內再次確認低電位，再送 24 個資料脈衝及 1 個 A128 增益脈衝，程式各設定 2 µs 高／低延遲。讀後 DATA 未回高時累計錯框，不覆寫最近資料；二十四位元補數以明確算式轉成正負值。開機只執行一次 80 µs 高電位再拉低重置，故障時不反覆重置。
+
+OLED 每 250 ms 更新八行，Serial 115200 baud 每秒輸出：第四版標題、SCK32／DATA33、RAW、HEX、HX 狀態及 DOUT、AGE、N／E、DT／OLED 位址。支援 WAIT、TIMEOUT、LINK_ERR、STALE、SAT、OK；OK 只表示近期完整框且未滿量程，並非供電／橋路合格或公斤校正。沒有自動去皮、濾波或換算重量；OLED 傳輸會影響輪詢，DT 不是精準取樣率，不作高速衝擊峰值驗證。
+
+時序依據：[HX711 晶片資料表](https://cdn.sparkfun.com/datasheets/Sensors/ForceFlex/hx711_english.pdf)。程式延遲設定不是示波器實測脈寬，不能藉此推定硬體問題已排除。
+
+### 編譯與寫入證據
+
+- Arduino CLI 1.5.1、ESP32 core 3.3.11、U8g2 2.36.19；FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`、`--jobs 2` 編譯成功。初次編譯發現 OLED 方向常數大小寫錯誤，已修為 `U8G2_R0` 並重新成功編譯，失敗版本未上傳。
+- Flash 303,924 bytes（23%），RAM 24,868 bytes（7%），剩餘 302,812 bytes；未安裝／升級函式庫，編譯產物位於系統暫存目錄。
+- 九組從來源函式轉譯的 Node.js 邏輯／脈衝模擬通過：補數邊界與正負 SAT、固定 25 個高低脈衝、未就緒不等待、WAIT／TIMEOUT、就緒變更、錯框不覆寫及恢復後 STALE；此為主機模擬，不是硬體波形或感測器實測。
+- COM3 CH340（VID 1A86／PID 7523），esptool 5.3.1 確認 ESP32-D0WD-V3、MAC `e0:8c:fe:a8:42:bc`；使用同一編譯目錄燒錄，bootloader、分割表、boot_app0、程式均通過 `Hash of data verified`，結束碼 0 並重置。
+- 已燒錄程式 `.bin` SHA256：`98DDAC59872A5569E46FF6789E4D9DEADE6068C54261430264A272E2694E9A4C`。二進位檔未提交 Git。
+
+### 實際輸出、再次空接與 OLED 確認
+
+首次依隔離回報讀取約 8 秒，看到 `RAW=-1 HEX=FFFFFF`，RX 84→130、ERR＝6，接收間隔約 1～252 ms，與完全空接預期的 TIMEOUT 不符。已向使用者明確說明不能當成 HX711 正常，未為此把合法的 −1 刪除或用濾波掩蓋。
+
+再請使用者先拔 USB／外接電源，將 GPIO32、GPIO33 的跳線從 ESP32 端也拔下，確認沒有其他麵包板通路，再接 USB。使用者回覆「已空接」，並確認第四版 OLED「八行正常且無缺邊」。隨後以 COM3／115200 baud 讀取約 8 秒，八筆快照一致：
+
+```text
+[HX711] t=50000 SCK=32 DATA=33 A128 RAW=-- HEX=------ AGE=-- [TIMEOUT] DOUT=1 RX=0 ERR=0 DT=0ms OLED=0x3C
+[HX711] t=57000 SCK=32 DATA=33 A128 RAW=-- HEX=------ AGE=-- [TIMEOUT] DOUT=1 RX=0 ERR=0 DT=0ms OLED=0x3C
+```
+
+這次確認了第四版韌體、OLED 目視畫面，以及完全空接時不誤收資料的基準。前後未改程式或重燒，只由使用者斷電拔線後重接 USB；先前低電位誤觸發的具體接點／連接仍未定位，不宣稱已證明 HX711 或 ESP32 故障。
+
+### 仍待完成
+
+裝置目前為第四版，HX711 在 ESP32 端空接。接回前須拔除 USB 與其他電源，依第四版核對 VIN／VIO 同一 3V3、GND 共地、SCK＝32、DATA＝33，並完成先前待查的完整供電路徑。取得新的實際供電／橋路電壓與連接後 RAW／SAT／STALE 對照前，不能宣稱 HX711 已正常或完成校正。若恢復第三版，必須先斷電將 DATA／SCK 恢復第三版接法，不能直接換韌體。
+
+README 已補第四版專用接線表、版本差異、診斷欄位、編譯／燒錄指令與本次驗證結果，並將舊的全面暫停說明修正為 HX711 復接前的安全限制；歷史交接紀錄保持不變。
+
