@@ -2,11 +2,11 @@
 
 以 **ESP32／NMK99v1** 為核心，比較 STF、三浦摺疊、EVA 及複合緩衝材料在落下衝擊中的反應。ADXL375 記錄加速度，HX711＋荷重元記錄底座受力原始值，上下兩顆 Tracker 記錄通過時間。
 
-**最近已燒錄版本**：05-test v1-layout2　｜　**原始碼候選版**：[v1-layout2-fifo-diag1](05-test/05-test.ino)
+**最近已燒錄版本／原始碼**：[05-test v1-layout2-fifo-diag1](05-test/05-test.ino)　｜　**目前校正狀態**：UNCAL
 
-**文件更新**：2026-10-21　｜　**最新硬體紀錄**：2026-10-21。FIFO 診斷候選版已於 ESP32 core 3.3.12 重新編譯，**尚未燒錄或實機驗證**；本次HX711校正及回零觀察使用已燒錄的v1-layout2。
+**文件更新**：2026-10-21　｜　**最新硬體紀錄**：2026-10-21。FIFO 診斷版已用本機 ESP32 core 3.3.12 重新編譯、燒錄 COM3，並確認新啟動識別及15筆待機STATUS；詳見[部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。先前400g校正及回零資料來自舊v1-layout2，沒有混入新版本數據。
 
-> **目前為整合測試階段，已執行去皮及400g使用者靜態校正，回零與重複性仍有偏差**。`CAL_USER` 不表示精度或動態力驗證通過，係數只存RAM。計時、原始資料記錄及 CSV 匯出已實作；正式落下、高速與動態量測仍待驗證。`ARM` 只開始記錄，**不控制電磁鐵釋放**。
+> **目前為整合測試階段；重燒後RAM去皮／校正係數已清除，現為UNCAL**。先前400g使用者校正的回零及重複性仍有偏差，歷史係數未自動恢復；`CAL_USER`也不代表精度或動態力合格。本次待機`HX=OK`、`ADXL=OK`、`ERR=0`、`AERR=0`，但`FIFO_FULL=1`仍待排查。計時、原始資料記錄及CSV匯出已實作；正式落下、高速與動態量測仍待驗證。`ARM`只開始記錄，**不控制電磁鐵釋放**。
 
 ## 從這裡開始
 
@@ -196,7 +196,7 @@
 
    | 檢查欄位 | 如何判讀 |
    |---|---|
-   | 啟動識別／`LAYOUT` | `05-test NMK99 ... v1-layout2`／`LAYOUT=2` |
+   | 啟動識別／`LAYOUT` | `05-test NMK99 ... v1-layout2-fifo-diag1`／`LAYOUT=2` |
    | `SCK`／`DATA`／`RGB` | `25`／`33`／`32:OFF_REQ`；RGB 熄滅另以目視確認 |
    | `phase`／`CAL`／`POL` | 初始為 `IDLE`／`UNCAL`／`-1/-1` |
    | `HX`／`ADXL` | 近期應有有效資料；`OK` 不表示已校正 |
@@ -210,7 +210,9 @@
 
 ## 4. 設定與靜態校正
 
-以下是操作方式。本案已於2026-10-21各執行一次TARE與CAL 400，但回零與重複性仍有偏差，尚未確認精度；詳見[實際校正與排查紀錄](handoff.md#hx711-calibration-20261021)。參數只能在 `IDLE` 且未收集校正資料時更改；若保留上一筆 DONE／FAULT 資料，先匯出保存，再 `CLEAR`。
+以下是操作方式。本案已於2026-10-21在舊v1-layout2各執行一次TARE與CAL 400，但回零與重複性仍有偏差，尚未確認精度；詳見[實際校正與排查紀錄](handoff.md#hx711-calibration-20261021)。後續燒錄fifo-diag1已清除RAM係數，**目前UNCAL，未重新去皮或CAL**。參數只能在 `IDLE` 且未收集校正資料時更改；若保留上一筆 DONE／FAULT 資料，先匯出保存，再 `CLEAR`。
+
+本輪歷史輸出已補存為 [200筆 STATUS／RAW CSV](docs/calibration/2026-10-21-hx711-status.csv)，附[原始文字輸出](docs/calibration/2026-10-21-hx711-source.log)及[欄位／缺值／重複回報說明](docs/calibration/README.md)。保留4筆同RX重複快照，未填造逐筆時間或TARE／CAL內部32框；這不是重新讀取裝置或新的校正結果。
 
 ### 距離與 Tracker 極性
 
@@ -261,7 +263,7 @@
 | 命令 | 用途 |
 |---|---|
 | `HELP`／`STATUS` | 查命令／目前讀值、設定與異常 |
-| `ADXL_DIAG` | 診斷候選版新增：列出已保存的 FIFO 來源、時間與 OLED 耗時；只印快取，不清警示 |
+| `ADXL_DIAG` | 已燒錄的fifo-diag1新增：列出已保存的 FIFO 來源、時間與 OLED 耗時；只印快取，不清警示 |
 | `DIST 毫米數`／`POL 上方 下方` | 設定距離／兩路觸發進入電位 |
 | `TARE`／`CAL 克數`／`UNCAL` | 去皮／使用已知荷重建立靜態係數／清除係數 |
 | `ARM`／`STOP` | 開始記錄／取消校正或中止記錄 |
@@ -291,7 +293,7 @@
 完整排查數據與各階段接法保留在[歷史 README](docs/archive/README-before-redesign-20261021.md)及[交接紀錄](handoff.md)，請用日期區分，不把舊電壓或舊照片當成現況。
 
 <details>
-<summary>2026-10-21：FIFO_FULL＝1 的程式排查與診斷候選版</summary>
+<summary>2026-10-21：FIFO_FULL＝1 的程式排查、診斷版部署與首次待機結果</summary>
 
 原程式遇到 `entries >= 32` **或** `INT_SOURCE` 的 D0 Overrun 位元時，就把同一個 `FIFO_FULL` 加一；兩種情況原本無法區分。歷史 13 筆 STATUS 均為 1，僅表示那段快照未再看到增加，不能反推首次警示原因或精確漏樣量。
 
@@ -311,9 +313,9 @@
 
 `FIRST_PHASE`／`LAST_PHASE` 的數字對應：0＝IDLE、1＝ARMED、2＝WAIT_DN、3＝CAPTURE、4＝DONE、5＝FAULT。
 
-後續具備固定落體、隔離電磁鐵電源及USB接妥條件，且已明確安排燒錄候選版後，可在待機送 `STATUS`、`ADXL_DIAG`，保存啟動輸出，再間隔數秒比較。命令不讀 I²C、不重設 FIFO；記錄期間仍只允許 STOP。新增非記錄期快照與文字輸出也會占用時間，不能把診斷版耗時當成舊版已實測結果。
+本次已由使用者確認落體固定、電磁鐵外部電源隔離及USB供電，再按其要求燒錄，保存啟動輸出並在待機送`STATUS`、`HELP`及兩次`ADXL_DIAG`。15筆STATUS的FIFO_FULL均為1；兩次診斷均為`FULL_OBS=1 DEPTH_OBS=0 OVR_OBS=1 DIAG_ERR=0`，首次／最近事件同為`US=505194 N=3 SRC=0x81 PHASE=0`，已觀察最大深度14。初始化前`N=32 SRC=0x83`、重設後`N=0 SRC=0x81`；這些是非同時快照，尚不能據此確定舊旗標、首次事件根因或漏樣量。OLED主機呼叫最大118341µs，poll開始間隔最大140533µs；僅屬本次短期待機實測，不代表活動記錄或舊版耗時。
 
-**本輪依使用者要求只排查程式、更新核心與編譯，未連序列埠、重置、燒錄或測試落下；根因及修復效果尚待實機確認。**
+命令只印快取，不讀I²C、不重設FIFO；記錄期間仍只允許STOP。新增非記錄期快照與文字輸出也會占用時間。先前只編譯未燒錄的歷史另見handoff第四十五、四十六及四十八節；本次部署見[第四十九節](handoff.md#fifo-diag1-deployment-20261021)與[原始序列紀錄](docs/deployment/2026-10-21-fifo-diag1-serial.log)。**已完成燒錄及基本待機驗證，但根因、精度、OLED／RGB目視及正式落下仍未驗證，沒有清除警示或宣告修復。**
 
 </details>
 
@@ -351,7 +353,7 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 
 | 版本 | 用途 | HX711 SCK／DATA | 使用狀態 |
 |---|---|---|---|
-| **[05-test](05-test/05-test.ino)** | **整合感測、Tracker 中斷計時、手動校正與 CSV；原始碼已加 FIFO 診斷** | **25／33** | 最近已燒錄為 v1-layout2；新 fifo-diag1 候選未燒錄 |
+| **[05-test](05-test/05-test.ino)** | **整合感測、Tracker 中斷計時、手動校正與 CSV；已加 FIFO 診斷** | **25／33** | 已燒錄fifo-diag1，基本待機驗證；UNCAL，尚未正式落下 |
 | 初版 05（歷史） | 早期整合版本 | 32／33 | 已由同檔新版取代，詳見歷史紀錄 |
 | [04-HX711-test](04-HX711-test/04-HX711-test.ino) | HX711＋OLED 獨立排查 | 32／33 | 保留歷史來源 |
 | [03-irt_tracker](03-irt_tracker/03-irt_tracker.ino) | 感測器＋OLED＋雙 Tracker 電位 | 33／32 | 保留歷史來源 |
@@ -371,6 +373,8 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 | [tests/05-test.test.cjs](tests/05-test.test.cjs) | 從實際來源轉譯的主機邏輯模擬，非硬體時序測試 |
 | [tests/05-fifo-diag.test.cjs](tests/05-fifo-diag.test.cjs) | 新增 FIFO 來源、時間及診斷防護的主機檢查 |
 | [docs/archive/](docs/archive/) | 本次改版前 README 的完整歷史快照 |
+| [docs/calibration/](docs/calibration/) | 2026-10-21 HX711逐筆STATUS／RAW、原始輸出與欄位說明 |
+| [docs/deployment/](docs/deployment/) | fifo-diag1燒錄、目標身分、啟動與待機診斷原始紀錄 |
 
 `auto-git-watch.ps1` 為本機限定同步工具，已被 `.gitignore` 排除，不屬於硬體操作流程。
 
@@ -378,25 +382,25 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 
 ## 9. 開發環境與編譯
 
-已依使用者要求將 ESP32 core 從 **3.1.1 更新到 3.3.12**，並以同一份 FIFO 診斷候選來源重新編譯成功，**尚未燒錄**。3.3.12由[Espressif 官方穩定版索引](https://espressif.github.io/arduino-esp32/package_esp32_index.json)與[官方發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)核對；4.0.0-RC1屬預覽版，本次採最新穩定版。
+已先封存HX711歷史快照，再依使用者要求將**目前本機** ESP32 core 從 **3.3.11 更新到指定的 3.3.12**。其後收到燒錄指示，以同一份FIFO診斷來源再次編譯成功並部署COM3。版本由[Espressif 官方索引](https://espressif.github.io/arduino-esp32/package_esp32_index.json)與[官方發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)核對；沒有更新Arduino CLI或應用函式庫。
 
-| 項目 | 2026-10-20 交接記錄 | 2026-10-21 更新後實際讀回／結果 |
+| 項目 | 2026-10-20 交接記錄 | 本輪本機2026-10-21更新後實際讀回／結果 |
 |---|---|---|
-| Arduino CLI／ESP32 core | 1.5.1／3.3.11 | CLI仍為`nightly-20260918`（189327e）；core已為 **3.3.12** |
+| Arduino CLI／ESP32 core | 1.5.1／3.3.11 | CLI **1.5.1**（01f3d4f2b）；core **3.3.12**，core list及實際目錄均確認 |
 | U8g2／Adafruit ADXL375 | 2.36.19／1.1.2 | 2.36.19／1.1.2，應用函式庫未升級；核心所需工具由套件管理器安裝 |
 | FQBN | `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40` | 相同 FQBN；`build.options.json`確認實際核心為3.3.12 |
-| 編譯結果 | 已燒錄版：Flash 349629 bytes、RAM 69340 bytes | 診斷候選：Flash **351921 bytes（26%）**、RAM **69428 bytes（21%）**，結束碼0 |
+| 編譯結果 | 舊已燒錄版：Flash 349629 bytes、RAM 69340 bytes | 本次重新編譯／已燒錄版：Flash **351921 bytes（26%）**、RAM **69428 bytes（21%）**，編譯及上傳均結束碼0 |
 | 主機檢查 | 當時18組通過 | 原18組＋新增19組＝**37組通過**；非硬體時序驗證 |
 
-升級前已另外確認本機實際核心為3.1.1，與舊交接記錄不同；升級前的候選編譯結果保留於handoff第四十五節，更新後結果見第四十六節。兩種工具鏈的建置結果分別記錄，不互相代用。
+同步文件中另有nightly-20260918／189327e、core3.1.1→3.3.12的歷史建置，保留於handoff第四十五、四十六節；不能據此推定目前本機狀態。**本輪**更新前即時讀回為CLI1.5.1／core3.3.11，更新後為1.5.1／3.3.12；新產物與驗證詳見[第四十八節](handoff.md#hx711-archive-local-build-20261021)。各輪環境、產物及雜湊分別記錄，不互相代用。
 
-本次更新後候選版 bin SHA256：
+本次重新編譯並實際燒錄的bin SHA256（先前只編譯的產物另保留於第四十八節）：
 
 ```text
-994531E2DD81A632F3F4FC61450766371AB0108D43D459AC333DA76438DC50A0
+B62CDBCB2FF2DB21DB86AA96C1751AC1AEAA5533B40B216CFA2890FE71C750E1
 ```
 
-建置產物留在系統暫存目錄，**未燒錄**；核心更新、編譯及主機測試不等於實機FIFO、感測精度或動態驗證通過。
+建置產物留在系統暫存目錄，未納入Git。本次上傳的bootloader、partitions、boot_app0及主程式均通過Hash校驗，新啟動識別及待機命令已確認；見[第四十九節部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。**基本啟動通過不等於FIFO根因、感測精度或動態驗證通過，重燒後需重新建立並驗證校正。**
 
 FQBN 是沿用的 ESP32 編譯設定，**不表示已完整對應 NMK99 所有板載周邊**；現行 GPIO25 配置以未接相機／TFT／SD 為前提。
 
@@ -440,7 +444,7 @@ if ($LASTEXITCODE -ne 0) { throw '燒錄失敗，保留診斷輸出' }
 
 1. 排查 `FIFO_FULL`，確認 ADXL375 固定、方向、資料完整性及加速度校正。
 2. 補查 Tracker 型號、額定供電、OUT 電壓與輸出電路；確認進入極性、等效間距、延遲及高速重複性。
-3. 接續400g校正後的回零偏差排查：取得VIN–GND與E+–E−的新電壓範圍，再確認供電／機械穩定性、回零、重複性與多點準確度；本次空載下懸空端間隙約5mm、紙張可自由穿過為使用者回報。
+3. 目前重燒後為UNCAL，舊400g校正及偏差已封存；先取得VIN–GND與E+–E−的新電壓範圍、確認供電／機械穩定性，再重新去皮與已知重量校正，驗證回零、重複性及多點準確度；先前空載間隙約5mm、紙張可自由穿過為使用者回報。
 4. 驗證第五版既有計時、緩衝與 CSV 流程；先低高度、低重量，再進入材料比較。
 5. 若要加入電磁鐵自動釋放，另行確認 Relay 額定電源、觸發邏輯、飛輪二極體與機械安全；此功能尚未啟用。
 

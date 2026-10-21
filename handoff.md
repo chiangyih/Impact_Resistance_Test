@@ -1885,3 +1885,141 @@ COM3以115200baud、8N1、Handshake=None讀取，在開啟前設定DTR=false、R
 
 使用者之後明確要求將README.md、handoff.md及兩張load_cell照片一起commit並push。提交範圍限定此四檔；同步時保留7c75fb6的候選來源、測試與交接全文，整合README現況並調整本節編號，未部署候選版。實際提交雜湊與推送完成情形以Git輸出及遠端main讀回確認。
 
+<a id="hx711-archive-local-build-20261021"></a>
+
+## 四十八、2026-10-21 補存逐筆STATUS／RAW、本機core更新3.3.12與修正版重新編譯（不燒錄）
+
+使用者明確要求先封存本輪逐筆STATUS／RAW成CSV，再將**目前這台本機**ESP32 core更新到指定3.3.12並編譯修正版，先不要燒錄。以下與第四十七節校正、第四十六節另一輪工具鏈紀錄分開，不將歷史編譯產物當成本機新產物。
+
+### 先封存歷史快照，不重新讀取COM3
+
+從本次對話找回10段未截斷的實際命令輸出，包含首次查詢、TARE前後、CAL 400前後、兩次卸載與追加空載、400g重放、漂移排查、版本查詢及確認5mm間隙後的觀察。保存為：
+
+- [2026-10-21-hx711-status.csv](docs/calibration/2026-10-21-hx711-status.csv)：200筆STATUS、35欄，UTF-8 BOM／CRLF；逐筆保留原始STATUS行、RAW、RX、ERR、AGE、設定與來源工具ID／行號。
+- [2026-10-21-hx711-source.log](docs/calibration/2026-10-21-hx711-source.log)：10段完整原始文字，包括TARE_OK、CAL_USER及主機操作訊息；段落附對話回合識別與開始時間，但該時間不是逐筆採樣時間。
+- [欄位、階段筆數與限制](docs/calibration/README.md)。README同步新增封存入口。
+
+TARE／CAL各拆為前後，共12個階段。200筆中4筆為同RX重複快取：tare_pre RX1577、tare_post RX1636、cal400_post RX3525、unloaded_drift RX8652，各有一筆後續回報標記`duplicate_rx_in_stage=1`，不刪除；全檔196個不同RX。176筆CAL_USER依原offset=-162747.625及counts_per_g=9.977421875換算主機靜態等效克數，24筆UNCAL克數留空。只有兩段45秒觀察的92筆有原始host_elapsed_ms，其餘時間留空；首次未確認的外加荷重也留空，不補成0。
+
+這是已燒錄v1-layout2的歷史STATUS快照，不是fifo-diag1實板數據，也不是所有HX711轉換框。TARE、CAL各32個內部新框沒有逐框列印，無法事後還原，沒有補造。CSV以Spreadsheets技能要求的單一平面資料表、型別與缺值規則整理；同RX資料完整保留並用欄位標記，原始量測與主機換算分欄，不覆寫RAW。
+
+已核對：200筆原行與文字封存逐行相同，RAW／RX／ERR逐筆一致；CSV回讀200筆、4筆重複、196個不同RX、176筆克數、92筆經過時間均符合；雙精度數值回讀與既有第四十七節均值／範圍相符。第一段45秒歷史均值仍按45個不同RX，CAL成功後原5筆均值仍含相同快取，未默默改變統計口徑。
+
+本機封存檔SHA256：
+
+```text
+CSV  226F3C42A4CB6A8A3361C6EC57B9A16E2E757D810E15A04D5183614BA4A4E636
+LOG  963138D78D79B95C4E5D11976F8B48827C0EE15A3EB7BF177362A22B185F87C1
+```
+
+### 本機實際工具鏈更新
+
+本輪更新前實際讀回Arduino CLI **1.5.1**、commit **01f3d4f2b**（2026-06-05），`config dump`為`{}`，core list為**esp32:esp32 3.3.11**。這與第四十五、四十六節nightly-20260918／189327e、core3.1.1→3.3.12的既有紀錄不同；保留既有歷史，不推定環境變動原因，也不直接沿用其「已更新」結論。
+
+CSV封存及回讀核對後，使用`C:\Program Files\Arduino CLI\arduino-cli.exe`依序執行：
+
+```powershell
+& 'C:\Program Files\Arduino CLI\arduino-cli.exe' core update-index --additional-urls 'https://espressif.github.io/arduino-esp32/package_esp32_index.json'
+& 'C:\Program Files\Arduino CLI\arduino-cli.exe' core install esp32:esp32@3.3.12 --additional-urls 'https://espressif.github.io/arduino-esp32/package_esp32_index.json'
+```
+
+兩步結束碼均0。核對[Espressif官方發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)及下載的官方索引，指定核心包為`esp32-core-3.3.12.zip`，SHA256=`87401004f279a206781e368b66098a8383b7cf87cce7811a6afd0163503fa78f`。套件管理器下載／校驗3.3.12與所需各系列工具函式庫，替換舊3.3.11及不再使用的相依工具版本；這些可透過套件管理器重裝，非刪除專案資料。更新後core list與`C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32`目錄均確認3.3.12。CLI未更新；U8g2 2.36.19、Adafruit ADXL375 1.1.2、HX711 1.0.2及其他應用函式庫前後清單相同。
+
+### 候選來源與編譯範圍
+
+候選仍為7c75fb6帶入的`05-test NMK99 MEASUREMENT v1-layout2-fifo-diag1`；本輪未修改任何01～05韌體或測試來源。編譯時HEAD為60ec5a37dfb8bc21f95562d78f65a171dd3ab3e6，05-test的Git blob為`b913c8dec4c6de6bcf5e2b15fc1f01be3c75f7fd`，本機來源檔SHA256為`93231EC5C1ECC702D52FEB1432666F55A0A27E83EE16223DF092858756717835`。
+
+以jobs2、FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`重新編譯，指定全新目錄`C:\Users\tseng\AppData\Local\Temp\irt-05-local3312-20261021-01a15e7f`，未覆寫歷史產物。`build.options.json`確認hardwareFolders指向**3.3.12**及本專案05-test；命令未帶`--upload`、`--port`或其他燒錄操作。
+
+最終編譯結束碼0：Flash **351921 bytes（26%，上限1310720）**、RAM **69428 bytes（21%，上限327680）**，剩餘**258252 bytes**。生成CPP確認有最終`v1-layout2-fifo-diag1`識別、`printFifoInit`及SCK25／DATA33；開機tare_raw／counts_per_g仍為0，不將本輪未驗證的校正係數寫成預設。
+
+本次程式產物`05-test.ino.bin`實際檔案長度**352064 bytes**（不是編譯報告的程式儲存使用量），SHA256：
+
+```text
+D036655DFA6B6499117A30430CD3F02FDC99CE4E9528B932B8F7ED98914E973A
+```
+
+這是本輪產物雜湊，與第四十六節歷史雜湊不同，不以相同Flash／RAM用量推定兩個二進位逐位元相同。bin及elf留在上述暫存目錄，未納入Git；README開發環境改列本輪實際CLI／core與產物，保留歷史章節原文。
+
+本輪另執行`node tests/05-test.test.cjs`的18組及`node tests/05-fifo-diag.test.cjs`的19組，**37組全部通過**。這是來源邏輯／結構主機模擬；新core編譯成功不是硬體時序、FIFO漏樣、HX711準確度或動態量測驗證。
+
+### 裝置與未完成事項保持原狀
+
+全輪沒有開啟COM3、上傳韌體、OTA、主動重置、斷電、送TARE／CAL／UNCAL或恢復係數；不會以新建置取代裝置目前的v1-layout2。沒有從裝置重新確認RAM是否仍保留，不能把「未主動干預」當成期間供電永遠不中斷的證明。第四十七節最後已知狀態仍為CAL_USER／HX=OK／ERR=2；回零及重放偏差尚待排查，VIN-GND與E+對E−各約20秒的新電壓範圍仍待使用者回覆。
+
+原已燒錄版歷史`C:\Users\tseng\AppData\Local\Temp\irt-05-nmk99-layout2\05-test.ino.bin`仍在，SHA256重新核對為`2C3D9AC1A1FD5D64B5D5FD9AC690D439D8F4402112BE9CA8F89DD7A99EFED79C`，未覆寫；舊core如需回復可另經套件管理器重裝，但本輪未回復或重新部署。使用者這次未要求Git提交，故新增封存及README／handoff更新留在工作區，未另commit或push。
+
+<a id="fifo-diag1-deployment-20261021"></a>
+
+## 四十九、2026-10-21 fifo-diag1重新編譯、COM3燒錄、啟動檢查與封存提交
+
+### 授權、安全與燒錄前證據
+
+使用者在前節只編譯完成後，另明確要求「請編譯燒錄並commit／push」。已告知重置／燒錄會清除RAM中的去皮及校正，不會自動恢復歷史係數；使用者亦回覆「已固定並隔離外部電源，USB供電中」，才執行裝置重置及燒錄。沒有執行正式落下或電磁鐵釋放。
+
+Arduino CLI列舉COM3為USB Serial、VID0x1A86／PID0x7523，另有COM1但未對其操作。先以115200／8N1、Handshake=None、DTR=false／RTS=false開COM3，只送STATUS並讀約6秒，共7筆：
+
+| 項目 | 重置前實際讀回 |
+|---|---|
+| 狀態 | 全為IDLE／NONE／CAL_USER／HX=OK／ADXL=OK |
+| RAW／RX | -164044～-163888；63376→63426 |
+| ERR／AERR／FIFO_FULL | 7／0／0，7筆均未增加 |
+| 接腳及設定 | SCK25、DATA33、RGB32:OFF_REQ、LAYOUT2、225mm、POL=-1/-1、UP=DN=0、OLED=0x3C |
+
+因此舊版RAM的CAL_USER旗標當時仍在，但本輪沒有讀回offset／比例的RAM數值，不把旗標等同獨立係數核驗。累計ERR已從第四十七節最後已知2增加至7，新增5次的確切時刻及原因未知，不能將整段供電期間記為零錯誤。
+
+讀取結束並釋放COM3後，以esptool5.3.1 `--chip esp32 --port COM3 --baud 115200 --before default-reset --after no-reset read-mac`確認ESP32-D0WD-V3、revision3.1、MAC **e0:8c:fe:a8:42:bc**，與歷史同一板。此身分核對已將裝置重置並停在bootloader，並非只讀命令就能保留RAM；本次屬使用者已授權的部署流程，未寫Flash前已先封存舊狀態。
+
+### 本輪重新編譯及實際上傳產物
+
+沿用Arduino CLI1.5.1／01f3d4f2b、ESP32 core3.3.12及原應用函式庫，沒有再次升級套件。01～05韌體及測試來源未改；來源仍為7c75fb6的fifo-diag1，05-test Git blob為`b913c8dec4c6de6bcf5e2b15fc1f01be3c75f7fd`，來源檔SHA256為`93231EC5C1ECC702D52FEB1432666F55A0A27E83EE16223DF092858756717835`。`git fetch origin`確認編譯開始時HEAD／origin/main均為60ec5a3，沒有遺漏遠端變更。
+
+新建唯一產物目錄`C:\Users\tseng\AppData\Local\Temp\irt-05-flash3312-20261021-01a15e7f`，重新執行：
+
+```powershell
+& 'C:\Program Files\Arduino CLI\arduino-cli.exe' compile --jobs 2 --fqbn 'esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40' --build-path 'C:\Users\tseng\AppData\Local\Temp\irt-05-flash3312-20261021-01a15e7f' '.\05-test'
+& 'C:\Program Files\Arduino CLI\arduino-cli.exe' upload --port COM3 --fqbn 'esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40' --input-dir 'C:\Users\tseng\AppData\Local\Temp\irt-05-flash3312-20261021-01a15e7f' '.\05-test'
+```
+
+編譯結束碼0：Flash **351921bytes（26%）**、RAM **69428bytes（21%）**、剩餘258252bytes；37組主機模擬檢查再次全部通過。build.options.json確認hardwareFolders為core3.3.12，生成CPP有fifo-diag1、SCK25／DATA33。主程式bin長352064bytes，本次重新編譯／實際燒錄檔SHA256為：
+
+```text
+B62CDBCB2FF2DB21DB86AA96C1751AC1AEAA5533B40B216CFA2890FE71C750E1
+```
+
+這不是第四十八節僅編譯的D036開頭產物，也不覆寫其歷史記錄。以同一個新產物目錄上傳COM3，bootloader、partitions、boot_app0及主程式共四區段均`Hash of data verified`，程式寫入352064bytes，整體結束碼0並由RTS重置。未執行全晶片erase-flash、未使用COM1、未自行更換板型或Flash參數。原始輸出見[燒錄紀錄](docs/deployment/2026-10-21-fifo-diag1-upload.log)；bin／elf留在暫存目錄，不提交二進位檔。
+
+### 新版啟動及約14秒待機檢查
+
+為保存完整啟動訊息，上傳後先開啟COM3擷取，再在DTR=false下將RTS置true約100ms後回false，作一次明確的啟動驗證重置；未把這次操作描述為不重置讀取。隨後只送HELP、STATUS及兩次ADXL_DIAG，未送TARE、CAL、UNCAL、POL、DIST、ARM、CLEAR、DUMP或STOP。結束後DTR／RTS均false、關閉並釋放COM3。
+
+| 項目 | 本輪新版本實際讀回 |
+|---|---|
+| 啟動識別 | `05-test NMK99 MEASUREMENT v1-layout2-fifo-diag1; UNCAL` |
+| OLED | ACK=0x3C、SH1106、4x6及安全界線；仍需使用者目視，不當成畫面已驗證 |
+| ADXL | READY、ACK53=1、ACK1D=0、IDENTIFIED=1、RATE=0x0A、FIFO=0x9F |
+| 狀態快照 | 15筆，均IDLE／NONE／UNCAL／HX=OK／ADXL=OK |
+| RAW／RX／AGE_ms | -164100～-163976／1→118／16～205ms |
+| ERR／AERR／FIFO_FULL | 全段0／0／1；GPIO及225mm、未設定極性沿用 |
+| 新命令 | HELP列出ADXL_DIAG，兩次查詢均有完整快取診斷回應 |
+
+重置已清除舊RAM去皮及比例，**現在UNCAL**；沒有自動恢復歷史offset、counts_per_g或重跑校正。ERR從重置前7到新開機0屬計數生命週期重開，不能宣稱舊握手異常已修復。
+
+### FIFO診斷實測，未宣告根因或修復
+
+初始化快取為`PRE_VALID=1 PRE_N=32 PRE_SRC=0x83`、`POST_VALID=1 POST_N=0 POST_SRC=0x81`，attempt=1。兩次ADXL_DIAG約在開機2.5秒及8.5秒，ACC_RX由195到763；均`FULL_OBS=1 DEPTH_OBS=0 OVR_OBS=1 DIAG_ERR=0`，已觀察最大深度14。FIRST與LAST均為`US=505194 N=3 SRC=0x81 PHASE=0`，這個短窗口未再增加。
+
+首次poll快取PRE為`US=2543657 N=12 SRC=0x80`、POST為`US=2557374 N=1 SRC=0x80`；後次PRE為`US=8577653 N=11 SRC=0x80`、POST為`US=8590320 N=2 SRC=0x80`。最大poll開始間隔140533µs；OLED SENDS由9到33、最後耗時118341→118329µs，最大118341µs。這些是主機軟體時間及分開的寄存器觀察，不是同時快照、示波器或精確硬體事件時刻。
+
+本次總警示由D0來源觀察觸發，未從輪詢快取觀察到深度≥32；**不等於已證明從未滿載、零漏樣、舊旗標為唯一原因或已修復**。初始化前N=32與輪詢最大深度14屬不同觀察階段，不能互相覆蓋；尚未進入活動記錄或正式落下，也未改取樣率、重設邏輯或清除統計來消除警示。完整前後狀態、MAC與啟動輸出見[序列原始紀錄](docs/deployment/2026-10-21-fifo-diag1-serial.log)。
+
+### 封存、提交範圍與接續
+
+README改列已部署版本、UNCAL、實際新bin雜湊及FIFO短期待機結果；第四十七、四十八節保留原歷史時間界線，不把先前「未燒錄」記錄覆寫為當時已部署。原200筆校正CSV及原始log雜湊重核相同，新部署前後資料另存deployment，不混入原CSV；校正封存說明補上兩者的時序。
+
+依使用者本次授權，提交README.md、handoff.md、docs/calibration內三個封存／說明檔，以及docs/deployment內兩份原始部署log，共7檔。既有兩張load_cell照片已於60ec5a3提交，這次未修改；也未將本機腳本、暫存產物或其他檔案混入。推送完成與實際commit雜湊由後續Git輸出、遠端main讀回核對，避免為自我引用在commit內預填自身雜湊。
+
+原始log保留工具輸出的進度列行尾空白及校正封存檔末空行，不為消除Git空白警告而改寫歷史證據；文件與CSV另做`git diff --cached --check`通過，log則核對完整輸出、Hash校驗筆數及既有封存雜湊。Git既有core.autocrlf=true會在索引正規化文字換行；第四十八節SHA256描述的是本機UTF-8／CRLF封存檔，不與Git blob識別混用。
+
+接續需使用者確認OLED八行及RGB熄燈的實際外觀；新VIN-GND與E+對E−電壓範圍仍未回覆。保持空托盤／供電與安全條件，先核對供電及機械穩定，再明確安排新版的去皮、已知重量校正與回零／重複性檢查；不要直接套用舊v1-layout2係數。Tracker極性、動態資料完整性、多點準確度、正式落下與動態力驗證均未完成。
+
