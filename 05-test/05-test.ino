@@ -1,5 +1,6 @@
 // 05-test.ino：第五版整合量測程式，整合 ADXL375、HX711、雙 Tracker 與 SH1106 OLED。
 // 本版為量測流程第一版；尚未完成荷重校正、高速計時、完整衝擊與長時間驗證。
+// 二零二六年十月二十一日FIFO診斷候選版只完成主機檢查與編譯後待驗證，不代表已燒錄或排除實體漏樣。
 // 實板為NMK99v1；HX711改接SCK=25、DATA=33，避開GPIO32板載WS2812，改線須先斷電。
 // 荷重元仍黑接 E+、白接 E-、綠接 A+、紅接 A-；舊版SCK32程式不可直接套用本版接線。
 // HX711 VIN、VIO 與其餘模組沿用同一個 3V3，GND 共地，B+ 與 B- 不接。
@@ -49,6 +50,19 @@ int16_t acc_x = 0, acc_y = 0, acc_z = 0; // 保存最新三軸原始計數。
 int32_t hx_raw = 0; // 保存原始荷重值，包含正負滿量程。
 uint32_t hx_start_ms = 0, hx_last_ms = 0, acc_last_ms = 0; // 保存資料年齡及首筆等待起點。
 uint32_t hx_rx = 0, hx_errors = 0, acc_errors = 0, fifo_full = 0; // 累計接收、握手、I²C 與 FIFO 滿載警示。
+uint32_t acc_rx = 0, fifo_depth_hits = 0, fifo_overrun_hits = 0, fifo_diag_errors = 0; // 分開累計三軸、警示與選用診斷交易錯誤，不改原AERR語意。
+uint8_t fifo_last_entries = 0, fifo_last_source = 0, fifo_peak_entries = 0; // 保存最近成功讀前深度、來源原值及最高深度。
+uint32_t fifo_snapshot_us = 0, fifo_poll_us = 0, fifo_poll_gap_max_us = 0; // 保存讀前快照時間與最大輪詢間隔，不等同感測器採樣時間。
+bool fifo_pre_valid = false, fifo_poll_seen = false; // 分開標記最近讀前交易有效性及輪詢時間基準是否存在。
+bool fifo_observed_seen = false, fifo_poll_gap_seen = false; // 歷來成功讀回與至少一段輪詢間隔各有有效旗標，避免未知印成零。
+uint8_t fifo_post_entries = 0, fifo_post_source = 0; // 保存最近一次排讀後快照，不宣稱與讀前值同時形成。
+uint32_t fifo_post_us = 0; bool fifo_post_valid = false; // 排讀後快照帶獨立時間及有效旗標，空輪詢不假造新快照。
+uint32_t fifo_first_us = 0, fifo_event_us = 0; // 保留首次與最近警示的主機觀察時間，零也是合法開機時間。
+uint8_t fifo_first_entries = 0, fifo_first_source = 0, fifo_first_phase = IDLE; // 首次警示保存深度、原始來源及狀態，不因恢復而覆寫。
+uint8_t fifo_event_entries = 0, fifo_event_source = 0, fifo_event_phase = IDLE; // 最近警示另外保存，不以最近正常快照覆蓋證據。
+uint8_t fifo_init_pre_entries = 0, fifo_init_pre_source = 0, fifo_init_post_entries = 0, fifo_init_post_source = 0; // 初始化前後保留原始線索，不將清理後零值冒充從未警示。
+bool fifo_init_pre_valid = false, fifo_init_post_valid = false; uint32_t adxl_init_attempts = 0; // 初始化失敗時以有效旗標區分未知與真零。
+uint32_t oled_last_us = 0, oled_max_us = 0, oled_send_count = 0; // 實測主機同步畫面傳送耗時，供後續實機排查阻塞來源。
 uint32_t trial_hx_errors = 0, trial_acc_errors = 0, trial_fifo_full = 0; // 保存試驗起點計數，完成時固定其差值。
 uint32_t trial_hx_end = 0, trial_acc_end = 0, trial_fifo_end = 0; // 結束後不讓即時診斷改寫已完成試驗的錯誤統計。
 uint16_t acc_count = 0, hx_count = 0, trial_sat = 0; // 保存本次緩衝資料筆數及滿量程框數。
@@ -136,15 +150,34 @@ bool resetFifo() { // 在待機或啟動試驗前清除舊 FIFO，活動期間�
   return writeAdxl(0x38, 0x00) && writeAdxl(0x38, 0x9F); // 先旁路清空，再啟用三十二層串流與三十一筆水位。
 } // 結束 FIFO 重設。
 
+void printFifoInit() { // 重印已保存的初始化前後快取，晚開序列監控也能取得同一份證據。
+  if (isRecording()) return; // 活動期間不輸出初始化診斷。
+  Serial.printf("# FIFO_INIT attempt=%lu PRE_VALID=%d ", static_cast<unsigned long>(adxl_init_attempts), fifo_init_pre_valid); // 有效旗標與初始化嘗試次數一起保留。
+  if (fifo_init_pre_valid) Serial.printf("PRE_N=%u PRE_SRC=0x%02X ", fifo_init_pre_entries, fifo_init_pre_source); else Serial.print("PRE_N=NA PRE_SRC=NA "); // 未成功讀回不能印成FIFO空或沒有過量旗標。
+  Serial.printf("POST_VALID=%d ", fifo_init_post_valid); // 讀後獨立判斷，不沿用讀前成功狀態。
+  if (fifo_init_post_valid) Serial.printf("POST_N=%u POST_SRC=0x%02X", fifo_init_post_entries, fifo_init_post_source); else Serial.print("POST_N=NA POST_SRC=NA"); // 不把預設零當作有效寄存器值。
+  Serial.println("; snapshots_not_simultaneous"); // 前後暫存器交易並非同時取樣。
+} // 結束初始化快取輸出。
+
 void initializeAdxl() { // 使用既有函式庫確認晶片身分，再設定可讀回的量測參數。
   const bool ack_expected = i2cAck(ADXL_ADDR), ack_alternate = i2cAck(0x1D); // 額外列出預期與替代位址，不自動更改接線或裝置位址。
+  ++adxl_init_attempts; fifo_init_pre_valid = fifo_init_post_valid = false; // 每輪重試有獨立旗標，不沿用上次成功的初始化判斷。
+  fifo_pre_valid = fifo_post_valid = false; // 新初始化尚無輪詢快照，先使舊輪詢有效旗標失效但不清除累計證據。
+  fifo_init_pre_entries = fifo_init_pre_source = fifo_init_post_entries = fifo_init_post_source = 0; // 未知值須配合有效旗標閱讀，不把預設零當作讀回。
+  if (ack_expected) fifo_init_pre_valid = readAdxl(0x39, &fifo_init_pre_entries, 1) && readAdxl(0x30, &fifo_init_pre_source, 1); // 在驅動開始量測與重設前保存仍供電感測器的狀態。
+  if (ack_expected && !fifo_init_pre_valid) ++fifo_diag_errors; // 選用快照失敗另計，不改既有初始化判定或資料交易錯誤數。
+  fifo_init_pre_entries &= 0x3F; // 只取筆數欄位，來源位元保持原值。
   adxl_ready = adxl.begin(ADXL_ADDR); // 函式庫檢查裝置識別碼 0xE5 並設定固定量程。
   const bool identified = adxl_ready; // 區分晶片識別與後續設定失敗，避免一律歸因於接線。
   if (adxl_ready) adxl_ready = writeAdxl(0x2C, 0x0A) && resetFifo(); // 設一百赫茲，低於一百千赫 I²C 的建議上限。
   uint8_t rate = 0, mode = 0; // 保存寄存器讀回結果，不只相信寫入呼叫。
   if (adxl_ready) adxl_ready = readAdxl(0x2C, &rate, 1) && readAdxl(0x38, &mode, 1) && rate == 0x0A && mode == 0x9F; // 核對實際設定。
+  if (adxl_ready) fifo_init_post_valid = readAdxl(0x39, &fifo_init_post_entries, 1) && readAdxl(0x30, &fifo_init_post_source, 1); // 只觀察既有重設後旗標，不新增資料丟棄或清零總警示。
+  if (adxl_ready && !fifo_init_post_valid) ++fifo_diag_errors; // 診斷失敗不觸發額外重設或改變原重試時機。
+  fifo_init_post_entries &= 0x3F; // 初始化前後快照均使用相同深度欄位。
   Serial.printf("# ADXL375=%s address=0x53 ODR=100Hz FIFO=STREAM I2C=100kHz\n", adxl_ready ? "READY" : "ERROR"); // 回報啟動或待機重試結果。
   Serial.printf("# ADXL_DIAG ACK53=%d ACK1D=%d IDENTIFIED=%d RATE=0x%02X FIFO=0x%02X\n", ack_expected, ack_alternate, identified, rate, mode); // 沒有ACK或寄存器讀回不符均留下證據，不猜測硬體故障。
+  printFifoInit(); // 初始化來源只作證據，不把未排讀的舊旗標當成已證明原因。
 } // 結束加速度計初始化。
 
 void initializeOled() { // 沿用第四版已正常工作的控制器與位址。
@@ -211,13 +244,35 @@ void pollHx() { // 延續第四版的固定二十五脈衝與讀後回高檢查�
   collectCalibration(hx_raw); // 只有明確校正命令才收集資料。
 } // 結束荷重輪詢。
 
-void pollAdxl() { // 排空 FIFO，避免 OLED 傳輸期間的中間樣本直接遺失。
+void noteFifoPoll(uint32_t now_us) { // 記錄實際輪詢間隔，首次不把開機至今誤當阻塞時間。
+  if (fifo_poll_seen) { // 只有前一次輪詢存在才有可比較的間隔。
+    const uint32_t gap_us = now_us - fifo_poll_us; // 使用無號差值處理單次微秒計時溢位。
+    if (gap_us > fifo_poll_gap_max_us) fifo_poll_gap_max_us = gap_us; // 保留最大間隔，不在正常恢復後清除。
+    fifo_poll_gap_seen = true; // 至少兩次poll才有已觀察間隔，零間隔也合法。
+  } // 結束既有基準比較。
+  fifo_poll_us = now_us; fifo_poll_seen = true; // 更新下一次比較的主機時間基準。
+} // 結束輪詢間隔觀察。
+
+void observeFifo(uint8_t entries, uint8_t source, uint32_t now_us) { // 保留原合併警示，另分開來源及事件證據。
+  fifo_last_entries = entries; fifo_last_source = source; fifo_snapshot_us = now_us; // 保存成功讀前快照，而非目前即時FIFO深度。
+  fifo_observed_seen = true; // 成功讀回過才可將最高深度當作有意義數值。
+  if (entries > fifo_peak_entries) fifo_peak_entries = entries; // 不把最高深度當作精準漏樣數。
+  if (entries < 32 && !(source & 1)) return; // 原門檻不變，水位位元一不等同滿載或溢位。
+  ++fifo_full; // 同一輪即使兩條件都成立，原合併計數仍只加一次。
+  if (entries >= 32) ++fifo_depth_hits; // 深度滿載觀察次數，未必對應唯一硬體事件。
+  if (source & 1) ++fifo_overrun_hits; // 原始過量位元觀察次數，也不等於遺失一筆。
+  if (fifo_full == 1) { fifo_first_us = now_us; fifo_first_entries = entries; fifo_first_source = source; fifo_first_phase = phase; } // 首次時間可為零，不能拿零當未記錄的哨兵。
+  fifo_event_us = now_us; fifo_event_entries = entries; fifo_event_source = source; fifo_event_phase = phase; // 最近事件與正常快照分開，保留恢復前線索。
+} // 結束警示來源觀察。
+
+void pollAdxl() { // 讀出本輪開始時的FIFO筆數，新到資料可留至下一輪。
   if (!adxl_ready || millis() - last_fifo_ms < 2) return; // 每兩毫秒檢查，未連線時不反覆讀不存在裝置。
   last_fifo_ms = millis(); // 記錄主機輪詢時間。
+  noteFifoPoll(micros()); fifo_pre_valid = false; // 輪詢失敗也保留排程間隔，舊快照則明確標成非本輪有效。
   uint8_t entries = 0, source = 0; // 保存 FIFO 狀態與滿載警示。
   if (!readAdxl(0x39, &entries, 1) || !readAdxl(0x30, &source, 1)) { ++acc_errors; return; } // 短讀明確計數，不產生假零。
   entries &= 0x3F; // 只取 FIFO 筆數欄位。
-  if (entries >= 32 || (source & 1)) ++fifo_full; // 滿載僅記為可能漏樣警示，不假造遺失筆數。
+  observeFifo(entries, source, micros()); fifo_pre_valid = true; // 不改原警示門檻，記錄何時由哪個條件加計。
   if (entries > 32) { ++acc_errors; return; } // 拒絕不合法的 FIFO 長度。
   for (uint8_t n = 0; n < entries; ++n) { // 固定上限三十二筆，匯流排錯誤不進入無限等待。
     uint8_t bytes[6]; // 一次讀完整三軸，符合 FIFO 彈出規則。
@@ -225,14 +280,38 @@ void pollAdxl() { // 排空 FIFO，避免 OLED 傳輸期間的中間樣本直接
     acc_x = static_cast<int16_t>((static_cast<uint16_t>(bytes[1]) << 8) | bytes[0]); // 組合 X 軸有正負號計數。
     acc_y = static_cast<int16_t>((static_cast<uint16_t>(bytes[3]) << 8) | bytes[2]); // 組合 Y 軸有正負號計數。
     acc_z = static_cast<int16_t>((static_cast<uint16_t>(bytes[5]) << 8) | bytes[4]); // 組合 Z 軸有正負號計數。
-    acc_seen = true; acc_last_ms = millis(); // 更新成功交易的資料年齡。
+    acc_seen = true; acc_last_ms = millis(); ++acc_rx; // 每次完整三軸交易才累計，非OLED快照筆數。
     if (isRecording()) { // 只在明確 ARM 後保存試驗資料。
       if (acc_count >= ACC_CAPACITY) abortTrial(BUFFER_FULL); // 緩衝區滿時中止而不覆寫。
       else acc_records[acc_count++] = {micros() - armed_us, acc_x, acc_y, acc_z}; // FIFO 舊樣本仍標為讀出時間，不能誤當精確取樣時刻。
     } // 結束單筆加速度保存。
     delayMicroseconds(5); // 滿足 FIFO 兩次資料讀取間至少五微秒要求。
   } // 結束本輪 FIFO 排空。
+  if (!isRecording() && (entries || (source & 1))) { // 只有非活動且有排讀或警示時才新增快照，保留記錄期間原I²C交易順序。
+    fifo_post_valid = readAdxl(0x39, &fifo_post_entries, 1) && readAdxl(0x30, &fifo_post_source, 1); // 讀後只保存狀態，不增加原合併警示次數或重設FIFO。
+    fifo_post_us = micros(); fifo_post_entries &= 0x3F; // 此快照有獨立時間，不與讀前值拼成同時狀態。
+    if (!fifo_post_valid) ++fifo_diag_errors; // 診斷交易錯誤單獨計數，不讓選用讀回改變既有AERR品質語意。
+  } // 結束讀後觀察。
 } // 結束加速度輪詢。
+
+void printFifoDiagnostics() { // 只輸出已保存的診斷快取，不讀I²C、不重設FIFO或清除警示。
+  if (isRecording()) return; // 活動期間不新增慢速診斷輸出。
+  Serial.printf("# FIFO_DIAG scope=since_boot ACC_RX=%lu FULL_OBS=%lu DEPTH_OBS=%lu OVR_OBS=%lu DIAG_ERR=%lu\n", static_cast<unsigned long>(acc_rx), static_cast<unsigned long>(fifo_full), static_cast<unsigned long>(fifo_depth_hits), static_cast<unsigned long>(fifo_overrun_hits), static_cast<unsigned long>(fifo_diag_errors)); // 所有數字為觀察統計，選用診斷錯誤另外標記。
+  if (fifo_observed_seen) Serial.printf("# FIFO_DEPTH_MAX N=%u\n", fifo_peak_entries); else Serial.println("# FIFO_DEPTH_MAX NA"); // 從未成功讀回深度時，不以預設零冒充FIFO空。
+  if (fifo_poll_gap_seen) Serial.printf("# FIFO_POLL_GAP_MAX US=%lu\n", static_cast<unsigned long>(fifo_poll_gap_max_us)); else Serial.println("# FIFO_POLL_GAP_MAX NA"); // 首輪尚無間隔，使用缺值而不是零耗時。
+  if (fifo_pre_valid) Serial.printf("# FIFO_PRE US=%lu N=%u SRC=0x%02X\n", static_cast<unsigned long>(fifo_snapshot_us), fifo_last_entries, fifo_last_source); else Serial.println("# FIFO_PRE NA"); // 最近讀前交易失敗或尚未讀取時，不把舊快取印成新結果。
+  if (fifo_post_valid) Serial.printf("# FIFO_POST US=%lu N=%u SRC=0x%02X; not_simultaneous_with_PRE\n", static_cast<unsigned long>(fifo_post_us), fifo_post_entries, fifo_post_source); else Serial.println("# FIFO_POST NA"); // 讀後可來自較早一輪非活動排讀，必須比對獨立時間。
+  if (fifo_full) Serial.printf("# FIFO_EVENT FIRST_US=%lu FIRST_N=%u FIRST_SRC=0x%02X FIRST_PHASE=%u LAST_US=%lu LAST_N=%u LAST_SRC=0x%02X LAST_PHASE=%u\n", static_cast<unsigned long>(fifo_first_us), fifo_first_entries, fifo_first_source, fifo_first_phase, static_cast<unsigned long>(fifo_event_us), fifo_event_entries, fifo_event_source, fifo_event_phase); else Serial.println("# FIFO_EVENT NONE"); // 無警示不假造時間，狀態沿用零待機至五故障。
+  if (oled_send_count) Serial.printf("# OLED_TIMING SENDS=%lu LAST_US=%lu MAX_US=%lu\n", static_cast<unsigned long>(oled_send_count), static_cast<unsigned long>(oled_last_us), static_cast<unsigned long>(oled_max_us)); else Serial.println("# OLED_TIMING SENDS=0 LAST_US=NA MAX_US=NA"); // 耗時是主機呼叫量測，未傳送時不印假零耗時。
+  printFifoInit(); // 只重印快取，避免監控開晚就遺失初始化前後證據。
+} // 結束唯讀診斷輸出。
+
+void sendOledBuffer() { // 集中觀察完整畫面傳送時間，維持原面板與傳送內容。
+  if (isRecording()) return; // 防止活動期間因新增診斷而意外送畫面。
+  const uint32_t before_us = micros(); // 起點置於實際同步傳送之前。
+  oled.sendBuffer(); // 保留原有全畫面傳送，不改取樣率、匯流排速度或版面。
+  oled_last_us = micros() - before_us; if (oled_last_us > oled_max_us) oled_max_us = oled_last_us; ++oled_send_count; // 無號差保留最近與最長呼叫耗時。
+} // 結束畫面傳送計時。
 
 void printStatus() { // 待機或試驗後輸出可供接線診斷的完整狀態。
   Serial.printf("# STATUS phase=%s reason=%s CAL=%s HX=%s RAW=", phaseName(), reasonName(), calibration_valid ? "CAL_USER" : "UNCAL", hxStatus()); // 不以原始數字冒充克數。
@@ -257,7 +336,7 @@ void updateOled() { // 僅在非記錄期間刷新八行，避免阻塞試驗採
   drawOledLine(6, line); // 第七行過長時只裁本行，不移動下方提示。
   if (phase == FAULT) snprintf(line, sizeof(line), "%s", reasonName()); else if (cal_mode) snprintf(line, sizeof(line), "CAL %u/%u HOLD STILL", cal_count, CAL_SAMPLES); else snprintf(line, sizeof(line), "%s", phase == DONE ? "DUMP via USB / CLEAR" : "HELP via USB; no relay"); // 第八行保留中止原因及操作提示。
   drawOledLine(7, line); // 最後一行仍在下方四像素安全區內。
-  oled.sendBuffer(); // 僅非記錄時傳送完整畫面，FIFO 保存其間加速度資料。
+  sendOledBuffer(); // 僅非記錄時傳送完整畫面，另保存主機傳送耗時供排查。
 } // 結束畫面更新。
 
 void armTrial() { // 只啟動資料記錄，不觸發釋放機構。
@@ -266,7 +345,7 @@ void armTrial() { // 只啟動資料記錄，不觸發釋放機構。
   if (digitalRead(UP_PIN) == upper_active || digitalRead(DN_PIN) == lower_active) { Serial.println("# ARM_REJECT both markers must be away from sensors"); return; } // 已觸發的感測頭不可當作新進入緣。
   if (strcmp(hxStatus(), "OK") || !adxl_ready || !acc_seen || millis() - acc_last_ms >= 1000) { Serial.println("# ARM_REJECT sensors must be recent and non-SAT"); return; } // 不帶著已知失聯或飽和開始試驗。
   Serial.println("# ARM: recording only; NO RELEASE; OLED/live output paused; STOP aborts; speed NA if DIST=0"); // 在正式計時前輸出操作限制。
-  if (oled_address) { oled.clearBuffer(); drawOledLine(1, "05 ARM - OLED PAUSED"); drawOledLine(3, "NO RELAY / USB STOP"); drawOledLine(5, "Recording <=14 seconds"); oled.sendBuffer(); } // ARM提示也沿用安全邊界，不在活動期間送畫面。
+  if (oled_address) { oled.clearBuffer(); drawOledLine(1, "05 ARM - OLED PAUSED"); drawOledLine(3, "NO RELAY / USB STOP"); drawOledLine(5, "Recording <=14 seconds"); sendOledBuffer(); } // ARM提示也沿用安全邊界，不在活動期間送畫面。
   Serial.flush(); // 在起點前送完提示，活動視窗不排入一般診斷文字。
   if (!resetFifo()) { ++acc_errors; Serial.println("# ARM_REJECT FIFO reset failed"); return; } // 慢速提示全部完成後才清空 FIFO，防止畫面傳輸期間的舊樣本混入。
   acc_count = hx_count = trial_sat = 0; trial_stale = trial_acc_stale = completion_reported = false; // 初始化本次統計，不變更校正值。
@@ -323,8 +402,9 @@ void processCommand(char *line) { // 命令區分活動安全操作與待機設�
   char *one = strtok_r(nullptr, " \t", &save), *two = strtok_r(nullptr, " \t", &save), *extra = strtok_r(nullptr, " \t", &save); // 最多接受命令及兩個參數。
   if (!strcmp(cmd, "STOP") && !one) { cal_mode = 0; abortTrial(USER_STOP); return; } // STOP 隨時可取消收集或試驗，但不代表物理停止落體。
   if (isRecording()) return; // 活動期間除 STOP 外不通訊、不更動量測條件。
-  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP STATUS | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 提供可直接操作的命令列表。
+  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP STATUS | ADXL_DIAG (cached FIFO observations) | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 提供可直接操作的命令列表。
   if (!strcmp(cmd, "STATUS") && !one) { printStatus(); return; } // 狀態查詢不改動資料。
+  if (!strcmp(cmd, "ADXL_DIAG") && !one) { printFifoDiagnostics(); return; } // 額外診斷只印快取，記錄期間已由上方統一忽略。
   if (!strcmp(cmd, "DUMP") && !one) { dumpTrial(); return; } // 匯出只在已完成或中止時執行。
   if (!strcmp(cmd, "CLEAR") && !one && !cal_mode) { phase = IDLE; reason = NONE; acc_count = hx_count = 0; completion_reported = false; Serial.println("# CLEARED trial RAM; settings/calibration retained"); return; } // 明確命令才捨棄舊試驗，校正設定仍保留。
   if (phase != IDLE || cal_mode) { Serial.println("# BUSY use STOP for calibration or DUMP/CLEAR for retained trial"); return; } // 固定已完成試驗的設定與校正中參數。
@@ -371,7 +451,7 @@ void setup() { // 安全初始化，不啟動任何釋放輸出。
   initializeOled(); initializeAdxl(); // 分開初始化，缺一裝置仍保留診斷。
   attachInterrupt(digitalPinToInterrupt(UP_PIN), upperInterrupt, CHANGE); // 用變化中斷並在處理內篩選已確認極性。
   attachInterrupt(digitalPinToInterrupt(DN_PIN), lowerInterrupt, CHANGE); // 下閘獨立記時，不以畫面輪詢估通過時間。
-  Serial.println("# 05-test NMK99 MEASUREMENT v1-layout2; UNCAL; SCK25 DATA33; RGB32 OFF requested; OLED SH1106 safe margins; no relay/no automatic release"); // 明確識別NMK99修訂、移腳與安全範圍。
+  Serial.println("# 05-test NMK99 MEASUREMENT v1-layout2-fifo-diag1; UNCAL; SCK25 DATA33; RGB32 OFF requested; OLED SH1106 safe margins; no relay/no automatic release"); // 診斷候選版不代表已燒錄，版面與既有接腳均維持。
   Serial.println("# Not fully validated. Set POL to measured entry levels; DIST in mm; ARM records only; HELP lists commands."); // 開機不猜測缺失參數。
   pollHx(); pollAdxl(); updateOled(); printStatus(); // 顯示首筆或等待狀態，不阻塞等待感測器。
 } // 結束開機。

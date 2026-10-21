@@ -1678,3 +1678,77 @@ README「第五版完整接線」已於原斷電／移腳提醒之後、接線�
 
 FIFO_FULL排查、Tracker OUT電壓／型態／進入極性、等效間距、荷重與加速度校正、長時間及高速動態驗證仍待完成。完整歷史handoff第一至四十三節保留；不要以版面整理或程式功能存在視為正式量測通過。
 
+---
+
+## 四十五、2026-10-21 ADXL375 FIFO_FULL＝1 程式排查與診斷候選版（未燒錄）
+
+### 使用者範圍與本次操作
+
+使用者要求接續排查第五版ADXL375的FIFO_FULL＝1。詢問目前落體固定、電磁鐵外部電源隔離與USB條件後，使用者明確選擇「目前先做程式排查，尚未具備上述條件」。本輪因此只讀取專案與已安裝函式庫、核對原廠資料、修改診斷來源並執行主機檢查與編譯；沒有連線序列埠、讀MAC、重置、燒錄、POL、TARE、CAL、ARM、DUMP或釋放落體。
+
+### 已確認的程式語意與待驗證假說
+
+- 原pollAdxl把FIFO_STATUS的entries≥32或INT_SOURCE的D0 Overrun合併，使fifo_full每次觀察加一；這是開機累計觀察次數，不是目前FIFO深度，也不是遺失筆數。第四十二節13筆快照均為1，只能證明那些快照沒有再看到增加，無法反推首次警示原因。
+- 已安裝Adafruit ADXL375 1.1.2的begin會先寫POWER_CTL＝0x08啟用量測，本案之後才設定100Hz與FIFO。resetFifo仍只有旁路→stream，不讀六個data registers建立旗標清除證據。原廠資料表第14及23頁指出D0在bypass也可能因未讀資料被覆蓋而設；讀INT_SOURCE本身不清D0，需讀data registers。因此MCU重啟而感測器仍供電時帶入舊旗標，是合理但尚未證實的假說；不能直接斷言旁路一定保留或一定清除了它。
+- 正常OLED一幀資料1024bytes，100kHz下資料加ACK的理想傳輸估算約92ms；100Hz、32組FIFO從空累積至滿約320ms。單一正常全畫面傳輸不足以證明必滿，仍須量到既有積存、重試、慢交易與整體服務間隔。原快照亦未執行DUMP，不將長時間匯出視為那次的已知原因。
+- 原六byte完整三軸讀取及至少5µs間隔保留。本輪只讀本輪開始時的entries筆，新樣本可留至下輪；不把一次輪詢稱為保證排至全空。
+
+依據：[ADXL375原廠資料表](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL375.pdf)、已安裝Adafruit_ADXL375.cpp及U8g2 2.36.19的同步sendBuffer原始碼。原始寄存器／事件時間並未在2026-10-20留下，本輪不能宣稱已定位唯一根因或修復實體漏樣。
+
+### 診斷候選版及回歸界線
+
+修改05-test為`v1-layout2-fifo-diag1`，保留SCK25／DATA33、RGB32、225mm、POL未設定與UNCAL預設，沒有改變100Hz、100kHz、原警示門檻、resetFifo、HX711讀取、上下閘中斷、校正、試驗完成凍結或CSV語意；01～04來源不動。
+
+新增ADXL_DIAG唯讀快取命令：分開DEPTH_OBS／OVR_OBS，保留首次與最近警示的entries、source、主機觀察時間與階段、最高深度、成功三軸ACC_RX、最大poll開始間隔、最近／最大OLED sendBuffer呼叫耗時，以及初始化前後快照。既有FIFO_FULL不清零，雙條件同時成立時仍只加一次；無有效觀察印NA，無事件印NONE。讀後快照各有獨立時間，只在非記錄期間新增選用I²C交易；交易失敗另計DIAG_ERR，不混入原AERR，也不改原初始化成功判定。
+
+活動期間新命令不輸出、不送OLED、不新增選用I²C快照或重設FIFO。初始化前後證據可由ADXL_DIAG重印，不需重啟；命令本身只讀RAM。新增待機診斷交易及文字仍會占用主機時間，不能把診斷版耗時當成舊版已實測耗時。
+
+### 主機檢查與最終編譯證據
+
+原tests/05-test.test.cjs共18組、新tests/05-fifo-diag.test.cjs共19組，合計37組通過；新檢查抽取實際函式轉譯，涵蓋兩條件分流、watermark不誤計、雙條件不重複加總、零時間首次、首次／最近證據保留、32位計時溢位、無值NA及活動防護。另比對原FIFO重設、HX、閘中斷、校正、試驗凍結與CSV函式正文未變；此非硬體FIFO、示波器、I²C或完整ESP32排程驗證。
+
+本輪實際環境與舊交接不同：`C:\Program Files\Arduino CLI\arduino-cli.exe version`讀回nightly-20260918、commit189327e；core list及build.options.json確認ESP32 core為3.1.1，實際核心目錄僅見3.1.1。Adafruit ADXL375為1.1.2、U8g2為2.36.19、HX711為1.0.2，未安裝／升級。舊記錄的CLI1.5.1／core3.3.11保留作歷史，不推定其變動原因，也不將本次當作core3.3.11回歸。
+
+最終來源以jobs2、FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`重新編譯成功，結束碼0：Flash370488bytes（28%）、RAM66488bytes（20%）、剩餘261192bytes。生成CPP已核對包含最終無值NA、printFifoInit、成功觀察有效旗標及fifo-diag1版次；不是先前中間來源的編譯結果。
+
+最終bin SHA256為`76DA2E7FF7256A94AD9AFFBB54412DD88C0AED3E82F68F1819F2E3DCA4108116`，產物位於`C:\Users\tseng\AppData\Local\Temp\irt-05-fifo-diag1-20261021`，二進位檔未納入Git。README同步區分已燒錄v1-layout2與診斷候選、補充命令／判讀、37組檢查及工具鏈差異；歷史README封存與PNG未更動。
+
+### 後續實機排查
+
+裝置最近已驗證韌體仍是第四十二節v1-layout2，本次候選尚未燒錄或執行。待使用者具備落體固定、外部電磁鐵電源隔離與USB條件，並明確安排部署後，先核對工具鏈及目標身分，再保存FIFO_INIT、STATUS與間隔數秒的ADXL_DIAG。以首次／最近深度、D0、前後快照與主機阻塞時間，區分啟動旗標與實際滿載；若需要清理或調整初始化，須以清理前後讀回證據驗證，不以抹掉警示作為修復。荷重及加速度仍尚未校正，正式落下與動態驗證未完成。
+
+---
+
+## 四十六、2026-10-21 ESP32 core更新至3.3.12、重新編譯及補列10月20日量測紀錄（未燒錄）
+
+### 使用者追加要求與核心更新
+
+第四十五節完成升級前的程式排查與core3.1.1編譯後，使用者追加要求在README加入昨天排查的量測值，並明確要求將ESP32 core更新到最新穩定版、重新編譯，將結果更新README與handoff後commit、push，先不要燒錄。本節是其後的新進度，第四十五節升級前工具鏈及bin證據保留。
+
+本輪即時讀取Espressif官方`https://espressif.github.io/arduino-esp32/package_esp32_index.json`，以純數字版本篩選、排序，確認最新穩定版為3.3.12；另核對[官方3.3.12發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)，4.0.0-RC1仍為預覽版。索引列核心壓縮檔SHA256為`87401004f279a206781e368b66098a8383b7cf87cce7811a6afd0163503fa78f`。
+
+使用既有`C:\Program Files\Arduino CLI\arduino-cli.exe`先core update-index，再明確core install esp32:esp32@3.3.12，使用官方additional-urls；套件管理器下載、校驗及安裝核心與必要工具。安裝結束碼0，core list與實際核心目錄讀回3.3.12。CLI保持nightly-20260918／189327e，未另升級CLI；U8g2 2.36.19、Adafruit ADXL375 1.1.2與HX711 1.0.2應用函式庫未更新。
+
+### 最新穩定核心重新編譯
+
+同一份05-test `v1-layout2-fifo-diag1`以jobs2、FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`重新編譯。`build.options.json`確認hardwareFolders實際指向core 3.3.12；生成CPP確認包含最終無值NA、成功觀察旗標、printFifoInit與fifo-diag1版次。
+
+最終編譯結束碼0：Flash 351921 bytes（26%）、RAM 69428 bytes（21%）、剩餘 258252 bytes。更新後bin SHA256為`994531E2DD81A632F3F4FC61450766371AB0108D43D459AC333DA76438DC50A0`；產物位於`C:\Users\tseng\AppData\Local\Temp\irt-05-fifo-diag1-esp32-3.3.12-20261021`，二進位檔未納入Git。前述37組主機檢查仍為來源邏輯／結構模擬，不把新核心編譯成功視為真實FIFO或硬體排程通過。
+
+### README補列2026-10-20量測紀錄
+
+README在目前進度下新增日期明確的量測入口與四個可展開區塊，數值依handoff第三十八至四十二節核對：
+
+- 供電／訊號路徑：VIN、VIO與GND完整路徑各0Ω；SCK／DATA未接時ESP32 3V3＝3.29V、HX711 VIN／VIO均3.20V；第四版兩條訊號路徑曾18.2MΩ／16.3MΩ、後續板端到板端均0Ω。保留當時SCK32／DATA33的歷史測點註記，不誤當現行SCK25。
+- 四線分離六組電阻：紅黑312.6Ω、綠白263.6Ω、紅綠351Ω、紅白263.3Ω、黑綠313Ω、黑白400.4Ω。
+- 荷重元舊／新配對電壓：E+對E−為2.77V／約3V，A+對E−為1.20V／約1.36V，A−對E−為2.00V／約1.35V，A+對A−直接量測為−0.81V／電表顯示0V。V單位已確認，但檔位與解析度未確認，不能宣稱精確0mV或由分時粗略讀值相減精算10mV。
+- 序列快照依版本分段記錄空接TIMEOUT、舊配對SAT、更正後15筆OK、初版05與重燒ADXL MISSING，以及NMK99 layout2的13筆HX／ADXL近期OK、FIFO_FULL首筆即1且整段維持1。RAW、RX、ERR、AGE及目視確認分列，電表數值標為使用者現場回報，UART標為當時COM3擷取。
+
+本次只整理既有資料，沒有重新量測；仍尚未校正，不把短時間快照推成全部中間框、長時間或正式動態合格。原歷史README封存、線路圖PNG、01～04與既有3D檔案變動保留。
+
+### 明確未執行事項與提交範圍
+
+本輪未連線序列埠、讀MAC、重置、燒錄、POL、TARE、CAL、ARM、DUMP或釋放落體。裝置最近已驗證版本仍是第四十二節v1-layout2；原始碼候選與新核心只有主機測試及編譯證據。FIFO首次警示根因、實體漏樣、Tracker極性、校正與動態驗證仍待後續。
+
+本輪提交範圍限定05-test/05-test.ino、tests/05-fifo-diag.test.cjs、README.md與handoff.md；核心及工具安裝位於本機Arduino資料目錄，不將套件或bin放入Git。commit與push完成情形以本輪Git輸出及遠端main讀回確認。
+
