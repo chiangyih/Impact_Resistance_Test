@@ -100,7 +100,7 @@ Impact_Resistance_Test/
 │   └── 05-test.test.cjs                   # 從第五版來源轉譯的主機邏輯模擬，不是硬體時序測試
 ├── 圖片/
 │   ├── OS25B10-紅外線對射光電開關.png       # OS25B10 元件參考圖
-│   ├── Snipaste_2026-10-16_22-30-35.png     # 四腳 I²C OLED 實物照片
+│   ├── oled.png                            # 四腳 I²C OLED 實物照片
 │   ├── Snipaste_2026-10-17_22-18-33.png     # Tracker Sensor 接腳標示面
 │   ├── Snipaste_2026-10-17_22-18-47.png     # Tracker Sensor 元件面
 │   ├── PXL_*.jpg                           # 元件、麵包板與機構照片
@@ -215,9 +215,9 @@ ADXL375 應牢固固定在掉落平台上，盡量靠近重心。正式上電前
 
 ## OLED 顯示模組（I²C，規格待確認）
 
-新增實物照片：[Snipaste_2026-10-16_22-30-35.png](圖片/Snipaste_2026-10-16_22-30-35.png)。
+實物照片：[oled.png](圖片/oled.png)。
 
-![四腳 I²C OLED 實物照片](圖片/Snipaste_2026-10-16_22-30-35.png)
+![四腳 I²C OLED 實物照片](圖片/oled.png)
 
 照片可辨識四個端子標示為 `1 VCC`、`2 GND`、`3 SCK`、`4 SDA`。此處將 `SCK` 視為 I²C SCL 時脈腳位；目前不能只由照片確認 OLED 控制器、尺寸、解析度、供電範圍或 I²C 位址。
 
