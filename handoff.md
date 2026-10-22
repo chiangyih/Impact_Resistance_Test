@@ -1,5 +1,7 @@
 # handoff.md
 
+> **2026-10-23暫存清理與備份**：已將7個舊建置目錄及3個CSV匯出暫存檔移入回收桶，原始檔案合計約377.08MiB；尚未清空回收桶，不能記為已釋放磁碟空間。重要歷史產物另有本機ZIP備份，最新實際燒錄版本的完整建置目錄仍保留；位置、雜湊及復原方式見[第五十九節](#temp-build-cleanup-backup-20261023)。本次僅補充清理紀錄並Git封存，硬體維持暫停、不操作COM3。
+
 > **2026-10-22最新計算更正：砝碼為20g × 10個＝200g。** 昨天舊版／新版兩輪都錯輸入CAL 400，離線修正`counts_per_g`分別為19.95484375／20.46921875；原換算克數一律減半，RAW與offset不變。新版200g重放平均203.7602g、60秒空載平均+9.8781g、七張空托盤照片平均+40.0519g。舊章節重量與克數保留當時紀錄，**更正後數值以第五十六節及[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md)為準**。本次只離線修正文檔／資料，硬體維持暫停，修正係數未寫入裝置。
 
 > **校正進度與後續排查入口**：見[第五十八節](#hx711-calibration-progress-next-steps-20261022)。目前已完成歷史重量尺度修正及初步靜態觀察，回零／穩定性與COM3通訊仍待排查，尚未驗證校正合格。該節為恢復工作後的計畫；本次僅補充文件並Git封存，完成後維持暫停、不操作COM3。
@@ -2437,4 +2439,75 @@ README同步已確認的電表型號／量程與暫停狀態，校正索引補�
 本次只補充handoff.md的進度、限制及後續計畫，沿用main與既有origin進行一般commit及非強制push；本次實際commit與同步結果於完成時回覆。原始紀錄、修正CSV、重算工具及韌體不因本次說明更新而修改。
 
 完成文件封存後維持暫停，等待使用者另行要求恢復；本回合未開啟、讀取或寫入COM3，未重置、燒錄、改供電／接線、TARE、CAL、UNCAL或ARM，也未建立背景讀取／排程。Git同步與文檔補充不代表通訊恢復、校正合格或RAM校正仍保留。
+
+<a id="temp-build-cleanup-backup-20261023"></a>
+
+## 五十九、2026-10-23 過時暫存與編譯產物清理、備份位置及保留項目
+
+使用者先要求清除暫存檔及編譯產生的過時檔案，完成後再明確要求將清理結果、備份位置與保留項目補入handoff.md並commit、push至GitHub，完成後維持暫停、不要操作COM3。本節記錄已完成的本機清理；本次後續封存只修改本文件，不重新執行清理或操作硬體。
+
+### 1. 清理範圍與實際結果
+
+清理前Git工作區乾淨，專案內沒有遺留的bin、elf、map、物件檔或一般暫存產物。系統暫存區找到本專案的舊建置及CSV匯出暫存；以build.options.json的sketchLocation核對歸屬，刪除前確認完整絕對路徑均位於`C:\Users\tseng\AppData\Local\Temp\`下的明列目錄、非最新部署建置，七個舊建置目錄無reparse point，亦未發現執行中的相關Arduino編譯／上傳程序。
+
+原先的批次永久刪除與明列單一完整路徑的永久刪除，均遭執行環境安全規則拒絕，這兩次拒絕沒有刪除檔案。之後改採Windows回收桶方式，已將下列7個完整舊建置目錄移入回收桶；表中名稱均相對於上述Temp根目錄：
+
+| 已移入回收桶的目錄 | 原用途 | 原一般檔案數 |
+|---|---|---:|
+| `irt-05-ab7ec2dddcc54b0dbab73dd2cdca1fa7` | 早期05-test建置／部署產物 | 573 |
+| `irt-05-local3312-20261021-01a15e7f` | fifo-diag1／core3.3.12僅編譯候選產物 | 571 |
+| `irt-05-nmk99-layout2` | 舊v1-layout2建置／部署產物 | 573 |
+| `irt-hx711-04-c539fc97cb4844b7920054601f9b5cc8` | 第四版HX711測試建置／部署產物 | 552 |
+| `irt-oled-build-778b122e87c749a08acb75be08c9fe8c` | 舊OLED測試建置／部署產物 | 576 |
+| `irt-tracker-build-bf4dd46201ed406d9c7bc0831ac42a29` | 舊Tracker編譯產物 | 572 |
+| `irt-tracker-upload-bca105b8481843e182d6e39a4eb29534` | 舊Tracker部署建置產物 | 576 |
+
+另將`C:\Users\tseng\AppData\Local\Temp\irt-hx711-csv-20261021-01a15e7f\`內的`build-csv.mjs`、`preview.png`及`source.json`三個匯出輔助暫存檔移入回收桶。此目錄本身仍存在，僅保留原node_modules junction，不將「三個暫存檔已移走」記為整個目錄已刪除。
+
+合計移走**3,996個一般檔案、395,401,548 bytes（約377.08MiB）**，屬7個建置目錄及3個個別匯出檔。採可還原方式，**清理當時沒有清空回收桶，不能宣稱上述容量已成為可用磁碟空間**；日後實際釋放量取決於回收桶處理。其他專案的Arduino暫存、IDE未儲存草稿、Arduino套件／工具鏈與應用函式庫未列入本次範圍。
+
+### 2. 本機重要產物備份與核對
+
+移入回收桶前，先將舊版本的重要歷史產物另存至本機ZIP；此檔位於專案與Temp以外，**未納入Git或上傳GitHub**：
+
+```text
+C:\Users\tseng\AppData\Local\Impact_Resistance_Test\cleanup-archive\2026-10-23-obsolete-builds-0bf61513.zip
+```
+
+- ZIP檔大小：4,584,741 bytes（約4.37MiB）。
+- ZIP SHA256：`CD3ADC130F66B06DB9C0670BE5CCA7E61A14ADDC1DDB7430B46D8924E4DDDDF3`。
+- 內容：135個保留檔案，另加`cleanup-manifest.json`，共136個ZIP項目。
+- 保留內容包括舊韌體bin／已燒錄對照bin、頂層建置設定／參數及其他小型頂層產物、sketch生成來源，以及上述CSV匯出輔助腳本、來源JSON與預覽PNG。
+- `cleanup-manifest.json`記錄原目錄、檔案數、大小、sketchLocation、保留檔案的原完整路徑／ZIP相對路徑／SHA256，以及最新建置保留位置；ZIP項目依原暫存目錄名稱分組。
+- 建立備份時，逐項以解壓串流核對135個保留檔案的長度與SHA256，全部與移走前原檔一致。本次補寫交接前再次核對ZIP本身與全部135個保留檔案，結果仍相符。
+
+ZIP是重要產物精簡備份，並非七個舊建置目錄的完整鏡像；舊物件檔、靜態函式庫、相依檔、ELF及MAP等中間產物未完整打包。需要整個舊建置樹時，可在回收桶尚未清空且項目仍在時還原；ZIP可供取回其中的歷史韌體、設定、生成來源與匯出輔助資料，其餘中間產物須用對應來源與工具鏈重新編譯。歷史章節引用的舊Temp路徑已因本次清理失效者，改依此ZIP與manifest尋找保存內容，不假定原路徑仍存在。
+
+### 3. 明確保留的檔案與目錄
+
+**最近實際燒錄的fifo-diag1／core3.3.12完整建置目錄保留於：**
+
+```text
+C:\Users\tseng\AppData\Local\Temp\irt-05-flash3312-20261021-01a15e7f
+```
+
+其中`05-test.ino.bin`的SHA256再次核對為`B62CDBCB2FF2DB21DB86AA96C1751AC1AEAA5533B40B216CFA2890FE71C750E1`，與第四十九節實際部署紀錄一致；bin、ELF及其他建置內容均保留。此為電腦既存產物核對，沒有從ESP32讀回Flash，也沒有重燒或重啟。
+
+**匯出暫存的共享依賴連結與目標均保留：**
+
+```text
+連結：C:\Users\tseng\AppData\Local\Temp\irt-hx711-csv-20261021-01a15e7f\node_modules
+類型：Junction
+目標：C:\Users\tseng\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules
+```
+
+該junction與目標套件未刪除，未將共享依賴複製進ZIP。專案的01～05原始碼、主機測試、README、handoff、原始量測／部署log、原始及200g修正CSV、重算報告／工具、照片、接線圖與STP／STL機構檔均保留；Git歷史、Arduino核心與工具鏈也未清理。
+
+### 4. 驗證、Git封存與暫停條件
+
+清理完成後確認七個舊建置原路徑已不存在，三個匯出暫存檔已移走，最新部署建置與依賴目標仍在，ZIP SHA256未變。再次執行`node docs/calibration/recalculate-200g.cjs --check`，341筆觀察／298筆可換算值、重複旗標、缺值及三份原始檔SHA256均通過；當時Git工作區仍乾淨。
+
+本次依使用者要求僅將清理結果補入handoff.md，沿用main與既有origin（chiangyih/Impact_Resistance_Test）一般commit及非強制push；ZIP留在上述本機位置。本次提交識別與遠端同步結果於實際完成後回覆，不在本提交內預填自身雜湊或未完成結果。
+
+清理及本次文檔封存均未操作COM3、讀寫ESP32、重置、燒錄、TARE、CAL、UNCAL、ARM或改供電／接線。完成後維持硬體排查暫停，不建立背景監控、排程或自動重試；歷史校正修正、空載偏移、通訊未恢復及恢復前須確認RAM／供電歷程的條件維持第五十六至五十八節所述。
 
