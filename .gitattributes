@@ -1,0 +1,13 @@
+# Preserve byte-exact public source and evidence referenced by SHA256.
+05-test/05-test.ino -text whitespace=trailing-space,space-before-tab,cr-at-eol
+05-test/manual_optical.h -text
+05-test/network_wifi.h -text
+tests/05-manual-optical.test.cjs -text
+docs/network/*.log -text -whitespace
+docs/quality/*.log -text -whitespace
+docs/quality/*-observation.md -text
+docs/quality/reports/*.md -text
+docs/experiments/manual-speed/* -text
+docs/experiments/manual-speed/*.log -whitespace
+docs/experiments/manual-speed/*.csv -whitespace
+docs/experiments/manual-speed/*.speed.txt -whitespace

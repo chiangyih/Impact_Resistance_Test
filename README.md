@@ -2,13 +2,15 @@
 
 以 **ESP32／NMK99v1** 為核心，比較 STF、三浦摺疊、EVA 及複合緩衝材料在落下衝擊中的反應。ADXL375 記錄加速度，HX711＋荷重元記錄底座受力原始值，上下兩顆 Tracker 記錄通過時間。
 
-**最近已燒錄版本／原始碼**：[05-test v1-layout2-fifo-diag1](05-test/05-test.ino)　｜　**最後已知校正狀態**：CAL_USER（未驗證合格；目前序列無回應）
+**最近已燒錄版本**：[05-test v1-layout2-fifo-diag1-wifi1-d220-right-optical1](05-test/05-test.ino)　｜　**目前校正狀態**：UNCAL（2026-10-26燒錄重啟後，未重新校正）
 
-> **硬體排查維持暫停。** 10/22依使用者更正，僅離線修正昨天的量測計算。恢復工作前先確認供電／重啟歷程與現場狀態；校正只存RAM，不能假定斷電後仍保留。見[暫停交接](handoff.md#hx711-meter-pause-20261022)。
+> **2026-10-26 最新部署與首筆結果**：獨立光學模式optical1已通過215項主機檢查、編譯／燒錄及實板VERSION核對。DIST220／POL1/1下，首筆讀回DONE／NONE、1153289µs＝1153.289ms、速度0.190759m/s；使用者確認READY、同一標記先上後下，OLED顯示1153.289ms／0.1908m/s，與換算四捨五入相符。[原始SPEED匯出](docs/experiments/manual-speed/20261026-optical1-001.speed.txt)及[本輪紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md)已保存。單次計時／顯示／換算功能有限通過，光學準確度、重複性及完整QC仍待補；詳見[第七十節](handoff.md#manual-optical-mode-20261026)、[本版QC](docs/quality/reports/2026-10-26-optical1-qc.md)及[操作指南](docs/experiments/manual-speed/manual-optical-guide.md)。手動模式會暫停WiFi。
+
+> **授權範圍與保存**：本輪為已授權的手動標記上→下；兩次原ARM的UPPER_TIMEOUT及首筆獨立SPEED結果均已保存。最新讀回DONE，主代理已關閉COM3；結果尚未CLEAR，未啟動下一輪、重新燒錄／重置、校正或自由落下。帳密僅存Git忽略的獨立檔，建置產物在儲存庫外；使用者後續已要求公開Git封存，範圍與接續順序見[第七十一節](handoff.md#optical1-git-handoff-20261026)。下方10/21～10/22內容保留為當時歷史；RAM校正已因先前燒錄重啟清除。
 
 > **校正砝碼重量更正：20g × 10個＝200g。** 昨天兩輪實際輸入均為`CAL 400`，因此離線修正後的`counts_per_g`為原值2倍，克數為原換算值的一半。舊版／新版修正係數分別為19.95484375／20.46921875 counts/g；原始RAW與零點不變。以下摘要已採修正值，完整逐筆結果見[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md)。修正係數尚未寫入裝置。
 
-**文件更新**：2026-10-22　｜　**最新硬體紀錄**：2026-10-21（10/22補充照片條件並更正砝碼總重為200g）。FIFO 診斷版已用本機 ESP32 core 3.3.12 重新編譯、燒錄 COM3，並確認新啟動識別及15筆待機STATUS；詳見[部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。部署前的校正及回零資料來自舊v1-layout2，與新版各依自己的零點及修正係數重算。
+**文件更新／最新硬體紀錄**：2026-10-26；本次WiFi部署見上方。以下保存2026-10-21的FIFO診斷版部署與校正歷史（10/22補充照片條件並更正砝碼總重為200g）：當時以本機ESP32 core 3.3.12編譯、燒錄COM3，確認啟動識別及15筆待機STATUS，見[歷史部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。部署前的校正及回零資料來自舊v1-layout2，與新版各依自己的零點及修正係數重算。
 
 使用者已確認新版OLED八行正常、RGB熄滅；新版HX711當時完成TARE及CAL 400，韌體列印offset=-164024.688 counts、原counts_per_g=10.234609375，最後已知為CAL_USER。依實際200g離線修正係數為20.46921875 counts/g：兩次卸載平均+1.27g／+4.89g，後續60秒空載61筆不同RX快照平均+9.88g（+4.53～+13.52g）；200g重放平均203.76g、偏高3.76g／1.88%，基線仍偏移且波動，尚未驗證合格。歷史操作見[校正接續紀錄](handoff.md#hx711-fifo-diag1-calibration-20261021)，修正結果以[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md)為準。
 
@@ -30,6 +32,8 @@
 | 記錄一次試驗、保存 CSV | [5. 記錄與匯出](#recording) |
 | 處理異常或理解資料 | [6. 狀態判讀](#troubleshooting) · [7. 資料限制](#data-limits) |
 | 查看程式、編譯或追查舊紀錄 | [8. 版本與檔案](#files) · [9. 開發環境](#development) · [10. 後續與歷史](#history) |
+| 手動通過兩頭測平均速度 | [獨立光學計時指南](docs/experiments/manual-speed/manual-optical-guide.md) · [本輪紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md) |
+| 查閱燒錄後QC流程與結果 | [QC檢核清單](docs/quality/post-flash-qc.md) · [最新optical1 QC](docs/quality/reports/2026-10-26-optical1-qc.md) · [四位協作規則](AGENTS.md) |
 
 <a id="status"></a>
 
@@ -186,7 +190,7 @@
 - 全部現行低壓模組使用 3V3 並共地；5V OUT 不可直入 ESP32。
 - GPIO34／35 **沒有內建上拉／下拉**。Tracker 是否另加上拉須依輸出型態與板載電路確認；圖中未假設已加外接電阻，也不沿用舊 OS25B10 的電阻網路。
 - I²C 沿用 Adafruit 模組既有上拉，先核對其拉高電源，不任意再並聯電阻。
-- 兩顆 Tracker 朝向同一掉落物上的固定反射標記；不是互相對射。現有間距回報為 **22.5 cm＝225 mm**，等效觸發位置、角度與環境光影響仍待驗證。
+- 兩顆 Tracker 朝向同一掉落物上的固定反射標記；不是互相對射。2026-10-26使用者將新安裝後有效觸發間距更正為 **220 mm**，並確認安裝時斷電、時間差由OLED讀取，回報欄位單位為ms；實際時間差數字尚未提供。量測方法、不確定度、角度與環境光影響仍待驗證，詳見[安裝補充](handoff.md#tracker-spacing-update-20261026)。
 - ADXL375 固定在掉落平台並靠近重心；荷重元採一端固定、一端受力與剛性上壓板，避免整支樑完全夾死。
 
 <a id="first-run"></a>
@@ -206,7 +210,7 @@
 
    | 檢查欄位 | 如何判讀 |
    |---|---|
-   | 啟動識別／`LAYOUT` | `05-test NMK99 ... v1-layout2-fifo-diag1`／`LAYOUT=2` |
+   | 啟動識別／`LAYOUT` | `05-test NMK99 ... v1-layout2-fifo-diag1-wifi1-d220-right`／`LAYOUT=2` |
    | `SCK`／`DATA`／`RGB` | `25`／`33`／`32:OFF_REQ`；RGB 熄滅另以目視確認 |
    | `phase`／`CAL`／`POL` | 初始為 `IDLE`／`UNCAL`／`-1/-1` |
    | `HX`／`ADXL` | 近期應有有效資料；`OK` 不表示已校正 |
@@ -232,7 +236,7 @@
 
 | 命令格式 | 要填的內容 |
 |---|---|
-| `DIST 毫米數` | 0～10000。預設 225；應依上下等效觸發位置的實測距離調整。`DIST 0` 可記時間，但速度輸出 `NA` |
+| `DIST 毫米數` | 0～10000。預設 220（2026-10-26使用者更正）；應依上下等效觸發位置的實測距離調整。`DIST 0` 可記時間，但速度輸出 `NA` |
 | `POL 上方 下方` | 各填實測的 `0` 或 `1`，表示同一反射標記**進入**該感測頭時的電位；兩路可不同，不能猜測 |
 
 上表的「毫米數／上方／下方」是參數說明，送出時須換成實際數值。`POL=-1/-1` 表示未設定，不能 `ARM`。
@@ -269,7 +273,7 @@
 
 記錄期間 OLED 停在提示頁、一般序列快照暫停，只有 `STOP` 可執行，其他命令被忽略。下方先觸發、兩點間隔不足 200 µs、逾時或緩衝滿會進入 `FAULT`。
 
-**斷電／重啟會遺失 RAM 記錄、極性與校正**，距離回到 225 mm。`CLEAR` 只清試驗資料，距離、極性與校正保留至斷電；DONE／FAULT 保留期間不能修改這些設定。
+**斷電／重啟會遺失 RAM 記錄、極性與校正**，新版距離回到 220 mm。`CLEAR` 只清試驗資料，距離、極性與校正保留至斷電；DONE／FAULT 保留期間不能修改這些設定。
 
 <details>
 <summary>全部序列命令速查</summary>
@@ -368,7 +372,7 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 
 | 版本 | 用途 | HX711 SCK／DATA | 使用狀態 |
 |---|---|---|---|
-| **[05-test](05-test/05-test.ino)** | **整合感測、Tracker 中斷計時、手動校正與 CSV；已加 FIFO 診斷** | **25／33** | 已燒錄fifo-diag1，CAL_USER為最後目視；偏移及序列無回應待查，未正式落下 |
+| **[05-test](05-test/05-test.ino)** | **整合感測、Tracker 中斷計時、手動校正與 CSV；含 FIFO 診斷與待機WiFi** | **25／33** | 已燒錄wifi1-d220-right，圖示移右上；版本／距離220mm／IP已讀回，UNCAL與FIFO警示待驗，未正式落下 |
 | 初版 05（歷史） | 早期整合版本 | 32／33 | 已由同檔新版取代，詳見歷史紀錄 |
 | [04-HX711-test](04-HX711-test/04-HX711-test.ino) | HX711＋OLED 獨立排查 | 32／33 | 保留歷史來源 |
 | [03-irt_tracker](03-irt_tracker/03-irt_tracker.ino) | 感測器＋OLED＋雙 Tracker 電位 | 33／32 | 保留歷史來源 |

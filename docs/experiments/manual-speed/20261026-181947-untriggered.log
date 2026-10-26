@@ -1,0 +1,2 @@
+# HOST capture_start=2026-10-26T18:19:47.8109061+08:00 duration_ms=1568; user_confirmed_both_markers_away; passive_only; COM3 115200 DTR=false RTS=false; port closed
+# HOST capture_error=Exception calling "Open" with "0" argument(s): "連結到系統的某個裝置失去作用。"; no command, no POL/ARM/calibration/reset

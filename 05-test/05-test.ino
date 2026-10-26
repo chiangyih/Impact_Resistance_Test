@@ -1,13 +1,13 @@
 // 05-test.ino：第五版整合量測程式，整合 ADXL375、HX711、雙 Tracker 與 SH1106 OLED。
 // 本版為量測流程第一版；尚未完成荷重校正、高速計時、完整衝擊與長時間驗證。
-// 二零二六年十月二十一日FIFO診斷候選版只完成主機檢查與編譯後待驗證，不代表已燒錄或排除實體漏樣。
+// 二零二六年十月二十六日加入待機WiFi，連線圖示依使用者要求移至右上角，量測精度與時序仍須另行驗證。
 // 實板為NMK99v1；HX711改接SCK=25、DATA=33，避開GPIO32板載WS2812，改線須先斷電。
 // 荷重元仍黑接 E+、白接 E-、綠接 A+、紅接 A-；舊版SCK32程式不可直接套用本版接線。
 // HX711 VIN、VIO 與其餘模組沿用同一個 3V3，GND 共地，B+ 與 B- 不接。
 // OLED 與 ADXL375 共用 SDA=21、SCL=22；上方 Tracker OUT=34，下方 OUT=35。
 // GPIO34、GPIO35 無內建上下拉；模組 OUT 必須為三點三伏相容，不可輸入五伏。
 // 不控制 GPIO26、GPIO27、繼電器或電磁鐵；ARM 只開始記錄，絕不釋放落體。
-// 預設不自動去皮、不假造校正係數；距離採使用者回報二百二十五毫米，極性仍待序列設定。
+// 預設不自動去皮、不假造校正係數；有效觸發間距依使用者更正為二百二十毫米，極性仍待序列設定。
 // ADXL375 使用一百赫茲及串流 FIFO；時間戳為主機讀出時間，不是感測器精準取樣時刻。
 // HX711 RATE 沿用實體開關，十或八十筆每秒均不能保證捕捉毫秒衝擊峰值。
 // ARM 期間暫停 OLED 與一般序列輸出；完成後以 DUMP 匯出分開計時的原始 CSV。
@@ -19,6 +19,10 @@
 #include <math.h> // 載入合成加速度、絕對值與有限數判斷。
 #include <stdlib.h> // 載入具完整字尾檢查的數值解析函式。
 #include <string.h> // 載入固定緩衝區命令比對功能。
+#include "network_wifi.h" // 僅待機處理WiFi，活動記錄與校正前先關閉無線電。
+#include "manual_optical.h" // 手動光學計時不借用ARM緩衝或荷重校正。
+
+const char FIRMWARE_VERSION[] = "v1-layout2-fifo-diag1-wifi1-d220-right-optical1"; // 啟動與VERSION共用識別。
 
 const uint8_t HX_SCK = 25, HX_DATA = 33, UP_PIN = 34, DN_PIN = 35; // NMK99的GPIO32留給板載RGB，HX711時脈須實際移到GPIO25。
 const uint8_t BOARD_RGB_PIN = 32; // NMK99教學標示單顆WS2812使用GPIO32，不以LED_BUILTIN推測RGB接腳。
@@ -42,7 +46,7 @@ portMUX_TYPE hx_mux = portMUX_INITIALIZER_UNLOCKED; // 只保護每個 HX711 高
 volatile uint8_t phase = IDLE, reason = NONE; // 中斷可更新狀態，文字及顯示留在主迴圈處理。
 volatile uint32_t armed_us = 0, upper_us = 0, lower_us = 0, ignored_edges = 0; // 保存同一次試驗的微秒時間戳及重複有效緣數。
 volatile int upper_active = -1, lower_active = -1; // 預設未設定觸發電位，避免猜測 Tracker 極性。
-double distance_mm = 225.0, tare_raw = 0, counts_per_g = 0; // 上下間距依使用者回報二十二點五公分換為毫米，校正仍無效。
+double distance_mm = 220.0, tare_raw = 0, counts_per_g = 0; // 依使用者斷電安裝後更正的有效觸發間距，量測方法與校正仍待驗證。
 bool tare_valid = false, calibration_valid = false; // 去皮不代表已完成比例校正。
 uint8_t oled_address = 0; // 零代表未找到候選 OLED 位址。
 bool adxl_ready = false, acc_seen = false, hx_seen = false, hx_frame_ok = true; // 分開保存各感測器的連線與資料有效性。
@@ -107,6 +111,7 @@ void ARDUINO_ISR_ATTR upperInterrupt() { // 上方只接受設定極性的進入
   if (digitalRead(UP_PIN) != upper_active) return; // 忽略退出緣及尚未設定極性的所有邊緣。
   const uint32_t now = micros(); // 使用微秒時間戳，實際誤差仍受中斷延遲影響。
   portENTER_CRITICAL_ISR(&gate_mux); // 原子地更新狀態與時間。
+  if (opticalMode()) { opticalUpperEdge(now); portEXIT_CRITICAL_ISR(&gate_mux); return; } // 光學模式不修改一般ARM狀態。
   if (phase == ARMED) { if (now - armed_us >= ARM_TIMEOUT_US) { reason = UPPER_TIMEOUT; phase = FAULT; } else { upper_us = now; phase = WAIT_DN; } } // 只鎖定期限內第一次上方有效觸發。
   else if (phase == WAIT_DN || phase == CAPTURE) ++ignored_edges; // 不讓反射抖動覆寫第一次上閘時間。
   portEXIT_CRITICAL_ISR(&gate_mux); // 立即結束短暫保護。
@@ -116,6 +121,7 @@ void ARDUINO_ISR_ATTR lowerInterrupt() { // 下方中斷執行順序及最短間
   if (digitalRead(DN_PIN) != lower_active) return; // 只接受使用者確認的觸發電位。
   const uint32_t now = micros(); // 記錄中斷處理時刻，不宣稱光學瞬時位置精度。
   portENTER_CRITICAL_ISR(&gate_mux); // 保護上下閘共享狀態。
+  if (opticalMode()) { opticalLowerEdge(now); portEXIT_CRITICAL_ISR(&gate_mux); return; } // 光學下緣與一般試驗分流。
   if (phase == ARMED) { reason = LOWER_FIRST; phase = FAULT; } // 下閘先到時不輸出虛假速度。
   else if (phase == WAIT_DN) { // 只有上閘已到才接受下閘。
     lower_us = now; // 保留可疑觸發時間供追溯。
@@ -202,6 +208,78 @@ void drawOledLine(uint8_t row, const char *text) { // 固定座標及有限字�
   oled.drawStr(4, 9 + row * 7, clipped); // 八行基線為九至五十八，讓字型上緣與下緣都落在四像素留白內。
   oled.setMaxClipWindow(); // 恢復全畫布設定，不讓局部裁切殘留給其他畫面。
 } // 結束單行安全繪字。
+
+void drawWifiIcon() { // 僅從快取判定已連線，不在繪圖時呼叫WiFi或讀取憑證。
+  if (wifi_phase != NET_CONNECTED || !wifi_ip_valid || !wifi_radio_started) return; // 未取得IP、掉線或暫停時不顯示連線符號。
+  static const uint16_t rows[6] = {0x07C, 0x082, 0x139, 0x044, 0x028, 0x010}; // 九乘六像素的波紋及底點，完全位於第一行。
+  for (uint8_t y = 0; y < 6; ++y) for (uint8_t x = 0; x < 9; ++x) if (rows[y] & (1U << x)) oled.drawPixel(115 + x, 4 + y); // 右上角保留四像素留白，九像素圖示與左側標題分開。
+} // 結束WiFi連線圖示。
+
+const char *opticalStateName(uint8_t value) { // 光學快照的固定狀態名稱。
+  static const char *names[] = {"OFF", "WAIT_UP", "WAIT_DN", "DONE", "FAULT"}; // 與一般phase分開。
+  return names[value]; // 僅使用本模組狀態值。
+} // 結束光學狀態文字。
+
+const char *opticalReasonName(uint8_t value) { // 保留失敗原因，不假造速度。
+  static const char *names[] = {"NONE", "LOWER_FIRST", "TOO_FAST", "LOWER_TIMEOUT", "USER_STOP"}; // 固定短名稱。
+  return names[value]; // 使用原子快照值。
+} // 結束光學原因文字。
+
+void printOpticalStatus() { // 只讀快照，不輪詢ADC、WiFi或I2C。
+  portENTER_CRITICAL(&gate_mux); // 凍結同一個時間與狀態快照。
+  const uint8_t state = optical_state, why = optical_reason; const uint32_t up = optical_upper_us, dn = optical_lower_us, ignored = optical_ignored; const bool up_seen = optical_upper_seen, dn_seen = optical_lower_seen; // 有效旗標讓零時間仍可表示。
+  portEXIT_CRITICAL(&gate_mux); // 輸出時不持中斷鎖。
+  const double dist = state == OPT_OFF ? distance_mm : optical_distance_mm; const int pol_up = state == OPT_OFF ? upper_active : optical_upper_active, pol_dn = state == OPT_OFF ? lower_active : optical_lower_active; // OFF顯示目前設定，其餘使用開始快照。
+  Serial.printf("# SPEED id=%lu state=%s reason=%s DIST_mm=%.6f POL=%d/%d upper_boot_us=", static_cast<unsigned long>(optical_id), opticalStateName(state), opticalReasonName(why), dist, pol_up, pol_dn); // 光學ID不當一般trial ID。
+  if (up_seen) Serial.print(up); else Serial.print("NA"); Serial.print(" lower_boot_us="); if (dn_seen) Serial.print(dn); else Serial.print("NA"); // 未觸發明確缺值。
+  Serial.print(" dt_us="); if (state == OPT_DONE) Serial.print(static_cast<uint32_t>(dn - up)); else Serial.print("NA"); // 故障不輸出有效時間。
+  Serial.print(" speed_mps="); if (state == OPT_DONE) Serial.print(dist * 1000.0 / static_cast<uint32_t>(dn - up), 6); else Serial.print("NA"); // 上下兩點平均速度，非撞擊瞬時速度。
+  Serial.printf(" ignored_upper_edges=%lu A=%u H=%u; optical_only=1\n", static_cast<unsigned long>(ignored), acc_count, hx_count); // 一般A/H計數只讀，不是此模式採樣。
+} // 結束光學狀態輸出。
+
+void drawOpticalScreen(uint8_t state) { // 入模式或結束時只畫一次，等待及計時不刷新。
+  if (!oled_address) return; // 不以軟體畫圖當目視證據。
+  oled.clearBuffer(); char line[80]; // 沿用安全八行座標。
+  drawOledLine(0, "MANUAL OPTICAL SPEED"); // 清楚區別一般ARM。
+  if (state == OPT_WAIT_UP) { drawOledLine(1, "READY: MOVE UP -> DOWN"); drawOledLine(2, "No start countdown"); drawOledLine(4, "Pass lower within 30s"); } // 上方觸發前可從容準備。
+  else { drawOledLine(1, opticalStateName(state)); drawOledLine(2, opticalReasonName(optical_reason)); } // 保留結果與故障原因。
+  snprintf(line, sizeof(line), "DIST:%.1fmm POL:%d/%d", optical_distance_mm, optical_upper_active, optical_lower_active); drawOledLine(3, line); // 凍結本輪設定。
+  if (state == OPT_DONE) { snprintf(line, sizeof(line), "DT:%.3fms", static_cast<uint32_t>(optical_lower_us - optical_upper_us) / 1000.0); drawOledLine(4, line); snprintf(line, sizeof(line), "V:%.4fm/s", optical_distance_mm * 1000.0 / static_cast<uint32_t>(optical_lower_us - optical_upper_us)); drawOledLine(5, line); } // 顯示位數不是精度保證。
+  else if (state == OPT_FAULT) { drawOledLine(4, "DT:-- V:--"); drawOledLine(5, "No valid transit"); } // 故障與真實零值分開。
+  drawOledLine(6, state == OPT_WAIT_UP ? "STOP cancels" : "SPEED DUMP / SPEED CLEAR"); drawOledLine(7, "Hand move; no release"); // 不控制任何釋放輸出。
+  sendOledBuffer(); // 一般phase仍為IDLE；此模式不採集ADC記錄。
+} // 結束光學畫面。
+
+void serviceOptical() { // 只檢查下方期限與一次性完成通知。
+  portENTER_CRITICAL(&gate_mux); opticalTick(micros()); const uint8_t state = optical_state; portEXIT_CRITICAL(&gate_mux); // WAIT_UP無期限，不累積感測緩衝。
+  if ((state == OPT_DONE || state == OPT_FAULT) && !optical_reported) { optical_reported = true; printOpticalStatus(); drawOpticalScreen(state); } // 結果不自動覆寫。
+} // 結束光學排程。
+
+void startOptical() { // 獨立手動速度不依賴荷重校正或ADXL狀態。
+  if (phase != IDLE || cal_mode || opticalMode()) { Serial.println("# SPEED_REJECT finish/save existing work first"); return; } // 不抹除既有trial或光學結果。
+  if ((upper_active != 0 && upper_active != 1) || (lower_active != 0 && lower_active != 1) || !isfinite(distance_mm) || distance_mm <= 0) { Serial.println("# SPEED_REJECT verified POL and positive DIST required"); return; } // 不猜測極性或距離。
+  if (digitalRead(UP_PIN) == upper_active || digitalRead(DN_PIN) == lower_active) { Serial.println("# SPEED_REJECT move marker away from both sensors"); return; } // 只從未觸發開始。
+  if (!pauseWifiForMeasurement()) { Serial.println("# SPEED_REJECT radio must stop first"); return; } // 停用失敗就拒絕開始。
+  optical_distance_mm = distance_mm; optical_upper_active = upper_active; optical_lower_active = lower_active; // 保存本輪設定。
+  drawOpticalScreen(OPT_WAIT_UP); // 先完成靜態READY畫面，再啟用邊緣接收。
+  if (digitalRead(UP_PIN) == upper_active || digitalRead(DN_PIN) == lower_active) { Serial.println("# SPEED_REJECT marker moved during preparation; retry away"); updateOled(); return; } // 準備期間進入感測頭即要求重來。
+  portENTER_CRITICAL(&gate_mux); opticalBeginState(); portEXIT_CRITICAL(&gate_mux); // 不重設FIFO或一般trial。
+  Serial.printf("# SPEED_READY id=%lu WAIT_UP; no start countdown; upper-to-lower <=30s; optical only; no release\n", static_cast<unsigned long>(optical_id)); // 可以等待實際手動通過。
+} // 結束光學開始。
+
+bool handleOpticalCommand(const char *cmd, const char *one, const char *two, const char *extra) { // 一般ARM已由呼叫端先攔截。
+  if (optical_state == OPT_WAIT_DN) return true; // 真正計時期間除呼叫端STOP外不新增輸出。
+  if (!strcmp(cmd, "SPEED")) { // 光學命令有獨立名稱。
+    if (!one || two || extra) { Serial.println("# INVALID SPEED START/STATUS/DUMP/CLEAR"); return true; } // 拒絕多餘或缺少參數。
+    if (!strcmp(one, "START")) { startOptical(); return true; } // 入口保留完整防護。
+    if (!strcmp(one, "STATUS")) { printOpticalStatus(); return true; } // 只讀快照。
+    if (!strcmp(one, "DUMP")) { if (optical_state != OPT_DONE && optical_state != OPT_FAULT) { Serial.println("# SPEED_DUMP_REJECT finish/STOP first"); return true; } Serial.printf("# BEGIN_SPEED version=%s clock=boot_micros; no_ADC_records; mean_speed_not_impact_velocity\n", FIRMWARE_VERSION); printOpticalStatus(); Serial.println("# END_SPEED result retained until SPEED CLEAR or power loss"); return true; } // 不冒充一般ACC/HX試驗CSV。
+    if (!strcmp(one, "CLEAR")) { if (optical_state != OPT_DONE && optical_state != OPT_FAULT) { Serial.println("# SPEED_CLEAR_REJECT finish/STOP first"); return true; } portENTER_CRITICAL(&gate_mux); opticalClearState(); portEXIT_CRITICAL(&gate_mux); Serial.println("# SPEED_CLEARED optical result only; normal trial/settings/calibration retained"); return true; } // 只清獨立結果。
+    Serial.println("# INVALID SPEED START/STATUS/DUMP/CLEAR"); return true; // 未知子命令不改狀態。
+  } // 結束SPEED子命令。
+  if (opticalMode() && !(!strcmp(cmd, "HELP") && !one) && !(!strcmp(cmd, "VERSION") && !one)) { if (!strcmp(cmd, "STATUS") && !one) printOpticalStatus(); else Serial.println("# BUSY optical mode; STOP or SPEED DUMP/CLEAR"); return true; } // 設定、校正及一般ARM不可交錯。
+  return false; // 非光學命令交回原解析器。
+} // 結束光學命令分流。
 
 void abortTrial(uint8_t why) { // 主迴圈安全中止試驗並保留已收資料。
   portENTER_CRITICAL(&gate_mux); // 防止同時到達的 Tracker 中斷覆寫結果。
@@ -317,6 +395,7 @@ void printStatus() { // 待機或試驗後輸出可供接線診斷的完整狀�
   Serial.printf("# STATUS phase=%s reason=%s CAL=%s HX=%s RAW=", phaseName(), reasonName(), calibration_valid ? "CAL_USER" : "UNCAL", hxStatus()); // 不以原始數字冒充克數。
   if (hx_seen) Serial.print(hx_raw); else Serial.print("NA"); // 未有資料明確顯示缺值。
   Serial.printf(" RX=%lu ERR=%lu AGE_ms=%lu ADXL=%s AERR=%lu FIFO_FULL=%lu UP=%d DN=%d POL=%d/%d DIST_mm=%.3f OLED=0x%02X SCK=%u DATA=%u RGB=%u:OFF_REQ LAYOUT=2\n", static_cast<unsigned long>(hx_rx), static_cast<unsigned long>(hx_errors), static_cast<unsigned long>(hx_seen ? millis() - hx_last_ms : 0), acc_seen && millis() - acc_last_ms < 1000 ? "OK" : "MISSING", static_cast<unsigned long>(acc_errors), static_cast<unsigned long>(fifo_full), digitalRead(UP_PIN), digitalRead(DN_PIN), upper_active, lower_active, distance_mm, oled_address, HX_SCK, HX_DATA, BOARD_RGB_PIN); // 列出真實常數與版次，RGB要求關閉不等於目視已驗證。
+  printWifiStatus(); // 只印快取連線狀態及IP，不改現有感測STATUS欄位。
 } // 結束即時診斷。
 
 void updateOled() { // 僅在非記錄期間刷新八行，避免阻塞試驗採樣。
@@ -324,7 +403,7 @@ void updateOled() { // 僅在非記錄期間刷新八行，避免阻塞試驗採
   if (!i2cAck(oled_address)) { oled_address = 0; return; } // 掉線時等待待機重試，不阻塞所有功能。
   oled.clearBuffer(); // 清除上一頁，避免舊字殘留。
   char line[80]; // 先格式化成有界字串，再由單行函式按實際像素裁切。
-  snprintf(line, sizeof(line), "05 TEST %s", calibration_valid ? "CAL_USER" : "UNCAL"); drawOledLine(0, line); // 第一行永遠保留校正狀態。
+  snprintf(line, sizeof(line), "05 TEST %s", calibration_valid ? "CAL_USER" : "UNCAL"); drawOledLine(0, line); drawWifiIcon(); // 第一行文字自第四像素起，右上角顯示連線符號，不覆蓋校正狀態。
   if (acc_seen && millis() - acc_last_ms < 1000) snprintf(line, sizeof(line), "X%+.1f Y%+.1f g", acc_x * 0.049, acc_y * 0.049); else snprintf(line, sizeof(line), "ADXL375 MISSING/STALE"); // 過期三軸不顯示為即時值。
   drawOledLine(1, line); // 第二行X與Y各保留符號及g單位。
   if (acc_seen && millis() - acc_last_ms < 1000) snprintf(line, sizeof(line), "Z%+.1f A%.1f g", acc_z * 0.049, sqrt(static_cast<double>(acc_x) * acc_x + static_cast<double>(acc_y) * acc_y + static_cast<double>(acc_z) * acc_z) * 0.049); else snprintf(line, sizeof(line), "Z:-- A:--"); // 第三行合成值包含重力。
@@ -344,6 +423,7 @@ void armTrial() { // 只啟動資料記錄，不觸發釋放機構。
   if (upper_active < 0 || lower_active < 0) { Serial.println("# ARM_REJECT set POL upper lower to verified 0/1 levels"); return; } // 極性不明時拒絕啟動。
   if (digitalRead(UP_PIN) == upper_active || digitalRead(DN_PIN) == lower_active) { Serial.println("# ARM_REJECT both markers must be away from sensors"); return; } // 已觸發的感測頭不可當作新進入緣。
   if (strcmp(hxStatus(), "OK") || !adxl_ready || !acc_seen || millis() - acc_last_ms >= 1000) { Serial.println("# ARM_REJECT sensors must be recent and non-SAT"); return; } // 不帶著已知失聯或飽和開始試驗。
+  if (!pauseWifiForMeasurement()) { Serial.println("# ARM_REJECT WiFi must stop before recording"); return; } // 無線電停用完成後才準備FIFO與時間原點。
   Serial.println("# ARM: recording only; NO RELEASE; OLED/live output paused; STOP aborts; speed NA if DIST=0"); // 在正式計時前輸出操作限制。
   if (oled_address) { oled.clearBuffer(); drawOledLine(1, "05 ARM - OLED PAUSED"); drawOledLine(3, "NO RELAY / USB STOP"); drawOledLine(5, "Recording <=14 seconds"); sendOledBuffer(); } // ARM提示也沿用安全邊界，不在活動期間送畫面。
   Serial.flush(); // 在起點前送完提示，活動視窗不排入一般診斷文字。
@@ -380,6 +460,7 @@ void dumpTrial() { // 試驗結束後才輸出原始 CSV，避免序列傳輸拖
   for (uint16_t i = 0; i < hx_count; ++i) if (!hx_records[i].sat) { minimum = hx_records[i].raw < minimum ? hx_records[i].raw : minimum; maximum = hx_records[i].raw > maximum ? hx_records[i].raw : maximum; ++valid_hx; } // 滿量程框保留於原始列但不當作可信峰值。
   Serial.printf("# BEGIN trial=%lu state=%s reason=%s CAL=%s distance_mm=%.6f polarity=%d/%d\n", static_cast<unsigned long>(trial_id), phaseName(), reasonName(), calibration_valid ? "CAL_USER_STATIC_NOT_VALIDATED" : "UNCAL", distance_mm, upper_active, lower_active); // 匯出量測設定及未校正狀態。
   Serial.printf("# HX_SCK=%u HX_DATA=%u RGB_PIN=%u A128 RATE=physical_L10_or_H80; ACC_ODR=100Hz; timestamps=host_readout_us_from_ARM; rows_grouped_by_sensor\n", HX_SCK, HX_DATA, BOARD_RGB_PIN); // 從實際常數輸出接腳，避免移腳後CSV仍印舊設定。
+  Serial.println("# WIFI_POLICY radio_off_before_ARM_and_calibration; timing_and_supply_not_validated"); // 原始資料附上網路策略，不把停用視為精度驗證。
   Serial.printf("# tare_valid=%d offset=%.6f counts_per_g=%.9f HX_ERR=%lu ACC_ERR=%lu FIFO_FULL=%lu SAT=%u HX_STALE=%d ACC_STALE=%d ignored_edges=%lu\n", tare_valid, tare_raw, counts_per_g, static_cast<unsigned long>(trial_hx_end), static_cast<unsigned long>(trial_acc_end), static_cast<unsigned long>(trial_fifo_end), trial_sat, trial_stale, trial_acc_stale, static_cast<unsigned long>(ignored_edges)); // 匯出校正與品質旗標。
   if (phase == DONE) { const uint32_t dt = lower_us - upper_us; Serial.printf("# TRANSIT upper_us=%lu lower_us=%lu dt_us=%lu speed_mps=", static_cast<unsigned long>(upper_us - armed_us), static_cast<unsigned long>(lower_us - armed_us), static_cast<unsigned long>(dt)); if (distance_mm > 0) Serial.println(distance_mm * 1000.0 / dt, 6); else Serial.println("NA"); } // 只有成功通過才輸出時間差，距離未知則速度缺值。
   if (acc_count) Serial.printf("# ACC_PEAK magnitude_g=%.6f axis_abs_g=%.6f includes_gravity=1 NEAR_RANGE=%d window=whole_ARM_trial\n", peak_g, peak_axis_g, peak_axis_g >= 190); else Serial.println("# ACC_PEAK NA"); // 峰值限整個已記錄視窗，缺資料不輸出假零。
@@ -400,14 +481,17 @@ void processCommand(char *line) { // 命令區分活動安全操作與待機設�
   char *save = nullptr, *cmd = strtok_r(line, " \t", &save); // 以空白分詞，不要求 Arduino 動態字串。
   if (!cmd) return; // 空行不執行任何動作。
   char *one = strtok_r(nullptr, " \t", &save), *two = strtok_r(nullptr, " \t", &save), *extra = strtok_r(nullptr, " \t", &save); // 最多接受命令及兩個參數。
-  if (!strcmp(cmd, "STOP") && !one) { cal_mode = 0; abortTrial(USER_STOP); return; } // STOP 隨時可取消收集或試驗，但不代表物理停止落體。
+  if (!strcmp(cmd, "STOP") && !one) { if (opticalMode()) { portENTER_CRITICAL(&gate_mux); opticalStopState(); portEXIT_CRITICAL(&gate_mux); serviceOptical(); return; } cal_mode = 0; abortTrial(USER_STOP); return; } // 各模式分別取消，非物理停止機構。
   if (isRecording()) return; // 活動期間除 STOP 外不通訊、不更動量測條件。
-  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP STATUS | ADXL_DIAG (cached FIFO observations) | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 提供可直接操作的命令列表。
+  if (handleOpticalCommand(cmd, one, two, extra)) return; // 光學狀態先攔截衝突設定。
+  if (!strcmp(cmd, "VERSION") && !one) { Serial.printf("# VERSION %s\n", FIRMWARE_VERSION); return; } // 晚開埠也可核對版本，不為此重置。
+  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP VERSION | SPEED START/STATUS/DUMP/CLEAR | STATUS | ADXL_DIAG (cached FIFO observations) | WIFI STATUS/ON/OFF (IDLE only) | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 列出一般與獨立模式命令。
   if (!strcmp(cmd, "STATUS") && !one) { printStatus(); return; } // 狀態查詢不改動資料。
   if (!strcmp(cmd, "ADXL_DIAG") && !one) { printFifoDiagnostics(); return; } // 額外診斷只印快取，記錄期間已由上方統一忽略。
   if (!strcmp(cmd, "DUMP") && !one) { dumpTrial(); return; } // 匯出只在已完成或中止時執行。
   if (!strcmp(cmd, "CLEAR") && !one && !cal_mode) { phase = IDLE; reason = NONE; acc_count = hx_count = 0; completion_reported = false; Serial.println("# CLEARED trial RAM; settings/calibration retained"); return; } // 明確命令才捨棄舊試驗，校正設定仍保留。
   if (phase != IDLE || cal_mode) { Serial.println("# BUSY use STOP for calibration or DUMP/CLEAR for retained trial"); return; } // 固定已完成試驗的設定與校正中參數。
+  if (!strcmp(cmd, "WIFI") && one && !two) { if (!strcmp(one, "STATUS")) { printWifiStatus(); return; } if (!strcmp(one, "ON")) { setWifiEnabled(true); printWifiStatus(); return; } if (!strcmp(one, "OFF")) { setWifiEnabled(false); printWifiStatus(); return; } } // 不提供網路遠端命令，只在待機調整連線意圖。
   double number = 0; // 建立經驗證的命令數值容器。
   if (!strcmp(cmd, "DIST") && !two && parseNumber(one, number) && number >= 0 && number <= 10000) { distance_mm = number; Serial.printf("# DIST_mm=%.6f; speed is two-point mean, not impact velocity\n", distance_mm); return; } // 限制設定範圍並保留毫米單位。
   if (!strcmp(cmd, "POL") && one && two && !extra && (!strcmp(one, "0") || !strcmp(one, "1")) && (!strcmp(two, "0") || !strcmp(two, "1"))) { upper_active = one[0] - '0'; lower_active = two[0] - '0'; Serial.printf("# POL=%d/%d verified entry levels required\n", upper_active, lower_active); return; } // 不預設兩顆反射極性必然相同。
@@ -417,6 +501,7 @@ void processCommand(char *line) { // 命令區分活動安全操作與待機設�
   const bool do_cal = !strcmp(cmd, "CAL") && !two && parseNumber(one, number) && number > 0 && number <= 100000; // 使用者須提供真實已知克數，而非額定容量。
   if (do_tare || do_cal) { // 收集校正資料前檢查當前品質。
     if (strcmp(hxStatus(), "OK") || (do_cal && !tare_valid)) { Serial.println("# CAL_REJECT HX must be OK; CAL also needs a successful TARE"); return; } // 飽和或未去皮時不能建立校正。
+    if (!pauseWifiForMeasurement()) { Serial.println("# CAL_REJECT WiFi must stop before calibration"); return; } // 保留舊校正，不在收集三十二框期間重連。
     cal_mode = do_tare ? 1 : 2; cal_count = 0; cal_sum = 0; cal_mass_g = do_cal ? number : 0; cal_start_ms = millis(); // 設定非阻塞三十二筆收集。
     Serial.println(do_tare ? "# TARE_START remove external load and hold still; 32 fresh frames; STOP cancels" : "# CAL_START hold the stated known mass still; 32 fresh frames; STOP cancels"); return; // 不因開始校正就提前宣告成功。
   } // 結束校正命令。
@@ -441,6 +526,7 @@ void setup() { // 安全初始化，不啟動任何釋放輸出。
   digitalWrite(HX_SCK, LOW); pinMode(HX_SCK, OUTPUT); pinMode(HX_DATA, INPUT_PULLUP); // 沿用第四版時脈方向與空接資料弱上拉。
   pinMode(UP_PIN, INPUT); pinMode(DN_PIN, INPUT); // GPIO34／35 只有外部決定的電位，不使用不存在的內建上拉。
   Serial.begin(115200); // 保持既有 COM3 序列速率。
+  initializeWifi(); // 只設定不持久化及手動重試策略，待機主迴圈才連線。
   rgbLedWrite(BOARD_RGB_PIN, 0, 0, 0); // 只在開機送一次全黑資料，使用核心既有RMT功能，不另裝函式庫。
   delayMicroseconds(300); // 留三百微秒低電位讓燈珠鎖存全黑，實際熄燈仍須目視確認。
   pinMode(BOARD_RGB_PIN, OUTPUT); digitalWrite(BOARD_RGB_PIN, LOW); // 關燈資料送完後將獨立GPIO32保持低，後續不再傳RGB資料。
@@ -451,15 +537,18 @@ void setup() { // 安全初始化，不啟動任何釋放輸出。
   initializeOled(); initializeAdxl(); // 分開初始化，缺一裝置仍保留診斷。
   attachInterrupt(digitalPinToInterrupt(UP_PIN), upperInterrupt, CHANGE); // 用變化中斷並在處理內篩選已確認極性。
   attachInterrupt(digitalPinToInterrupt(DN_PIN), lowerInterrupt, CHANGE); // 下閘獨立記時，不以畫面輪詢估通過時間。
-  Serial.println("# 05-test NMK99 MEASUREMENT v1-layout2-fifo-diag1; UNCAL; SCK25 DATA33; RGB32 OFF requested; OLED SH1106 safe margins; no relay/no automatic release"); // 診斷候選版不代表已燒錄，版面與既有接腳均維持。
+  Serial.printf("# 05-test NMK99 MEASUREMENT %s; UNCAL; SCK25 DATA33; RGB32 OFF requested; OLED SH1106 safe margins; no relay/no automatic release\n", FIRMWARE_VERSION); // 啟動與VERSION共用識別，不代表精度已驗證。
   Serial.println("# Not fully validated. Set POL to measured entry levels; DIST in mm; ARM records only; HELP lists commands."); // 開機不猜測缺失參數。
   pollHx(); pollAdxl(); updateOled(); printStatus(); // 顯示首筆或等待狀態，不阻塞等待感測器。
 } // 結束開機。
 
 void loop() { // 以感測及試驗終止優先，顯示與匯出降到背景。
+  if (opticalMode()) { serviceOptical(); serviceSerial(); delay(1); return; } // 光學模式不輪詢ADC、寫記錄、重連或定期刷新OLED。
   serviceTrial(); pollHx(); pollAdxl(); serviceTrial(); serviceSerial(); // 先檢查逾時，再讀資料及處理 STOP。
+  if (opticalMode()) { serviceOptical(); delay(1); return; } // 同一圈新啟用SPEED後也不可落回一般畫面或網路服務。
   if (cal_mode && (millis() - cal_start_ms >= 8000 || strcmp(hxStatus(), "OK"))) { cal_mode = 0; Serial.println("# CAL_ABORT timeout/stale/link/SAT; old calibration unchanged"); } // 不靠等待或舊資料完成校正。
   if (!isRecording()) { // 非記錄期間才重試裝置及輸出畫面。
+    serviceWifi(phase == IDLE && !cal_mode); // DONE／FAULT保留資料期間也不重連，CLEAR後才恢復待機策略。
     if (millis() - last_retry_ms >= 3000) { last_retry_ms = millis(); if (!oled_address) initializeOled(); if (!adxl_ready) initializeAdxl(); } // 活動期間不重新初始化感測器。
     if (millis() - last_display_ms >= 250) { last_display_ms = millis(); updateOled(); } // 每四分之一秒更新八行。
     if (phase == IDLE && !cal_mode && millis() - last_live_ms >= 1000) { last_live_ms = millis(); printStatus(); } // 即時快照不混入活動擷取或 DUMP 內。

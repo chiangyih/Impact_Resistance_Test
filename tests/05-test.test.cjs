@@ -41,6 +41,7 @@ function environment() {
     tare_raw: 0, tare_valid: false, calibration_valid: false, counts_per_g: 0,
     fmin: Math.min, fmax: Math.max, fabs: Math.abs,
     Serial: {println() {}, printf() {}},
+    opticalMode: () => false,
   };
   e.micros = () => e.clock >>> 0;
   e.millis = () => 10;
@@ -63,10 +64,10 @@ test('補數零、正負邊界與二十四位遮罩', () => {
   const e = environment();
   for (const [input, expected] of [[0, 0], [0x7fffff, 8388607], [0x800000, -8388608], [0xffffff, -1], [0xfffd8940, -161472]]) assert.equal(e.decodeHx(input), expected);
 });
-test('使用者回報22.5公分轉為225毫米，極性仍待確認', () => {
+test('使用者更正有效觸發間距為220毫米，極性仍待確認', () => {
   const distance = Number(/double distance_mm = ([\d.]+)/.exec(source)[1]);
-  assert.equal(distance, 22.5 * 10);
-  assert.equal(distance * 1000 / 100000, 2.25);
+  assert.equal(distance, 220);
+  assert.equal(distance * 1000 / 100000, 2.2);
   assert.match(source, /volatile int upper_active = -1, lower_active = -1/);
 });
 test('未啟動及未設定極性不觸發', () => {

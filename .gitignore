@@ -1,2 +1,3 @@
 # 本機自動同步腳本只供本機使用，不納入 GitHub。 // 避免腳本再次被提交。
 /auto-git-watch.ps1
+/05-test/wifi_secrets.h

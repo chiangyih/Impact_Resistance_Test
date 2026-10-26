@@ -1,0 +1,2433 @@
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161774 RX=595 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161816 RX=604 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161803 RX=613 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161804 RX=622 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161772 RX=632 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161789 RX=642 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161791 RX=651 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161802 RX=660 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161843 RX=670 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161792 RX=680 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161810 RX=690 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161803 RX=700 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161841 RX=709 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161826 RX=718 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161810 RX=728 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161838 RX=737 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161779 RX=746 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161756 RX=756 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161785 RX=766 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161869 RX=775 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# POL=1/1 verified entry levels required
+# DIST_mm=220.000000; speed is two-point mean, not impact velocity
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161800 RX=776 ERR=0 AGE_ms=49 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161839 RX=784 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161819 RX=794 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161809 RX=804 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161739 RX=813 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161803 RX=822 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161810 RX=831 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161755 RX=841 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161840 RX=850 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161841 RX=860 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161762 RX=869 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161808 RX=878 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161720 RX=888 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161879 RX=898 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161748 RX=908 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161876 RX=917 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161849 RX=927 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161787 RX=936 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161773 RX=945 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161807 RX=955 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161732 RX=964 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161770 RX=973 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161838 RX=982 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161794 RX=992 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161805 RX=1001 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161748 RX=1010 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161833 RX=1020 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161900 RX=1030 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161824 RX=1040 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161766 RX=1049 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161867 RX=1058 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161821 RX=1067 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161793 RX=1076 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161861 RX=1085 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161801 RX=1094 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161820 RX=1104 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161802 RX=1113 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161766 RX=1123 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161840 RX=1133 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161830 RX=1142 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161853 RX=1152 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161851 RX=1161 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161759 RX=1170 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161815 RX=1180 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161756 RX=1189 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161789 RX=1198 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161847 RX=1208 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161839 RX=1218 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161797 RX=1227 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161786 RX=1236 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161745 RX=1246 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161763 RX=1256 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161762 RX=1265 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161820 RX=1275 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161821 RX=1284 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161836 RX=1293 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161831 RX=1302 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161726 RX=1311 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161766 RX=1320 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161908 RX=1330 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161922 RX=1339 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161893 RX=1349 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161865 RX=1359 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161829 RX=1369 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161762 RX=1378 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161872 RX=1388 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161751 RX=1397 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161833 RX=1406 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161842 RX=1416 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161771 RX=1425 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161852 RX=1434 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161860 RX=1444 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161726 RX=1453 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161859 RX=1462 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161799 RX=1472 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161776 RX=1482 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161920 RX=1491 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161721 RX=1501 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161803 RX=1510 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161765 RX=1519 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161816 RX=1528 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161761 RX=1538 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161742 RX=1547 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161823 RX=1556 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161804 RX=1566 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161855 RX=1575 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161804 RX=1585 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161790 RX=1595 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161829 RX=1604 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161800 RX=1613 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161771 RX=1623 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161881 RX=1632 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161763 RX=1641 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161810 RX=1651 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161855 RX=1659 ERR=1 AGE_ms=198 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161838 RX=1669 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161926 RX=1678 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161828 RX=1687 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161859 RX=1696 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161784 RX=1705 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161788 RX=1715 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161735 RX=1725 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161862 RX=1734 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161844 RX=1743 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161711 RX=1753 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161747 RX=1762 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161793 RX=1771 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161780 RX=1781 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161808 RX=1790 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161830 RX=1799 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161741 RX=1809 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161822 RX=1818 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161821 RX=1827 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161786 RX=1836 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161743 RX=1845 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161809 RX=1855 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161780 RX=1865 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161748 RX=1873 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161865 RX=1882 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161861 RX=1891 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161826 RX=1900 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161779 RX=1910 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161762 RX=1920 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161885 RX=1929 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161763 RX=1938 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161839 RX=1948 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-161914 RX=1957 ERR=1 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# ARM: recording only; NO RELEASE; OLED/live output paused; STOP aborts; speed NA if DIST=0
+# TRIAL 1 FAULT reason=UPPER_TIMEOUT A=947 H=110 SAT=0 HX_STALE=0 ACC_STALE=0; DUMP to export; CLEAR before next ARM
+# BEGIN trial=1 state=FAULT reason=UPPER_TIMEOUT CAL=UNCAL distance_mm=220.000000 polarity=1/1
+# HX_SCK=25 HX_DATA=33 RGB_PIN=32 A128 RATE=physical_L10_or_H80; ACC_ODR=100Hz; timestamps=host_readout_us_from_ARM; rows_grouped_by_sensor
+# WIFI_POLICY radio_off_before_ARM_and_calibration; timing_and_supply_not_validated
+# tare_valid=0 offset=0.000000 counts_per_g=0.000000000 HX_ERR=0 ACC_ERR=0 FIFO_FULL=0 SAT=0 HX_STALE=0 ACC_STALE=0 ignored_edges=0
+# ACC_PEAK magnitude_g=0.550024 axis_abs_g=0.539000 includes_gravity=1 NEAR_RANGE=0 window=whole_ARM_trial
+# HX_RANGE raw_min=-161908 raw_max=-161711 sampled_values_only_not_impact_peak_force
+kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_static
+ACC,11953,0,3,-4,0.000000,0.147000,-0.196000,0.245000,NA,NA,NA
+ACC,22945,3,0,-6,0.147000,0.000000,-0.294000,0.328702,NA,NA,NA
+ACC,33945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,43956,-1,1,-4,-0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,54945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,65946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,76946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,85946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,96946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,107945,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,118946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,127945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,139945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,148945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,159946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,170946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,181946,-1,4,-7,-0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,192946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,201945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,212945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,224164,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,233945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,244945,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,255945,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,266946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,275944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,286944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,297945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,308945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,318955,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,329945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,338944,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,349945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,360944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,371945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,382944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,391944,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,402944,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,412944,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,423944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,434944,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,445944,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,456944,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,465944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,476944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,487944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,498944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,508944,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,519944,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,528945,3,1,-7,0.147000,0.049000,-0.343000,0.376376,NA,NA,NA
+ACC,539945,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,550944,0,2,-3,0.000000,0.098000,-0.147000,0.176672,NA,NA,NA
+ACC,561944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,572944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,581946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,593163,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,602946,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,613945,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,624945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,635945,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,646944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,655946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,666946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,677946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,687956,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,698946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,709946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,718945,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,729946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,740946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,751946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,762946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,771945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,783946,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,792945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,803945,2,1,-8,0.098000,0.049000,-0.392000,0.407025,NA,NA,NA
+ACC,814945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,825946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,836946,1,0,-4,0.049000,0.000000,-0.196000,0.202032,NA,NA,NA
+ACC,845946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,856945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,868164,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,877946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,888945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,899945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,908945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,919946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,930946,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,941946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,952945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,962956,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,973946,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,982945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,993945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,1004946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1015946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1026946,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,1035945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1046945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1056946,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,1067946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1078945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1089945,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,1098946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,1109946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1120946,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,1131946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1142945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,1152946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,1163945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1172945,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,1183946,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,1194946,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,1205946,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,1216946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,1225945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1237164,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1246944,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,1257945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,1268945,1,0,-8,0.049000,0.000000,-0.392000,0.395051,NA,NA,NA
+ACC,1279945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,1288944,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,1299944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,1310944,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,1321945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1331955,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1342944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1353945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1362944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1373944,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,1384945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,1395944,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,1404944,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,1415944,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1427951,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1436944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1447944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1458944,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,1469944,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,1478944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,1489944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1500944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,1512163,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,1521944,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,1532944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1543944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1552945,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1563944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1574944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1585945,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,1594946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1606955,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,1617944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1626946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,1637946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,1648945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1659945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,1668946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,1679946,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1690946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1700946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1711946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1722946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,1733946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1742945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1753946,0,1,-9,0.000000,0.049000,-0.441000,0.443714,NA,NA,NA
+ACC,1764946,-1,3,-7,-0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1775946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1784945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1796946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1807946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1816945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,1827945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1838945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1849946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1858946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1869946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1881163,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1890946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1901946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,1912945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1923945,1,2,-10,0.049000,0.098000,-0.490000,0.502101,NA,NA,NA
+ACC,1932945,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,1943946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1954946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1965946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1975956,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1986946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1997946,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,2006946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2017945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2028945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,2039946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2048946,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2059946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2069946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2080946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,2091946,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,2102945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,2113945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2122946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2133946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2144946,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,2156163,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,2165946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2176946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,2187946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,2196945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2207945,-1,2,-9,-0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,2218946,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,2229945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,2238944,0,1,-9,0.000000,0.049000,-0.441000,0.443714,NA,NA,NA
+ACC,2250956,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2259944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2270944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2281944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2292945,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,2303946,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,2312944,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,2323944,2,3,-6,0.098000,0.147000,-0.294000,0.343000,NA,NA,NA
+ACC,2334944,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,2344944,3,1,-6,0.147000,0.049000,-0.294000,0.332334,NA,NA,NA
+ACC,2355944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2366944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2377944,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2386944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,2397944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,2408944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,2419944,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,2428944,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,2440945,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,2449944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2460944,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2471944,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2482944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,2493944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2502945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2513944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2525163,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,2534944,1,4,-6,0.049000,0.196000,-0.294000,0.356725,NA,NA,NA
+ACC,2545944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2556944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,2565946,-1,1,-7,-0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2576945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2587945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2598945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,2609944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2619955,3,3,-5,0.147000,0.147000,-0.245000,0.321314,NA,NA,NA
+ACC,2630945,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,2639946,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,2650946,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2661946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2672945,-2,2,-6,-0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,2683945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2692946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2703946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2713945,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,2724946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2735946,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,2746946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2755945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2766945,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,2777945,-1,3,-4,-0.049000,0.147000,-0.196000,0.249852,NA,NA,NA
+ACC,2788946,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,2800164,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2809945,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,2820946,1,3,-5,0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,2829946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2840946,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,2851945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2862945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2873945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2882945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,2894955,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2903946,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,2914946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2925946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2936946,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,2945945,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,2956945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2967946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2978945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2988945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2999946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,3010946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,3019946,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,3030945,1,-1,-5,0.049000,-0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3041945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3052945,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,3063946,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,3072946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,3084945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,3093946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3104946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3115946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,3126946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,3135945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,3146945,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,3157946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3169163,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3178946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3189946,2,1,-5,0.098000,0.049000,-0.245000,0.268384,NA,NA,NA
+ACC,3200946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3209944,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,3220945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3231945,1,0,-9,0.049000,0.000000,-0.441000,0.443714,NA,NA,NA
+ACC,3242946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3253946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3263956,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,3274946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3283944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3294944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3305945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,3316945,3,1,-7,0.147000,0.049000,-0.343000,0.376376,NA,NA,NA
+ACC,3325944,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,3336944,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3347944,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3357944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3368944,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,3379944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3390944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,3399944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,3410944,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3421944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3432945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3441944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3453944,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3464944,-1,2,-8,-0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,3473944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3484944,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,3495944,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,3506944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3515945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,3526945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3538955,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3547945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3558944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3569944,0,4,-7,0.000000,0.196000,-0.343000,0.395051,NA,NA,NA
+ACC,3580944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3589946,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,3600946,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,3611945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3622945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,3632946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,3643945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3654945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,3663946,1,2,-11,0.049000,0.098000,-0.539000,0.550024,NA,NA,NA
+ACC,3674946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3685946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3696945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,3705945,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,3716946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3726945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3737945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3748946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3759945,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3770946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,3779945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,3790945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3801945,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3813165,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,3822945,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,3833945,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,3844946,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3853946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3864946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3875945,2,-1,-6,0.098000,-0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,3886945,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3895945,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,3907955,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3916945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3927945,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3938945,-1,1,-8,-0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3949946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,3960946,-1,2,-4,-0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,3969945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,3980945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3991946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,4001945,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,4012945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,4023945,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,4034945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4043946,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,4054945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4065945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,4076945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4085946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4097945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,4106946,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,4117946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4128946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4139946,-1,3,-7,-0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4150945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4159945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4170945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4182955,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4191945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4202946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,4213946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4224946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4233944,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,4244945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,4255945,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,4266946,2,1,-9,0.098000,0.049000,-0.441000,0.454407,NA,NA,NA
+ACC,4276945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4287945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4296944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4307944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4318944,3,-1,-6,0.147000,-0.049000,-0.294000,0.332334,NA,NA,NA
+ACC,4329944,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,4340945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4349944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,4360944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,4370944,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4381945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4392944,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,4403945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,4414945,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,4423944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4434944,2,1,-8,0.098000,0.049000,-0.392000,0.407025,NA,NA,NA
+ACC,4445944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4457163,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,4466944,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4477944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4486945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4497944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,4508944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4519945,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,4530944,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,4539945,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,4551955,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,4560946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,4571945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4582945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4593944,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,4604944,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4613946,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,4624946,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,4635945,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,4645946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4656946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4667945,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,4676945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4687946,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,4698946,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,4709946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4720946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4729945,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,4741946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4750945,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,4761945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4772946,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,4783946,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,4794946,2,5,-9,0.098000,0.245000,-0.441000,0.513916,NA,NA,NA
+ACC,4803945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4814945,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,4826956,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4835946,1,4,-5,0.049000,0.196000,-0.245000,0.317556,NA,NA,NA
+ACC,4846945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4857945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,4866946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4877946,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,4888946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,4899945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4910945,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,4920946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,4931945,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,4940946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4951945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4962945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,4973946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,4982946,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,4993945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5004945,-2,2,-7,-0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,5014946,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5025945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5036945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5047946,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,5056946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5067946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5078946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5089945,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5101164,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5110946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,5121945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5130945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5141946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5152946,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,5163946,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,5172945,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,5183945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5195956,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,5204944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5215945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,5226946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,5237946,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,5246945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5257944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5268945,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,5279945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5289944,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5300945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5311945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5320944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5331944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5342944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,5353944,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,5362944,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5373944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,5385944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5394944,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,5405944,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,5416944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5427953,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5436944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5447944,2,1,-5,0.098000,0.049000,-0.245000,0.268384,NA,NA,NA
+ACC,5458944,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5470163,1,0,-4,0.049000,0.000000,-0.196000,0.202032,NA,NA,NA
+ACC,5479944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5490944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,5501944,2,1,-9,0.098000,0.049000,-0.441000,0.454407,NA,NA,NA
+ACC,5510945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5521944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5532944,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5543944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5552946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5564955,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5575944,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5584946,1,0,-4,0.049000,0.000000,-0.196000,0.202032,NA,NA,NA
+ACC,5595945,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5606945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5617945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,5626946,0,4,-6,0.000000,0.196000,-0.294000,0.353344,NA,NA,NA
+ACC,5637946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,5648946,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,5658946,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,5669946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5680946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,5691945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5700945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5711946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5722946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5733946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5742945,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,5754946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5765946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5774945,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5785945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5796946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5807946,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,5816946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5827946,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,5839956,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,5848946,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,5859946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5870945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,5881945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5890946,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,5901946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,5912946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5923946,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,5933945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5944946,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,5955946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5964945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5975945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5986946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5997945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6006946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,6017946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6027946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,6038946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6049946,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,6060945,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,6071945,-1,2,-9,-0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,6080946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,6091946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6102946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6114163,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6123946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6134946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6143945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6154945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6165946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6176946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6187946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,6196944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6208956,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,6217944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6228944,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,6239945,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6250946,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,6261946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,6270944,1,0,-4,0.049000,0.000000,-0.196000,0.202032,NA,NA,NA
+ACC,6281945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,6292945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,6302944,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,6313944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6324944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,6333944,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,6344944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6355945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,6366944,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,6377944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6386945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,6398944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6407944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6418945,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,6429944,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,6440944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6451945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6460944,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,6471944,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6483955,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6492944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6503945,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,6514944,2,0,-7,0.098000,0.000000,-0.343000,0.356725,NA,NA,NA
+ACC,6523945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,6534945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6545944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,6556944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,6567944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6577944,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6588944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6597946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,6608946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6619945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,6630945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6641945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,6650946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,6661946,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,6671946,-2,1,-7,-0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,6682946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6693946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,6704946,2,2,-10,0.098000,0.098000,-0.490000,0.509223,NA,NA,NA
+ACC,6713945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6724945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6735946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6746946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6758164,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6767946,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,6778946,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,6787946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6798945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,6809945,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,6820945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6831946,3,2,-7,0.147000,0.098000,-0.343000,0.385826,NA,NA,NA
+ACC,6840946,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6852956,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,6861946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,6872946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6883946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,6894945,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,6903945,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,6914946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,6925946,3,1,-5,0.147000,0.049000,-0.245000,0.289888,NA,NA,NA
+ACC,6936946,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,6946945,-1,2,-8,-0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6957945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,6968946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,6977945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6988945,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,6999946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7010946,3,2,-6,0.147000,0.098000,-0.294000,0.343000,NA,NA,NA
+ACC,7021946,3,2,-7,0.147000,0.098000,-0.343000,0.385826,NA,NA,NA
+ACC,7030946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7042945,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7051946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7062946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7073945,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,7084945,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,7093946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,7104946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,7115946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,7127956,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7136946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7147946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7158946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7167945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,7178945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7189945,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,7200946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7209945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7221946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7232946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7241944,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,7252944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,7263945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7274945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7283944,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,7294944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7305944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7315944,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,7326944,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7337944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,7348944,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,7357944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7368944,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,7379944,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,7390944,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7399945,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,7411944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7422944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,7431944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,7442944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7453944,0,2,-10,0.000000,0.098000,-0.490000,0.499704,NA,NA,NA
+ACC,7464944,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,7473945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7484944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,7496955,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7505945,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,7516944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7527944,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,7538945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7547946,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,7558945,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,7569945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7580944,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,7590945,1,4,-6,0.049000,0.196000,-0.294000,0.356725,NA,NA,NA
+ACC,7601945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7612944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7621946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7632946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7643946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7654945,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,7663946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7674946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7684945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,7695946,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7706946,0,1,-9,0.000000,0.049000,-0.441000,0.443714,NA,NA,NA
+ACC,7717946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7728946,1,3,-5,0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,7737945,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,7748945,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,7759946,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,7771956,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,7780945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7791946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7802946,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,7811946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7822945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,7833945,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,7844945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7853946,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,7865945,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,7874945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7885945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7896946,0,1,-9,0.000000,0.049000,-0.441000,0.443714,NA,NA,NA
+ACC,7907946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7918945,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,7927945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7938945,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,7949946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7959945,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7970945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7981946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,7992946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,8001946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,8012945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8023945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8034945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8043946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8055945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8064946,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,8075946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8086946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8097945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,8108945,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,8117946,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,8128946,2,1,-8,0.098000,0.049000,-0.392000,0.407025,NA,NA,NA
+ACC,8140956,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,8149945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8160946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8171946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,8182946,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8191945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8202945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8213946,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,8224945,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8234945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,8245945,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,8254945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8265944,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,8276944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8287945,2,0,-9,0.098000,0.000000,-0.441000,0.451758,NA,NA,NA
+ACC,8298945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8307944,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,8318944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8328944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8339944,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,8350944,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,8361944,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8372944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8381944,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8392944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8403944,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,8415955,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,8424944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,8435944,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,8444944,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8455945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8466944,2,1,-8,0.098000,0.049000,-0.392000,0.407025,NA,NA,NA
+ACC,8477945,2,0,-8,0.098000,0.000000,-0.392000,0.404064,NA,NA,NA
+ACC,8488944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,8497945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,8509944,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,8518945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8529945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,8540944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8551944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,8562944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8571946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8582945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8593945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8603946,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,8614945,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8625945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8634946,-1,3,-7,-0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,8645946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8656946,-1,1,-4,-0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,8667946,-1,2,-4,-0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,8678946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8687945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8699946,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,8708945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8719945,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,8730946,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,8741946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,8752946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8761945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8772945,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8784956,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,8793945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,8804945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,8815945,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8824945,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,8835946,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,8846946,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,8857945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,8868945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8878946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8889945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8898945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,8909946,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,8920946,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,8931946,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,8942946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8951945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8962945,2,3,-6,0.098000,0.147000,-0.294000,0.343000,NA,NA,NA
+ACC,8972946,3,2,-7,0.147000,0.098000,-0.343000,0.385826,NA,NA,NA
+ACC,8983945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8994945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,9005946,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,9014946,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,9025946,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9036945,3,2,-6,0.147000,0.098000,-0.294000,0.343000,NA,NA,NA
+ACC,9047945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9057164,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9068946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9079945,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9088946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9099946,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9110946,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,9121946,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,9132945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,9141945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,9153946,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9162945,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,9173945,0,3,-4,0.000000,0.147000,-0.196000,0.245000,NA,NA,NA
+ACC,9184946,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9195946,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9204944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9215944,-1,3,-6,-0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9226945,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,9237945,1,0,-8,0.049000,0.000000,-0.392000,0.395051,NA,NA,NA
+ACC,9247944,3,1,-7,0.147000,0.049000,-0.343000,0.376376,NA,NA,NA
+ACC,9258945,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9269945,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,9278944,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,9289944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9300944,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9311945,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9320944,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,9331944,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9343944,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9352944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9363944,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,9374944,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9385944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9394944,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9405945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,9416944,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9428955,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9437944,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9448944,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,9459944,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9468945,1,1,-9,0.049000,0.049000,-0.441000,0.446411,NA,NA,NA
+ACC,9479944,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,9490944,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,9501945,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,9510946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9522945,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9533945,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,9542946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9553945,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,9564944,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,9575944,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,9584946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,9595946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9606945,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,9616946,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,9627946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9638945,-1,3,-7,-0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9649945,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9658946,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9669946,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9680946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9691946,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,9701164,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9712946,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,9723946,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,9732945,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,9743945,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,9754946,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,9765946,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,9774946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9785945,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,9795956,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,9806946,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9817945,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9828945,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,9839945,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9848945,-1,3,-4,-0.049000,0.147000,-0.196000,0.249852,NA,NA,NA
+ACC,9859946,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,9870946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9881945,0,4,-8,0.000000,0.196000,-0.392000,0.438269,NA,NA,NA
+ACC,9891946,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9902946,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9911945,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,9922945,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9933945,0,4,-7,0.000000,0.196000,-0.343000,0.395051,NA,NA,NA
+ACC,9944945,1,5,-8,0.049000,0.245000,-0.392000,0.464855,NA,NA,NA
+ACC,9955946,3,2,-7,0.147000,0.098000,-0.343000,0.385826,NA,NA,NA
+ACC,9964945,2,0,-7,0.098000,0.000000,-0.343000,0.356725,NA,NA,NA
+ACC,9975945,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,9985946,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9996946,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+HX,1177,NA,NA,NA,NA,NA,NA,NA,-161840,OK,NA
+HX,39054,NA,NA,NA,NA,NA,NA,NA,-161831,OK,NA
+HX,131054,NA,NA,NA,NA,NA,NA,NA,-161831,OK,NA
+HX,222054,NA,NA,NA,NA,NA,NA,NA,-161883,OK,NA
+HX,314054,NA,NA,NA,NA,NA,NA,NA,-161867,OK,NA
+HX,406054,NA,NA,NA,NA,NA,NA,NA,-161858,OK,NA
+HX,500058,NA,NA,NA,NA,NA,NA,NA,-161891,OK,NA
+HX,591054,NA,NA,NA,NA,NA,NA,NA,-161820,OK,NA
+HX,683054,NA,NA,NA,NA,NA,NA,NA,-161766,OK,NA
+HX,775054,NA,NA,NA,NA,NA,NA,NA,-161769,OK,NA
+HX,866054,NA,NA,NA,NA,NA,NA,NA,-161811,OK,NA
+HX,958054,NA,NA,NA,NA,NA,NA,NA,-161873,OK,NA
+HX,1050054,NA,NA,NA,NA,NA,NA,NA,-161883,OK,NA
+HX,1144058,NA,NA,NA,NA,NA,NA,NA,-161843,OK,NA
+HX,1235054,NA,NA,NA,NA,NA,NA,NA,-161855,OK,NA
+HX,1327054,NA,NA,NA,NA,NA,NA,NA,-161849,OK,NA
+HX,1419054,NA,NA,NA,NA,NA,NA,NA,-161846,OK,NA
+HX,1510054,NA,NA,NA,NA,NA,NA,NA,-161815,OK,NA
+HX,1602054,NA,NA,NA,NA,NA,NA,NA,-161821,OK,NA
+HX,1694054,NA,NA,NA,NA,NA,NA,NA,-161798,OK,NA
+HX,1786058,NA,NA,NA,NA,NA,NA,NA,-161756,OK,NA
+HX,1879054,NA,NA,NA,NA,NA,NA,NA,-161815,OK,NA
+HX,1971054,NA,NA,NA,NA,NA,NA,NA,-161820,OK,NA
+HX,2063054,NA,NA,NA,NA,NA,NA,NA,-161802,OK,NA
+HX,2154054,NA,NA,NA,NA,NA,NA,NA,-161832,OK,NA
+HX,2246054,NA,NA,NA,NA,NA,NA,NA,-161876,OK,NA
+HX,2338054,NA,NA,NA,NA,NA,NA,NA,-161875,OK,NA
+HX,2430058,NA,NA,NA,NA,NA,NA,NA,-161854,OK,NA
+HX,2523054,NA,NA,NA,NA,NA,NA,NA,-161847,OK,NA
+HX,2615054,NA,NA,NA,NA,NA,NA,NA,-161804,OK,NA
+HX,2707054,NA,NA,NA,NA,NA,NA,NA,-161849,OK,NA
+HX,2798054,NA,NA,NA,NA,NA,NA,NA,-161875,OK,NA
+HX,2890054,NA,NA,NA,NA,NA,NA,NA,-161908,OK,NA
+HX,2982054,NA,NA,NA,NA,NA,NA,NA,-161859,OK,NA
+HX,3074058,NA,NA,NA,NA,NA,NA,NA,-161819,OK,NA
+HX,3167054,NA,NA,NA,NA,NA,NA,NA,-161840,OK,NA
+HX,3259054,NA,NA,NA,NA,NA,NA,NA,-161845,OK,NA
+HX,3351054,NA,NA,NA,NA,NA,NA,NA,-161876,OK,NA
+HX,3443058,NA,NA,NA,NA,NA,NA,NA,-161865,OK,NA
+HX,3534054,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,3626054,NA,NA,NA,NA,NA,NA,NA,-161792,OK,NA
+HX,3718058,NA,NA,NA,NA,NA,NA,NA,-161822,OK,NA
+HX,3811054,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,3903054,NA,NA,NA,NA,NA,NA,NA,-161810,OK,NA
+HX,3995054,NA,NA,NA,NA,NA,NA,NA,-161769,OK,NA
+HX,4087058,NA,NA,NA,NA,NA,NA,NA,-161791,OK,NA
+HX,4178054,NA,NA,NA,NA,NA,NA,NA,-161783,OK,NA
+HX,4270054,NA,NA,NA,NA,NA,NA,NA,-161784,OK,NA
+HX,4362058,NA,NA,NA,NA,NA,NA,NA,-161818,OK,NA
+HX,4455054,NA,NA,NA,NA,NA,NA,NA,-161876,OK,NA
+HX,4547054,NA,NA,NA,NA,NA,NA,NA,-161780,OK,NA
+HX,4639054,NA,NA,NA,NA,NA,NA,NA,-161739,OK,NA
+HX,4731058,NA,NA,NA,NA,NA,NA,NA,-161741,OK,NA
+HX,4822054,NA,NA,NA,NA,NA,NA,NA,-161711,OK,NA
+HX,4914054,NA,NA,NA,NA,NA,NA,NA,-161781,OK,NA
+HX,5006058,NA,NA,NA,NA,NA,NA,NA,-161821,OK,NA
+HX,5099054,NA,NA,NA,NA,NA,NA,NA,-161822,OK,NA
+HX,5191054,NA,NA,NA,NA,NA,NA,NA,-161853,OK,NA
+HX,5283054,NA,NA,NA,NA,NA,NA,NA,-161813,OK,NA
+HX,5375058,NA,NA,NA,NA,NA,NA,NA,-161853,OK,NA
+HX,5468054,NA,NA,NA,NA,NA,NA,NA,-161762,OK,NA
+HX,5560054,NA,NA,NA,NA,NA,NA,NA,-161752,OK,NA
+HX,5650058,NA,NA,NA,NA,NA,NA,NA,-161828,OK,NA
+HX,5744058,NA,NA,NA,NA,NA,NA,NA,-161800,OK,NA
+HX,5835054,NA,NA,NA,NA,NA,NA,NA,-161783,OK,NA
+HX,5927054,NA,NA,NA,NA,NA,NA,NA,-161831,OK,NA
+HX,6019058,NA,NA,NA,NA,NA,NA,NA,-161869,OK,NA
+HX,6112054,NA,NA,NA,NA,NA,NA,NA,-161794,OK,NA
+HX,6204054,NA,NA,NA,NA,NA,NA,NA,-161830,OK,NA
+HX,6294058,NA,NA,NA,NA,NA,NA,NA,-161791,OK,NA
+HX,6388058,NA,NA,NA,NA,NA,NA,NA,-161755,OK,NA
+HX,6479054,NA,NA,NA,NA,NA,NA,NA,-161826,OK,NA
+HX,6571054,NA,NA,NA,NA,NA,NA,NA,-161843,OK,NA
+HX,6663058,NA,NA,NA,NA,NA,NA,NA,-161809,OK,NA
+HX,6756054,NA,NA,NA,NA,NA,NA,NA,-161807,OK,NA
+HX,6848054,NA,NA,NA,NA,NA,NA,NA,-161794,OK,NA
+HX,6940054,NA,NA,NA,NA,NA,NA,NA,-161791,OK,NA
+HX,7032058,NA,NA,NA,NA,NA,NA,NA,-161784,OK,NA
+HX,7123054,NA,NA,NA,NA,NA,NA,NA,-161815,OK,NA
+HX,7215054,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,7307058,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,7401058,NA,NA,NA,NA,NA,NA,NA,-161846,OK,NA
+HX,7492054,NA,NA,NA,NA,NA,NA,NA,-161821,OK,NA
+HX,7584054,NA,NA,NA,NA,NA,NA,NA,-161806,OK,NA
+HX,7676058,NA,NA,NA,NA,NA,NA,NA,-161804,OK,NA
+HX,7767054,NA,NA,NA,NA,NA,NA,NA,-161799,OK,NA
+HX,7859054,NA,NA,NA,NA,NA,NA,NA,-161821,OK,NA
+HX,7951058,NA,NA,NA,NA,NA,NA,NA,-161872,OK,NA
+HX,8045058,NA,NA,NA,NA,NA,NA,NA,-161852,OK,NA
+HX,8136054,NA,NA,NA,NA,NA,NA,NA,-161784,OK,NA
+HX,8228054,NA,NA,NA,NA,NA,NA,NA,-161854,OK,NA
+HX,8320058,NA,NA,NA,NA,NA,NA,NA,-161821,OK,NA
+HX,8411054,NA,NA,NA,NA,NA,NA,NA,-161750,OK,NA
+HX,8503054,NA,NA,NA,NA,NA,NA,NA,-161855,OK,NA
+HX,8595058,NA,NA,NA,NA,NA,NA,NA,-161811,OK,NA
+HX,8689058,NA,NA,NA,NA,NA,NA,NA,-161783,OK,NA
+HX,8780054,NA,NA,NA,NA,NA,NA,NA,-161846,OK,NA
+HX,8872054,NA,NA,NA,NA,NA,NA,NA,-161868,OK,NA
+HX,8964058,NA,NA,NA,NA,NA,NA,NA,-161799,OK,NA
+HX,9055054,NA,NA,NA,NA,NA,NA,NA,-161720,OK,NA
+HX,9147054,NA,NA,NA,NA,NA,NA,NA,-161775,OK,NA
+HX,9239058,NA,NA,NA,NA,NA,NA,NA,-161812,OK,NA
+HX,9333058,NA,NA,NA,NA,NA,NA,NA,-161798,OK,NA
+HX,9424054,NA,NA,NA,NA,NA,NA,NA,-161819,OK,NA
+HX,9516054,NA,NA,NA,NA,NA,NA,NA,-161815,OK,NA
+HX,9608058,NA,NA,NA,NA,NA,NA,NA,-161825,OK,NA
+HX,9699054,NA,NA,NA,NA,NA,NA,NA,-161800,OK,NA
+HX,9791054,NA,NA,NA,NA,NA,NA,NA,-161769,OK,NA
+HX,9883058,NA,NA,NA,NA,NA,NA,NA,-161825,OK,NA
+HX,9977058,NA,NA,NA,NA,NA,NA,NA,-161868,OK,NA
+# END; RAM data retained until CLEAR or power loss; no file automatically saved on computer
+# STATUS phase=FAULT reason=UPPER_TIMEOUT CAL=UNCAL HX=OK RAW=-161859 RX=4337 ERR=2 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=1/1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=SUSPENDED requested=1 radio=0 IP=NA; STA only; radio paused for recording/calibration; not timing-validated
+# CLEARED trial RAM; settings/calibration retained
+# ARM: recording only; NO RELEASE; OLED/live output paused; STOP aborts; speed NA if DIST=0
+# TRIAL 2 FAULT reason=UPPER_TIMEOUT A=948 H=109 SAT=0 HX_STALE=0 ACC_STALE=0; DUMP to export; CLEAR before next ARM
+# BEGIN trial=2 state=FAULT reason=UPPER_TIMEOUT CAL=UNCAL distance_mm=220.000000 polarity=1/1
+# HX_SCK=25 HX_DATA=33 RGB_PIN=32 A128 RATE=physical_L10_or_H80; ACC_ODR=100Hz; timestamps=host_readout_us_from_ARM; rows_grouped_by_sensor
+# WIFI_POLICY radio_off_before_ARM_and_calibration; timing_and_supply_not_validated
+# tare_valid=0 offset=0.000000 counts_per_g=0.000000000 HX_ERR=0 ACC_ERR=0 FIFO_FULL=0 SAT=0 HX_STALE=0 ACC_STALE=0 ignored_edges=0
+# ACC_PEAK magnitude_g=0.558686 axis_abs_g=0.539000 includes_gravity=1 NEAR_RANGE=0 window=whole_ARM_trial
+# HX_RANGE raw_min=-161985 raw_max=-161779 sampled_values_only_not_impact_peak_force
+kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_static
+ACC,3427,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,15057,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,24059,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,35059,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,46058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,57058,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,66059,1,3,-10,0.049000,0.147000,-0.490000,0.513916,NA,NA,NA
+ACC,77058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,87068,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,98059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,109058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,120059,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,131059,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,140058,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,151058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,162059,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,173058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,183058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,194059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,203059,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,214059,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,225058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,236058,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,247058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,256058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,267282,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,277058,-1,1,-3,-0.049000,0.049000,-0.147000,0.162515,NA,NA,NA
+ACC,288058,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,299059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,310058,-1,3,-8,-0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,321058,-1,3,-7,-0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,330058,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,341059,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,352058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,362068,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,373059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,384058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,393058,0,3,-10,0.000000,0.147000,-0.490000,0.511575,NA,NA,NA
+ACC,404058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,415058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,426058,0,3,-11,0.000000,0.147000,-0.539000,0.558686,NA,NA,NA
+ACC,437059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,446059,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,458058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,467058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,478059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,489059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,500058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,511058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,520058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,531059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,542059,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,552058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,563058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,574059,-1,1,-3,-0.049000,0.049000,-0.147000,0.162515,NA,NA,NA
+ACC,583057,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,594058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,605058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,616059,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,627059,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,636282,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,648059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,657057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,668057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,679057,3,-1,-6,0.147000,-0.049000,-0.294000,0.332334,NA,NA,NA
+ACC,690058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,699057,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,710057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,721057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,731067,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,742057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,753057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,764057,2,1,-4,0.098000,0.049000,-0.196000,0.224546,NA,NA,NA
+ACC,773057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,784057,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,795057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,806057,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,817057,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,827057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,838057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,847057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,858057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,869057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,880057,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,889058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,900058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,911282,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,921058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,932058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,943057,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,954057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,963059,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,974058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,985058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,996057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1006067,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,1017058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1028058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1037059,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1048059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1059059,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1070059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1079058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1090059,2,1,-8,0.098000,0.049000,-0.392000,0.407025,NA,NA,NA
+ACC,1100058,2,0,-7,0.098000,0.000000,-0.343000,0.356725,NA,NA,NA
+ACC,1111059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1122059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1133059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1144059,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1153058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1164058,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,1175058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1186059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1196058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,1207058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1218059,-1,1,-7,-0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1227059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1238059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1249058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,1260058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,1269059,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,1280283,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,1290058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,1301058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1312059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1323059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1334059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1343058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1354058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,1365059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,1375068,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,1386058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1397058,-1,3,-8,-0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,1406059,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1417059,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,1428058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1439058,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,1450058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1459058,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,1471058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,1480059,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,1491059,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,1502059,0,2,-11,0.000000,0.098000,-0.539000,0.547837,NA,NA,NA
+ACC,1513059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1524058,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,1533058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,1544059,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1555059,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,1565058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1576058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1587059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1596057,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,1607057,1,0,-9,0.049000,0.000000,-0.441000,0.443714,NA,NA,NA
+ACC,1618057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1629058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1640059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,1649282,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,1661058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1670057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1681057,-2,2,-6,-0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,1692057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,1703057,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1714058,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,1723058,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,1734057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,1744067,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1755057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1766057,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,1777057,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,1786057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1797057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1808057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,1819057,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,1830057,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1840057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,1851057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1860058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,1871057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1882057,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,1893057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,1902058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,1913058,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,1924282,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,1934058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1945058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,1956058,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,1967057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,1976059,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,1987059,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,1998058,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,2009058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2019067,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2030058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2041058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,2050059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2061059,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,2072059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2083059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,2092058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2103058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2115059,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,2124058,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,2135058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,2146058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2157059,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,2166059,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,2177058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,2188058,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,2199058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,2209058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2220058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,2231058,0,4,-8,0.000000,0.196000,-0.392000,0.438269,NA,NA,NA
+ACC,2240058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,2251059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,2262059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2273058,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,2282058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2293284,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2305058,-2,1,-5,-0.098000,0.049000,-0.245000,0.268384,NA,NA,NA
+ACC,2314058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2325058,-1,3,-9,-0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,2336058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2347059,2,3,-6,0.098000,0.147000,-0.294000,0.343000,NA,NA,NA
+ACC,2356058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2367058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2378058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2388067,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2399058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,2410058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2421058,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,2430059,0,3,-10,0.000000,0.147000,-0.490000,0.511575,NA,NA,NA
+ACC,2441059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2452058,-1,2,-9,-0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,2463058,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,2472058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2484058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2493058,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,2504058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2515059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2526059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2537059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2546058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2557058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2568284,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,2578058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2589058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,2600059,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2611059,2,0,-7,0.098000,0.000000,-0.343000,0.356725,NA,NA,NA
+ACC,2620057,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2631057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2642058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,2653058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,2663067,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2674058,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2683057,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,2694057,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,2705057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2716057,-1,3,-5,-0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,2727057,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,2736057,0,3,-4,0.000000,0.147000,-0.196000,0.245000,NA,NA,NA
+ACC,2747057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,2757057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,2768057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,2779057,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,2790057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2799057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2810057,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,2821057,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,2832057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2843057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2853057,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,2864057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,2873058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,2884058,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,2895057,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,2906058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,2917057,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,2926059,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,2937282,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,2947059,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,2958059,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,2969058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,2980058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,2989059,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,3000059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3011059,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,3022059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3032068,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3043059,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,3054058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,3063058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3074058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,3085059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3096059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3105058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3116058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3128059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3137058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3148058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3159058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3170058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3179058,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3190059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3201058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,3212283,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3222058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3233058,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,3244058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,3253058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3264058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,3275059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3286058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3295058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,3307067,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3316059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3327059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3338058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,3349059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3360059,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,3369059,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3380059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3391058,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,3401059,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3412059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,3423058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3434059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3443059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3454059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3465059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3476058,3,0,-6,0.147000,0.000000,-0.294000,0.328702,NA,NA,NA
+ACC,3485058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3497059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,3506058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3517058,-1,2,-4,-0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,3528059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3539059,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,3550059,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,3559057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,3570057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3581283,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3591057,0,4,-8,0.000000,0.196000,-0.392000,0.438269,NA,NA,NA
+ACC,3602058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3613058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3622057,1,2,-10,0.049000,0.098000,-0.490000,0.502101,NA,NA,NA
+ACC,3633057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3644057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3655057,1,4,-9,0.049000,0.196000,-0.441000,0.485075,NA,NA,NA
+ACC,3666058,-1,3,-6,-0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,3676068,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,3687057,-1,2,-9,-0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3696057,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,3707057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3718057,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,3729057,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,3740057,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,3749057,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,3760057,2,2,-9,0.098000,0.098000,-0.441000,0.462265,NA,NA,NA
+ACC,3770057,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,3781057,0,0,-7,0.000000,0.000000,-0.343000,0.343000,NA,NA,NA
+ACC,3792057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3803057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3812057,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,3823057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,3834057,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3845057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3856282,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,3866057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3877057,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,3886058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,3897058,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3908057,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,3919057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3930057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,3939059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,3951068,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,3960059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,3971059,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,3982059,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,3993058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,4002058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4013058,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,4024059,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4035059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4045059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4056058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,4067058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,4076058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,4087058,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,4098058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4109058,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,4118059,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,4129058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4141059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4150058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,4161058,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,4172058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4183058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,4192058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4203058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4214058,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,4225282,2,1,-9,0.098000,0.049000,-0.441000,0.454407,NA,NA,NA
+ACC,4235058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,4246059,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,4257058,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,4266058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,4277058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,4288058,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4299058,0,-1,-5,0.000000,-0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,4308058,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,4320068,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4331058,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4340058,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,4351058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4362058,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,4373058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,4382058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,4393059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4404058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,4414058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4425059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,4436058,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,4447058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4456059,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4467059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,4478059,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,4489059,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4498057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4510059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4521059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4530057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4541058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4552058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4563058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4572057,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,4583057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4594283,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4604057,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,4615057,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,4626057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4637058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4646057,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,4657057,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,4668057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4679057,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,4689067,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4700057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4709057,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,4720057,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,4731057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4742057,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,4753057,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,4762057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4773057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,4783057,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,4794057,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4805057,-1,3,-4,-0.049000,0.147000,-0.196000,0.249852,NA,NA,NA
+ACC,4816057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4827057,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,4836057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,4847057,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,4858057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,4869282,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,4879057,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,4890057,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,4899059,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,4910059,0,0,-6,0.000000,0.000000,-0.294000,0.294000,NA,NA,NA
+ACC,4921058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4932057,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,4943057,1,3,-10,0.049000,0.147000,-0.490000,0.513916,NA,NA,NA
+ACC,4952059,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,4964067,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,4973059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,4984058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,4995059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5006059,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,5017058,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,5026058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5037058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5048058,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,5058058,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,5069058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5080058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5089058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,5100058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,5111058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5122058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,5133058,-1,3,-5,-0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,5142058,0,2,-3,0.000000,0.098000,-0.147000,0.176672,NA,NA,NA
+ACC,5154058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5163058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5174059,1,0,-9,0.049000,0.000000,-0.441000,0.443714,NA,NA,NA
+ACC,5185058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,5196058,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,5205058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5216059,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,5227058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5238282,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5248059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5259058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5270058,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,5279058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5290058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,5301058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5312059,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5323058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,5333068,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,5344058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5353059,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,5364058,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5375058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5386058,1,3,-5,0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,5395058,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,5406058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5417059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5427058,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,5438058,0,1,-9,0.000000,0.049000,-0.441000,0.443714,NA,NA,NA
+ACC,5449059,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,5460058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5469058,0,1,-8,0.000000,0.049000,-0.392000,0.395051,NA,NA,NA
+ACC,5480058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5491058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5502058,-1,2,-4,-0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,5513283,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5523058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5534058,2,1,-5,0.098000,0.049000,-0.245000,0.268384,NA,NA,NA
+ACC,5543057,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,5554057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,5565057,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,5576058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5585057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5596057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,5608068,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,5617057,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,5628057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5639057,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,5650057,0,4,-7,0.000000,0.196000,-0.343000,0.395051,NA,NA,NA
+ACC,5659057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5670057,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5681057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5692057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5702057,-1,1,-3,-0.049000,0.049000,-0.147000,0.162515,NA,NA,NA
+ACC,5713057,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5724057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,5733057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5744057,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5755057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5766057,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,5775057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5786057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,5798057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5807057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5818057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5829057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,5840057,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,5849058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,5860058,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,5871057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,5882282,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,5892058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,5903057,-1,3,-5,-0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,5914057,1,3,-5,0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,5923059,2,4,-8,0.098000,0.196000,-0.392000,0.449092,NA,NA,NA
+ACC,5934058,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,5945058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,5956059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,5965058,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,5977067,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5986058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,5997058,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,6008058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,6019058,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6030058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6039058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,6050058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,6061059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6071058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6082058,0,0,-8,0.000000,0.000000,-0.392000,0.392000,NA,NA,NA
+ACC,6093058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,6104058,-2,2,-8,-0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,6113058,-1,3,-5,-0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,6124058,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,6135058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6146058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6155058,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,6167058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6176058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,6187058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6198059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,6209058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6220058,-1,1,-4,-0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,6229058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6240058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6252067,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6261058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,6272058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6283058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6294058,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6303058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6314058,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,6325058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6336058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6346058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,6357058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,6366058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,6377059,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6388059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6399058,3,2,-6,0.147000,0.098000,-0.294000,0.343000,NA,NA,NA
+ACC,6410058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6419058,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,6430058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6440058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,6451058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6462058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6473059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6484058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6493057,-1,2,-8,-0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6504058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,6515058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,6526283,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,6536058,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6547059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6556057,2,3,-6,0.098000,0.147000,-0.294000,0.343000,NA,NA,NA
+ACC,6567057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,6578057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,6589057,3,1,-6,0.147000,0.049000,-0.294000,0.332334,NA,NA,NA
+ACC,6600058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,6609057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,6621067,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,6630057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,6641057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6652057,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,6663057,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,6674057,0,2,-10,0.000000,0.098000,-0.490000,0.499704,NA,NA,NA
+ACC,6683057,-1,2,-7,-0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6694057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,6705057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,6715057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6726057,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,6737057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6746057,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6757057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6768057,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,6779057,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,6790057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6799057,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,6811057,2,3,-5,0.098000,0.147000,-0.245000,0.302056,NA,NA,NA
+ACC,6820058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6831058,1,2,-11,0.049000,0.098000,-0.539000,0.550024,NA,NA,NA
+ACC,6842057,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,6853057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,6864057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,6873058,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,6884058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,6896067,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,6905058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,6916058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,6927057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,6936058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6947059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6958059,0,3,-4,0.000000,0.147000,-0.196000,0.245000,NA,NA,NA
+ACC,6969058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,6980058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,6990059,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7001058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7010058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7021058,2,4,-8,0.098000,0.196000,-0.392000,0.449092,NA,NA,NA
+ACC,7032058,-1,2,-8,-0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7043059,2,4,-8,0.098000,0.196000,-0.392000,0.449092,NA,NA,NA
+ACC,7054059,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,7063058,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,7074058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7084058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7095058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7106058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,7117058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7126059,2,2,-5,0.098000,0.098000,-0.245000,0.281484,NA,NA,NA
+ACC,7137059,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7148058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7159058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7170284,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7180058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7191058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,7200058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7211058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7222058,-1,2,-6,-0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7233058,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,7242058,0,0,-5,0.000000,0.000000,-0.245000,0.245000,NA,NA,NA
+ACC,7253058,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,7265067,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7274058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7285058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7296058,-1,1,-7,-0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,7307058,-1,1,-4,-0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,7316059,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,7327058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7338058,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,7349058,1,3,-10,0.049000,0.147000,-0.490000,0.513916,NA,NA,NA
+ACC,7359058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7370058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7381058,-1,2,-4,-0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,7390058,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,7401059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7412058,3,2,-5,0.147000,0.098000,-0.245000,0.302056,NA,NA,NA
+ACC,7423058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7432058,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,7443058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7455059,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7464058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7475058,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,7486058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,7497059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7506057,-1,3,-8,-0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,7517058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,7528058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,7539284,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,7549057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7560058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,7571058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7580057,-1,1,-6,-0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7591057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7602057,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,7613058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,7622057,0,4,-5,0.000000,0.196000,-0.245000,0.313753,NA,NA,NA
+ACC,7634068,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7645057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7654057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7665057,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,7676057,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,7687057,1,-2,-3,0.049000,-0.098000,-0.147000,0.183341,NA,NA,NA
+ACC,7696057,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,7707057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,7718057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7728057,1,1,-4,0.049000,0.049000,-0.196000,0.207889,NA,NA,NA
+ACC,7739057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,7750057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7761057,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,7770057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7781057,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,7792057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,7803057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7812058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,7824057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7835057,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,7844058,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,7855057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,7866057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,7877057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,7886059,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,7897058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7909067,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,7918059,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,7929058,1,0,-9,0.049000,0.000000,-0.441000,0.443714,NA,NA,NA
+ACC,7940058,2,2,-8,0.098000,0.098000,-0.392000,0.415779,NA,NA,NA
+ACC,7951057,2,3,-6,0.098000,0.147000,-0.294000,0.343000,NA,NA,NA
+ACC,7960059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,7971058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,7982059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,7993058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,8003059,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,8014059,1,4,-5,0.049000,0.196000,-0.245000,0.317556,NA,NA,NA
+ACC,8025058,1,4,-8,0.049000,0.196000,-0.392000,0.441000,NA,NA,NA
+ACC,8034058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,8045058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,8056058,1,3,-10,0.049000,0.147000,-0.490000,0.513916,NA,NA,NA
+ACC,8067059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8076058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8087058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,8097059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8108058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8119057,-1,1,-5,-0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8130058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,8141058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8150058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8161058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8172058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,8183283,3,2,-7,0.147000,0.098000,-0.343000,0.385826,NA,NA,NA
+ACC,8193058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8204058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8215058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,8224058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,8235058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,8246058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8257058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,8266058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8278067,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8287058,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,8298058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8309058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,8320058,1,2,-10,0.049000,0.098000,-0.490000,0.502101,NA,NA,NA
+ACC,8331058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8340059,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,8351058,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,8362058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,8372059,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,8383058,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,8394058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8405058,2,3,-7,0.098000,0.147000,-0.343000,0.385826,NA,NA,NA
+ACC,8414058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8425059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8436059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8447058,2,0,-5,0.098000,0.000000,-0.245000,0.263873,NA,NA,NA
+ACC,8456059,2,0,-8,0.098000,0.000000,-0.392000,0.404064,NA,NA,NA
+ACC,8468059,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8477057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8488058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8499058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,8510058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,8521058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8530057,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,8541057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8553068,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,8562057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,8573057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8584058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8595058,2,3,-8,0.098000,0.147000,-0.392000,0.429973,NA,NA,NA
+ACC,8604057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,8615057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8626057,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,8637057,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,8647057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8658057,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,8667057,0,1,-5,0.000000,0.049000,-0.245000,0.249852,NA,NA,NA
+ACC,8678057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8689057,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,8700057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,8711057,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,8720057,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,8731057,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,8741057,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8752057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8763057,3,2,-6,0.147000,0.098000,-0.294000,0.343000,NA,NA,NA
+ACC,8774057,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8783057,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,8794057,-2,2,-7,-0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,8805057,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,8816057,1,0,-6,0.049000,0.000000,-0.294000,0.298055,NA,NA,NA
+ACC,8827282,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8837057,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,8848057,0,3,-5,0.000000,0.147000,-0.245000,0.285717,NA,NA,NA
+ACC,8857058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,8868058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,8879057,1,0,-7,0.049000,0.000000,-0.343000,0.346482,NA,NA,NA
+ACC,8890057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,8901057,2,0,-7,0.098000,0.000000,-0.343000,0.356725,NA,NA,NA
+ACC,8910059,2,1,-6,0.098000,0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,8922067,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,8931059,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,8942059,1,3,-5,0.049000,0.147000,-0.245000,0.289888,NA,NA,NA
+ACC,8953058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,8964058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,8973058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,8984058,2,2,-6,0.098000,0.098000,-0.294000,0.325029,NA,NA,NA
+ACC,8995059,1,3,-9,0.049000,0.147000,-0.441000,0.467430,NA,NA,NA
+ACC,9006059,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,9016058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9027059,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9038058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9047058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9058058,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9069058,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,9080058,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,9091058,1,4,-9,0.049000,0.196000,-0.441000,0.485075,NA,NA,NA
+ACC,9100058,0,3,-9,0.000000,0.147000,-0.441000,0.464855,NA,NA,NA
+ACC,9112058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9121058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9132058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9143058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9154058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,9163058,0,2,-8,0.000000,0.098000,-0.392000,0.404064,NA,NA,NA
+ACC,9174058,1,2,-4,0.049000,0.098000,-0.196000,0.224546,NA,NA,NA
+ACC,9185058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9197068,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9206058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9217058,2,0,-6,0.098000,0.000000,-0.294000,0.309903,NA,NA,NA
+ACC,9228058,2,-1,-6,0.098000,-0.049000,-0.294000,0.313753,NA,NA,NA
+ACC,9237058,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9248058,-1,1,-7,-0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,9259058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9270058,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,9281058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9291058,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9302058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9311058,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,9322058,0,1,-4,0.000000,0.049000,-0.196000,0.202032,NA,NA,NA
+ACC,9333058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9344058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9353058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9364059,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9375058,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9385058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9396059,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9407058,1,-1,-5,0.049000,-0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,9418058,1,1,-7,0.049000,0.049000,-0.343000,0.349930,NA,NA,NA
+ACC,9427058,1,3,-4,0.049000,0.147000,-0.196000,0.249852,NA,NA,NA
+ACC,9438058,0,3,-6,0.000000,0.147000,-0.294000,0.328702,NA,NA,NA
+ACC,9449058,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,9460059,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9471282,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,9481058,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9492059,0,1,-6,0.000000,0.049000,-0.294000,0.298055,NA,NA,NA
+ACC,9501057,0,2,-4,0.000000,0.098000,-0.196000,0.219135,NA,NA,NA
+ACC,9512058,0,2,-5,0.000000,0.098000,-0.245000,0.263873,NA,NA,NA
+ACC,9523058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9534059,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9543057,1,3,-8,0.049000,0.147000,-0.392000,0.421514,NA,NA,NA
+ACC,9554057,1,2,-8,0.049000,0.098000,-0.392000,0.407025,NA,NA,NA
+ACC,9566068,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9575057,1,4,-7,0.049000,0.196000,-0.343000,0.398078,NA,NA,NA
+ACC,9586057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9597058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9608057,1,0,-4,0.049000,0.000000,-0.196000,0.202032,NA,NA,NA
+ACC,9617057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9628057,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9639057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9650057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9660057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9671057,2,2,-7,0.098000,0.098000,-0.343000,0.369942,NA,NA,NA
+ACC,9682057,-1,2,-5,-0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9691057,1,2,-3,0.049000,0.098000,-0.147000,0.183341,NA,NA,NA
+ACC,9702057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9713057,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9724057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,9733057,0,3,-7,0.000000,0.147000,-0.343000,0.373173,NA,NA,NA
+ACC,9744057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9754057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9765057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9776057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9787057,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9798057,1,2,-9,0.049000,0.098000,-0.441000,0.454407,NA,NA,NA
+ACC,9807057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9818057,0,1,-7,0.000000,0.049000,-0.343000,0.346482,NA,NA,NA
+ACC,9829057,2,1,-7,0.098000,0.049000,-0.343000,0.360075,NA,NA,NA
+ACC,9841067,1,2,-10,0.049000,0.098000,-0.490000,0.502101,NA,NA,NA
+ACC,9850057,0,2,-9,0.000000,0.098000,-0.441000,0.451758,NA,NA,NA
+ACC,9861057,0,2,-6,0.000000,0.098000,-0.294000,0.309903,NA,NA,NA
+ACC,9872057,1,0,-5,0.049000,0.000000,-0.245000,0.249852,NA,NA,NA
+ACC,9881058,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9892058,0,3,-8,0.000000,0.147000,-0.392000,0.418656,NA,NA,NA
+ACC,9903057,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+ACC,9914057,1,1,-5,0.049000,0.049000,-0.245000,0.254611,NA,NA,NA
+ACC,9923058,1,3,-6,0.049000,0.147000,-0.294000,0.332334,NA,NA,NA
+ACC,9935057,1,2,-7,0.049000,0.098000,-0.343000,0.360075,NA,NA,NA
+ACC,9944058,1,1,-6,0.049000,0.049000,-0.294000,0.302056,NA,NA,NA
+ACC,9955058,1,2,-5,0.049000,0.098000,-0.245000,0.268384,NA,NA,NA
+ACC,9966058,1,2,-6,0.049000,0.098000,-0.294000,0.313753,NA,NA,NA
+ACC,9977059,0,2,-7,0.000000,0.098000,-0.343000,0.356725,NA,NA,NA
+ACC,9988058,1,3,-7,0.049000,0.147000,-0.343000,0.376376,NA,NA,NA
+ACC,9997058,1,1,-8,0.049000,0.049000,-0.392000,0.398078,NA,NA,NA
+HX,1228,NA,NA,NA,NA,NA,NA,NA,-161870,OK,NA
+HX,82167,NA,NA,NA,NA,NA,NA,NA,-161977,OK,NA
+HX,174172,NA,NA,NA,NA,NA,NA,NA,-161985,OK,NA
+HX,265167,NA,NA,NA,NA,NA,NA,NA,-161917,OK,NA
+HX,357167,NA,NA,NA,NA,NA,NA,NA,-161846,OK,NA
+HX,449167,NA,NA,NA,NA,NA,NA,NA,-161853,OK,NA
+HX,543172,NA,NA,NA,NA,NA,NA,NA,-161915,OK,NA
+HX,634167,NA,NA,NA,NA,NA,NA,NA,-161939,OK,NA
+HX,726167,NA,NA,NA,NA,NA,NA,NA,-161933,OK,NA
+HX,818172,NA,NA,NA,NA,NA,NA,NA,-161870,OK,NA
+HX,909167,NA,NA,NA,NA,NA,NA,NA,-161779,OK,NA
+HX,1001167,NA,NA,NA,NA,NA,NA,NA,-161842,OK,NA
+HX,1093167,NA,NA,NA,NA,NA,NA,NA,-161919,OK,NA
+HX,1187172,NA,NA,NA,NA,NA,NA,NA,-161887,OK,NA
+HX,1278167,NA,NA,NA,NA,NA,NA,NA,-161914,OK,NA
+HX,1370167,NA,NA,NA,NA,NA,NA,NA,-161933,OK,NA
+HX,1462167,NA,NA,NA,NA,NA,NA,NA,-161923,OK,NA
+HX,1556172,NA,NA,NA,NA,NA,NA,NA,-161867,OK,NA
+HX,1647167,NA,NA,NA,NA,NA,NA,NA,-161827,OK,NA
+HX,1739167,NA,NA,NA,NA,NA,NA,NA,-161874,OK,NA
+HX,1831172,NA,NA,NA,NA,NA,NA,NA,-161885,OK,NA
+HX,1922167,NA,NA,NA,NA,NA,NA,NA,-161877,OK,NA
+HX,2014167,NA,NA,NA,NA,NA,NA,NA,-161937,OK,NA
+HX,2106167,NA,NA,NA,NA,NA,NA,NA,-161910,OK,NA
+HX,2200172,NA,NA,NA,NA,NA,NA,NA,-161831,OK,NA
+HX,2291167,NA,NA,NA,NA,NA,NA,NA,-161852,OK,NA
+HX,2383167,NA,NA,NA,NA,NA,NA,NA,-161904,OK,NA
+HX,2475167,NA,NA,NA,NA,NA,NA,NA,-161864,OK,NA
+HX,2566167,NA,NA,NA,NA,NA,NA,NA,-161913,OK,NA
+HX,2658167,NA,NA,NA,NA,NA,NA,NA,-161905,OK,NA
+HX,2750167,NA,NA,NA,NA,NA,NA,NA,-161905,OK,NA
+HX,2844172,NA,NA,NA,NA,NA,NA,NA,-161952,OK,NA
+HX,2935167,NA,NA,NA,NA,NA,NA,NA,-161820,OK,NA
+HX,3027167,NA,NA,NA,NA,NA,NA,NA,-161809,OK,NA
+HX,3119167,NA,NA,NA,NA,NA,NA,NA,-161881,OK,NA
+HX,3210167,NA,NA,NA,NA,NA,NA,NA,-161907,OK,NA
+HX,3302167,NA,NA,NA,NA,NA,NA,NA,-161929,OK,NA
+HX,3394167,NA,NA,NA,NA,NA,NA,NA,-161860,OK,NA
+HX,3486172,NA,NA,NA,NA,NA,NA,NA,-161843,OK,NA
+HX,3579167,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,3671167,NA,NA,NA,NA,NA,NA,NA,-161852,OK,NA
+HX,3763167,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,3854167,NA,NA,NA,NA,NA,NA,NA,-161842,OK,NA
+HX,3946167,NA,NA,NA,NA,NA,NA,NA,-161899,OK,NA
+HX,4038167,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,4130172,NA,NA,NA,NA,NA,NA,NA,-161824,OK,NA
+HX,4223167,NA,NA,NA,NA,NA,NA,NA,-161888,OK,NA
+HX,4315167,NA,NA,NA,NA,NA,NA,NA,-161934,OK,NA
+HX,4407167,NA,NA,NA,NA,NA,NA,NA,-161913,OK,NA
+HX,4499172,NA,NA,NA,NA,NA,NA,NA,-161938,OK,NA
+HX,4592167,NA,NA,NA,NA,NA,NA,NA,-161931,OK,NA
+HX,4684167,NA,NA,NA,NA,NA,NA,NA,-161913,OK,NA
+HX,4776167,NA,NA,NA,NA,NA,NA,NA,-161872,OK,NA
+HX,4867167,NA,NA,NA,NA,NA,NA,NA,-161874,OK,NA
+HX,4959167,NA,NA,NA,NA,NA,NA,NA,-161832,OK,NA
+HX,5051167,NA,NA,NA,NA,NA,NA,NA,-161859,OK,NA
+HX,5143172,NA,NA,NA,NA,NA,NA,NA,-161850,OK,NA
+HX,5236167,NA,NA,NA,NA,NA,NA,NA,-161811,OK,NA
+HX,5328167,NA,NA,NA,NA,NA,NA,NA,-161849,OK,NA
+HX,5420167,NA,NA,NA,NA,NA,NA,NA,-161876,OK,NA
+HX,5511167,NA,NA,NA,NA,NA,NA,NA,-161864,OK,NA
+HX,5603167,NA,NA,NA,NA,NA,NA,NA,-161836,OK,NA
+HX,5695167,NA,NA,NA,NA,NA,NA,NA,-161885,OK,NA
+HX,5787172,NA,NA,NA,NA,NA,NA,NA,-161930,OK,NA
+HX,5880167,NA,NA,NA,NA,NA,NA,NA,-161894,OK,NA
+HX,5972167,NA,NA,NA,NA,NA,NA,NA,-161870,OK,NA
+HX,6064167,NA,NA,NA,NA,NA,NA,NA,-161858,OK,NA
+HX,6156172,NA,NA,NA,NA,NA,NA,NA,-161833,OK,NA
+HX,6247167,NA,NA,NA,NA,NA,NA,NA,-161869,OK,NA
+HX,6339167,NA,NA,NA,NA,NA,NA,NA,-161917,OK,NA
+HX,6431172,NA,NA,NA,NA,NA,NA,NA,-161916,OK,NA
+HX,6524167,NA,NA,NA,NA,NA,NA,NA,-161898,OK,NA
+HX,6616167,NA,NA,NA,NA,NA,NA,NA,-161880,OK,NA
+HX,6708167,NA,NA,NA,NA,NA,NA,NA,-161875,OK,NA
+HX,6800172,NA,NA,NA,NA,NA,NA,NA,-161826,OK,NA
+HX,6891167,NA,NA,NA,NA,NA,NA,NA,-161890,OK,NA
+HX,6983167,NA,NA,NA,NA,NA,NA,NA,-161901,OK,NA
+HX,7075172,NA,NA,NA,NA,NA,NA,NA,-161930,OK,NA
+HX,7168167,NA,NA,NA,NA,NA,NA,NA,-161904,OK,NA
+HX,7260167,NA,NA,NA,NA,NA,NA,NA,-161868,OK,NA
+HX,7352167,NA,NA,NA,NA,NA,NA,NA,-161863,OK,NA
+HX,7444172,NA,NA,NA,NA,NA,NA,NA,-161852,OK,NA
+HX,7537167,NA,NA,NA,NA,NA,NA,NA,-161823,OK,NA
+HX,7629167,NA,NA,NA,NA,NA,NA,NA,-161835,OK,NA
+HX,7721167,NA,NA,NA,NA,NA,NA,NA,-161850,OK,NA
+HX,7813172,NA,NA,NA,NA,NA,NA,NA,-161855,OK,NA
+HX,7904167,NA,NA,NA,NA,NA,NA,NA,-161847,OK,NA
+HX,7996167,NA,NA,NA,NA,NA,NA,NA,-161823,OK,NA
+HX,8088172,NA,NA,NA,NA,NA,NA,NA,-161851,OK,NA
+HX,8181167,NA,NA,NA,NA,NA,NA,NA,-161940,OK,NA
+HX,8273167,NA,NA,NA,NA,NA,NA,NA,-161880,OK,NA
+HX,8365167,NA,NA,NA,NA,NA,NA,NA,-161790,OK,NA
+HX,8457172,NA,NA,NA,NA,NA,NA,NA,-161826,OK,NA
+HX,8548167,NA,NA,NA,NA,NA,NA,NA,-161892,OK,NA
+HX,8640167,NA,NA,NA,NA,NA,NA,NA,-161844,OK,NA
+HX,8732172,NA,NA,NA,NA,NA,NA,NA,-161910,OK,NA
+HX,8825167,NA,NA,NA,NA,NA,NA,NA,-161863,OK,NA
+HX,8917167,NA,NA,NA,NA,NA,NA,NA,-161837,OK,NA
+HX,9009167,NA,NA,NA,NA,NA,NA,NA,-161872,OK,NA
+HX,9101172,NA,NA,NA,NA,NA,NA,NA,-161860,OK,NA
+HX,9192167,NA,NA,NA,NA,NA,NA,NA,-161845,OK,NA
+HX,9284167,NA,NA,NA,NA,NA,NA,NA,-161846,OK,NA
+HX,9376172,NA,NA,NA,NA,NA,NA,NA,-161887,OK,NA
+HX,9469167,NA,NA,NA,NA,NA,NA,NA,-161943,OK,NA
+HX,9561167,NA,NA,NA,NA,NA,NA,NA,-161876,OK,NA
+HX,9653167,NA,NA,NA,NA,NA,NA,NA,-161842,OK,NA
+HX,9745172,NA,NA,NA,NA,NA,NA,NA,-161831,OK,NA
+HX,9836167,NA,NA,NA,NA,NA,NA,NA,-161852,OK,NA
+HX,9928167,NA,NA,NA,NA,NA,NA,NA,-161900,OK,NA
+# END; RAM data retained until CLEAR or power loss; no file automatically saved on computer

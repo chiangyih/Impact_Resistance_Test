@@ -1,0 +1,3 @@
+# BEGIN_SPEED version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1 clock=boot_micros; no_ADC_records; mean_speed_not_impact_velocity
+# SPEED id=1 state=DONE reason=NONE DIST_mm=220.000000 POL=1/1 upper_boot_us=1265178878 lower_boot_us=1266332167 dt_us=1153289 speed_mps=0.190759 ignored_upper_edges=0 A=0 H=0; optical_only=1
+# END_SPEED result retained until SPEED CLEAR or power loss

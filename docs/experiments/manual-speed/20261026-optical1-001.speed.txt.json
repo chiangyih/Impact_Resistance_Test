@@ -1,0 +1,73 @@
+{
+  "schema": "manual-optical-observation-v1",
+  "record_id": "20261026-optical1-001",
+  "date": "2026-10-26",
+  "timezone": "Asia/Taipei",
+  "firmware": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1",
+  "device": {
+    "id": 1,
+    "state": "DONE",
+    "reason": "NONE",
+    "distance_mm": 220,
+    "polarity": "1/1",
+    "upper_boot_us": 1265178878,
+    "lower_boot_us": 1266332167,
+    "dt_us": 1153289,
+    "serial_speed_mps": 0.190759,
+    "ignored_upper_edges": 0,
+    "acc_records": 0,
+    "hx_records": 0,
+    "optical_only": true
+  },
+  "operator_observation": {
+    "provider": "user",
+    "ready_reply": "已看到 READY，先準備",
+    "oled_reply": "1153.289，0.1908",
+    "units_from_prior_prompt": {
+      "dt": "ms",
+      "speed": "m/s"
+    },
+    "dt_ms": 1153.289,
+    "speed_mps": 0.1908,
+    "same_marker_upper_then_lower_confirmed": true,
+    "motion_reply": "是，同一標記先上後下",
+    "physical_observation_exact_time": null
+  },
+  "calculation": {
+    "formula": "distance_mm * 1000 / dt_us",
+    "speed_mps": 0.1907587777218026,
+    "oled_rounding_matches": true,
+    "timestamp_difference_matches": true
+  },
+  "acceptance": {
+    "single_optical_workflow": "limited_pass",
+    "repeatability": "not_tested",
+    "independent_time_reference": "not_tested",
+    "effective_distance_uncertainty": "pending",
+    "accuracy": "not_validated",
+    "impact_material_acceptance": "not_tested"
+  },
+  "provenance": {
+    "raw_log": "docs/experiments/manual-speed/20261026-optical1-first-transit-readback.log",
+    "exact_dump": "docs/experiments/manual-speed/20261026-optical1-001.speed.txt",
+    "raw_log_sha256": "b25d055628493e5a85f3828d91fa89061080203694d4612df650624599bc950c",
+    "dump_sha256": "c0551ea1baf39470b9d18d9ddeef3163c56fb398747ef7b8b23071e65cd9429b",
+    "host_query_before": "2026-10-26T20:45:07.1952325+08:00",
+    "host_response_after": "2026-10-26T20:45:08.8249183+08:00",
+    "host_times_are_not_gpio_times": true
+  },
+  "operations": {
+    "commands": [
+      "VERSION",
+      "SPEED STATUS",
+      "SPEED DUMP"
+    ],
+    "stop_sent": false,
+    "clear_sent": false,
+    "start_sent": false,
+    "flash": false,
+    "reset": false,
+    "host_monitor_closed": true,
+    "device_result_retained": true
+  }
+}
