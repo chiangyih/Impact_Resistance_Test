@@ -1,0 +1,81 @@
+{
+  "schema": "hx711-oled-timed-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "L2_loaded_timed",
+  "conversation_date": "2026-10-27",
+  "timezone_context": "Asia/Taipei",
+  "host_recorded_at": "2026-10-27T17:58:11.6963163+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "17:54:10 -153524、17:54:30 -153590、17:54:50 -153502",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "load_condition": {
+    "nominal_mass_g": 241,
+    "source": "User previously responded 已放上 to instruction to place same 241g and supplied subsequent RAW readings.",
+    "placement_source": "docs/calibration/20261027-hx711-241g-oled-replay-L2-placement.json",
+    "placement_source_sha256": "9CCB902D4E0BCB0E407AB10A8ED005BC02BF32C55A363A878AF61241FE9A17E2",
+    "exact_position_independently_verified": false
+  },
+  "readings": [
+    {
+      "RAW_counts": -153524,
+      "user_reported_local_time": "17:54:10"
+    },
+    {
+      "RAW_counts": -153590,
+      "user_reported_local_time": "17:54:30"
+    },
+    {
+      "RAW_counts": -153502,
+      "user_reported_local_time": "17:54:50"
+    }
+  ],
+  "reported_intervals_seconds": [
+    20,
+    20
+  ],
+  "reported_clock_span_seconds": 40,
+  "date_note": "Date is conversation context, not separately supplied with the three clock times.",
+  "clock_note": "User reported local clock times; synchronization with host clock and device timestamps was not established.",
+  "HX_health": null,
+  "CAL_flag": null,
+  "phase": null,
+  "statistics": {
+    "n": 3,
+    "mean_counts": -153538.66666666666,
+    "min_counts": -153590,
+    "max_counts": -153502,
+    "span_counts": 88,
+    "first_to_middle_counts": -66,
+    "middle_to_last_counts": 88,
+    "first_to_last_counts": 22
+  },
+  "comparison_with_T1": {
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-T1.json",
+    "source_sha256": "846A4D1CEEEFDD9D919C29BB8BB46336A3FE4A7760A86E696BCAAFBCCF5857F5",
+    "T1_mean_counts": -158388.66666666666,
+    "L2_minus_T1_counts": 4850,
+    "apparent_counts_per_g_for_241g": 20.12448132780083,
+    "time_from_T1_last_to_L2_first_if_same_day_and_clock_seconds": 540,
+    "caveat": "T1 end to L2 start is 9 minutes only if supplied clock times are on the same day and clock; T1 is not a contemporaneous unloaded baseline."
+  },
+  "reference_comparison": {
+    "saved_counts_per_g": 20.413381743,
+    "reference_expected_delta_counts": 4919.625000063,
+    "difference_counts": -69.62500006299979,
+    "difference_percent": -1.4152501473609918,
+    "prior_L1_minus_U1_counts": 4910.666666666686,
+    "difference_from_prior_cycle_counts": -60.66666666668607,
+    "condition": "Comparison with the saved nominal scale and same weight only; baseline timing, exact RAM coefficients and power continuity are not confirmed.",
+    "formal_accuracy": false,
+    "instrument_repeatability": false
+  },
+  "interpretation": "Three non-monotonic user-observed loaded values; comparison to an earlier unloaded mean is descriptive and may include intervening baseline or condition changes. It does not establish independent weight accuracy, calibrated repeatability, stability, or root cause.",
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "next_step": "User reported 已取下 in response to instruction to remove 241g; three unloaded RAW/time observations and HX/CAL are requested but pending."
+}
+

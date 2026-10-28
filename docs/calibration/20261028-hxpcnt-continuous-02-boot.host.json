@@ -1,0 +1,411 @@
+{
+  "schema": "authorized-restart-serial-v1",
+  "port": "COM3",
+  "baud": 115200,
+  "bits": 8,
+  "parity": "none",
+  "stop_bits": 1,
+  "dtr_before_open": false,
+  "rts_before_open": false,
+  "user_authorized_reset": true,
+  "reset_method": "single RTS assert/release with DTR deasserted",
+  "usb_power_intentionally_maintained": true,
+  "opened": true,
+  "reset_asserted": true,
+  "reset_released": true,
+  "port_closed": true,
+  "bytes": 7376,
+  "failure": null,
+  "events": [
+    {
+      "action": "CONFIG_BEFORE_OPEN",
+      "host_utc": "2026-10-28T05:58:06.5040767Z",
+      "monotonic_ms": 8.6675,
+      "port": "COM3",
+      "rts": false,
+      "baud": 115200,
+      "dtr": false,
+      "bits": 8,
+      "handshake": "none",
+      "stop_bits": 1,
+      "parity": "none"
+    },
+    {
+      "action": "OPEN",
+      "host_utc": "2026-10-28T05:58:06.5160920Z",
+      "monotonic_ms": 18.5505
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:07.4821091Z",
+      "monotonic_ms": 984.5689,
+      "length": 330,
+      "offset": 0
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:08.4626814Z",
+      "monotonic_ms": 1965.1729,
+      "length": 128,
+      "offset": 330
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:08.4635012Z",
+      "monotonic_ms": 1965.9737,
+      "length": 96,
+      "offset": 458
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:08.5024385Z",
+      "monotonic_ms": 2004.9491,
+      "length": 106,
+      "offset": 554
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:09.4627190Z",
+      "monotonic_ms": 2965.1821,
+      "length": 160,
+      "offset": 660
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:09.4632376Z",
+      "monotonic_ms": 2965.6924,
+      "length": 32,
+      "offset": 820
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:09.4959622Z",
+      "monotonic_ms": 2998.4545,
+      "length": 138,
+      "offset": 852
+    },
+    {
+      "action": "PRE_RESET_GUARD_PASS",
+      "host_utc": "2026-10-28T05:58:10.0560258Z",
+      "monotonic_ms": 3558.4771,
+      "status_count": 3,
+      "last_rx": "7662"
+    },
+    {
+      "action": "RTS_ASSERT_RESET",
+      "host_utc": "2026-10-28T05:58:10.0569082Z",
+      "monotonic_ms": 3559.3572,
+      "dtr": false,
+      "rts": true
+    },
+    {
+      "action": "RTS_RELEASE_BOOT",
+      "host_utc": "2026-10-28T05:58:10.2725575Z",
+      "monotonic_ms": 3775.0198,
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.3034272Z",
+      "monotonic_ms": 3805.8818,
+      "length": 304,
+      "offset": 990
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.7383406Z",
+      "monotonic_ms": 4240.7936,
+      "length": 288,
+      "offset": 1294
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.7686689Z",
+      "monotonic_ms": 4271.1206,
+      "length": 352,
+      "offset": 1582
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.8002640Z",
+      "monotonic_ms": 4302.7213,
+      "length": 287,
+      "offset": 1934
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.8006238Z",
+      "monotonic_ms": 4303.078,
+      "length": 32,
+      "offset": 2221
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.8321927Z",
+      "monotonic_ms": 4334.6747,
+      "length": 352,
+      "offset": 2253
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.8645513Z",
+      "monotonic_ms": 4367.0301,
+      "length": 251,
+      "offset": 2605
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:10.9574501Z",
+      "monotonic_ms": 4459.9351,
+      "length": 57,
+      "offset": 2856
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:11.7050729Z",
+      "monotonic_ms": 5207.5599,
+      "length": 256,
+      "offset": 2913
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:11.7061566Z",
+      "monotonic_ms": 5208.6366,
+      "length": 32,
+      "offset": 3169
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:11.7344153Z",
+      "monotonic_ms": 5236.8674,
+      "length": 27,
+      "offset": 3201
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:12.6946492Z",
+      "monotonic_ms": 6197.1291,
+      "length": 160,
+      "offset": 3228
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:12.7391116Z",
+      "monotonic_ms": 6241.5643,
+      "length": 157,
+      "offset": 3388
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:13.1319433Z",
+      "monotonic_ms": 6634.4403,
+      "length": 133,
+      "offset": 3545
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:14.1417983Z",
+      "monotonic_ms": 7644.3121,
+      "length": 87,
+      "offset": 3678
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:14.2646665Z",
+      "monotonic_ms": 7767.129,
+      "length": 328,
+      "offset": 3765
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:15.2586260Z",
+      "monotonic_ms": 8761.0777,
+      "length": 224,
+      "offset": 4093
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:15.2891772Z",
+      "monotonic_ms": 8791.6275,
+      "length": 104,
+      "offset": 4317
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:16.2720394Z",
+      "monotonic_ms": 9774.5134,
+      "length": 320,
+      "offset": 4421
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:16.2731438Z",
+      "monotonic_ms": 9775.6153,
+      "length": 8,
+      "offset": 4741
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:17.2521048Z",
+      "monotonic_ms": 10754.5858,
+      "length": 64,
+      "offset": 4749
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:17.2531304Z",
+      "monotonic_ms": 10755.607,
+      "length": 32,
+      "offset": 4813
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:17.2819681Z",
+      "monotonic_ms": 10784.4718,
+      "length": 232,
+      "offset": 4845
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:18.2738918Z",
+      "monotonic_ms": 11776.3412,
+      "length": 288,
+      "offset": 5077
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:18.3056190Z",
+      "monotonic_ms": 11808.0711,
+      "length": 40,
+      "offset": 5365
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:19.2814017Z",
+      "monotonic_ms": 12783.8875,
+      "length": 320,
+      "offset": 5405
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:19.2822337Z",
+      "monotonic_ms": 12784.6995,
+      "length": 8,
+      "offset": 5725
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:20.2788477Z",
+      "monotonic_ms": 13781.3173,
+      "length": 256,
+      "offset": 5733
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:20.2796107Z",
+      "monotonic_ms": 13782.0746,
+      "length": 32,
+      "offset": 5989
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:20.3099792Z",
+      "monotonic_ms": 13812.4715,
+      "length": 40,
+      "offset": 6021
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:21.2783850Z",
+      "monotonic_ms": 14780.8776,
+      "length": 192,
+      "offset": 6061
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:21.2792558Z",
+      "monotonic_ms": 14781.7278,
+      "length": 1,
+      "offset": 6253
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:21.2802935Z",
+      "monotonic_ms": 14782.7798,
+      "length": 31,
+      "offset": 6254
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:21.3095711Z",
+      "monotonic_ms": 14812.0482,
+      "length": 104,
+      "offset": 6285
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:22.2866108Z",
+      "monotonic_ms": 15789.0905,
+      "length": 256,
+      "offset": 6389
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:22.2874904Z",
+      "monotonic_ms": 15789.9603,
+      "length": 32,
+      "offset": 6645
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:22.3330403Z",
+      "monotonic_ms": 15835.5309,
+      "length": 41,
+      "offset": 6677
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:23.2687224Z",
+      "monotonic_ms": 16771.1944,
+      "length": 32,
+      "offset": 6718
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:23.2695849Z",
+      "monotonic_ms": 16772.0545,
+      "length": 32,
+      "offset": 6750
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:23.2993261Z",
+      "monotonic_ms": 16801.8052,
+      "length": 265,
+      "offset": 6782
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T05:58:24.2985140Z",
+      "monotonic_ms": 17801.0018,
+      "length": 329,
+      "offset": 7047
+    },
+    {
+      "action": "CAPTURE_END",
+      "host_utc": "2026-10-28T05:58:25.2878847Z",
+      "monotonic_ms": 18790.4101,
+      "bytes": 7376
+    },
+    {
+      "action": "CLOSE",
+      "host_utc": "2026-10-28T05:58:25.2952263Z",
+      "monotonic_ms": 18797.6868
+    }
+  ],
+  "public_secret_scan": "completed_locally",
+  "public_redacted": false,
+  "public_serial_sha256": "b426223eb8b965f1d5d4256fced65eab592de506902c6c54d0293653f668a10e",
+  "raw_bytes_preserved": true
+}

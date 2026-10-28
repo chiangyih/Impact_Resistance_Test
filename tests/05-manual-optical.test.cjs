@@ -55,7 +55,7 @@ function environment() {
     optical_upper_seen: false, optical_lower_seen: false, optical_id: 0, optical_distance_mm: 0,
     optical_upper_active: -1, optical_lower_active: -1, optical_reported: false,
     gate_mux: {}, number: 0, calls: [], output: [],
-    isfinite: Number.isFinite,
+    isfinite: Number.isFinite, serviceHxDiagnostics() {}, hxFailureHolding: () => false, hxFailureReadOnlyCommand: () => true,
   };
   for (const enumName of ['OpticalState', 'OpticalReason']) {
     const match = new RegExp(`enum ${enumName}\\s*:[^{]+\\{([^}]+)\\}`).exec(header);

@@ -1,0 +1,1058 @@
+{
+  "schema": "host-serialmonitor-status-query-aba-v1",
+  "port": "COM3",
+  "tool_version": "v0.15.0 commit 13b8e80",
+  "user_observations": {
+    "user_confirmed_empty_tray": true,
+    "user_authorized_calibration": true,
+    "no_device_commands": false
+  },
+  "configuration_before_open": {
+    "baudrate": "115200",
+    "bits": "8",
+    "parity": "none",
+    "stop_bits": "1",
+    "dtr": "off",
+    "rts": "off"
+  },
+  "open_command_issued": true,
+  "open_acknowledged": true,
+  "tcp_peer_connected": true,
+  "capture_planned_ms": 180000,
+  "serial_bytes_received": 96454,
+  "stored_bytes": 96454,
+  "overflow": false,
+  "device_commands_sent": [
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS"
+  ],
+  "control_events": [
+    {
+      "at_utc": "2026-10-27T23:26:39.564Z",
+      "monotonic_elapsed_ms": 16.3961,
+      "action": "LISTEN",
+      "address": "127.0.0.1",
+      "port": 42147
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.572Z",
+      "monotonic_elapsed_ms": 23.4849,
+      "action": "CONTROL_TX",
+      "command": "HELLO 1 \"Codex diagnostic\""
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 38.6268,
+      "action": "CONTROL_EVENT",
+      "event_type": "hello",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 38.7705,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE baudrate 115200"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 38.8576,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 38.9135,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE bits 8"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 39.0178,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.587Z",
+      "monotonic_elapsed_ms": 39.073,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE parity none"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.1492,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.2013,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE stop_bits 1"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.2477,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.2962,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE dtr off"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.3333,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.3646,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE rts off"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.4107,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.4321,
+      "action": "CONTROL_TX",
+      "command": "DESCRIBE"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.5915,
+      "action": "CONTROL_EVENT",
+      "event_type": "describe",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.613,
+      "action": "CONFIGURATION_VERIFIED",
+      "baudrate": "115200",
+      "bits": "8",
+      "parity": "none",
+      "stop_bits": "1",
+      "dtr": "off",
+      "rts": "off"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.588Z",
+      "monotonic_elapsed_ms": 39.6487,
+      "action": "CONTROL_TX",
+      "command": "OPEN 127.0.0.1:42147 COM3"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.590Z",
+      "monotonic_elapsed_ms": 41.9776,
+      "action": "DATA_CHANNEL_CONNECTED",
+      "remote": "127.0.0.1"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.590Z",
+      "monotonic_elapsed_ms": 42.0496,
+      "action": "CONTROL_EVENT",
+      "event_type": "open",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.590Z",
+      "monotonic_elapsed_ms": 42.0744,
+      "action": "OPEN_ACKNOWLEDGED"
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.590Z",
+      "monotonic_elapsed_ms": 42.0767,
+      "action": "PASSIVE_CAPTURE_START",
+      "planned_ms": 180000
+    },
+    {
+      "at_utc": "2026-10-27T23:26:39.591Z",
+      "monotonic_elapsed_ms": 42.4354,
+      "action": "A1_PASSIVE_START"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:39.687Z",
+      "monotonic_elapsed_ms": 60138.2834,
+      "action": "B_QUERY_START",
+      "inhibitTx": false
+    },
+    {
+      "at_utc": "2026-10-27T23:27:39.688Z",
+      "monotonic_elapsed_ms": 60139.1825,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:40.234Z",
+      "monotonic_elapsed_ms": 60685.9477,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:40.780Z",
+      "monotonic_elapsed_ms": 61231.9944,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:41.322Z",
+      "monotonic_elapsed_ms": 61773.6196,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:41.866Z",
+      "monotonic_elapsed_ms": 62317.1779,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:42.409Z",
+      "monotonic_elapsed_ms": 62860.8958,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:42.939Z",
+      "monotonic_elapsed_ms": 63390.8687,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:43.480Z",
+      "monotonic_elapsed_ms": 63931.0769,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:44.026Z",
+      "monotonic_elapsed_ms": 64477.7235,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:44.570Z",
+      "monotonic_elapsed_ms": 65022.0088,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:45.113Z",
+      "monotonic_elapsed_ms": 65564.3385,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:45.661Z",
+      "monotonic_elapsed_ms": 66112.4137,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:46.203Z",
+      "monotonic_elapsed_ms": 66654.5951,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:46.746Z",
+      "monotonic_elapsed_ms": 67197.9237,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:47.279Z",
+      "monotonic_elapsed_ms": 67730.3683,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:47.824Z",
+      "monotonic_elapsed_ms": 68275.5438,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:48.370Z",
+      "monotonic_elapsed_ms": 68821.7648,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:48.916Z",
+      "monotonic_elapsed_ms": 69367.7197,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:49.461Z",
+      "monotonic_elapsed_ms": 69912.7554,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:49.987Z",
+      "monotonic_elapsed_ms": 70438.2398,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:50.531Z",
+      "monotonic_elapsed_ms": 70982.5184,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:51.076Z",
+      "monotonic_elapsed_ms": 71527.7838,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:51.606Z",
+      "monotonic_elapsed_ms": 72057.9278,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:52.152Z",
+      "monotonic_elapsed_ms": 72603.5095,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:52.697Z",
+      "monotonic_elapsed_ms": 73148.723,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:53.226Z",
+      "monotonic_elapsed_ms": 73677.8084,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:53.769Z",
+      "monotonic_elapsed_ms": 74220.8219,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:54.313Z",
+      "monotonic_elapsed_ms": 74764.0813,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:54.857Z",
+      "monotonic_elapsed_ms": 75308.2357,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:55.402Z",
+      "monotonic_elapsed_ms": 75853.2706,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:55.939Z",
+      "monotonic_elapsed_ms": 76390.2783,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:56.476Z",
+      "monotonic_elapsed_ms": 76927.4092,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:57.018Z",
+      "monotonic_elapsed_ms": 77469.1939,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:57.557Z",
+      "monotonic_elapsed_ms": 78008.7496,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:58.085Z",
+      "monotonic_elapsed_ms": 78536.8785,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:58.631Z",
+      "monotonic_elapsed_ms": 79082.2573,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:59.176Z",
+      "monotonic_elapsed_ms": 79627.4626,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:27:59.704Z",
+      "monotonic_elapsed_ms": 80156.0561,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:00.245Z",
+      "monotonic_elapsed_ms": 80696.4957,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:00.775Z",
+      "monotonic_elapsed_ms": 81226.6286,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:01.313Z",
+      "monotonic_elapsed_ms": 81764.2331,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:01.857Z",
+      "monotonic_elapsed_ms": 82308.7814,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:02.394Z",
+      "monotonic_elapsed_ms": 82845.8487,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:02.937Z",
+      "monotonic_elapsed_ms": 83388.5195,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:03.479Z",
+      "monotonic_elapsed_ms": 83930.3874,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:04.017Z",
+      "monotonic_elapsed_ms": 84468.9968,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:04.562Z",
+      "monotonic_elapsed_ms": 85013.4602,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:05.099Z",
+      "monotonic_elapsed_ms": 85550.6181,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:05.644Z",
+      "monotonic_elapsed_ms": 86095.239,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:06.184Z",
+      "monotonic_elapsed_ms": 86636.062,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:06.733Z",
+      "monotonic_elapsed_ms": 87184.841,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:07.261Z",
+      "monotonic_elapsed_ms": 87712.8235,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:07.802Z",
+      "monotonic_elapsed_ms": 88253.821,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:08.343Z",
+      "monotonic_elapsed_ms": 88794.8037,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:08.885Z",
+      "monotonic_elapsed_ms": 89336.3051,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:09.425Z",
+      "monotonic_elapsed_ms": 89876.7623,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:09.964Z",
+      "monotonic_elapsed_ms": 90415.272,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:10.502Z",
+      "monotonic_elapsed_ms": 90953.9845,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:11.041Z",
+      "monotonic_elapsed_ms": 91493.0375,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:11.571Z",
+      "monotonic_elapsed_ms": 92022.5922,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:12.106Z",
+      "monotonic_elapsed_ms": 92557.8748,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:12.656Z",
+      "monotonic_elapsed_ms": 93107.3058,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:13.197Z",
+      "monotonic_elapsed_ms": 93648.6432,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:13.741Z",
+      "monotonic_elapsed_ms": 94192.5883,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:14.285Z",
+      "monotonic_elapsed_ms": 94736.311,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:14.827Z",
+      "monotonic_elapsed_ms": 95278.6149,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:15.368Z",
+      "monotonic_elapsed_ms": 95819.9666,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:15.909Z",
+      "monotonic_elapsed_ms": 96360.5208,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:16.450Z",
+      "monotonic_elapsed_ms": 96901.8766,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:16.993Z",
+      "monotonic_elapsed_ms": 97444.3174,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:17.534Z",
+      "monotonic_elapsed_ms": 97985.8967,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:18.063Z",
+      "monotonic_elapsed_ms": 98514.9369,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:18.609Z",
+      "monotonic_elapsed_ms": 99060.1629,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:19.145Z",
+      "monotonic_elapsed_ms": 99596.7929,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:19.695Z",
+      "monotonic_elapsed_ms": 100146.4332,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:20.240Z",
+      "monotonic_elapsed_ms": 100691.3746,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:20.784Z",
+      "monotonic_elapsed_ms": 101235.6916,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:21.328Z",
+      "monotonic_elapsed_ms": 101779.6037,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:21.874Z",
+      "monotonic_elapsed_ms": 102325.4993,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:22.417Z",
+      "monotonic_elapsed_ms": 102868.2968,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:22.961Z",
+      "monotonic_elapsed_ms": 103412.6105,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:23.503Z",
+      "monotonic_elapsed_ms": 103954.2195,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:24.045Z",
+      "monotonic_elapsed_ms": 104496.6005,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:24.590Z",
+      "monotonic_elapsed_ms": 105041.6917,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:25.132Z",
+      "monotonic_elapsed_ms": 105583.352,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:25.673Z",
+      "monotonic_elapsed_ms": 106124.2981,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:26.212Z",
+      "monotonic_elapsed_ms": 106663.8755,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:26.756Z",
+      "monotonic_elapsed_ms": 107207.3999,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:27.287Z",
+      "monotonic_elapsed_ms": 107738.379,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:27.828Z",
+      "monotonic_elapsed_ms": 108279.0928,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:28.369Z",
+      "monotonic_elapsed_ms": 108820.9573,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:28.910Z",
+      "monotonic_elapsed_ms": 109361.9409,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:29.452Z",
+      "monotonic_elapsed_ms": 109903.4815,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:29.999Z",
+      "monotonic_elapsed_ms": 110450.9526,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:30.529Z",
+      "monotonic_elapsed_ms": 110981.0119,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:31.070Z",
+      "monotonic_elapsed_ms": 111521.5489,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:31.614Z",
+      "monotonic_elapsed_ms": 112065.6766,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:32.156Z",
+      "monotonic_elapsed_ms": 112607.9269,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:32.699Z",
+      "monotonic_elapsed_ms": 113150.7371,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:33.240Z",
+      "monotonic_elapsed_ms": 113691.2011,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:33.782Z",
+      "monotonic_elapsed_ms": 114233.4959,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:34.322Z",
+      "monotonic_elapsed_ms": 114773.9398,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:34.862Z",
+      "monotonic_elapsed_ms": 115313.9213,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:35.404Z",
+      "monotonic_elapsed_ms": 115855.8081,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:35.948Z",
+      "monotonic_elapsed_ms": 116400.0386,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:36.489Z",
+      "monotonic_elapsed_ms": 116940.4253,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:37.033Z",
+      "monotonic_elapsed_ms": 117484.1199,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:37.576Z",
+      "monotonic_elapsed_ms": 118027.8539,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:38.121Z",
+      "monotonic_elapsed_ms": 118572.29,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:38.664Z",
+      "monotonic_elapsed_ms": 119115.2191,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:39.210Z",
+      "monotonic_elapsed_ms": 119661.4852,
+      "action": "DEVICE_TX",
+      "command": "STATUS"
+    },
+    {
+      "at_utc": "2026-10-27T23:28:39.644Z",
+      "monotonic_elapsed_ms": 120095.6982,
+      "action": "A2_PASSIVE_START",
+      "statusTxCount": 111,
+      "inhibitTx": false
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.677Z",
+      "monotonic_elapsed_ms": 180128.5795,
+      "action": "PASSIVE_CAPTURE_END",
+      "total_bytes": 96454
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.677Z",
+      "monotonic_elapsed_ms": 180128.7407,
+      "action": "CONTROL_TX",
+      "command": "CLOSE"
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.682Z",
+      "monotonic_elapsed_ms": 180133.2636,
+      "action": "DATA_CHANNEL_CLOSED"
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.682Z",
+      "monotonic_elapsed_ms": 180133.4658,
+      "action": "CONTROL_EVENT",
+      "event_type": "close",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.682Z",
+      "monotonic_elapsed_ms": 180133.7261,
+      "action": "CONTROL_TX",
+      "command": "QUIT"
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.682Z",
+      "monotonic_elapsed_ms": 180134.0952,
+      "action": "CONTROL_EVENT",
+      "event_type": "quit",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T23:29:39.687Z",
+      "monotonic_elapsed_ms": 180138.5792,
+      "action": "PROCESS_EXIT",
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "port_released_by_process_exit": true,
+  "failure": null,
+  "public_secret_scan": "completed_locally_no_secret_values_logged",
+  "public_redacted": false,
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-monitor-passive-iBkqaI",
+  "raw_sha256": "ea446a1ef5a13d26b4579ffedad6f55dba7af944da0ee79a4229e7a868c33a2c",
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-366g-status-rate-aba-072939.serial.log",
+  "public_control_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-366g-status-rate-aba-072939.control.log",
+  "public_stderr_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-366g-status-rate-aba-072939.stderr.log",
+  "limitations": [
+    "A private live copy and chunk receipt times are flushed during capture; public evidence is written on controlled shutdown.",
+    "OPEN acknowledgement describes monitor/port and TCP connection, not an ESP32 command response.",
+    "STATUS queries only in the predefined middle phase; additional serial output perturbs scheduling. No explicit DTR/RTS transitions.",
+    "Line timestamps are host receipt of complete line, not HX conversion times.",
+    "STATUS lines are cached snapshots, not every HX conversion.",
+    "Boot text may have occurred before opening and cannot be recovered."
+  ],
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-366g-status-rate-aba-072939.lines.jsonl",
+  "complete_lines": 580,
+  "trailing_incomplete_bytes": 0,
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

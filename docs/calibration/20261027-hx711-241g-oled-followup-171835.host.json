@@ -1,0 +1,58 @@
+{
+  "schema": "host-serial-capture-v1",
+  "purpose": "one read-only query attempt based on fresh user OLED IDLE and changing RAW",
+  "user_reply": "-157785、-157622、-157642；IDLE都是:A:0 H:0",
+  "user_OLED_RAW": [
+    -157785,
+    -157622,
+    -157642
+  ],
+  "user_phase": "IDLE",
+  "user_acc_count": 0,
+  "user_hx_record_count": 0,
+  "user_HX_health": null,
+  "power_continuity": "uncertain per user",
+  "start": "2026-10-27T17:18:35.8220372+08:00",
+  "end": "2026-10-27T17:18:43.9499498+08:00",
+  "elapsed_ms": 8127,
+  "port": "COM3",
+  "baud": 115200,
+  "format": "8N1",
+  "handshake": "None",
+  "dtr": false,
+  "rts": false,
+  "events": [
+    {
+      "time": "2026-10-27T17:18:35.8287084+08:00",
+      "action": "OPEN",
+      "port": "COM3",
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "time": "2026-10-27T17:18:37.8718600+08:00",
+      "action": "TX",
+      "command": "VERSION",
+      "state_basis": "fresh user OLED IDLE with changing RAW; no active serial state observed"
+    },
+    {
+      "time": "2026-10-27T17:18:39.9022692+08:00",
+      "action": "TX",
+      "command": "STATUS",
+      "state_basis": "fresh user OLED IDLE with changing RAW; no active serial state observed"
+    },
+    {
+      "time": "2026-10-27T17:18:41.9198935+08:00",
+      "action": "TX",
+      "command": "SPEED STATUS",
+      "state_basis": "fresh user OLED IDLE with changing RAW; no active serial state observed"
+    }
+  ],
+  "capture_error": "No device characters after bounded read-only queries; no retry or reset",
+  "port_closed": true,
+  "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-oled-followup-171835.serial.log",
+  "prior_offset_printed_counts": -157326.312,
+  "prior_counts_per_g_printed": 20.413381743,
+  "current_exact_calibration_parameters_not_read_back": true,
+  "host_times_are_not_ADC_timestamps": true
+}

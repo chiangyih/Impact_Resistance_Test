@@ -1,0 +1,251 @@
+{
+  "schema": "host-serialmonitor-passive-v1",
+  "port": "COM3",
+  "tool_version": "v0.15.0 commit 13b8e80",
+  "user_observations": {
+    "prior_empty_tray_confirmed": true,
+    "user_authorized_diagnostic_restart_and_flash": true,
+    "passive_post_dump": true,
+    "no_device_commands": true
+  },
+  "configuration_before_open": {
+    "baudrate": "115200",
+    "bits": "8",
+    "parity": "none",
+    "stop_bits": "1",
+    "dtr": "off",
+    "rts": "off"
+  },
+  "open_command_issued": true,
+  "open_acknowledged": true,
+  "tcp_peer_connected": true,
+  "capture_planned_ms": 300000,
+  "serial_bytes_received": 99097,
+  "stored_bytes": 99097,
+  "overflow": false,
+  "device_commands_sent": [],
+  "control_events": [
+    {
+      "at_utc": "2026-10-28T07:03:59.587Z",
+      "action": "LISTEN",
+      "address": "127.0.0.1",
+      "port": 40489
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.595Z",
+      "action": "CONTROL_TX",
+      "command": "HELLO 1 \"Codex diagnostic\""
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.613Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "hello",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.613Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE baudrate 115200"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.613Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.613Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE bits 8"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.613Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE parity none"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE stop_bits 1"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE dtr off"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE rts off"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "DESCRIBE"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "describe",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONFIGURATION_VERIFIED",
+      "baudrate": "115200",
+      "bits": "8",
+      "parity": "none",
+      "stop_bits": "1",
+      "dtr": "off",
+      "rts": "off"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.614Z",
+      "action": "CONTROL_TX",
+      "command": "OPEN 127.0.0.1:40489 COM3"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.617Z",
+      "action": "DATA_CHANNEL_CONNECTED",
+      "remote": "127.0.0.1"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.617Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "open",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.617Z",
+      "action": "OPEN_ACKNOWLEDGED"
+    },
+    {
+      "at_utc": "2026-10-28T07:03:59.617Z",
+      "action": "PASSIVE_CAPTURE_START",
+      "planned_ms": 300000
+    },
+    {
+      "at_utc": "2026-10-28T07:06:03.636Z",
+      "action": "HX_ERR_INCREASE_OBSERVED",
+      "previous": 3,
+      "current": 4,
+      "raw": -164271,
+      "rx": 37218,
+      "host_data_received_at_utc": "2026-10-28T07:06:03.635Z"
+    },
+    {
+      "at_utc": "2026-10-28T07:06:37.767Z",
+      "action": "HX_ERR_INCREASE_OBSERVED",
+      "previous": 4,
+      "current": 5,
+      "raw": -164186,
+      "rx": 37529,
+      "host_data_received_at_utc": "2026-10-28T07:06:37.767Z"
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.304Z",
+      "action": "PASSIVE_CAPTURE_END",
+      "total_bytes": 99097
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.304Z",
+      "action": "CONTROL_TX",
+      "command": "CLOSE"
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.305Z",
+      "action": "DATA_CHANNEL_CLOSED"
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.305Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "close",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.305Z",
+      "action": "CONTROL_TX",
+      "command": "QUIT"
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.306Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "quit",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T07:09:00.308Z",
+      "action": "PROCESS_EXIT",
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "port_released_by_process_exit": true,
+  "failure": null,
+  "public_secret_scan": "completed_locally_no_secret_values_logged",
+  "public_redacted": false,
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-monitor-passive-19UDNA",
+  "raw_sha256": "44511043ac6e8466cbf529ae24ff9674ceb34115fe9390b60754aeb113859d4d",
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-pcnt-frame-design-passive-150900.serial.log",
+  "public_control_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-pcnt-frame-design-passive-150900.control.log",
+  "public_stderr_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-pcnt-frame-design-passive-150900.stderr.log",
+  "limitations": [
+    "A private live copy and chunk receipt times are flushed during capture; public evidence is written on controlled shutdown.",
+    "OPEN acknowledgement describes monitor/port and TCP connection, not an ESP32 command response.",
+    "No device commands or explicit DTR/RTS transitions were sent.",
+    "Line timestamps are host receipt of complete line, not HX conversion times.",
+    "STATUS lines are cached snapshots, not every HX conversion.",
+    "Boot text may have occurred before opening and cannot be recovered."
+  ],
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-pcnt-frame-design-passive-150900.lines.jsonl",
+  "complete_lines": 598,
+  "trailing_incomplete_bytes": 128,
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

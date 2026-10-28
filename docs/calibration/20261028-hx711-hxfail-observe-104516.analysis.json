@@ -1,0 +1,8 @@
+[
+  {
+    "read": {
+      "schema": 1,
+      "version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail1",
+      "session": "0462E7C9",
+      "rows": 256,
+      "accepted": 256,

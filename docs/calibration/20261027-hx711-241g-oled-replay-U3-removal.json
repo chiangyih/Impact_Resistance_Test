@@ -1,0 +1,25 @@
+{
+  "schema": "hx711-oled-replay-removal-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "U3",
+  "host_recorded_at": "2026-10-27T17:58:11.6963163+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "已取下",
+  "context": "User replied to the instruction to remove all 241g, keep the pan still, and provide three timed readings.",
+  "weight_g_from_prior_user_confirmation": 241,
+  "removal_reported": true,
+  "stable_or_hands_clear_explicitly_reported": false,
+  "physical_removal_time": null,
+  "RAW_counts": null,
+  "HX_health": null,
+  "CAL_flag": null,
+  "prior_loaded_stage": "docs/calibration/20261027-hx711-241g-oled-replay-L2.json",
+  "next_step": "User was asked to keep empty pan still and provide three OLED RAW readings at about 20-second intervals with times and HX/CAL; awaiting response.",
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  }
+}
+

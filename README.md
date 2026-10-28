@@ -1,30 +1,30 @@
 # 落體衝擊量測平台
 
-以 **ESP32／NMK99v1** 為核心，比較 STF、三浦摺疊、EVA 及複合緩衝材料在落下衝擊中的反應。ADXL375 記錄加速度，HX711＋荷重元記錄底座受力原始值，上下兩顆 Tracker 記錄通過時間。
+以 **ESP32／NMK99v1** 為核心，比較 STF、三浦摺疊、EVA 及複合緩衝材料在落下衝擊中的反應。ADXL375 記錄加速度，HX711＋荷重元保存底座受力相關原始計數，上下兩顆 Tracker 記錄通過時間；力值、動態峰值與材料效果尚未驗收。
 
-**最近已燒錄版本**：[05-test v1-layout2-fifo-diag1-wifi1-d220-right-optical1](05-test/05-test.ino)　｜　**目前校正狀態**：UNCAL（2026-10-26燒錄重啟後，未重新校正）
+**已部署實板版**：[`hxfail3-pcnt1`](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md)（完整版本見部署紀錄）　｜　**目前校正**：UNCAL，366g校正未完成。
 
-> **2026-10-26 最新部署與首筆結果**：獨立光學模式optical1已通過215項主機檢查、編譯／燒錄及實板VERSION核對。DIST220／POL1/1下，首筆讀回DONE／NONE、1153289µs＝1153.289ms、速度0.190759m/s；使用者確認READY、同一標記先上後下，OLED顯示1153.289ms／0.1908m/s，與換算四捨五入相符。[原始SPEED匯出](docs/experiments/manual-speed/20261026-optical1-001.speed.txt)及[本輪紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md)已保存。單次計時／顯示／換算功能有限通過，光學準確度、重複性及完整QC仍待補；詳見[第七十節](handoff.md#manual-optical-mode-20261026)、[本版QC](docs/quality/reports/2026-10-26-optical1-qc.md)及[操作指南](docs/experiments/manual-speed/manual-optical-guide.md)。手動模式會暫停WiFi。
+> **資料更新至2026-10-28 15:09（台北）**：已捕獲被接受的近零異常字，以及LINK拒絕後的DATA／PCNT數位觀察；根因仍未明，量測資料品質未通過。最新5分鐘又見ERR3→5，不能以短窗HX OK、CRC或無大跳恢復校正。重點分析與改善步驟見[目前進度](#status)；完整證據見[PCNT session](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md)、[獨立QC](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md)及[最新被動窗](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.lines.jsonl)。
 
-> **授權範圍與保存**：本輪為已授權的手動標記上→下；兩次原ARM的UPPER_TIMEOUT及首筆獨立SPEED結果均已保存。最新讀回DONE，主代理已關閉COM3；結果尚未CLEAR，未啟動下一輪、重新燒錄／重置、校正或自由落下。帳密僅存Git忽略的獨立檔，建置產物在儲存庫外；使用者後續已要求公開Git封存，範圍與接續順序見[第七十一節](handoff.md#optical1-git-handoff-20261026)。下方10/21～10/22內容保留為當時歷史；RAM校正已因先前燒錄重啟清除。
+> **開發候選與已部署版分開**：每讀框PCNT sidecar已完成主機驗證與紙審，但[正式Arduino連結失敗](docs/calibration/20261028-pcnt2-compile-failed.log)：`.dram0.bss`超出DRAM區40,400 bytes。尚未燒錄、未做新版實板QC。以[公開主機驗證](docs/calibration/20261028-pcnt2-public-host-validation.json)、正式建置與各版QC分別追溯，主機可驗證不代表裝置已部署。
 
-> **校正砝碼重量更正：20g × 10個＝200g。** 昨天兩輪實際輸入均為`CAL 400`，因此離線修正後的`counts_per_g`為原值2倍，克數為原換算值的一半。舊版／新版修正係數分別為19.95484375／20.46921875 counts/g；原始RAW與零點不變。以下摘要已採修正值，完整逐筆結果見[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md)。修正係數尚未寫入裝置。
+**工作來源已恢復pcnt1**：[主程式](05-test/05-test.ino)及PCNT adapter／diag已依[已部署公開hash](docs/calibration/20261028-pcnt1-public-host-validation.json)恢復。 恢復版已依原設定[重新編譯成功](docs/calibration/20261028-pcnt1-restored-compile.log)，未再次燒錄。未完成pcnt2候選的38個source／tests／tools已另存本機 `C:/Users/tseng/Documents/Codex/pcnt2-wip-20261028`，只供工作接續；此儲存庫外路徑不隨遠端clone提供，也不是遠端部署來源或已部署結果。
 
-**文件更新／最新硬體紀錄**：2026-10-26；本次WiFi部署見上方。以下保存2026-10-21的FIFO診斷版部署與校正歷史（10/22補充照片條件並更正砝碼總重為200g）：當時以本機ESP32 core 3.3.12編譯、燒錄COM3，確認啟動識別及15筆待機STATUS，見[歷史部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。部署前的校正及回零資料來自舊v1-layout2，與新版各依自己的零點及修正係數重算。
+**光學功能已保存結果**：2026-10-26獨立SPEED模式在使用者回報220mm間距下，首筆DONE的`dt_us=1153289`換算0.1907587777m/s，OLED0.1908m/s取位一致；使用者確認同一標記先上後下。這是單次計時／顯示功能結果，距離不確定度、準確度與重複性仍待驗。[原始SPEED](docs/experiments/manual-speed/20261026-optical1-001.speed.txt) · [光學紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md) · [當版QC](docs/quality/reports/2026-10-26-optical1-qc.md)。
 
-使用者已確認新版OLED八行正常、RGB熄滅；新版HX711當時完成TARE及CAL 400，韌體列印offset=-164024.688 counts、原counts_per_g=10.234609375，最後已知為CAL_USER。依實際200g離線修正係數為20.46921875 counts/g：兩次卸載平均+1.27g／+4.89g，後續60秒空載61筆不同RX快照平均+9.88g（+4.53～+13.52g）；200g重放平均203.76g、偏高3.76g／1.88%，基線仍偏移且波動，尚未驗證合格。歷史操作見[校正接續紀錄](handoff.md#hx711-fifo-diag1-calibration-20261021)，修正結果以[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md)為準。
+<details>
+<summary>10/21～10/22校正與串列失聯歷史入口</summary>
 
-**最新排查狀況**：使用者量得VIN-GND約3.188～3.189V、橋路E+對E−經澄清為約3.164～3.170V。10/22電表照片確認為FLUKE 17B MAX、直流V／Auto，依顯示格式及原廠規格對應6.000V量程、1mV解析度；先前量測設定的連續性及`***`含義仍未明。10/21 23:31起COM3可開啟，但三種接收／監控檢查均無裝置訊息；使用者目視HX RAW仍更新、畫面CAL_USER。沒有重置或重校，**目前不能提供新的COM3重量／ERR／FIFO數值**；前述60秒數據是最後一次成功序列觀察，不當成現在讀回。供電餘裕與序列路徑均待查，詳見[電壓與通訊排查](handoff.md#hx711-voltage-serial-20261021)及[電表核對](handoff.md#hx711-meter-pause-20261022)。
+當時兩輪輸入`CAL 400`，實物後更正為20g×10＝200g，分別按各自零點離線重算，並未把修正比例寫回裝置。當時的CAL_USER、電壓／電表回報、OLED照片及串列無回應均為歷史條件，不能當作10/28現況或沿用參數。完整數值見[200g更正報告](docs/calibration/2026-10-21-hx711-correction-200g.md)、[歷史封存索引](docs/calibration/README.md)及[交接紀錄](handoff.md)。10/27重接後已恢復自動串列擷取，之後又經多次診斷重啟；各輪RAM校正與計數分開。
 
-**後續OLED照片（已依200g修正）**：七張均可見`IDLE A:0 H:0`及`HX:OK U0 D0`，可辨識的頂行為CAL_USER；RAW照片判讀範圍−163266～−163090，修正近似換算約+37.06～+45.66g，七張快照平均+40.05g。10/22使用者確認全程空托盤、未動接線或重啟，順序為61571→61577、間隔約10秒；約一分鐘首末由+45.66g到+39.21g，並非持續上升，最後五張約+37.06～+39.36g、平均+38.49g，仍明顯未回零且不足以宣告穩定。沒有精確拍攝時間或新ERR／RX，不能當成完整ADC時間序列或長期漂移率。`A:0 H:0`是試驗緩衝記錄數；[逐張原判讀](handoff.md#hx711-oled-photos-20261021)及[順序澄清](handoff.md#hx711-oled-sequence-20261022)保留歷史，換算結果採[200g修正表](docs/calibration/2026-10-21-hx711-correction-200g.md)。
-
-> **目前為整合測試階段；最後目視CAL_USER對應當時錯輸入400g的RAM比例，200g修正僅在主機離線完成**。新版最後成功的60秒空載修正平均+9.88g，200g重放修正平均203.76g，尚未驗證合格。前次成功待機讀取為`HX=OK`、`ADXL=OK`、`ERR=0`、`AERR=0`、`FIFO_FULL=1`；**現在序列無回應，不沿用舊計數推定當前正常**。計時、原始資料記錄及CSV匯出已實作；正式落下、高速與動態量測仍待驗證。`ARM`只開始記錄，**不控制電磁鐵釋放**。
+</details>
 
 ## 從這裡開始
 
 | 你想做什麼 | 閱讀入口 |
 |---|---|
 | 了解完成到哪裡 | [1. 目前進度](#status) |
+| 查閱校正數據與改善順序 | [校正資料分析](#calibration-review) · [後續改善與驗證](#calibration-next) |
 | 查閱10/20的電阻、電壓與讀值 | [2026-10-20 排查量測紀錄](#measurements-20261020) |
 | 核對電路或重新接線 | [2. 完整接線圖與接線表](#wiring) |
 | 第一次接 USB、查看讀值 | [3. 開機檢查](#first-run) |
@@ -33,24 +33,65 @@
 | 處理異常或理解資料 | [6. 狀態判讀](#troubleshooting) · [7. 資料限制](#data-limits) |
 | 查看程式、編譯或追查舊紀錄 | [8. 版本與檔案](#files) · [9. 開發環境](#development) · [10. 後續與歷史](#history) |
 | 手動通過兩頭測平均速度 | [獨立光學計時指南](docs/experiments/manual-speed/manual-optical-guide.md) · [本輪紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md) |
-| 查閱燒錄後QC流程與結果 | [QC檢核清單](docs/quality/post-flash-qc.md) · [最新optical1 QC](docs/quality/reports/2026-10-26-optical1-qc.md) · [四位協作規則](AGENTS.md) |
+| 查閱燒錄後QC流程與結果 | [QC檢核清單](docs/quality/post-flash-qc.md) · [PCNT部署QC](docs/quality/reports/2026-10-28-pcnt1-qc.md) · [PCNT真事件QC](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md) · [四位協作規則](AGENTS.md) |
 
 <a id="status"></a>
 
 ## 1. 目前進度
 
-以下彙整**截至 2026-10-22 的已知狀態**，硬體證據見[新版接續紀錄](handoff.md#hx711-fifo-diag1-calibration-20261021)、[後續OLED照片](handoff.md#hx711-oled-photos-20261021)及[照片條件澄清](handoff.md#hx711-oled-sequence-20261022)；所有荷重克數以[200g修正紀錄](handoff.md#hx711-mass-correction-200g-20261022)為準。[舊版校正過程](handoff.md#hx711-calibration-20261021)另存歷史，兩輪零點及係數分開計算。
+以下依2026-10-27～28已保存串列與獨立QC整理，資料截至10/28 15:09。**部署／資料保存通過，與量測資料品質、靜態校正及動態驗收分開判定。** 最新引用窗口已正常關埠；現場操作進度與COM持有者以[handoff](handoff.md)為準。
 
-| 項目 | 已確認的結果 | 尚待完成 |
+| 項目 | 已確認 | 未完成／限制 |
 |---|---|---|
-| 主板與韌體 | NMK99v1；第五版編譯、COM3 燒錄及 Hash 校驗成功 | 未接相機／TFT／SD；加裝前須重查腳位衝突 |
-| HX711＋荷重元 | 依實際200g離線修正：新版重放平均203.76g，60秒空載平均+9.88g；七張OLED空載快照約+37.06～+45.66g，已確認未動接線或重啟、約10秒間隔，畫面HX:OK；修正係數尚未寫入裝置 | 回零偏差、重複性、多點準確度、長期穩定性與供電餘裕；目前串列無回應，最新ERR未知，不沿用歷史計數 |
-| ADXL375 | 新版最後成功序列窗口為 `OK`、`AERR=0`、`FIFO_FULL=1`；初始化快取及診斷已保存 | 目前無新序列診斷，FIFO警示根因、校正與動態資料完整性未驗證；不可用舊版FIFO_FULL=0覆蓋新版結果 |
-| OLED | SH1106 128×64 設定、位址 `0x3C`；使用者確認八行正常、無缺邊 | 此為驅動與畫面確認，未讀取控制器型號 |
-| 板載 WS2812 | GPIO32；使用者確認已熄滅 | 關燈是送全黑資料，板上電源仍存在 |
-| 雙 Tracker | 2026-10-17 第三版使用者回報：3V3 下兩路可各自慢速反射切換 | 第五版切換尚未重驗；OUT 電壓、輸出型態、進入極性與高速性能 |
+| 實板診斷 | pcnt1已編譯、正確MAC及四區寫入校驗；DF497E3D自然boot、雙槽與PCNT事件已保存 | 每讀框sidecar尚未部署；主機驗證不能替代實板QC |
+| HX711／校正 | 10/27兩組CAL241程序成功；目前診斷boot為UNCAL | 近零／極端字與ERR持續重現；366g新比例、回零及獨立準確度未完成 |
+| PCNT／失敗後DATA | 真LINK後的離散LOW及MCU端SCK0／DATA4計數有完整CRC／時窗證據 | 不是HX端波形、脈寬或供電量測；根因未定位 |
+| ADXL375 | 最新窗口近期OK／AERR0，FIFO累計3 | 啟動及DUMP警示分列，來源／漏樣量、加速度校正及動態完整性待查 |
+| 光學／顯示 | 10/26首筆SPEED與OLED換算相符，舊版OLED／RGB有目視紀錄 | 新診斷版ACK不代替目視；光學精度與動態試驗未驗 |
 
-新版當時各執行一次 `TARE`、`CAL 400`，實際砝碼後更正為200g；未執行`POL`、`ARM`或正式釋放。後續照片可見`IDLE`、`CAL_USER`、`HX:OK`，完整照片亦可見225mm及POL=-1/-1；目前串列無回應、最新ERR未知。舊版重放修正平均195.05g、確認間隙後空載修正平均−8.07g及ERR=2屬另一輪歷史資料。校正只存RAM，斷電／重啟後需重新確認；離線修正未更新裝置比例，短時間 `OK` 不代表量測驗證通過。
+<a id="calibration-review"></a>
+
+### 校正資料分析：參數按輪次配對
+
+完整計算、資料來源與量測界線見[校正量測分析報告](docs/calibration/2026-10-28-calibration-assessment.md)。
+
+下列offset單位為counts，scale為counts/g。`mass_g=(RAW-offset)/scale`只適用於該輪配對參數及已確認條件；重啟會失去RAM校正，新的TARE也使舊比例失效。早期校正輪沒有完整自然boot識別，不補造boot ID；`CAL_USER`本身不能證明精確係數或供電連續性。
+
+| 校正輪／階段 | 保存參數與結果 | 可以支持的結論 |
+|---|---|---|
+| [10/27首次CAL241](docs/calibration/20261027-hx711-241g-calibration-summary.json) | offset−157326.312；scale20.413381743；同一砝碼留置11筆均值240.0895g | 程序已接受；卸載時COM失聯，沒有正式串列回零結果；同砝碼留置不是獨立精度 |
+| [10/27 USB重接後CAL241](docs/calibration/2026-10-27-hx711-usb-reconnect-serial-session.md) | offset−158294.438；scale20.577282158；首次卸載−0.772g、241g重放240.903g、再卸載−4.151g、續空載−7.026g | 以上僅依本輪列印參數條件換算；短窗零點未保持，不能因重放接近241g判合格 |
+| [10/27 23:51新TARE及跨夜前檢](docs/calibration/2026-10-27-hx711-authorized-auto-calibration.md) | offset−160216.281；舊scale失效，UNCAL；CAL366守衛阻止，後續前檢出現−156與ERR增加 | 沒有CAL366成功或有效新比例；此offset不能配前一輪scale使用 |
+| [10/28各診斷boot](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md) | 依各自session保存RAW／ERR／CRC，當前仍UNCAL | RAW不是g或N；不套用上述任何歷史比例 |
+
+同一套241g校正後也做過兩次366g連續加卸載，各取預定前空載B0／載重L／後空載B1三個60秒窗、每窗60筆；它們是額外重量響應觀察，**不是CAL366**。
+
+| 366g觀察 | L−B0（counts） | L−B1（counts） | B1−B0（counts） |
+|---|---:|---:|---:|
+| [第一輪](docs/calibration/2026-10-27-hx711-366g-continuous-load-unload.md) | 7622.9667 | 7395.3833 | +227.5833 |
+| [第二輪](docs/calibration/2026-10-27-hx711-366g-repeat-load-unload.md) | 7616.3000 | 7541.9167 | +74.3833 |
+
+前後基線不同，載重同期真零點未知；兩個增量均保留，不選較接近366g的一側判精度。366g來自使用者磅秤回報，磅秤解析度、誤差與追溯未知；兩輪手動位置／時間也非同步獨立量測。因此目前只能分列「空載零點變化」與「離群讀值／握手錯誤」兩類問題。[空載排查](docs/calibration/2026-10-27-hx711-negative-drift-investigation.md)有部分連續窗呈負向趨勢，但不可跨缺口或不同boot擬合成全程單調漂移。
+
+### 異常與已取得的診斷證據
+
+| 已保存現象 | 意義與界線 |
+|---|---|
+| [A1C20320：accepted−320，稍後LINK拒絕−160；9有效LOW／3missed](docs/calibration/2026-10-28-hxdual-until-link-session.md) | 失敗後DATA捕獲可信；約171ms未取點區間電位未知，不能稱連續LOW；hold273.810ms已改後續時序 |
+| [DF497E3D：accepted−641／ERR0；LINK拒絕−529408，PCNT SCK0／DATA4](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md) | PCNT兩窗valid、無overflow且SCK包絡DATA；DATA開始較anchor遲343～346µs。只證MCU端窗口內數位計數，不是異常讀框全程、HX端類比／供電或根因；HXF8 LOW／4missed仍不證連續LOW |
+| [14:46:31.285快照RAW−1282／HX OK／ERR3](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.lines.jsonl) | 前後−164000／−164028右移7位數值相容，僅候選；ring已凍結，無該次逐框／edge，不能還原RAW或定丟位原因 |
+| [15:04～15:09被動窗再見ERR3→5](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.lines.jsonl) | 299 STATUS；首次觀察3→4在15:06:02.629～03.635、4→5在15:06:36.764～37.767。FIFO3，無新逐框資料，不能定位錯誤瞬間或原因 |
+
+`HX=OK`、後檢HIGH、ERR暫不增及CRC通過都不能保證RAW正確。CRC驗的是形成後資料的保存／匯出，主機收行UTC不是ADC時刻；約1Hz STATUS可能看不到已接受異常字。相鄰值算術位移相容不授權修值，缺值／missed維持NA。同步DUMP造成的STALE／MISSING與FIFO增加另列，不能用DUMP解釋尚未DUMP的啟動警示或所有HX異常。
+
+<a id="calibration-next"></a>
+
+### 後續改善與驗證順序
+
+1. **先補異常讀框本身的證據。** 每讀框PCNT sidecar雖完成[主機驗證](docs/calibration/20261028-pcnt2-public-host-validation.json)與紙審，正式連結因DRAM超額40,400 bytes失敗，尚未部署。先處理記憶體配置／預算，重新完成完整連結，再做正確目標燒錄與新版QC；實板heap餘量未知，不能將改用動態記憶體當作已解決。目標是把原始bits、接受狀態、同seq的SCK／DATA計數與CPU括弧一起保存；目前pcnt1只量LINK後等待窗。新功能增加讀框前後開銷，須驗資源、counter／overflow／NA、完整CRC與實板回歸；50個數位edge也不證脈寬、順序或HX端實收。
+2. **分開定位零點變化與數位異常。** 固定安裝、載入位置、等待時間與環境條件，一次改一個因素，保留RAW、失敗框與累計警示。現有MCU證據不足以分離取位、接觸／類比、供電或機械／溫度因素；如需判別HX端脈衝或供電，仍需對應的獨立量測。不得以平滑、再TARE或反向位移消除異常。
+3. **原因及必要修復通過對應QC後，才重建校正。** 先寫明用途允許誤差、砝碼／磅秤解析度及追溯，再在同一boot近時空載→一次TARE→366g CAL→卸載→241g額外點→卸載→366g重放→卸載；固定各窗口與位置，保存係數、全部異常及回零變化。241g／366g自身誤差仍須納入，不臨時湊一個通過門檻。
+4. **靜態通過後另驗動態。** 回零／多點／重複性通過只支持靜態質量用途；衝擊峰值還需感測頻寬、機構傳遞、時間同步、飽和與FIFO完整性證據，之後才比較材料效果。
 
 <a id="measurements-20261020"></a>
 
@@ -210,11 +251,11 @@
 
    | 檢查欄位 | 如何判讀 |
    |---|---|
-   | 啟動識別／`LAYOUT` | `05-test NMK99 ... v1-layout2-fifo-diag1-wifi1-d220-right`／`LAYOUT=2` |
+   | 啟動識別／`LAYOUT` | 與[已部署版紀錄](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md)的完整version／session核對；`LAYOUT=2`，開發候選不等於已燒錄版 |
    | `SCK`／`DATA`／`RGB` | `25`／`33`／`32:OFF_REQ`；RGB 熄滅另以目視確認 |
    | `phase`／`CAL`／`POL` | 初始為 `IDLE`／`UNCAL`／`-1/-1` |
-   | `HX`／`ADXL` | 近期應有有效資料；`OK` 不表示已校正 |
-   | `AERR`／`ERR`／`FIFO_FULL` | 保留異常證據；既有 `FIFO_FULL=1` 尚待排查 |
+   | `HX`／`ADXL` | 檢查近期更新；`HX=OK`仍可能出現已接受異常字，不能當資料或校正通過 |
+   | `AERR`／`ERR`／`FIFO_FULL` | 按本boot保存首末及增加時間界線，不跨boot相減；既有警示與資料品質問題待解 |
 
 5. 目視確認 OLED 八行資料及 WS2812 熄滅；再固定裝置，緩慢讓反射標記靠近／移開各 Tracker，確認上方只改 UP、下方只改 DN，記下**標記進入時**各自為 0 或 1。
 
@@ -224,13 +265,20 @@
 
 ## 4. 設定與靜態校正
 
-以下是操作方式。本案2026-10-21舊版與部署後新版均各執行一次TARE與CAL 400；10/22使用者更正兩輪實際砝碼為20g×10個＝200g，已按各自零點離線重算。新版修正係數為20.46921875 counts/g，200g重放修正平均203.76g；回零及穩定性仍有偏差，硬體排查維持暫停，裝置尚未更新修正係數。詳見[200g更正紀錄](handoff.md#hx711-mass-correction-200g-20261022)。參數只能在 `IDLE` 且未收集校正資料時更改；若保留上一筆 DONE／FAULT 資料，先匯出保存，再 `CLEAR`。
+本節說明指令能力；目前因HX資料品質問題保持UNCAL，先按[改善與驗證順序](#calibration-next)處理，再建立新校正。使用者已有自動校正授權，不代表前檢失敗時可反覆TARE／CAL追零。參數只能在 `IDLE` 且未收集校正資料時更改；保留的DONE／FAULT或診斷資料先完整匯出保存。
+
+<details>
+<summary>10/21～10/22歷史校正來源與200g更正</summary>
+
+當時兩輪各輸入TARE／CAL 400，實際砝碼後更正為200g；新版20.46921875 counts/g與重放203.76g為該歷史輪的離線修正，不能套入10/27～28或現在的RAW。詳見[200g更正紀錄](handoff.md#hx711-mass-correction-200g-20261022)。
 
 本輪歷史輸出已補存為 [200筆 STATUS／RAW CSV](docs/calibration/2026-10-21-hx711-status.csv)，附[原始文字輸出](docs/calibration/2026-10-21-hx711-source.log)及[欄位／缺值／重複回報說明](docs/calibration/README.md)。保留4筆同RX重複快照，未填造逐筆時間或TARE／CAL內部32框；這不是重新讀取裝置或新的校正結果。
 
 新版fifo-diag1的TARE／CAL 400、回零／重放及後續排查另存[新版原始紀錄](docs/calibration/2026-10-21-hx711-fifo-diag1-source.log)：134筆歷史STATUS及7筆獨立標示的OLED照片觀察，並附電壓回報、COM3無回應檢查與暫停註記；沒有把照片或無回應補成序列資料，也未混入舊版CSV。詳見[新版封存索引](docs/calibration/README.md#fifo-diag1-session)。
 
 **更正後分析入口**：[200g重算報告](docs/calibration/2026-10-21-hx711-correction-200g.md) · [舊版200筆修正CSV](docs/calibration/2026-10-21-hx711-status-corrected-200g.csv) · [新版134筆修正CSV](docs/calibration/2026-10-21-hx711-fifo-diag1-status-corrected-200g.csv) · [七張照片修正CSV](docs/calibration/2026-10-21-hx711-oled-corrected-200g.csv)。原始CSV與log保存當時錯誤重量及換算值，後續分析請採修正版。
+
+</details>
 
 ### 距離與 Tracker 極性
 
@@ -242,6 +290,8 @@
 上表的「毫米數／上方／下方」是參數說明，送出時須換成實際數值。`POL=-1/-1` 表示未設定，不能 `ARM`。
 
 ### 荷重靜態校正
+
+以下流程適用於異常原因／必要修復經對應QC、參考重量與允許誤差已確認後；目前尚未進入這個新校正階段。`HX=OK`一項不足以滿足前提。
 
 1. 確認 HX 狀態為 `OK`、安裝固定，保留正式使用的托盤／治具，移除外加荷重並保持靜止，送出 `TARE`；等待成功回報。
 2. 放上**真實已知且安全的小重量**，保持靜止，再送出 `CAL 克數`，把「克數」換成該物體的實際重量；等待成功回報。
@@ -260,7 +310,7 @@
 
 ## 5. 單次記錄與匯出
 
-程式已提供下列流程；實體觸發與動態量測仍待驗證。**`ARM` 不釋放落體，`STOP` 也不是物理急停。**
+程式已提供下列流程；目前HX異常排查不進行正式落下，實體觸發與動態量測仍待驗證。獨立手動速度測試使用[SPEED指南](docs/experiments/manual-speed/manual-optical-guide.md)。**`ARM` 不釋放落體，`STOP` 也不是物理急停。**
 
 | 步驟 | 操作 | 程式行為 |
 |---|---|---|
@@ -282,6 +332,7 @@
 |---|---|
 | `HELP`／`STATUS` | 查命令／目前讀值、設定與異常 |
 | `ADXL_DIAG` | 已燒錄的fifo-diag1新增：列出已保存的 FIFO 來源、時間與 OLED 耗時；只印快取，不清警示 |
+| `HX_DIAG STATUS`／`HX_DIAG DUMP` | 逐讀／雙槽／PCNT診斷；以該版完整外層END與CRC確認匯出，DUMP同步輸出會阻塞輪詢 |
 | `DIST 毫米數`／`POL 上方 下方` | 設定距離／兩路觸發進入電位 |
 | `TARE`／`CAL 克數`／`UNCAL` | 去皮／使用已知荷重建立靜態係數／清除係數 |
 | `ARM`／`STOP` | 開始記錄／取消校正或中止記錄 |
@@ -297,11 +348,11 @@
 
 | 看到的狀態 | 意義與下一步 |
 |---|---|
-| `HX=OK` | 近期收到完整且未滿量程的資料；仍須校正與穩定性驗證。負 RAW 本身不代表負飽和 |
+| `HX=OK` | 程式近期接受過讀值；本案已出現OK／ERR不增而RAW近零異常，不能當資料正確或量測通過。負RAW本身也不代表負飽和 |
 | `WAIT`／`TIMEOUT` | 尚無首筆完整資料／等待超時；先斷電核對 VIN、VIO、共地及 SCK25／DATA33 |
 | `STALE` | 曾有資料但超過 1 秒未更新；顯示值可能是舊快取 |
 | `SAT` | 到達正負滿量程；保留原始值，檢查橋路、激勵與輸入，不用去皮或濾波掩蓋 |
-| `LINK_ERR`／`ERR` 增加 | HX 讀後 DATA 握手異常；核對數位供電、接線與時序 |
+| `LINK_ERR`／`ERR` 增加 | 原HX讀後DATA檢查未通過；保留原字、計數與時間界線，根因未定，不由累計數推漏樣量 |
 | `ADXL=MISSING` | 近期無有效三軸資料；檢查 3V3、SDA21、SCL22、CS 高、SDO 地及初始化診斷 |
 | `FIFO_FULL`／`AERR` 增加 | 前者是開機以來警示觀察次數，後者是原加速度讀取／FIFO 檢查錯誤；固定 `1` 不表示目前持續滿載，也不等於只漏一筆 |
 | `POL=-1/-1` 或不能 `ARM` | 先量測進入極性、設定 POL；再確認 IDLE、兩路未觸發、HX OK、ADXL 近期有資料 |
@@ -332,7 +383,7 @@
 
 `FIRST_PHASE`／`LAST_PHASE` 的數字對應：0＝IDLE、1＝ARMED、2＝WAIT_DN、3＝CAPTURE、4＝DONE、5＝FAULT。
 
-本次已由使用者確認落體固定、電磁鐵外部電源隔離及USB供電，再按其要求燒錄，保存啟動輸出並在待機送`STATUS`、`HELP`及兩次`ADXL_DIAG`。15筆STATUS的FIFO_FULL均為1；兩次診斷均為`FULL_OBS=1 DEPTH_OBS=0 OVR_OBS=1 DIAG_ERR=0`，首次／最近事件同為`US=505194 N=3 SRC=0x81 PHASE=0`，已觀察最大深度14。初始化前`N=32 SRC=0x83`、重設後`N=0 SRC=0x81`；這些是非同時快照，尚不能據此確定舊旗標、首次事件根因或漏樣量。OLED主機呼叫最大118341µs，poll開始間隔最大140533µs；僅屬本次短期待機實測，不代表活動記錄或舊版耗時。
+以下是2026-10-21 fifo-diag1的歷史待機窗：使用者當時確認落體固定、電磁鐵外部電源隔離及USB供電，再要求燒錄，保存啟動及唯讀診斷。15筆STATUS的FIFO_FULL均為1；兩次診斷均為`FULL_OBS=1 DEPTH_OBS=0 OVR_OBS=1 DIAG_ERR=0`，首次／最近事件同為`US=505194 N=3 SRC=0x81 PHASE=0`，最大深度14。初始化前`N=32 SRC=0x83`、重設後`N=0 SRC=0x81`；非同時快照不能定根因／漏樣量。OLED呼叫最大118341µs、poll開始間隔最大140533µs只屬當時短窗；新PCNT啟動及DUMP警示另見[本輪QC](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md)。
 
 命令只印快取，不讀I²C、不重設FIFO；記錄期間仍只允許STOP。新增非記錄期快照與文字輸出也會占用時間。先前只編譯未燒錄的歷史另見handoff第四十五、四十六及四十八節；本次部署見[第四十九節](handoff.md#fifo-diag1-deployment-20261021)與[原始序列紀錄](docs/deployment/2026-10-21-fifo-diag1-serial.log)。使用者其後已確認新版OLED八行正常、RGB熄滅。**已完成燒錄及基本待機驗證，但根因、精度及正式落下仍未驗證，沒有清除警示或宣告修復。**
 
@@ -351,7 +402,7 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 | 欄位／結果 | 正確讀法 |
 |---|---|
 | `kind` | `ACC` 與 `HX` 分組輸出；不同感測器沒有假同步或補點 |
-| `t_read_us` | 相對 ARM 的**主機讀出時間**；FIFO 樣本可能更早形成，不能當作精準採樣時間 |
+| `t_read_us` | 相對ARM的**ESP32讀出時間**，不是電腦收行UTC；FIFO樣本可能更早形成，不能當精準採樣時間 |
 | `x_raw`～`mag_g` | 加速度原始計數及名義 g 值；合成峰值**包含重力**，視窗為整次 ARM，尚未自動辨識撞擊段 |
 | `hx_raw`／`hx_status` | HX 原始計數及狀態；SAT 保留於 CSV，但不當成可信受力極值 |
 | `mass_g_static` | 未校正或 SAT 時為 `NA`；即使完成 CAL_USER，仍只是靜態等效克數 |
@@ -362,6 +413,7 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 - ADXL375 目前為 **100 Hz**，HX711 為 **10／80 SPS**，都可能漏掉快速衝擊峰值；不宣稱毫秒級真實瞬時峰值力或精確吸能量。
 - 加速度緩衝 2048 筆、HX 緩衝 1536 筆，滿載即中止，不覆寫。FIFO 滿、STALE、握手及 I²C 錯誤都應保留為品質旗標。
 - 缺值為 `NA`，不補成 0；加速度近 190 g 的 `NEAR_RANGE` 僅是警示，不是精準硬體飽和判據。
+- 診斷READ／HXF／PCNT的CRC支持資料形成後保存與匯出完整，不證ADC真值；雙槽重疊按同一session／seq只計一次。STATUS快照、逐讀attempt與全部ADC轉換分開。
 - Tracker 的反射表面、側向距離、角度、環境光及延遲會影響時間；正式比較材料前，先完成低高度、低重量與重複性驗證。
 
 <a id="files"></a>
@@ -372,7 +424,8 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 
 | 版本 | 用途 | HX711 SCK／DATA | 使用狀態 |
 |---|---|---|---|
-| **[05-test](05-test/05-test.ino)** | **整合感測、Tracker 中斷計時、手動校正與 CSV；含 FIFO 診斷與待機WiFi** | **25／33** | 已燒錄wifi1-d220-right，圖示移右上；版本／距離220mm／IP已讀回，UNCAL與FIFO警示待驗，未正式落下 |
+| **[已部署pcnt1](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md)** | **雙槽逐讀、失敗後DATA與MCU PCNT數位計數，沿用整合功能** | **25／33** | 工作樹主程式已按部署hash恢復pcnt1；有限QC通過、資料品質未通過，UNCAL／366g未完成 |
+| [每讀框sidecar候選](docs/calibration/20261028-pcnt2-public-host-validation.json) | 原讀框加PCNT附加記錄 | 25／33 | 候選外置備份；主機驗證／紙審通過但正式連結DRAM超額失敗，未部署／新版實板QC未做 |
 | 初版 05（歷史） | 早期整合版本 | 32／33 | 已由同檔新版取代，詳見歷史紀錄 |
 | [04-HX711-test](04-HX711-test/04-HX711-test.ino) | HX711＋OLED 獨立排查 | 32／33 | 保留歷史來源 |
 | [03-irt_tracker](03-irt_tracker/03-irt_tracker.ino) | 感測器＋OLED＋雙 Tracker 電位 | 33／32 | 保留歷史來源 |
@@ -392,7 +445,8 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 | [tests/05-test.test.cjs](tests/05-test.test.cjs) | 從實際來源轉譯的主機邏輯模擬，非硬體時序測試 |
 | [tests/05-fifo-diag.test.cjs](tests/05-fifo-diag.test.cjs) | 新增 FIFO 來源、時間及診斷防護的主機檢查 |
 | [docs/archive/](docs/archive/) | 本次改版前 README 的完整歷史快照 |
-| [docs/calibration/](docs/calibration/) | 2026-10-21 HX711逐筆STATUS／RAW、原始輸出與欄位說明 |
+| [docs/calibration/](docs/calibration/) | 各日期／校正輪的RAW、參數、載卸、逐讀／PCNT原文與主機紀錄；最新入口見[校正分析](#calibration-review) |
+| [docs/quality/reports/](docs/quality/reports/) | 各部署版及同版新session的獨立QC；未測／未解不由舊版代替 |
 | [docs/deployment/](docs/deployment/) | fifo-diag1燒錄、目標身分、啟動與待機診斷原始紀錄 |
 
 `auto-git-watch.ps1` 為本機限定同步工具，已被 `.gitignore` 排除，不屬於硬體操作流程。
@@ -401,7 +455,14 @@ kind,t_read_us,x_raw,y_raw,z_raw,x_g,y_g,z_g,mag_g,hx_raw,hx_status,mass_g_stati
 
 ## 9. 開發環境與編譯
 
-已先封存HX711歷史快照，再依使用者要求將**目前本機** ESP32 core 從 **3.3.11 更新到指定的 3.3.12**。其後收到燒錄指示，以同一份FIFO診斷來源再次編譯成功並部署COM3。版本由[Espressif 官方索引](https://espressif.github.io/arduino-esp32/package_esp32_index.json)與[官方發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)核對；沒有更新Arduino CLI或應用函式庫。
+最近已部署pcnt1使用Arduino CLI1.5.1、ESP32 core3.3.12／IDF5.5.5及下列既有FQBN。正式編譯程式1013665／1310720 bytes、全域123928／327680 bytes；後者是編譯器摘要，不是runtime heap量測。[公開主機驗證與來源hash](docs/calibration/20261028-pcnt1-public-host-validation.json) · [正式compile](docs/calibration/20261028-pcnt1-compile.log) · [正確目標upload](docs/calibration/20261028-pcnt1-upload.log) · [本版QC](docs/quality/reports/2026-10-28-pcnt1-qc.md)。
+
+每讀框sidecar候選的[主機驗證](docs/calibration/20261028-pcnt2-public-host-validation.json)與[正式連結失敗](docs/calibration/20261028-pcnt2-compile-failed.log)分開：主機邏輯／SDK語法通過未覆蓋實際DRAM配置，尚未部署或取得新版實板QC。下方命令是開發方法，不將主機測試當成實板功能通過。
+
+<details>
+<summary>2026-10-21核心更新、舊建置與產物hash（歷史）</summary>
+
+當時先封存HX711歷史快照，再依使用者要求將本機ESP32 core由3.3.11更新到3.3.12，以同一份FIFO診斷來源編譯／部署。當時版本核對來源為[Espressif官方索引](https://espressif.github.io/arduino-esp32/package_esp32_index.json)與[發布頁](https://github.com/espressif/arduino-esp32/releases/tag/3.3.12)；以下數字不當成pcnt1或新候選的建置結果。
 
 | 項目 | 2026-10-20 交接記錄 | 本輪本機2026-10-21更新後實際讀回／結果 |
 |---|---|---|
@@ -420,6 +481,8 @@ B62CDBCB2FF2DB21DB86AA96C1751AC1AEAA5533B40B216CFA2890FE71C750E1
 ```
 
 建置產物留在系統暫存目錄，未納入Git。本次上傳的bootloader、partitions、boot_app0及主程式均通過Hash校驗，新啟動識別及待機命令已確認；見[第四十九節部署紀錄](handoff.md#fifo-diag1-deployment-20261021)。**基本啟動通過不等於FIFO根因、感測精度或動態驗證通過，重燒後需重新建立並驗證校正。**
+
+</details>
 
 FQBN 是沿用的 ESP32 編譯設定，**不表示已完整對應 NMK99 所有板載周邊**；現行 GPIO25 配置以未接相機／TFT／SD 為前提。
 
@@ -451,7 +514,7 @@ if ($LASTEXITCODE -ne 0) { throw '燒錄失敗，保留診斷輸出' }
 & $irtCli monitor --port $irtPort --config baudrate=115200
 ```
 
-上傳成功後仍須檢查啟動識別、STATUS、OLED 與燈號；Flash Hash 校驗不能代替感測器與畫面驗證。
+正確目標完整寫入校驗成功後，立即依[QC清單](docs/quality/post-flash-qc.md)由Ampere做該版獨立檢核並留報告；保留自然啟動、版本／session、STATUS、OLED與燈號證據，未測保留待補。Flash Hash、主機測試與舊版報告不能代替新版實板及量測驗證。
 
 </details>
 
@@ -459,17 +522,18 @@ if ($LASTEXITCODE -ne 0) { throw '燒錄失敗，保留診斷輸出' }
 
 ## 10. 後續工作與歷史紀錄
 
-依現行整合版本，下一階段按以下順序驗證：
+校正與資料品質的優先路徑見[後續改善與驗證順序](#calibration-next)。接續還需：
 
-1. 排查 `FIFO_FULL`，確認 ADXL375 固定、方向、資料完整性及加速度校正。
-2. 補查 Tracker 型號、額定供電、OUT 電壓與輸出電路；確認進入極性、等效間距、延遲及高速重複性。
-3. 新版TARE及CAL 400當時成功，砝碼實際總重後更正為200g；離線修正後兩次卸載均值+1.27g／+4.89g、60秒空載平均+9.88g、200g重放平均203.76g，仍有偏差及波動。VIN-GND約3.188～3.189V、E+對E−約3.164～3.170V；FLUKE 17B MAX照片為直流V／Auto，對應6.000V量程及1mV解析度，先前設定連續性與`***`含義仍待釐清，不能憑6mV跨度確診根因或自行改5V。COM3無回應後取得七張OLED空托盤照片，修正克數約+37.06～+45.66g；已確認未動接線或重啟、依檔號約每10秒一張，先降後波動，不代表長期穩定。**硬體維持暫停，離線修正未寫入裝置；恢復後需先確認現況，再安排序列路徑與供電餘裕排查**。先前懸空間隙約5mm、紙張可自由穿過為使用者回報。
-4. 驗證第五版既有計時、緩衝與 CSV 流程；先低高度、低重量，再進入材料比較。
-5. 若要加入電磁鐵自動釋放，另行確認 Relay 額定電源、觸發邏輯、飛輪二極體與機械安全；此功能尚未啟用。
+1. 將ADXL啟動／匯出期FIFO警示與HX異常分開驗證，確認固定、方向、加速度校正及動態資料完整性。
+2. 補足Tracker的等效觸發距離、進入極性、延遲、光學準確度與高速重複性；10/26單次SPEED結果不代替這些項目。
+3. 在HX品質與靜態驗證完成後，再驗計時、緩衝、同步及動態量測，之後才進入材料比較；`ARM`不會自動釋放落體。
+4. 如日後加入電磁鐵自動釋放，另核Relay電源、觸發邏輯、飛輪二極體與機械條件；目前未啟用。
+
+10/21～22的VIN／激勵電壓、電表照片、約5mm間隙及當時UART失聯均保留於[歷史交接](handoff.md#hx711-voltage-serial-20261021)與[200g更正報告](docs/calibration/2026-10-21-hx711-correction-200g.md)，不冒充目前同步供電或機械量測。
 
 **追查紀錄：**[完整交接 handoff.md](handoff.md) · [改版前 README 歷史快照](docs/archive/README-before-redesign-20261021.md)
 
-歷史快照保留原有各版接線、排查數據、編譯／燒錄指令及參考資料；其中舊 GPIO、線色、NodeMCU-32S 與 OS25B10 描述須依日期閱讀。**現行操作以本頁接線與第五版來源為準。**
+歷史快照保留原有各版接線、排查數據、編譯／燒錄指令及參考資料；舊GPIO、線色、NodeMCU-32S與OS25B10描述按日期閱讀。接線依本頁layout2與實線核對，已部署程式依該次來源hash／部署紀錄識別，工作中的候選來源不當成已燒錄版本。
 
 <details>
 <summary>主要原廠參考資料</summary>

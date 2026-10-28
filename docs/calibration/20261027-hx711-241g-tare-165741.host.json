@@ -1,0 +1,34 @@
+{
+  "schema": "host-serial-capture-v1",
+  "purpose": "one TARE on user-confirmed empty pan; 241g is NOT placed yet",
+  "start": "2026-10-27T16:57:41.5862755+08:00",
+  "end": "2026-10-27T16:57:50.3304935+08:00",
+  "port": "COM3",
+  "baud": 115200,
+  "format": "8N1",
+  "handshake": "None",
+  "dtr": false,
+  "rts": false,
+  "events": [
+    {
+      "time": "2026-10-27T16:57:41.5901454+08:00",
+      "action": "OPEN",
+      "port": "COM3",
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "time": "2026-10-27T16:57:43.8283902+08:00",
+      "action": "TX",
+      "command": "TARE",
+      "user_confirmed_empty_pan": true
+    }
+  ],
+  "tare_command_sent": true,
+  "terminal_reply": "# TARE_OK offset=-157326.312; UNCAL; use known mass with CAL grams",
+  "capture_error": null,
+  "port_closed": true,
+  "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-tare-165741.serial.log",
+  "individual_32_TARE_frames_not_logged": true,
+  "host_times_are_not_ADC_timestamps": true
+}

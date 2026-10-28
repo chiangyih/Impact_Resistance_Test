@@ -1,0 +1,42 @@
+{
+  "schema": "read-only-USB-diagnostics-v1",
+  "observed_at": "2026-10-27T17:21:05.6817299+08:00",
+  "instance_id": "USB\\VID_1A86&PID_7523\\6&2BCCCFA4&0&1",
+  "device_properties": [
+    {
+      "KeyName": "DEVPKEY_Device_ProblemCode",
+      "Type": 7,
+      "Data": 0
+    },
+    {
+      "KeyName": "DEVPKEY_Device_Parent",
+      "Type": 18,
+      "Data": "USB\\VID_174C&PID_2074\\5&cc3f949&0&10"
+    },
+    {
+      "KeyName": "DEVPKEY_Device_IsPresent",
+      "Type": 17,
+      "Data": true
+    },
+    {
+      "KeyName": "DEVPKEY_Device_LastArrivalDate",
+      "Type": 16,
+      "Data": "2026-10-27T17:08:06.362744+08:00"
+    },
+    {
+      "KeyName": "DEVPKEY_Device_DriverVersion",
+      "Type": 18,
+      "Data": "3.9.2024.9"
+    },
+    {
+      "KeyName": "DEVPKEY_Device_DriverProvider",
+      "Type": 18,
+      "Data": "wch.cn"
+    }
+  ],
+  "system_event_window_start": "2026-10-27T16:50:00.0000000",
+  "system_events_examined": 0,
+  "maximum_events_examined": 500,
+  "matching_target_events": [],
+  "limitations": "Only existing target device properties and bounded existing System event messages were read. No device rescan/reset, driver changes, or serial open. No matching event does not prove no USB interruption."
+}

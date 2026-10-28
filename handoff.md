@@ -1,5 +1,69 @@
 # handoff.md
 
+> **2026-10-28 校正分析與 Git 交接（最新）**：實板仍為已燒錄並獨立 QC 的 `hxfail3-pcnt1`，維持 USB 供電、UNCAL、COM3 已釋放；366 g 校正未完成，HX 異常原因及量測品質仍未解。14:46 被動快照捕獲 RAW −1282；15:04–15:09 約 1 Hz 被動記錄中 ERR 由 3 變 5，兩次增量分別位於 15:06:02.629–03.635 與 15:06:36.764–37.767（台北），已封存的 ring 無這兩次逐框資料，不能推定原因。詳見[原文](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.serial.log)、[逐行時間](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.lines.jsonl)及[校正整理](README.md)。每框候選 `hxfail4-pcnt2` 主機測試後正式連結因靜態 DRAM 超出 40,400 bytes 失敗，[公開編譯紀錄](docs/calibration/20261028-pcnt2-compile-failed.log)；未燒錄、未實板 QC，不能當成部署版。候選來源與測試已備份到本機專案外 `C:/Users/tseng/Documents/Codex/pcnt2-wip-20261028`，含雜湊清單；主程式及兩個 PCNT header 已按部署來源 SHA-256 恢復 PCNT1。 恢復版以原 FQBN 重新[編譯成功](docs/calibration/20261028-pcnt1-restored-compile.log)：程式 1,013,665 bytes、靜態記憶體 123,928 bytes；本輪未重燒。後續先釐清異常、驗證記憶體與完整 QC，再安排新 boot 的 TARE／CAL 及載卸驗證；勿套用先前 RAM 校正。依使用者要求封存公開資料，實際 commit／push 結果以 Git 紀錄與本次回覆為準；私密帳密與建置產物不提交。下方較早標「最新」的段落均為當時歷史。
+
+> **2026-10-28 14:46 新RAW尖峰（最新）**：每讀框PCNT設計期間，主代理在原PCNT1、ring已封存、保持UNCAL/USB供電下做5分鐘零TX被動快照：[原文](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.serial.log)、[逐行時間](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.lines.jsonl)、[host](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.host.json)。14:46:30.283 RAW−164000/RX26491→14:46:31.285 −1282/RX26498→14:46:32.285 −164028/RX26508，ERR3/HX OK；兩鄰算術右移7位皆−1282僅候選，不能定根因/還原原字。ring已封存，該筆沒有逐框或PCNT資料；299快照／ERR3/FIFO3持平不代表全框正常。獨立QC及文件正核對；每框sidecar仍未READY/編譯/燒錄，後續須依AGENTS完成主機測試、正式編譯、正確目標燒錄及立刻新版QC。裝置UNCAL、COM3已釋放、USB持續供電，366g校正未完成，未commit/push。
+
+
+> **2026-10-28 PCNT捕獲HX失敗後數位變化（最新）**：使用者授權持續自動診斷直至捕獲失敗後DATA、釐清後完成366g。先前A1C20320捕獲HXF 9 LOW離散點/3NA；為查未取樣盲區，已依既有程式修改燒錄授權部署pcnt1，正確目標四區Hash驗證並立即QC。PCNT續錄02 DF497E3D捕獲ANY seq2430 RAW−641 accepted/ERR0及LINK seq3449 −529408拒收/ERR0→1；HXF 8 LOW/4NA；MCU端PCNT有效DATA 4 edge、SCK 0 edge且SCK窗包含DATA窗，4組原既有clock正對照通。這支持該數位接收窗內有DATA變化，不能推邊緣時刻/脈寬、HX端類比電壓/有效clock/供電根因，也不能只憑兩次無故障恢復校正；root及量測品質仍未解、UNCAL／366g尚未校正。捕獲後停止循環重啟，COM已釋放、USB未拔，未commit/push。因觀察窗不含異常讀框的25pulse，Gibbs/Kierkegaard正在設計每讀框PCNT sidecar；未READY/編譯/燒錄，需按AGENTS依序驗證並立即新版QC。詳[PCNT session](docs/calibration/2026-10-28-hxpcnt-diagnostic-session.md)、[真事件QC](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md)。
+
+
+> **2026-10-28 已捕獲HX失敗後DATA（最新）**：使用者要求保持供電、持續有界重啟雙槽直到捕獲HX失敗後DATA、釐清後完成366g、不再詢問；續錄01無LINK，續錄02 session A1C20320捕獲ANY seq3277 accepted RAW−320/ERR0（鄰值右移9位相容），約58.711秒後LINK seq3804拒絕 FFFF60/−160、RX不增ERR0→1；HXF 9有效離散點均LOW、3點missed/NA，anchor後最末273810µs、resume seq3805為−163363（hold改後續時序）。兩槽完整各256／無重疊共512唯一，512×19word及HXF103word CRC和原文/QC通；未取點之間不能斷言連續LOW。受限固定殘字/無自主恢復模型與下一字不符，其他時序/電氣/供電假說未排除；舊−80/本次−320均被接受，根因仍未定、量測品質未通過，尚未TARE/CAL366。目標捕獲後已停止循環reset並保留資料/供電/UNCAL、COM3已關；本輪未commit/push。無外部儀器下，Gibbs/Kierkegaard正在設計使用ESP32 PCNT觀察既有DATA/SCK數位邊緣以縮小離散盲區；尚未READY/編譯/燒錄，須保留SCK輸出及原接線，內建數位觀察不等於HX端波形或供電測試。詳見[續錄session](docs/calibration/2026-10-28-hxdual-until-link-session.md)、[捕獲QC](docs/quality/reports/2026-10-28-hxfail2-continuous02-qc.md)。
+
+
+> **2026-10-28 已授權雙槽重啟兩輪（最新）**：使用者要求USB持續供電下重啟雙記錄區、記錄RAW與時間、捕獲HX失敗後DATA，釐清後完成366g、不再詢問。主代理保留舊bundle並各以DTR=false、單次RTS assert/release重啟，兩次未拔USB；均成功捕獲hxfail2自然boot，新session C7B7BD64及99C7AFD6分開、UNCAL，ROM POWERON_RESET不證外部USB斷電。第一輪600秒5476完成attempt無trigger；第二輪封存5487=5359覆寫＋127保留＋1逾期未分類，僅前5486按既定規則未觸發；每輪兩槽127列重疊僅127獨立attempt。兩輪DATA均CLOSED_NO_LINK／12NA、無hold；不能判原−80／−317／極端字已修或完成366g校正。第一輪FIFO啟動1→2及DUMP後2→3分開，第二輪DUMP後1→2另列；資料、時間及獨立檢核詳見[重啟session](docs/calibration/2026-10-28-hxdual-restart-session.md)、[第一輪QC](docs/quality/reports/2026-10-28-hxfail2-restart1-qc.md)、[第二輪QC](docs/quality/reports/2026-10-28-hxfail2-restart2-qc.md)。現保持供電／UNCAL、COM3各段已釋放；未新燒錄、未TARE/CAL、未commit/push。
+
+
+> **2026-10-28 失敗後DATA／雙槽診斷（最新）**：使用者授權保持USB供電自動設計、重啟燒錄失敗後DATA診斷，待釐清原因完成366g校正。hxfail1正式燒錄與QC後，新epoch捕獲seq2347 RAW−80、被接受且ERR0，鄰−162826／−162813皆算術右移11位相容但非根因證明；ANY槽先因JUMP封存使DATA未觸發。為完成診斷改用hxfail2獨立ANY/LINK雙槽；core3.3.12原FQBN正式編譯成功、目標MAC e0:8c:fe:a8:42:bc一致、四區寫入Hash校驗成功並立即新版QC。session B17323B9兩槽600秒到期封存，5473完成attempt無LINK/SAT/相鄰accepted跳≥1000觸發，兩槽同127個保留框不重複計數；DATA 12點未觸發/NA，不證先前異常已修。QC判部署及到期封存/匯出通過，真LINK與先ANY後LINK路徑未測，量測品質及366g校正待解；現UNCAL、USB供電保持、COM3已釋放，未commit/push。詳見[本輪session](docs/calibration/2026-10-28-hx711-post-failure-data-diagnostic-session.md)、[hxfail1 QC](docs/quality/reports/2026-10-28-hxfail1-qc.md)、[hxfail2 QC](docs/quality/reports/2026-10-28-hxfail2-qc.md)。
+
+
+> **2026-10-28 逐框診斷燒錄與HX異常重現（最新）**：使用者已授權保持USB供電下重啟並燒錄逐框診斷；core 3.3.12、既有FQBN正式編譯成功，目標MAC e0:8c:fe:a8:42:bc相符，4區寫入及Hash校驗成功，新版hxread1實板版本與session 238002AF已讀回，自然啟動橫幅未捕獲。逐框127前＋觸發＋128後共256列／CRC與完整性通過：seq1922 FFFEC3/−317拒收、ERR0→1；1923 B7FFFF/−4718593被接受，1924回−162172，顯示後檢HIGH無法保證資料正常。時序錯位模型相容但非已證明根因，不得修RAW或判舊−594/−156同因。新版QC結論部署及限定唯讀／匯出子項通過、量測資料品質未通過；啟動附近FIFO警示與DUMP後阻塞另列。新boot UNCAL，未送TARE/CAL，366g校正尚未完成；DUMP後90秒窗末ERR1、後續09:30首筆ERR2，兩窗間未監看，增加時間與原因未知；09:31:38–09:33:07被動快照ERR2/FIFO2持平；空托盤最近為使用者確認，COM3各窗均正常釋放、供電保持，未commit/push。詳見[本輪session](docs/calibration/2026-10-28-hx711-per-read-diagnostic-session.md)、[QC](docs/quality/reports/2026-10-28-hxread1-qc.md)。
+
+
+> **2026-10-28 保持現況之成對STATUS診斷**：使用者要求保持供電及目前狀態，繼續自動取得RAW/HX，釐清原因後完成366g、不再詢問。一次有界成對只讀STATUS：[serial](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.serial.log)、[逐行](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.lines.jsonl)、[host](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.host.json)。B段ERR36→37後按護欄停止排入新查詢，實際19批/38條STATUS，後續被動保留；277 STATUS/253不同RX，同RX未見不同RAW。前窗末ERR33至本窗首ERR36間未擷取，增加時刻/原因未知；本窗ERR36→37於08:21:47.866～48.382台北主機接收時間內首次觀察，不推因果。持續UNCAL，既有-156/漂移原因未解，尚不可CAL；無RESET/燒錄，COM3釋放，未commit/push。詳見文末及[逐框診斷離線設計](docs/calibration/2026-10-28-hx711-per-read-diagnostic-design.md)。
+
+> **2026-10-28 保持UNCAL的被動及密集只讀診斷**：使用者要求保持供電/目前狀態、持續自動排查並待原因釐清後完成366g，不再詢問。10分鐘無TX被動新窗[serial](docs/calibration/20261028-hx711-uncal-fault-continuous-074914.serial.log)出現ERR32→33（07:41:17.977～18.981主機收行），10個60秒RAW均值逐箱由-160296.7至-160575.6167counts、無≥1000跳；原-156故障仍未解。隨後有界A1被動60s→B約200ms唯讀STATUS240s→A2被動60s，[serial](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.serial.log)、[逐行](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.lines.jsonl)、[host](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.host.json)；B送1110次STATUS，看到1284個不同RX、接收計數跨度2149，約59.75%只指已接受RX被快照看到，不是ADC轉換覆蓋率；無尖峰/ERR增，不足定根因或解除校正暫停。維持UNCAL，未TARE/CAL/RESET/WiFi切換/燒錄，COM3已關閉，未commit/push。詳見文末。
+
+> **2026-10-28 STATUS速率對照與離線位元模型**：空載UNCAL且−156/ERR31→32前檢失敗，繼續保留供電與異常，停止TARE/CAL。一次單連線A1被動60s→B每約500ms唯讀STATUS 60s→A2被動60s，[serial](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.host.json)。111次STATUS，B共171行/165不同RX，與A1 59/59及A2 60/60分開；AGE中位173/41/168ms（A2 171為上中位）可見查詢/快取相位影響，不能當ADC週期或定位-156根因；ERR32/AERR2/FIFO0未增。Gibbs純主機確定性模型覆核16777216個24-bit往返/1302斷言，[結果](docs/calibration/20261028-hx711-bit-alignment-host-model.json)，僅排除部分特定假設，不是實際波形或已確認根因。COM3已釋放，未新TARE/CAL/RESET/燒錄/commit/push；自動校正授權仍有效但前檢失敗。詳見文末。
+
+> **2026-10-28 07:12 空載新尖峰、校正暫停**：使用者確認取下366g；近時空載前檢120個不同RX，07:12:18.520 RAW=-156，前後-159114/-159122、該筆AGE250／ΔRX7、HXOK/ERR31；07:12:20.524～21.529首次觀察ERR31→32。前後值右移10位得到-156僅事後候選、不能定因/反推正確RAW，異常並非主機解析。依Ampere QC停止新TARE/CAL，保留UNCAL與供電，不以「事後無錯」抹除或重試；後5分鐘299筆未再見大跳/ERR增、RAW五段平均持續上移，不能判已修復。另VERSION/ADXL_DIAG唯讀窗取得版本與開機累計快取，不能定HX時序根因；COM3已關閉，無重啟/燒錄/commit/push。自動校正授權仍有效但本輪前檢資料品質失敗，詳見文末及[授權校正紀錄](docs/calibration/2026-10-27-hx711-authorized-auto-calibration.md)。
+
+> **2026-10-28 跨夜CAL前檢及新近時去皮計畫**：使用者確認366g放穩且既有自動校正授權持續。距10/27 23:51:26.800 TARE約7小時14分，07:05前檢30筆IDLE/UNCAL/HXOK，ERR31/AERR2/FIFO0，相對昨晚ERR9/AERR1增加22/1只知跨未擷取缺口；舊硬編計數守衛阻止CAL，確無CAL TX。07:07兩分鐘載重觀察119筆ERR31/AERR2未增、RAW mean -151591.1933；過長時間及已知零點漂移會混入比例，故不直接用昨晚零點計算最終比例。依既有授權安排使用者卸載、記錄近時空載並重新TARE，待實際放穩366g後單次CAL；未重問權限。COM3已釋放、無重置/燒錄/commit/push；詳見文末。
+
+> **2026-10-27 自動校正授權與新TARE**：使用者明確指示「後續授權自動完成校正工作，不用再詢問」，軟體TARE/CAL已授權，現場放置仍需人實際操作。主代理選同一已知366g物件建立新比例、241g作額外重量點。被動3分鐘前檢179筆RAW分段均值-160036.85/-160103.0667/-160139.339 counts，ERR9/AERR1/FIFO0無新增，HX OK；空載仍有負向變化，不能稱穩定。依授權已送一次TARE，收到TARE_START→TARE_OK offset=-160216.281，裝置UNCAL，舊比例已失效；目前等待用戶實際放穩366g後才可CAL，不使用歷史負載猜測。記錄詳見文末；未重置或燒錄，COM3已關，未commit/push。
+
+> **2026-10-27 RAW -594/HX延長20分鐘**：使用者要求維持校正與供電並延長自動記錄。單次COM3無TX被動23:22:49.994～23:42:50.203（台北），1196個不同RX、RAW mean-159574.7216、範圍-159812～-159412；未見RAW -594或|ΔRAW|≥1000 counts，ERR9/AERR1/FIFO0全窗未增，但約1Hz快照非全部ADC框，不能宣稱故障消失。最後3個60秒均值-159635.3333/-159673.1167/-159724.3729，仍有負向變化；已詢問用戶23:39～23:42是否碰觸或環境變化、待回覆。128-byte尾片保留未統計，Ampere核對資料與關埠；未TARE/CAL/RESET/WiFi切換/燒錄/commit/push。詳見文末及[RAW -594排查紀錄](docs/calibration/2026-10-27-hx711-raw594-passive-investigation.md)。
+
+> **2026-10-27 RAW -594與HX被動續查**：使用者要求保留校正及供電，自動記錄RAW/時間；主代理同一COM3空載無設備TX被動10分鐘。22:49:46.626～22:59:47.361台北，598筆不同RX RAW平均-159600.6639、範圍-159758～-159461，最大相鄰差176 counts；未見-594或預設|ΔRAW|≥1000 counts篩選，ERR9/AERR1/FIFO0全窗不增。按中心與前後差至少1000 counts的所有算術右移k=1..23候選篩選無匹配；該規則由先前異常啟發，並非全部ADC框的故障率。尾160-byte片段保留不統計，Ampere核對SHA／逐行／關埠，COM3已釋放；限約1Hz STATUS，不能排除未見框或確定原尖峰/錯誤原因。未TARE/CAL/RESET/WiFi切換/燒錄/commit/push。詳見[被動排查紀錄](docs/calibration/2026-10-27-hx711-raw594-passive-investigation.md)及文末。
+
+> **2026-10-27 第二輪366g加卸載與異常**：使用者要求保持供電及RAM校正、重複載卸366g，已單次連續記錄且無設備TX。預定前空載/載重/後空載各60筆RAW均值-159458.7/-151842.4/-159384.3167 counts；載重減前空載7616.3、減後空載7541.9167，後減前74.3833 counts（第一輪分別7622.9667/7395.3833/227.5833），本次前後空載差較小，不能認證精度或重複性。HX ERR8→9發現於22:31:48.558～49.562，位於放置通知與回覆間、物理動作時間未知。22:34:38.188卸載通知與回覆間出現單筆RAW -594、前後約-151878/-151829，HX仍OK/ERR9，原文確認，原因未明；前後數值算術右移8位恰為-594僅候選、不能定因或修值。使用者回報除取下366g物品外無其他按壓/移動/碰線，動作相對異常時刻未知。原參數未變、COM3已釋放；未TARE/CAL/RESET/燒錄/commit/push。詳見文末及[第二輪實驗紀錄](docs/calibration/2026-10-27-hx711-366g-repeat-load-unload.md)。
+
+> **2026-10-27 22:16 卸載後空載與HX續查**：使用者要求保留校正、供電並繼續自動RAW。主代理無TX單次5分鐘被動記錄，[serial](docs/calibration/20261027-hx711-366g-unload-observe-222159.serial.log)、[逐行時間](docs/calibration/20261027-hx711-366g-unload-observe-222159.lines.jsonl)、[host](docs/calibration/20261027-hx711-366g-unload-observe-222159.host.json)；299筆RAW平均-159380.7391 counts，五個1分鐘均值-159377.0167／-159381.8667／-159384.5593／-159371.05／-159389.2667，非單調；ERR8/AERR1/FIFO0全窗不增加。與先前366g卸載B1平均-159578.75比較高198.0109 counts，中間約12分鐘未擷取，不能定原因或連續變化。無TARE/CAL/RESET、WiFi切換，COM3已關閉；詳見文末及[排查紀錄](docs/calibration/2026-10-27-hx711-negative-drift-investigation.md)，未燒錄、commit/push。
+
+> **2026-10-27 366g連續加卸載完成**：使用者提供物品實際總重366g、重量依據標準磅秤、可原位置穩放，要求保留校正。主代理無設備TX單次連續串列保存載入前／放穩後／卸載後各60秒，RAW均值-159806.3333／-152183.3667／-159578.75 counts；載重減前空載+7622.9667、減後空載+7395.3833，後空載較前高227.5833 counts；按先前列印比例有條件換算約370.455／359.396g及零點差11.060g，不得將其當合格精度或平均消除漂移。ERR7→8觀察於22:03:24.658～25.661，物理卸載時刻未記、原因未知。未重校／去皮／重置，WiFi未切，COM3已關；獨立QC通訊及原文一致，記錄詳見文末與[366g實驗紀錄](docs/calibration/2026-10-27-hx711-366g-continuous-load-unload.md)。未燒錄、commit／push。
+
+> **2026-10-27 新已知重量物評估**：使用者詢問是否可用其他已知重量校正，後續確認自上次記錄後空托盤、裝置、線材不動且ESP32持續供電；新物品總重量及量測依據待回覆，尚未放置。主代理保留RAM參數、無TX被動記錄1分鐘，[serial](docs/calibration/20261027-hx711-241g-newmass-empty-212358.serial.log)及[逐行時間](docs/calibration/20261027-hx711-241g-newmass-empty-212358.lines.jsonl)有60筆空載RAW均值-161718.5833 counts，HX ERR7／AERR1／FIFO0，ERR6→7發現於未擷取間隔，不定時刻原因。未TARE／CAL／重置，COM3已釋放；先以已知物作加卸載比較，避免把漂移直接混入比例；如欲覆寫校正須先確認新物總重及條件。未燒錄、commit／push。
+
+> **2026-10-27 20:14 無儀器持續RAW及HX排查**：使用者要求保持供電與校正，不用儀器繼續自動記錄。COM3無TX被動5分鐘，299筆不同RX的RAW均值-160178.3645 counts，真實60秒分段均值由-160069.7833變至-160273.2167 counts；依前輪列印係數條件換算約-91.554g（精確RAM參數與1小時供電連續性待用戶確認）。ERR本窗始終6，前19:16末為2，+4只知在未擷取間隔中發現；AERR1/FIFO0。64-byte不完整尾行原樣保存、未統計。一次獨立雙STATUS唯讀對照後，同RX67589三次RAW相同-160336而AGE65／88／245ms，表現符合快取年齡增加，不能解讀ADC週期或SCK波形；無TARE／CAL／重置，COM3已關閉。已詢問用戶空載/供電是否持續待回覆。詳見[排查紀錄](docs/calibration/2026-10-27-hx711-negative-drift-investigation.md)及文末，未燒錄、commit／push。
+
+> **2026-10-27 WiFi A-B-A已完成**：使用者已授權，主代理於19:06:50～19:16:15台北時間在同一串列連線下記錄WiFi開啟→關閉→再開啟各3分鐘及轉態；恢復CONNECTED已確認，COM3已關閉。各階段RAW均值約-158722.711／-158713.173／-158734.408 counts，依本輪先前列印參數條件換算約-20.813／-20.349／-21.381g；未見可使空載回零的明顯WiFi開關效果，但不能排除細小或延遲效應，也不能指定根因。ERR2／AERR1／FIFO_FULL0，各階段未變；HX AGE由A1全15ms變為B 124～217ms及A2 124～215ms，原因待查；Ampere及Gibbs已獨立核對執行、證據和關埠；資料與時序詳見文末。未重新TARE／CAL、重置或燒錄，未commit／push。
+
+> **2026-10-27 18:52 空載持續排查**：使用者回報托盤／荷重元沒有碰觸外物、沒有熱風吹、最近未移動或改室溫，亦無萬用表／示波器或不確定（均為使用者回報，非同步實測）。3分鐘180筆新串列RAW的三段1分鐘均值-158629.983／-158641.917／-158654.683 counts，依本輪先前列印參數條件換算約-16.307／-16.887／-17.507g，仍向負變化；HX ERR全窗2，ADXL AERR全窗1，較前窗0增加發現於未擷取間隔，原因未知。保持校正、未TARE／CAL／重置，COM3已釋放；已根據AGENTS向使用者詢問WiFi開→關→開各3分鐘對照的授權，使用者已明確同意；測試腳本預檢與獨立審核中，尚未切換。詳見[負向排查紀錄](docs/calibration/2026-10-27-hx711-negative-drift-investigation.md)，未燒錄或commit／push。
+
+> **2026-10-27 空載負向變化續查**：使用者要求保持現有校正並自動記錄RAW／時間。主代理被動記錄3分鐘180筆不同RX，18:35:53.681～18:38:53.313（台北）連續STATUS均IDLE／CAL_USER／HX OK、ERR／AERR／FIFO_FULL=0、WiFi CONNECTED；三個1分鐘RAW均值-158557.35／-158573.50／-158582.1167 counts，按本輪已保存係數條件換算-12.777／-13.562／-13.980g，空載位置仍慢變；係數未從RAM重新讀回，僅CAL_USER不足證明精確參數。另一次唯讀VERSION和ADXL_DIAG確認目前版本及開機累計診斷，診斷窗口後段HX握手ERR 0→1，後來一分鐘窗已為ERR2並保持，增加發現於未擷取間隔、原因及時間未定位；未去皮／校正／重置，COM3已釋放；環境接觸與風流條件已詢問，待使用者回覆。詳見[本輪排查文件](docs/calibration/2026-10-27-hx711-negative-drift-investigation.md)及文末；未燒錄或commit／push。
+
+> **2026-10-27 serial-monitor明確開埠但仍零接收**：使用者確認USB直接接電腦、TX0／RX0無另接線，並回報OLED為IDLE且沒有CAL收集提示。主代理以serial-monitor 0.15.0在OPEN前核對115200／8N1、DTR／RTS off，OPEN ACK及本機TCP通道成功，18:11:26.035～18:11:36.043被動接收仍0位元組；無裝置命令，CLOSE／QUIT成功且已關埠。Ampere獨立QC確認ACK是監控工具回應，不是ESP32回應；WiFi公開版本無遠端係數查詢、歷史IP／MAC的本機鄰居快取無匹配也不證明離線。串列原因、精確RAM係數、正式回零與精度仍待驗；未重置、重新TARE／CAL或改韌體，未commit／push。已保存資料；若要進一步以重接USB測試，因可能斷電失去RAM校正，先取得使用者授權，詳見[第七十五節](#hx711-oled-replay-continue-20261027)第11小節。
+
+> **2026-10-27 第二次卸載後CAL_USER及USB目視**：使用者回報目前OLED第一行為CAL_USER；沒有回報第二次載重時的HX／CAL，不能將目前旗標回填成載重或先前三筆同期狀態。另回「ESP32的USB線是直接接電腦，無另接線」，依提問指TX0／GPIO1及RX0／GPIO3沒有額外接線；為使用者目視，未改接線。Windows父節點Generic USB Hub不必然代表外接集線器；串列零接收根因仍未知。Gibbs正離線核對可預設DTR／RTS off並取得OPEN ACK的serial-monitor候選診斷，尚未再開COM3；主代理已問目前OLED是否IDLE且未在CAL收集中，等待回覆後才安排有界唯讀檢查。TARE／CAL241程序曾成功，正式回零、精確RAM係數連續性與精度仍待驗；未重置、重校、改韌體或commit／push。詳見[第七十五節](#hx711-oled-replay-continue-20261027)第10小節。
+
+> **2026-10-27 第二次241g加卸載OLED資料完成**：T1空載、L2載重、U3再卸載三筆均值分別為-158388.6667／-153538.6667／-158500.3333 counts；L2−T1＝+4850、U3−T1＝-111.6667 counts。若僅將先前保存比例作參考，前後空載差約-5.4703g；目前RAM係數及供電連續性未確認，不是正式回零誤差。使用者回報U3的HX:OK，正詢問目前CAL及是否記得載重階段HX／CAL；兩組基線／載重並非同期，不由此判長期漂移、準確度或重複性合格。原TARE／CAL程序成功、串列根因未解；COM3已關閉，未重新TARE／CAL或重置，未commit／push。詳見[第七十五節](#hx711-oled-replay-continue-20261027)第9小節。
+
+> **2026-10-27 241g校正後OLED空載觀察**：本輪TARE／CAL 241各一次成功，保存offset=-157326.312 counts、counts_per_g=20.413381743。使用者後報OLED RAW為-157785／-157622／-157642、IDLE、A0H0；數值有變化，A／H是試驗記錄筆數，HX健康未另提供。若仍用保存係數，三筆條件性換算平均-17.4732g，有未回零跡象；但供電連續性答「不確定」，目前精確RAM係數未核實，不能列正式同輪回零結果。新一次8.127秒唯讀嘗試雖可開COM3並送VERSION／STATUS／SPEED STATUS，仍0字元，交付未確認且已關埠。QC為校正程序成功、回零／重放與精度未驗，先保留參數與偏移證據，不反覆TARE；詳見[第七十四節](#hx711-241g-calibration-20261027)第6小節。本輪未重置、重校、改韌體或commit／push。
+
+> **2026-10-27 重新重量校正前檢**：使用者已要求重新開始重量校正，本輪恢復必要的重量校正工作；空托盤、實際砝碼重量與斷電／安裝歷程已詢問、尚待回覆。COM3唯讀前檢可見normal IDLE／UNCAL／HX=OK及新RX，未送TARE／CAL；嘗試VERSION／SPEED查詢未取得可識別回應，版本與命令交付仍待補。ADXL雖近期OK，AERR與FIFO_FULL本窗增加，保留待查。Ampere判定前檢部分通過、校正待執行；已關閉COM3。新證據與接續界線見[第七十三節](#hx711-restart-precheck-20261027)，本輪未改韌體、燒錄或commit／push。
+
+> **2026-10-26 光學速度離線複核**：依使用者「確認光學反射量測速度」要求，四位角色核對已保存首筆原文、來源公式及QC，220mm／1153289µs得到平均速度0.1907587777m/s，OLED0.1908m/s（約19.08cm/s）取位一致。單次功能仍為有限通過，獨立準確度及完整QC仍待補。本輪未開COM3或取得新量測；既有四位識別失效後已重建，對照及本輪界線見[第七十二節](#optical-speed-offline-review-20261026)。僅更新本交接檔，未commit／push。
+
 > **2026-10-26 Git封存交接**：使用者已要求更新本檔並commit／push；本次將最新公開韌體、215項主機測試、四位協作／QC流程、操作文件及首筆SPEED原始證據一併封存，範圍與接續順序見[第七十一節](#optical1-git-handoff-20261026)。本輪只處理文件與Git，不開COM3、不清除或啟動量測；WiFi帳密與含憑證建置產物排除，實際提交及推送識別以Git紀錄與本輪回覆為準。
 
 > **2026-10-26 獨立光學首筆完成**：optical1首筆id1已讀回DONE／NONE，DIST220／POL1/1，dt_us=1153289＝1153.289ms，平均速度0.190759m/s；使用者確認看到READY、同一標記先上後下，OLED為1153.289ms／0.1908m/s，與四捨五入換算相符。完整SPEED DUMP原文及JSON已保存，COM3已關閉，未CLEAR／STOP／START／重置或重燒。單次功能有限通過；獨立精度、重複性與完整QC仍待補。詳見[第七十節補充](#manual-optical-first-result-20261026)、[本輪紀錄](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md)及[操作指南](docs/experiments/manual-speed/manual-optical-guide.md)。未進行自由落下或荷重校正，未commit／push。
@@ -3097,3 +3161,488 @@ Git的Windows自動換行轉換會改變位元組及SHA256。本次以`.gitattri
 
 後續先依授權安排保存後清除及重複手動通過，確認流程／保存功能；若要驗準確度與儀器重複性，須讓同一通過事件與獨立時間參考對照，並確認有效距離及其不確定度。不同人工移動速度的散布不能直接當作儀器重複性。FIFO／歷史ADXL辨識原因、RGB與實板失敗／清除重試等未測項保留，不因本次Git封存而結案。
 
+<a id="optical-speed-offline-review-20261026"></a>
+
+## 七十二、2026-10-26 光學反射速度離線確認與角色重建
+
+使用者要求「確認光學反射量測速度」。本輪核對已保存的[首筆SPEED原文](docs/experiments/manual-speed/20261026-optical1-001.speed.txt)、[JSON](docs/experiments/manual-speed/20261026-optical1-001.speed.txt.json)、[readback](docs/experiments/manual-speed/20261026-optical1-first-transit-readback.log)、session、公開程式與既有QC，沒有新增實板量測或改動原始證據。
+
+上1265178878µs、下1266332167µs，相差1153289µs＝1153.289ms＝1.153289s。以使用者回報的有效觸發間距220mm計算，`v = 220 × 1000 / 1153289 = 0.1907587777m/s`，約19.0759cm/s；serial六位小數0.190759、OLED四位小數0.1908均符合四捨五入。主代理及Ampere／Planck核對上述三份證據SHA256，與第七十節及既有QC所列值一致。
+
+既有四個代理ID均回報not found，因此依協作指示重建相同角色；舊ID保留於歷史。本聊天可用的角色識別如下，後續優先以此恢復；若跨聊天失效仍依同一規則重建。
+
+| 角色 | 本輪重建識別 | 本輪核對 |
+|---|---|---|
+| Kierkegaard／物理 | `/root/kierkegaard` | 平均速度公式、同標記兩點計時的物理解釋及準確度界線 |
+| Gibbs／ESP32 | `/root/gibbs` | 公開程式首緣時戳、凍結距離及顯示／串列公式一致，未發現由本筆證據確認需修改的程式問題 |
+| Planck／資料文件 | `/root/planck` | 原文、JSON、session、QC及handoff數值與三份證據雜湊一致 |
+| Ampere／QC | `/root/ampere` | 獨立重算及保存／讀回／顯示子項有限通過，完整QC仍待補；結果已交另外三位 |
+
+四位均完成唯讀分析，由主代理統一更新本交接檔。**結論維持單次光學流程與換算有限通過**：速度是兩個有效觸發位置間的平均值；有效距離不確定度、兩頭光學延遲差／抖動、獨立時間基準及固定條件重複性仍未驗證。OLED與串列共用計時來源，一致性不構成獨立準確度驗收。失敗／清除重試分支、FIFO／歷史ADXL原因及RGB等既有未測／未解項不因此結案，既有QC報告及其快照未改動。
+
+本輪未開啟COM3、未重置或重新讀回硬體，不能推定當下供電與RAM狀態；最後硬體觀察仍為第七十一節所載20:45 id1 DONE、20:46已關埠。未送START／STOP／CLEAR、未校正或進行物理通過／落下，未改韌體、編譯或燒錄。只更新本交接檔，未commit／push；後續實測仍依已授權手動SPEED流程，保存現有結果後才清除重試。
+
+<a id="hx711-restart-precheck-20261027"></a>
+
+## 七十三、2026-10-27 重新重量校正與唯讀前檢
+
+使用者明確要求「我要重新開始重量校正」，本輪已恢復重量校正工作；先前未授權荷重校正或維持暫停的文字為歷史，以本次指示及新證據為準。必要的TARE／CAL須依本輪現場條件分步操作，不延伸為撞擊、自由落下或自動反覆校正。已詢問空托盤是否裝妥靜止、當次真實砝碼總重，以及斷電／重接USB、接線／機械安裝與供電歷程，目前尚待回覆；歷史20g×10＝200g與舊offset／counts_per_g不能直接沿用。
+
+### 1. 本輪硬體前檢及證據限制
+
+Arduino CLI board list與PresentOnly PnP均辨識COM3為CH340 VID1A86／PID7523，PnP為OK。主代理為唯一COM3操作者，沿用115200／8N1、DTR=off／RTS=off，以CLI被動擷取自然輸出；沒有為取得啟動字串重置。
+
+[原始終端觀察JSON](docs/calibration/20261027-hx711-restart-precheck.terminal.json)保存四個工具輸出chunk及操作／限制說明，CLI主機時間約16:41:02～16:41:45（Asia/Taipei，+08:00）。Windows PTY含游標控制碼、折行及邊界字元重複，原樣保留；這不是乾淨的逐位元組serial stream或逐ADC框紀錄，不由截斷RAW補造數值或精確統計。
+
+| 項目 | 本窗可見證據與界線 |
+|---|---|
+| 一般狀態 | 自然STATUS為normal IDLE／NONE／UNCAL、HX=OK，支持回到一般背景輸出；不是新校正成功 |
+| HX更新 | RX6665→7068，增加403；ERR維持0。只支持本觀察窗新HX資料，不推全部中間框、精確資料率或長期穩定 |
+| 設定／網路 | DIST220、POL=-1/-1、UP0／DN0，WiFi CONNECTED且IP192.168.52.71；不沿用前輪POL1/1或RAM結果，供電／重啟歷程待確認 |
+| 查詢嘗試 | 主機曾嘗試VERSION、SPEED STATUS及STATUS，但未取得可識別的VERSION或SPEED回應；自然STATUS不能充當查詢已執行的證據。命令交付、當前版本及明確SPEED狀態待補 |
+| ADXL／FIFO | ADXL快照仍為OK，但AERR由0增至905、FIFO_FULL由0增至3。近期OK不能抵消本窗新增錯誤；原因及漏樣量未知，不盲改取樣、清警示或宣告故障已修復 |
+| 空載與校正 | 現場荷重尚未確認，不能將RAW當已驗證空托盤基線。未送TARE／CAL／UNCAL，沒有新offset／counts_per_g或CAL_USER結果 |
+| 結束 | 主代理Ctrl+C結束CLI工作階段48130，工具exit=0；這是主機監控結束，不是QC通過代碼。16:42:26+08:00程序檢查未見arduino-cli／serial-monitor，COM3已關閉釋放 |
+
+### 2. 四位核對與接續條件
+
+沿用第七十二節重建的Kierkegaard、Gibbs、Planck及Ampere，代理人不開埠、不讀秘密／建置產物。Gibbs確認現行公開來源已有TARE／CAL流程，本輪不需為恢復校正修改或重燒；Kierkegaard核對空載基線、同組新係數與後續卸載／重放驗證界線。Ampere獨立判讀本輪終端證據，結論為**前檢部分通過、校正待執行、ADXL／FIFO異常待查**，已交另外三位。Planck已整理[新輪紀錄](docs/calibration/2026-10-27-hx711-restart-session.md)，主代理統一更新本交接檔。
+
+接續先取得使用者的當次空托盤、砝碼總重與供電／安裝歷程，確認可靠的唯讀版本／狀態與命令回應，再保存有現場條件支持的空載RAW基線。若基線持續變動，先保留及排查，不反覆TARE消除證據。一般IDLE且沒有校正收集、HX=OK、空載靜止時才送一次TARE，等待TARE_OK並保存新offset；成功後通知放上本輪確認重量，待靜止再送CAL實際克數。不要預先批次送TARE與CAL，也不需先UNCAL。
+
+TARE成功會使舊比例失效；此後若CAL失敗，保留的是該當下新offset／UNCAL，不能說恢復TARE前的比例。每階段成功回報僅支持程式收集32筆新有效框，這些內部框沒有逐筆輸出；2000counts跨度及100counts訊號差均為防呆，並非精度合格門檻。STATUS沒有cal_mode／cal_count欄，仍需以開始／終止回應與現場狀態核對。新係數建立後，固定同一組offset／比例做卸載、重放及再卸載觀察，不在驗證中重新去皮；靜態準確度、重複性及允許誤差仍待新資料與用途確認，不外推動態撞擊能力。
+
+本輪只做唯讀前檢及文件／證據保存，未送TARE／CAL／UNCAL／STOP／CLEAR／ARM／SPEED START，未重置、校正、物理通過／落下或改接線／供電，未改韌體、編譯或燒錄。COM3已關閉，沒有常駐監控或新自動化；未commit／push。下一步依使用者回覆繼續，不能將本次準備記為重量校正完成。
+
+<a id="hx711-241g-calibration-20261027"></a>
+
+## 七十四、2026-10-27 241g重量校正、短窗觀察及回零讀取中斷
+
+### 1. 本輪新條件與通訊恢復
+
+使用者回覆空托盤已裝妥、靜止且沒有其他物品；本次可用校正砝碼總重為**241g**；上次後曾斷電／重接USB，未改荷重元接線。其他機械安裝是否調整未一併明確取得。以本次241g建立全新零點／比例，不沿用200g歷史係數。先前第七十三節的條件待答及尚未校正為當時進度，由本節更新。
+
+16:53各枚舉只見COM1，未向其他埠操作；使用者隨後回「USB已接妥」，重新由PnP、PortNames及CLI確認COM3／CH340 VID1A86 PID7523。主代理改用無PTY的.NET SerialPort，115200／8N1、Handshake=None，開啟前DTR／RTS均false；沒有重置、清緩衝或清資料。
+
+[唯讀原文](docs/calibration/20261027-hx711-241g-readonly-165458.serial.log)及[主機操作紀錄](docs/calibration/20261027-hx711-241g-readonly-165458.host.json)讀回完整optical1 VERSION、SPEED id0 OFF／A0H0及normal IDLE／UNCAL／HX=OK。10筆不同RX501→578，ERR0、AERR0、FIFO_FULL1；本次版本與SPEED查詢交付有明確證據，不抹除前窗查詢未確認的歷史。使用者確認重接後的計數與前窗分開，不稱先前ADXL／FIFO異常已修復。
+
+### 2. 新空載基線、一次TARE及一次CAL 241
+
+| 階段／證據 | 本輪結果與界線 |
+|---|---|
+| [45秒空托盤原文](docs/calibration/20261027-hx711-241g-empty-baseline-165536.serial.log)／[host](docs/calibration/20261027-hx711-241g-empty-baseline-165536.host.json) | 45筆／45個不同RX861→1277，HX OK、ERR0、AERR0、FIFO_FULL1；RAW -157464～-157262，跨度202 counts，平均-157369.0889。三段各15快照均值-157379／-157398.2／-157330.0667；末段均值移動保留，不當熱穩定或精度合格，也不套歷史比例換克數。Kierkegaard未見本窗必須先停止的明確故障，支持依授權做一次暫定TARE後再驗證 |
+| [TARE原文](docs/calibration/20261027-hx711-241g-tare-165741.serial.log)／[host](docs/calibration/20261027-hx711-241g-tare-165741.host.json) | 僅一次TARE TX，TARE_START→TARE_OK，列印offset=-157326.312 counts、UNCAL，無ABORT；舊比例已失效。末RX2116、ERR0。WiFi由CONNECTED／radio1轉SUSPENDED／radio0；尾端不完整WIFI fragment原樣保留，不補成完整回報 |
+| 放置確認 | 主代理通知後，使用者回「241g已放穩」，才進入CAL；沒有批次預先送TARE與CAL |
+| [CAL原文](docs/calibration/20261027-hx711-241g-cal-165924.serial.log)／[host](docs/calibration/20261027-hx711-241g-cal-165924.host.json) | 僅一次CAL 241 TX，CAL_START→CAL_USER，counts_per_g=20.413381743，無ABORT。標定後11筆不同RX3052→3145均CAL_USER／HX OK，AERR0、FIFO_FULL1，WiFi SUSPENDED／radio0；本次擷取無錯誤且關埠 |
+
+新係數的主機換算為`mass_g ≈ (RAW + 157326.312) / 20.413381743`，只採裝置列印精度，不冒稱內部完整精度。TARE與CAL的32個內部新框沒有逐筆輸出，不能由STATUS補造64框原始清單。2000counts跨度與100counts訊號差是程式防呆，不是重量準確度合格門檻；設定只存RAM。
+
+CAL前首筆RX3003已ERR1，CAL窗首末均1；相對TARE末RX2116的ERR0，增加發生在未連續保存的間隔。無法定位時刻／根因，不能歸因本次CAL或推算漏樣量，也不清警示結案。
+
+### 3. 標定砝碼留置觀察與獨立QC
+
+11筆CAL_USER狀態快照以新列印係數重算，平均240.089532g、範圍237.996431～242.895178g；相對使用者241g平均差-0.910468g（-0.377787%）。這是同一標定砝碼留置的短窗觀察，不是卸載重放、獨立標準或準確度驗收。主機保存[結構化核算與證據SHA256](docs/calibration/20261027-hx711-241g-calibration-summary.json)，未知回零均值／範圍保留null，不填0。
+
+Ampere獨立確認一次TARE及一次CAL 241的成功回應與host TX、零點／比例及11筆換算；Gibbs核對公開來源契約，未發現由本筆證據可定位、需修改韌體的缺陷；Kierkegaard核對靜態解釋與回零／重放待驗界線。QC結論為**本輪TARE／CAL程序成功，卸載回零、重放、獨立準確度與動態能力未驗**。各結果由主代理轉達三位，Planck整理[本輪紀錄](docs/calibration/2026-10-27-hx711-restart-session.md)，不修改舊版QC快照。
+
+### 4. 卸載讀取失敗與目前接續點
+
+使用者回「241g已取下，空托盤靜止」，主代理擬做約20秒被動回零觀察，沒有再去皮。下一次Open立即失敗，錯誤為Could not find file 'COM3'；[卸載host紀錄](docs/calibration/20261027-hx711-241g-unload1-170057.host.json)及[0字元原文檔](docs/calibration/20261027-hx711-241g-unload1-170057.serial.log)保留，沒有TX或接收資料。17:01再核對PortNames、PresentOnly PnP與CLI均只見COM1，因此不把主機腳本exit0當裝置正常或回零通過，**回零結果仍未知**。
+
+COM3消失不單獨證明MCU重啟或RAM校正遺失。已詢問取下砝碼前後是否碰動／拔插USB或斷電，以及OLED是否亮著、CAL_USER或UNCAL，目前待回覆；若仍有供電先保留現況，不為診斷額外重插／重置。恢復正確目標後先唯讀確認本輪RAM是否仍有效；若已重啟或UNCAL，保留這組為歷史，另建新輪，不能將舊係數自動回填冒充同輪回零。若同輪確實保留，先完成空載回零，再安排相同位置重放與再次卸載，過程固定同一零點／比例。
+
+本輪由主代理唯一操作COM3，各次成功讀取均finally關埠，末次未成功開啟，沒有常駐監控。未STOP／CLEAR／UNCAL／ARM／SPEED START，未主動重置、改接線／供電、改韌體、編譯或燒錄；物理動作僅使用者確認的砝碼放置／卸載。未commit／push。完整QC、靜態準確度／重複性、既有ADXL／FIFO原因與此次通訊消失原因仍待解，不能以校正程序成功關閉。
+
+### 5. OLED CAL_USER回報、供電歷程不確定與被動續查
+
+使用者先回「顯示CAL_USER」，補問CAL 241完成後是否全程持續供電、沒有拔插USB／重置／再次校正時，答「不確定」。前者為使用者現場目視的狀態旗標，非主代理或QC親見，也不是本輪精確offset／counts_per_g的新讀回；不能僅據此證明同一未重啟輪次連續性。
+
+17:08:06主機PortNames、PresentOnly PnP及CLI仍只見COM1。17:08:46以既有CH340完整InstanceId查得IsPresent=true、ProblemCode=0，之後PortNames及PresentOnly PnP也見COM3；root沒有停用／啟用裝置、掃描重設硬體、重插USB或變更驅動。這些觀察支持主機列舉狀態曾改變，原因仍未知，不預設已修復或斷電。
+
+再次確認COM3為同一VID1A86／PID7523後，主代理以.NET、DTR／RTS=false開埠成功；先被動觀察2.534秒但收到0字元，沒有normal IDLE證據，因此未送VERSION／SPEED STATUS／STATUS或任何狀態變更命令，finally已關閉與釋放。預定約20秒是原計畫，實際在保護性檢查即終止，不能記成20秒成功回零觀察。
+
+證據為[新host紀錄](docs/calibration/20261027-hx711-241g-unload-readback-171013.host.json)、[0字元原文](docs/calibration/20261027-hx711-241g-unload-readback-171013.serial.log)及[恢復觀察摘要](docs/calibration/20261027-hx711-241g-recovery-observation.json)。host的capture_error記「No passive normal IDLE evidence; no query sent」，是保護性中止原因，不是已定位的串列／韌體故障。
+
+Ampere核對OPEN、零TX、零字元、2534ms及關埠紀錄，判定只支持該次埠可開啟；當前版本／模式／RAW／精確比例尚未取得，**回零仍未測，不將0字元改成0g**。Gibbs也未見可定位需改韌體的缺陷，QC結果已交三位追蹤。既有校正summary保持當時快照，新續查另存，不自動回填係數或重校。
+
+已請使用者保持現況、不碰USB／重置，只觀察OLED，隔約3秒抄3筆RAW及phase／HX狀態，確認畫面數值是否仍更新；目前待答。這些若取得，仍須標示使用者目視來源，不能當完整ADC串流或直接補足精確係數讀回。COM3已關閉、沒有常駐監控；本次續查未TARE／CAL／UNCAL／STOP／CLEAR或重置，未改韌體、編譯、燒錄、commit／push。
+
+### 6. 三筆OLED RAW、條件性偏移與一次唯讀查詢無回應
+
+使用者回覆原文「-157785、-157622、-157642；IDLE都是:A:0 H:0」。這是使用者目視抄錄，主代理／QC未親見；約3秒為先前提問要求，實際精確時間與間隔未提供。空托盤條件承接先前「241g已取下，空托盤靜止」，沒有本次新的獨立載荷確認。三筆不同RAW支持使用者看到畫面數值改變，不能當完整逐ADC框序列。
+
+Gibbs依公開updateOled確認A0／H0為acc_count／hx_count，即一般試驗記錄緩衝筆數，不是即時HX接收計數、健康旗標或重量。IDLE時可保持A0H0而RAW更新；本回覆沒有HX健康、RX、ERR或AGE的新讀值。
+
+| 使用者OLED RAW(counts) | 僅在保存係數仍適用下的暫算(g) |
+|---:|---:|
+| -157785 | -22.469966 |
+| -157622 | -14.485008 |
+| -157642 | -15.464758 |
+
+RAW平均-157683、跨度163 counts；以先前列印offset=-157326.312及counts_per_g=20.413381743作條件性換算，平均-17.473244g。Kierkegaard與Ampere獨立重算一致，支持「若保存係數仍有效，可能未回零」的跡象。供電／拔插連續性先前答不確定，目前精確RAM參數尚未讀回，因此**不列為已確認同輪的正式回零誤差，也不判回零合格或指定漂移根因**。三筆不估長期漂移率／穩定性，不新增任意驗收門檻或再TARE消掉偏差。
+
+17:17核對COM3／同CH340為Present、PnP OK。基於新現場IDLE及RAW變化證據，主代理以.NET、DTR／RTS=false做一次有界唯讀查詢，僅送VERSION、STATUS、SPEED STATUS；[原文檔](docs/calibration/20261027-hx711-241g-oled-followup-171835.serial.log)仍0字元，[host](docs/calibration/20261027-hx711-241g-oled-followup-171835.host.json)記17:18:35.8220372～17:18:43.9499498+08:00、elapsed_ms=8127、三次TX及port_closed=true。此為約8.127秒的主機擷取窗；工具wall time包含其他開銷，不代替host窗長。與前一次2.534秒未送TX的窗口分開。未見可辨識回應，所以命令接收／執行及UART雙向功能仍未確認，不以主機Write成功當裝置ACK。
+
+17:21另存[USB唯讀診斷](docs/calibration/20261027-hx711-241g-USB-readonly-diagnostics.json)：該CH340 IsPresent=true、ProblemCode0、LastArrivalDate為17:08:06.362744+08:00，驅動提供者wch.cn／版本3.9.2024.9，保存父USB節點識別。這不證明MCU有無重啟或係數連續性；有界System事件查詢未回傳任何事件，不能當作沒有USB中斷／已定位原因的證據。沒有掃描重設硬體、停用／啟用裝置、更新驅動或改供電。
+
+[OLED觀察與條件性核算JSON](docs/calibration/20261027-hx711-241g-oled-unload-observation.json)另存使用者原文、來源／間隔限制、新查詢與USB證據SHA256；原校正summary及所有原始log保持當時快照。Ampere已核對三個唯讀TX、8127ms零字元及關埠，確認正式回零與精確參數仍待補，結果交Gibbs、Kierkegaard、Planck；Gibbs未發現可據此定位需改韌體的缺陷，Planck更新session。
+
+接續優先恢復可追溯的通訊與校正參數確認，再決定同一組參數的回零／重放驗證；不能只憑顯示CAL_USER或條件性負值直接宣布精度通過／硬體根因。COM3已關閉、無常駐監控，這次未再TARE／CAL／UNCAL／STOP／CLEAR／ARM或重置，未改韌體、編譯、燒錄、commit／push。
+
+同次工作最後另做一次有界Arduino CLI唯讀對照，DTR／RTS=off，stdout／stderr直接另存以避免PTY折行，未送裝置命令。[CLI host](docs/calibration/20261027-hx711-241g-cli-compare-172403.host.json)保存17:24開始及主代理Ctrl+C結束、17:24:19關閉後觀察；[monitor檔](docs/calibration/20261027-hx711-241g-cli-compare-172403.monitor.log)與[stderr檔](docs/calibration/20261027-hx711-241g-cli-compare-172403.stderr.log)皆0字元，連CLI連線確認也未取得，因此不宣稱CLI已成功開埠，也不由此區分.NET／UART／USB／韌體根因。主機exit0只表示程序結束，已核對沒有arduino-cli／serial-monitor程序，不持有COM3；未再嘗試、不重置或改校正，回零及精度結論不變。
+
+<a id="hx711-oled-replay-continue-20261027"></a>
+
+## 七十五、2026-10-27 繼續241g校正：OLED重放準備與主機唯讀檢查
+
+使用者要求「請繼續」，主代理詢問目前荷重、OLED狀態及USB連接方式；使用者回覆「無外加重量」，未在該回覆中提供目前CAL／HX狀態或USB物理連接方式。此為本次最新空載回報，不把其他未回答的項目補成已知。保留第七十四節的TARE／CAL 241成功、三筆OLED條件性負偏移、供電連續性不確定及串列無回應等歷史證據，不以再次去皮抹平尚未定位的偏差。
+
+### 1. 可在保留現況下進行的下一步
+
+Kierkegaard建議先做**空載→同位置放回241g→再次卸載**的OLED RAW對照，固定現有設定與受力位置，每階段保存使用者目視來源、CAL／HX／phase與數筆RAW。即使串列尚未恢復，載入前後RAW差仍可提供相對受力響應及局部回復的有限證據；供電歷程不明且現版待機介面不能讀出精確RAM比例，不能將此擴大為原零點正式回零、精度或重複性合格。
+
+依先前保存的20.413381743 counts/g，241g對應約4919.625 counts，僅供比較量級，並非新驗收門檻。三筆歷史空載RAW的條件性平均-17.473244g仍保留；因與新一輪重放有時間間隔，不直接冒充新空載基線。
+
+主代理已請使用者維持空托盤，約隔3秒抄3筆OLED「HX RAW」、第五行「HX:」狀態及第一行CAL標示；**目前待回覆**，本輪尚無新OLED RAW，也尚未安排放回241g。[OLED對照紀錄](docs/calibration/2026-10-27-hx711-241g-oled-replay.md)由Planck建立待填欄位，後續收到實際值再依來源、階段與時間限制補入，不以空欄或NA代替真實0。
+
+### 2. 主機通訊與校正參數界線
+
+[17:28 USB拓撲唯讀證據](docs/calibration/20261027-hx711-241g-usb-topology-172850.host.json)顯示既有CH340／COM3及其Windows父節點Generic USB Hub均Present／ProblemCode0；此為Windows拓撲，不證明使用外接集線器，也不確認CH340與ESP32之間UART資料已恢復。既有System／Kernel-PnP事件查詢沒有符合條件的輸出，不證明沒有中斷；仍不得指定USB、UART、驅動或韌體根因。
+
+Gibbs檢視公開來源及本機ESP32核心：目前版本使用UART0、`Serial.begin(115200)`，沒有應用程式主動`Serial.end`、改UART腳或開啟流控；正常IDLE且非校正收集時應有定期STATUS。OLED RAW變化但主機先前零字元的現象尚未定位，不能只用命令換行格式解釋，也沒有已確認可盲修的韌體缺陷。
+
+若現場狀態確認允許後續主機診斷，可考慮**一次有界唯讀Windows DCB／GetCommState稽核**，核對實際鮑率／8N1及CTS／DSR／XON-XOFF流控；保持DTR／RTS false，不清佇列或重置。主代理已在未接觸硬體的獨立程序中檢查本機SerialStream handle欄位及DCB結構大小，**尚未開埠執行此稽核**。若無新證據不反覆執行同樣的空白串列查詢；命令寫入成功也不當裝置已接收。
+
+Ampere指出：現版`STATUS`只顯示CAL_USER／UNCAL，不列offset、counts_per_g或cal_mode；`VERSION`及`SPEED STATUS`亦不讀精確重量係數，而`DUMP`只有一般trial DONE／FAULT才提供係數，IDLE會拒絕。因而即使一般通訊恢復，也不能承諾在IDLE直接唯讀核實原RAM精確係數，更不為此啟動ARM／STOP。若未來另立可追溯校正輪，須保留原偏移與缺證，再按實際條件建立新零點／比例並重新驗證，不能把新輪冒充舊輪回零通過。
+
+### 3. 本次狀態
+
+Kierkegaard、Gibbs及Ampere已分別核對物理、通訊與QC界線，Planck建立OLED重放紀錄；主代理為唯一預定COM3操作者。本次僅做Windows裝置與事件的唯讀查詢及無硬體連線的工具準備，未開COM3、沒有背景監控；未TARE／CAL／UNCAL／STOP／CLEAR／ARM／重置，未改接線／供電、韌體、編譯或燒錄。尚無新的載入／卸載結果；完整QC、正式回零、重放及靜態／動態準確度均未驗。未commit／push。
+
+### 4. 本輪U1空載三筆與241g重放等待
+
+使用者新回覆原文「-158168、-158198、-158094，HX:OK」；之前本輪已確認無外加重量。這是使用者抄錄OLED的三筆空載資料及HX健康狀態，主代理／QC未親見；約3秒為先前請求，實際觀察時間與間隔未確認。本次回覆沒有CAL旗標、phase、RX或ERR，均保留未知，不沿用歷史回報當成本次現場讀值。
+
+[U1原始回報及核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-U1.json)另存三筆、使用者原文、HOST保存時間與「非實際物理觀察時刻」的界線。U1平均-158153.3333 counts、範圍-158198～-158094、跨度104 counts；先前另一輪OLED卸載三筆平均-157683 counts，此次較低470.3333 counts。兩次精確時間與供電連續性不明，不能只憑差值判漂移率、指定原因或當成正式同輪回零誤差。
+
+Kierkegaard及Ampere已獨立核對RAW均值／跨度和差值。若保存offset及counts/g仍適用，U1條件性均值約-40.5137g，但精確RAM係數未讀回且連續性未知，不判正式重量或精度。接續重放必須以**此U1平均RAW**為新局部比較基準，不拿較早卸載均值冒充當前空載；不再TARE消除差異。
+
+主代理已請使用者將241g輕放回先前校正位置，放穩後回報3筆RAW、HX及CAL標示，**目前等待回覆**；尚無本輪L1載重或U2再次卸載結果。[OLED重放紀錄](docs/calibration/2026-10-27-hx711-241g-oled-replay.md)由Planck更新實際來源，尚無的phase、CAL、精確時刻及下一階段數值保留未知。此次只做資料核對與文件保存，未開COM3、改設定／供電、TARE／CAL／重置或編譯燒錄；COM3已關閉，未commit／push。
+
+### 5. L1重放241g與U2卸載等待
+
+使用者回覆原文「-153213、-153213、-153302；HX:OK U0 D0；第一行顯示CAL_USER」，作為主代理先前請其在原校正位置放穩241g後的OLED讀值。241g及放置位置依提問與回覆脈絡理解，主代理／QC未現場獨立見證；實際觀察時間、3筆精確間隔及本回覆的phase均未提供。U0／D0為光學輸入電位，不是phase或荷重健康；HX:OK、CAL_USER為使用者目視。兩筆相同的-153213原樣保留，不能假定為同一或不同ADC框，也不能僅憑數字相同認定資料卡住。
+
+[L1原始回報與核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-L1.json)保留使用者原文、HOST保存時間／物理時刻界線及U1來源SHA256。L1三筆平均-153242.6667 counts、範圍-153302～-153213、跨度89 counts；相對本輪最新U1空載平均-158153.3333，**L1−U1＝+4910.6667 counts**。以使用者回報241g計，局部表觀響應約20.3762102 counts/g；依先前保存比例對241g的參考差為4919.6250 counts，兩者相差-8.9583 counts（約-0.1821%）。
+
+Kierkegaard已獨立核對算術：這是同一標定砝碼一次重放的局部RAW響應，與先前靈敏度參考相近，不能證明原零點／精確RAM係數連續，也不是獨立重量準確度或完整重複性驗收。U1的CAL旗標及phase未知、供電／觀察時間與實際間隔未確認；不以U1／U2均值插值冒充L1真實同時基線，也不由三筆推長期漂移率。各階段原文與限制由Planck整理進[OLED重放紀錄](docs/calibration/2026-10-27-hx711-241g-oled-replay.md)。
+
+主代理已請使用者取下全部241g，保持托盤及供電、空載靜止後提供3筆RAW及HX／CAL，**目前等待U2回覆**。收到後先以U2平均RAW直接對比本輪U1，不另行TARE或套任意合格門檻；可確認的數據、缺失與不確定性分列。此階段未開COM3、未重新去皮／校正或重置，未改韌體、編譯／燒錄或commit／push。
+
+### 6. U2卸載對照與一次有界DCB稽核
+
+使用者回覆原文「-158282、-158380、-158327；HX:OK U0 D0；第一行顯示CAL_USER」，此回覆接續主代理請其取下全部241g、維持空托盤靜止的指示；主代理／QC未親見。使用者後續另回「對」，確認當時OLED第六行顯示IDLE；該確認不可回填為三筆RAW各自同時的phase。U0／D0是光學輸入電位，HX:OK及CAL_USER為使用者目視；實際觀察時刻／間隔、RAM係數與供電連續性仍未確認。
+
+[U2原始回報與核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-U2.json)保存三筆、主機保存時間與U1／L1來源SHA256。U2平均-158329.6667 counts、範圍-158380～-158282、跨度98 counts；相對U1空載平均-158153.3333，**U2−U1＝-176.3333 counts**。L1−U1為+4910.6667 counts，L1−U2為+5087 counts；兩者是不同空載參照下的單次目視差值，不以插值補造同時基線。
+
+若把先前保存的20.413381743 counts/g作換算參考，U2−U1約為-8.638125g；此只是在保存比例仍適用的條件下之相對差，不是已確認的正式回零誤差。Kierkegaard與Ampere獨立重算一致，確認此輪前後空載快照均值不同；沒有事先訂定允許誤差及充分不確定度／重複性資料，不能判合格、指定機械或電子根因，亦不能推算長期漂移率。L1兩筆相同RAW不能假定相同或不同ADC框；這是一組同一標定砝碼的使用者目視加卸載觀察，不是獨立重量精度驗收。
+
+依使用者後續確認的IDLE、HX:OK及空載，主代理核對COM3為同CH340後，開埠前設DTR／RTS=false，以115200／8N1、Handshake=None進行一次有界主機唯讀DCB稽核；**沒有傳送裝置命令，也沒有手動切換DTR／RTS、重置、丟棄佇列或清警示**。根據[DCB host紀錄](docs/calibration/20261027-hx711-241g-dcb-audit-174232.host.json)及[接收原文](docs/calibration/20261027-hx711-241g-dcb-audit-174232.serial.log)，主機總窗10.886秒，約10秒byte級被動接收0字元、無TX、capture_error=null，埠已關閉。
+
+`GetCommState`回報的是**本程序依上述設定開埠後**的Windows DCB：115200／8資料位／無同位檢查／1停止位，CTS／DSR及XON-XOFF流控未啟用，DTR／RTS control均0。這不能證明開埠前DCB、裝置已收到資料或UART鏈健康。GetCommModemStatus的輸入旗標皆false只是主機觀察，不能據此認定感測器或硬體故障；capture_error=null只表示主機稽核未報例外，不代表通訊恢復。
+
+Ampere已核對U2算術、U1／L1引用雜湊及DCB主機證據：**校正命令程序曾成功，單次加卸載有前後空載差，正式回零、重複性及獨立準確度仍待驗；零RX原因未定位**。結果轉達Gibbs、Kierkegaard、Planck；不以主機流控已關、HX:OK或OLED CAL_USER結案通訊與量測驗收。
+
+依Kierkegaard建議先保持目前空載與原設定，主代理已請使用者約每20秒記3筆OLED RAW，盡可能記錄每筆手機時間，以及最後HX／CAL；**目前等待回覆**。這是為觀察該短窗是否持續變動，不自動宣稱長期漂移或做新的加卸載／TARE。此階段未重新去皮／校正、STOP／CLEAR／ARM或重置，未改韌體、編譯或燒錄；COM3已釋放、未commit／push。前面第4／5小節的「等待L1／U2」為歷史進度，以本節更新。
+
+### 7. T1空載三筆帶時刻觀察與第二次重放等待
+
+使用者依先前「保持空托盤，約每20秒記一筆」的請求回覆原文「-158436，17:44:30、-158324，17:44:50、-158406，17:45:10」。以上是使用者抄錄OLED RAW與所報手機時刻；日期依本對話2026-10-27／Asia/Taipei背景，並非使用者隨數值另報日期。手機與主機／裝置時鐘未對時，所報20／20秒間隔及40秒首末跨度不能當逐ADC框精確時軸；主代理及QC未親見。
+
+使用者另回「HX:OK，CAL_USER」；該狀態是後續補充，未明確表示與17:45:10最後一筆同時或在回答時才看，不回填成三筆同步狀態。空載條件承接之前U2取下241g後的回覆及保持空托盤的請求；沒有另行讀回RAM精確係數、RX或ERR。
+
+| 使用者報時 | OLED RAW（counts） |
+|---|---:|
+| 17:44:30 | -158436 |
+| 17:44:50 | -158324 |
+| 17:45:10 | -158406 |
+
+[T1原文與核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-T1.json)保存三筆、使用者補充狀態、主機保存時間與U2證據SHA256；主機保存時間不是物理觀察時間。三筆平均-158388.6667 counts、範圍-158436～-158324、跨度112 counts；首→末+30 counts，中間兩段為+112及-82 counts，三個快照不呈單調變化。Kierkegaard與Ampere獨立核對一致：這些快照支持該40秒的讀值有變化，**不足以判定長期穩定、持續趨勢、漂移率或精度合格**。
+
+T1均值比前次U2三筆均值-158329.6667 counts低59 counts；U2實際物理時刻未提供，不能把此差值除以猜測時間當漂移率。若僅假設保存比例20.413381743 counts/g仍適用，T1首末+30 counts約+1.4696g、T1與U2均值差-59 counts約-2.8903g；因RAM係數及供電連續性未確認，均為條件換算，不列正式回零或重量誤差，也不指定機械／電子根因。
+
+依先前相對加卸載及本段空載觀察，主代理已請使用者將同一241g砝碼輕放回原位置、放穩後約每20秒記3筆RAW並盡量附時間及HX／CAL，**目前等待第二次載重L2回覆**。此L2應以本T1作局部空載比較，後續另存卸載，不將歷史TARE數值或未知間隔插值冒充同期基線。記錄精確時刻不會自動使同一砝碼成為獨立重量標準，仍需保留時間／HX／CAL／RAM限制。
+
+本次接收並核算使用者回報、更新文件及保存T1 JSON，沒有重新開COM3、TARE／CAL／STOP／CLEAR／ARM或重置，未改接線、供電、韌體、編譯或燒錄；前次DCB完成後COM3已關閉，未commit／push。完整QC、正式回零、重複性、獨立精度及串列根因仍待驗。
+
+**L2放置回報補充：** 使用者隨後針對第二次241g放置指示回「已放上」。此句支持其回報砝碼已放置，未單獨明示已放穩／移開雙手或獨立確認確切位置；物理放置時刻未知。[L2放置回報JSON](docs/calibration/20261027-hx711-241g-oled-replay-L2-placement.json)保存原文與T1來源SHA256，主機保存時間不是物理放置時間。主代理已再請其保持放穩，約每20秒記3筆OLED RAW並附時間及HX／CAL；**這些載重讀值目前尚未回覆**。不因「已放上」填入任何RAW、時間、HX或CAL值，也不重TARE。
+
+### 8. 第二次241g載重與再次卸載等待
+
+使用者回覆原文「17:54:10 -153524、17:54:30 -153590、17:54:50 -153502」，接續其先前「已放上」及主代理請其放穩後讀取的指示；這是使用者目視的OLED RAW與所報手機時刻，主代理／QC未親見，確切受力位置及放穩狀態未獨立見證。此回覆沒有載重時的HX／CAL／phase，不能沿用空載T1後補的旗標冒充L2同期狀態。日期採本對話2026-10-27／Asia/Taipei背景；手機與主機／裝置時鐘未對時。
+
+| 使用者報時 | L2 OLED RAW（counts） |
+|---|---:|
+| 17:54:10 | -153524 |
+| 17:54:30 | -153590 |
+| 17:54:50 | -153502 |
+
+[L2原文及核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-L2.json)保存三筆、主機保存時間與T1／L2放置證據SHA256。L2平均-153538.6667 counts、範圍-153590～-153502、跨度88 counts；依使用者回報時刻首末約40秒，三個快照先降66再升88 counts，不足證明長期穩定或完整ADC序列。
+
+與T1空載三筆均值-158388.6667直接相減，**L2−T1＝+4850 counts**；除以使用者回報241g得局部表觀響應約20.1244813 counts/g。相對先前保存比例對241g的參考4919.625 counts，少69.625 counts、約-1.4153%。這是同一標定砝碼及保存尺度的有限參考比較，不是已驗證重量誤差或獨立準確度。第一循環L1−U1為+4910.6667 counts，數值上L2−T1較低60.6667 counts；前一循環U1／L1缺精確時刻、各輪條件及RAM連續性未完整確認，不能據此宣稱儀器重複性。
+
+Kierkegaard與Ampere獨立重算一致，特別保留時間界線：**若兩組報時來自同日同一手機時鐘，T1末筆17:45:10至L2首筆17:54:10相隔9分鐘**。T1不是L2載重同期空載基線，這個均值差可能混入基線或其他條件變化；沒有該期間連續數據，不能指定原因或插值補造同期基線。供電／RAM精確係數連續性仍未知；也不因差異相對較小即判合格或重新TARE消除偏差。
+
+主代理請使用者取下241g並提供約每20秒三筆空載RAW／時間及HX／CAL、若有則附卸載前的L2旗標；使用者回「已取下」。[U3卸載回報JSON](docs/calibration/20261027-hx711-241g-oled-replay-U3-removal.json)保存這句及主機保存時間，這不是物理卸載精確時刻，也未自行補填放穩／RAW／HX／CAL。主代理已再請其保持空托盤靜止，提供**U3三筆RAW／時間與HX／CAL，目前等待回覆**；[OLED重放紀錄](docs/calibration/2026-10-27-hx711-241g-oled-replay.md)由Planck更新，原T1／L2與歷史加卸載證據保持不變。
+
+本階段只保存使用者目視與核算，未開COM3、TARE／CAL／UNCAL／STOP／CLEAR／ARM或重置，未改韌體、編譯、燒錄、commit／push；前次DCB後COM3仍已關閉。正式回零、重複性、獨立精度及串列根因待驗，不能以本次局部響應通過或失敗作總驗收。
+
+### 9. 第二次卸載U3：帶報時的三筆空載觀察
+
+使用者回覆「17:58:10 -158517、17:58:30 -158476、17:58:50 -158508；HX:OK」，接續其先前「已取下」及主代理請其保持空托盤靜止的指示。RAW、時刻及HX狀態均為使用者目視回報，主代理／QC未親見；此回覆沒有CAL／phase，也沒有載重L2當時HX／CAL，不由較早旗標補填。日期採本對話2026-10-27／Asia/Taipei背景，手機時鐘未與主機／裝置對時；三個報時不是逐ADC框轉換時刻。
+
+| 使用者報時 | U3 OLED RAW（counts） |
+|---|---:|
+| 17:58:10 | -158517 |
+| 17:58:30 | -158476 |
+| 17:58:50 | -158508 |
+
+[U3原文與核算JSON](docs/calibration/20261027-hx711-241g-oled-replay-U3.json)保存三筆、主機保存時間及T1／L2／U3卸載回報三份來源SHA256；主機保存時間不是物理觀察時刻。U3平均-158500.3333 counts、範圍-158517～-158476、跨度41 counts；依報時三筆首末約40秒，首末差+9 counts，中間依序+41再-32 counts，不能由三筆跨度宣告長期穩定。
+
+T1載重前空載平均-158388.6667，故**U3−T1＝-111.6667 counts**；若先前保存20.413381743 counts/g仍適用，條件性換算約-5.4703g。RAM精確係數及供電連續性未知，這不是已確認的正式回零誤差。L2載重平均-153538.6667，分別與T1及U3相減為+4850及+4961.6667 counts；不同空載基線得到不同增量，不以插值冒充L2同期基線或定義精度。若同日同一手機時鐘，L2末17:54:50至U3首17:58:10相隔200秒，前一T1末至L2首相隔9分鐘；中間不是連續量測，不能從差值推出漂移率或機械／電子根因。
+
+Ampere獨立核對U3平均、跨度、首末差、前後空載及L2相對差，維持**TARE／CAL程序曾成功，兩次使用者目視加卸載有空載均值差，正式回零、獨立準確度與重複性未驗**。三筆觀察不能當完整ADC序列，也不能以跨度41 counts作合格門檻。Kierkegaard並行核對物理界線，Planck更新[OLED重放紀錄](docs/calibration/2026-10-27-hx711-241g-oled-replay.md)。
+
+主代理已請使用者補充目前OLED第一行CAL_USER／UNCAL，以及若記得L2載重時的HX／CAL；**目前等待回覆**。若僅取得目前CAL，也不能回填成L2或三筆U3各自同期狀態；先保留原始偏差，不因負值反覆去皮。此階段未開COM3、TARE／CAL／UNCAL／STOP／CLEAR／ARM或重置，未改韌體、編譯、燒錄、commit／push；前次DCB後COM3已關閉，串列根因仍待定位。
+
+### 10. U3後CAL_USER及USB物理路徑目視回報
+
+使用者針對目前OLED與可否記得L2載重狀態的詢問回「OLED第一行是 **CAL_USER**」。[U3狀態補充JSON](docs/calibration/20261027-hx711-241g-oled-replay-U3-status.json)保存使用者原文、HOST保存時間及U3來源SHA256；精確物理觀察時刻未知，主代理／QC未親見。此回覆支持使用者目前看到CAL_USER旗標，未回答L2載重時的HX／CAL，不能回填成L2或U3三筆各自同期狀態，也不能由此讀回RAM內精確offset／counts_per_g或證明供電連續。
+
+主代理為追查串列，請使用者不碰線、只目視USB是否直連電腦，以及TX0／GPIO1、RX0／GPIO3是否另有接線；使用者回「ESP32的USB線是直接接電腦  ，無另接線」。[USB目視回報JSON](docs/calibration/20261027-hx711-241g-usb-visual-report.json)保存原文與提問脈絡；依題意理解為USB直連電腦且TX0／RX0無額外線，沒有主代理現場獨立見證。先前Windows顯示Generic USB Hub父節點可能屬內部拓撲，與使用者所見直連不必然矛盾。這些回報不證明USB資料線、CH340↔ESP32訊號或串列功能正常，也不能定位既有0RX原因。
+
+Ampere維持**TARE／CAL241程序曾成功、兩次OLED目視加卸載有RAW響應且前後空載均值不同；正式回零、準確度、重複性及串列根因未驗**。Kierkegaard建議優先改善記錄連續性，避免無目的再做相同稀疏三點或盲重TARE；若恢復串列，固定當輪條件保存連續RAW／RX／ERR；若仍無法恢復，再評估以可追溯連續影像記錄OLED與加卸載動作的方案，但同一241g仍非獨立重量標準。允許誤差、回零門檻及其他已知重量點須依用途確認，不能由目前數據自訂合格。
+
+Gibbs正在**不開COM3**的條件下，核對本機Arduino serial-monitor能否在OPEN前設定DTR／RTS off、取得明確OPEN ACK並經獨立資料通道作一次有界唯讀診斷；這是待整合的候選方法，沒有預寫硬體讀取成功。主代理已請使用者確認OLED第六行目前是否IDLE、最下行是否沒有CAL n/32 HOLD STILL，**等待回覆**；狀態不明時不送查詢或變更命令。若條件與方法核實，可在同一COM3單操作者界線下執行一次不重置檢查並留原始證據；不可無限重試、清佇列或以主機ACK冒充裝置資料。
+
+本次只保存使用者CAL／USB目視與文件、並做候選工具離線研究；未開COM3、TARE／CAL／UNCAL／STOP／CLEAR／ARM或重置，未改接線／供電、韌體、編譯或燒錄；前次DCB後COM3已關閉，未commit／push。前第9小節「目前等待CAL回覆」為當時進度，以本小節更新；L2載重HX／CAL仍未知。
+
+### 11. serial-monitor被動診斷、QC與保留RAM的後續選項
+
+使用者針對前置狀態回「為IDLE  ，沒有顯示『CAL n/32 HOLD STILL』」。[前檢目視JSON](docs/calibration/20261027-hx711-241g-preprobe-idle.json)保存原文及上一份USB目視的來源雜湊；這支持用戶當時看到一般IDLE且無校正收集提示，不能當每個RAW同期flag、RAM精確係數讀回或斷電歷程確認。
+
+主代理重新核對同一CH340 VID1A86／PID7523為COM3、PnP OK且沒有其他arduino-cli／serial-monitor程序。Gibbs先離線驗證本機serial-monitor 0.15.0，主代理也在**未送OPEN、未接觸COM3**的情況下測HELLO／CONFIGURE／DESCRIBE／QUIT；確認六項設定可在OPEN前選為115200／8／none／1、DTR off、RTS off。依[Arduino監控協定](https://arduino.github.io/arduino-cli/dev/pluggable-monitor-specification/)及[serial-monitor 0.15.0來源](https://raw.githubusercontent.com/arduino/serial-monitor/v0.15.0/main.go)，控制回應與本機TCP裝置資料通道分開，OPEN ACK不能當ESP32回應。
+
+| 觀察與證據 | 本次實際結果／限制 |
+|---|---|
+| [host JSON](docs/calibration/20261027-hx711-241g-serialmonitor-181136.host.json)／[control原文](docs/calibration/20261027-hx711-241g-serialmonitor-181136.control.log) | OPEN前DESCRIBE確認上述六項；監控器OPEN ACK OK、loopback TCP連上。台北時間18:11:26.035～18:11:36.043被動接收10.008秒，0位元組、沒有裝置命令；僅控制通道有HELLO／CONFIGURE／DESCRIBE／OPEN／CLOSE／QUIT |
+| [serial原文](docs/calibration/20261027-hx711-241g-serialmonitor-181136.serial.log)／[stderr](docs/calibration/20261027-hx711-241g-serialmonitor-181136.stderr.log) | 兩檔均0字元。沒有ESP32 VERSION／STATUS／RAW／ACK，不能將0位元組當0g，也不由此判定UART、USB、驅動或韌體是哪一端故障 |
+| 收尾 | CLOSE／QUIT ACK均OK、子程序exit0，COM3已釋放；沒有常駐監控、主動重置、清佇列、TARE／CAL或其他裝置命令。主代理公開前本機私密值檢查無命中，沒有列印密碼；生成的主機輔助程式及私有原始暫存留在儲存庫外 |
+| Ampere／Gibbs QC | 均獨立核對pre-OPEN設定、OPEN ACK／TCP、10.008秒零RX及CLOSE／QUIT／exit；只有限支持監控器與埠可開啟，沒有支持ESP32通訊恢復、原精確RAM係數、正式回零或精度合格 |
+
+Gibbs核對目前公開WiFi實作僅STA連線，沒有可用來讀取版本或RAM校正係數的HTTP／遠端命令端點。最近一次CAL成功窗口WiFi為SUSPENDED／radio0／IP NA，先前IP192.168.52.71及upload log中的MAC僅為歷史。本機只讀查歷史IP／MAC的IPv4鄰居快取無匹配，另存[快取紀錄](docs/calibration/20261027-hx711-241g-neighbor-MAC-cache-181419.host.json)；沒有ping、網路連線或WiFi設定切換。空快取不證明裝置離線或現有IP，也不確認韌體、校正或UART狀態。
+
+**待使用者決定的下一步，不是已執行操作：** 可在保存本輪資料的前提下，由使用者於電腦端受控重新接插USB一次，再核對CH340、自然啟動／版本與串列資料；這是排查選項，不保證恢復通訊。若USB為唯一供電，重接會使目前RAM校正遺失；如讀回UNCAL，須視為新輪並依既有241g授權重新建立空載TARE／已知重量CAL，逐步等待現場放置確認，再做卸載／重放驗證。不得沿用舊列印係數冒充裝置仍持有的精確參數；若一次重接仍失敗，保留結果並停止無限重試，不清NVS／整片flash或盲改韌體。若使用者選擇保留目前供電與RAM，仍可保存OLED現場觀察，但無法由現版待機介面或WiFi直接讀回精確校正係數。
+
+依[AGENTS.md](AGENTS.md)「改線／改供電等，須依使用者已有的實驗操作授權安排」及保留現有RAM資料界線，**本次尚未授權新的USB拔插或斷電，不自行要求實施**；請使用者確認選擇後才進行涉及供電變動的步驟。原始校正、兩次目視加卸載、零RX診斷與QC已保存；L2載重HX／CAL、正式回零／精度、既有ADXL／FIFO及串列根因仍待解。此次未重置、重校、改韌體、編譯、燒錄或commit／push。
+
+
+
+## 2026-10-27 USB重接後自動RAW與新TARE
+
+使用者明確授權並完成一次從電腦端USB重新接插；後續要求自動記錄RAW及時間，停止使用目視OLED數值。目標確認為USB-SERIAL CH340 COM3，serial-monitor 0.15.0開埠前設定115200／8N1、DTR／RTS off。60秒被動擷取[原始串列](docs/calibration/20261027-hx711-241g-auto-capture-182156.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-auto-capture-182156.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-auto-capture-182156.host.json)；60筆各具不同RX、均IDLE／UNCAL／HX OK、ERR／AERR／FIFO_FULL均0。RAW平均-158344.3167 counts、範圍-158449～-158247，三段各20筆平均-158369.95／-158333.75／-158329.25 counts，後兩段變化減小；僅描述短窗，不認定長期穩定或精度合格。未捕獲自然開機banner，不為補齊而重置；UNCAL本身不單獨證明重啟，不能套用重接前係數。
+
+Kierkegaard複核無明確必須阻擋一次新去皮的證據。主代理在同一空托盤條件下、前置新串列IDLE／UNCAL／HX OK和RX變動確認後僅送一次TARE，收到TARE_START及TARE_OK offset=-158294.438；保留[原始串列](docs/calibration/20261027-hx711-241g-new-tare-182308.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-new-tare-182308.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-new-tare-182308.host.json)。數值為裝置輸出的列印精度；內部32個框未逐筆輸出。使用者放穩241g後已記錄載重、只送一次CAL 241，收到CAL_START與CAL_USER counts_per_g=20.577282158；[校正原始串列](docs/calibration/20261027-hx711-241g-new-cal-182456.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-new-cal-182456.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-new-cal-182456.host.json)。此比例與上述新TARE配對，依列印精度保存；使用者卸載後自動保存59筆STATUS，回零窗均值-158310.322 counts；依本輪列印係數換算約-0.772g（僅本窗描述，不作精度合格），重新放穩241g後保存60筆重放快照，RAW均值-153337.3167 counts，依本輪列印係數約240.9026g（同一標定砝碼重放、不是獨立精度認證）；[重放原始串列](docs/calibration/20261027-hx711-241g-reload-capture-182908.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-reload-capture-182908.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-reload-capture-182908.host.json)。使用者再次卸載後以同一參數自動記錄60筆，均值約-4.1508g；保持空載再記錄60筆，均值約-7.0261g，均為CAL_USER／HX OK、ERR／AERR／FIFO_FULL0。兩窗間有未擷取間隔；回零顯示負向變化，不得宣稱回零穩定或定位根因，也不重新TARE消除現象。[第二卸載原始串列](docs/calibration/20261027-hx711-241g-auto-capture-183040.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-auto-capture-183040.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-auto-capture-183040.host.json)；[續查原始串列](docs/calibration/20261027-hx711-241g-auto-capture-183158.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-auto-capture-183158.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-auto-capture-183158.host.json)。獨立精度仍未測。卸載回零[原始串列](docs/calibration/20261027-hx711-241g-auto-capture-182633.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-auto-capture-182633.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-auto-capture-182633.host.json)。注意CAL host.json的tray_empty沿用USB重接初始空載背景，不能表示CAL階段；該階段實為使用者明確確認241g已放穩。原始時間為主機收到完整行時刻，STATUS為快照非每個ADC框；不使用早先目視OLED數值。七次擷取CLOSE／QUIT成功、行程退出，COM3已釋放；未燒錄、未commit／push。
+
+
+## 2026-10-27 18:35 空載負向變化繼續排查
+
+使用者要求保持現有校正及自動記錄RAW與時間。COM3 USB-SERIAL CH340、115200／8N1、DTR／RTS off，以serial-monitor 0.15.0單次開埠被動記錄3分鐘、無裝置TX；[原始serial](docs/calibration/20261027-hx711-241g-drift-capture-183853.serial.log)、[逐行接收時間](docs/calibration/20261027-hx711-241g-drift-capture-183853.lines.jsonl)、[主機操作](docs/calibration/20261027-hx711-241g-drift-capture-183853.host.json)。180筆不同RX 9556→11249，行接收時間18:35:53.681～18:38:53.313（台北）；全窗IDLE／CAL_USER／HX OK，ERR／AERR／FIFO_FULL均0、WiFi CONNECTED。三段各60筆RAW平均-158557.35／-158573.50／-158582.1167 counts；依前輪配對列印offset及scale條件換算-12.7768／-13.5617／-13.9804g。現象出現在RAW，不僅是去皮公式；未讀回RAM精確係數、不能由CAL_USER單獨保證供電連續，主機時間非ADC時間，快照不是全部HX框。未擷取間隔不補值。Ampere核對原文、逐行、SHA與關埠。
+
+其後僅送VERSION、ADXL_DIAG兩條唯讀指令；[serial](docs/calibration/20261027-hx711-241g-drift-diag-184108.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-drift-diag-184108.lines.jsonl)、[主機操作](docs/calibration/20261027-hx711-241g-drift-diag-184108.host.json)。取得v1-layout2-fifo-diag1-wifi1-d220-right-optical1，FIFO開機以來FULL／DEPTH／OVR／DIAG_ERR皆0；FIFO_POLL_GAP_MAX 246206us，OLED_TIMING MAX 119074us為開機累計或快取診斷，非HX專用、不是SCK脈寬，不能指定負移根因。另在18:41:05.783主機收行RX12500 ERR0至18:41:06.790 RX12509 ERR1間發現HX握手錯誤累計增加1，隨後仍ERR1；實際發生時間未捕獲，不能因HX目前OK抵消，也不能將增加歸因ADXL_DIAG或漂移。軟體原始RAW由HX讀入，TARE/CAL不改RAW；無自動追零。可能包括溫度／電子零點、供電、安裝／線材殘餘受力、未被旗標辨識的時序問題等，現有證據未能區分。已請使用者不接觸裝置下回報接觸、風流及環境條件；待回覆。保留現有參數，無TARE／CAL／UNCAL／RESET，無燒錄、commit或push，COM3已關閉且無常駐監控。
+
+
+### 後續一分鐘被動核對
+
+18:42:58.175～18:43:56.372（台北主機收行）被動擷取59筆不同RX 13555→14101，均IDLE／CAL_USER／HX OK、ERR2、AERR／FIFO_FULL0。RAW均值-158569.4915 counts，依前輪列印參數有條件換算約-13.3669g；[原始serial](docs/calibration/20261027-hx711-241g-auto-capture-184357.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-auto-capture-184357.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-auto-capture-184357.host.json)。此前18:41:07.794末筆ERR1，本窗首筆已ERR2，增加發現於未擷取間隔，不能推定精確時刻、原因或與偏移的關係；此一分鐘內ERR維持2。依公開來源僅能說某次25脈衝後DATA檢查不是HIGH，不能推斷物理故障或漏樣數。未送裝置命令；CLOSE／QUIT成功、行程退出與埠釋放；未動校正、重置、燒錄或commit／push。
+
+
+## 2026-10-27 18:52 再次自動記錄與用戶環境回報
+
+使用者對托盤／荷重元可能碰外物、風扇／電腦熱風、最近移動或室溫改變的問題回覆「沒有」，對萬用表及示波器工具問題選擇「都沒有或不確定」；為現場報告，不能排除內部自熱、未量測供電變化及線路／時序因素。保持空載供電及校正，主代理開COM3無TX連續被動記錄3分鐘；[serial](docs/calibration/20261027-hx711-241g-drift-capture-185545.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-drift-capture-185545.lines.jsonl)、[host](docs/calibration/20261027-hx711-241g-drift-capture-185545.host.json)。180個不同RX19075→20768，18:52:45.240～18:55:44.906台北主機時間，IDLE／CAL_USER／HX OK、ERR2、AERR1、FIFO_FULL0，窗內旗標不變。RAW均值-158642.1944 counts；3個60秒均值-158629.9833／-158641.9167／-158654.6833，依本輪已保存列印係數條件換算約-16.307／-16.887／-17.507g；不是精度驗收。先前18:43:56.372最後STATUS AERR0，新窗第一筆AERR1，增加發現於中間未擷取間隔，時間及根因未知；ADXL OK不抵消累計錯誤。Ampere核對記錄完整、無TX、CLOSE／QUIT及埠釋放。
+
+Kierkegaard與Gibbs建議如獲授權，可在單一串列連線中進行WiFi開啟→關閉→再開啟、各3分鐘的可逆對照；公開程式開關不修改tare/scale，但會同時改變射頻、耗電與排程，即使相關亦不能指定供電為根因。依AGENTS WiFi開關須有實驗操作授權，已向使用者提出具體方案且已同意，目前完成腳本護欄檢查後執行；尚未切換。當前仍保留參數、無TARE／CAL／重置／燒錄／commit／push。
+
+
+## 2026-10-27 使用者授權WiFi A-B-A對照
+
+使用者同意保持空載與同一校正參數，WiFi開啟→關閉→再開啟各3分鐘並自動記錄RAW。以CH340 COM3、115200／8N1、DTR／RTS off單次串列連線完成；只送一次WIFI OFF和一次WIFI ON，[原始串列](docs/calibration/20261027-hx711-241g-wifi-aba-191615.serial.log)、[逐行主機時間](docs/calibration/20261027-hx711-241g-wifi-aba-191615.lines.jsonl)、[主機事件](docs/calibration/20261027-hx711-241g-wifi-aba-191615.host.json)。A1 19:06:50.056～19:09:50.065，B確認關閉19:09:55.065～19:12:55.072，A2確認連線19:13:15.082～19:16:15.087（台北，主機事件，轉態資料保留）；各窗約180秒。三窗STATUS各180／179／179筆，RAW均值-158722.7111／-158713.1732／-158734.4078 counts；使用本輪先前列印offset及scale條件換算約-20.8129／-20.3494／-21.3813g。末60秒約-20.3815／-20.4301／-21.3437g。均值非零、窗口時間有序且含自然變動；沒有出現WiFi關閉令讀值回零的明顯效果，不能排除較小、延遲或混雜因素，亦不能指定根因。各窗末60秒RAW平均-158713.8333／-158714.8333／-158733.6333，關閉與先前開啟末窗僅差-1 count；單次順序含慢變與AGE差異，不能排除細小或延遲效應。各窗均HX OK／CAL_USER，ERR2、AERR1、FIFO_FULL0；A1的AGE_ms全15，B為124～217，A2為124～215，與同主迴圈阻塞或快照相位變動相容，但無法定因果、不能當作採樣間隔或漏樣。WiFi重新CONNECTED有ON後新鮮狀態確認，CLOSE／QUIT成功、exit0、埠已釋放。中途無TARE／CAL／RESET；係數只存RAM、精確值未新讀回，以上克數為有條件換算；時間為主機收到資料而非ADC時間。此次未燒錄或commit／push。
+
+
+## 2026-10-27 無儀器持續記錄與快取時序對照
+
+使用者要求保持校正參數與供電，繼續自動記錄RAW／時間，排查空載偏移和HX時序。20:14:53.844～20:19:54.603（台北）單次被動5分鐘、無裝置TX，[原始serial](docs/calibration/20261027-hx711-241g-timing-observe-201954.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-timing-observe-201954.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-timing-observe-201954.host.json)。共299完整STATUS、各具不同RX64516→67256，RAW mean-160178.3645、範圍-160381～-159966；以capture起點分5個60秒窗口，各n60／59／60／60／60、均值-160069.7833／-160132.9153／-160186.25／-160228.9／-160273.2167 counts。原始序列尾64bytes為不完整STATUS，不補欄位、不納統計；Ampere核對SHA／逐行與關埠。依舊列印參數條件均值約-91.5537g，不能僅以CAL_USER確定RAM實際係數或近1小時空載及供電連續。19:16:14.314前窗ERR2、20:14:54.522本窗首筆ERR6；4次累計增加發現於未擷取間隔，不能推時間、漏樣數或成因；本窗ERR6／AERR1／FIFO0不變，HX OK、AGE124～215ms。
+
+隨後只讀送兩次STATUS：[serial](docs/calibration/20261027-hx711-241g-status-pair-202041.serial.log)、[逐行時間](docs/calibration/20261027-hx711-241g-status-pair-202041.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-241g-status-pair-202041.host.json)。主機20:20:29.601／.629／.781接收三筆相同RX67589、RAW-160336，而AGE65／88／245ms，符合相同快取重印時年齡增長，未檢出同RX不同RAW；自然STATUS和命令回應無request ID，不逐行認領ACK，AGE不是ADC週期、SCK高電位或漏樣量。兩窗CLOSE／QUIT成功、行程退出埠釋放，無重置／TARE／CAL／燒錄或commit／push。已詢問用戶上輪後托盤空載、線材及供電是否維持，待確認；不使用目視OLED數值。
+
+
+## 2026-10-27 21:22 新重量物前空載基線
+
+使用者詢問另一已知重量物做量測校正，已確認從上次記錄後空托盤、裝置、線材不動且ESP32持續供電；新物的實際總重量、來源、是否可穩放仍待使用者回覆，尚未放置。前述確認只涵蓋「上次記錄後」，不反推更早19:16～20:14的供電／空載連續。建議先沿原參數比較空載→已知物→再空載的RAW與時間；CAL會覆寫單一scale、TARE會覆寫offset及使原比例失效，不能在未知重量時執行。
+
+主代理以COM3無TX被動1分鐘，[原始serial](docs/calibration/20261027-hx711-241g-newmass-empty-212358.serial.log)、[逐行接收時間](docs/calibration/20261027-hx711-241g-newmass-empty-212358.lines.jsonl)、[host](docs/calibration/20261027-hx711-241g-newmass-empty-212358.host.json)。21:22:58.190～21:23:57.398台北主機收行有60筆，RX101958→102503、RAW mean-161718.5833、範圍-161819～-161623，IDLE/CAL_USER/HXOK、ERR7/AERR1/FIFO0。原始尾端96 bytes為未完成行，保留而不納入60筆統計。前20:20:40.818末ERR6，新窗首已ERR7，增加發現於未擷取間隔、時刻原因及與偏移關係未知，不當漏樣量。新窗均值比20:14～20:19的-160178.3645更負，但分窗期間無資料、不套長期速率或判根因。CLOSE/QUIT成功、exit0、埠釋放；未TARE/CAL/RESET、燒錄或commit/push。
+
+
+## 2026-10-27 366g連續加卸載驗證
+
+使用者確認新物品總重量366g，依據標準磅秤，能穩定放於原受力位置；要求保留目前參數，記錄載入與卸載。主代理同一COM3串列連線被動取證、無設備TX：[原始serial](docs/calibration/20261027-hx711-366g-continuous-220458.serial.log)、[逐行主機時間](docs/calibration/20261027-hx711-366g-continuous-220458.lines.jsonl)、[主機](docs/calibration/20261027-hx711-366g-continuous-220458.host.json)、[操作相位事件](docs/calibration/20261027-hx711-366g-continuous-220458.phases.jsonl)。host的continued_unloaded_as_user_directed=true只指初始條件，整段實際包括使用者確認的366g載重，須參照phase事件；原始host保留不改。使用者收到放穩／取下確認後各選預先約定的後續60秒，前空載取放置通知前60秒，保留全部過渡；主機處理時刻不是精確物理動作時刻。
+
+三窗各60筆不同RX，前空載／366g／後空載RAW均值-159806.3333／-152183.3667／-159578.75 counts；載重-前空載+7622.9667，載重-後空載+7395.3833，後-前空載+227.5833 counts。採先前列印scale 20.577282158條件換算兩增量約370.4555／359.3955g，前後空載差約11.0599g；僅表示不同基線參考的觀察，不能視為置信區間、平均後當成準確或直接改scale。366g為使用者標準磅秤結果，其解析度、容差及追溯未提供，不假設零不確定度。此結果不能排除零點隨時間變化或唯一決定比例原因。
+
+HX ERR在台北22:03:24.658 RX124190 ERR7與22:03:25.661 RX124198 ERR8間首次觀察增加；此時在主機卸載確認前，但實際物理卸載及錯誤發生瞬間未知，不可歸因操作或推漏樣數。AERR1/FIFO0不變；HXOK不消除累計錯誤。Ampere核對完整原文/JSONL/SHA、509個不同RX，尾端96-byte不完整保留不納統計。CAPTURE_END時計170579bytes，最終170611bytes，餘32bytes在CLOSE收尾進入，無新增完整行；不混成分析窗內資料。CLOSE／QUIT成功、exit0、COM3釋放；無TARE/CAL/RESET、WiFi切換、燒錄或commit/push。
+
+
+## 2026-10-27 22:16 卸載後自動RAW與HX續查
+
+使用者要求保留校正參數與供電，繼續排查空載漂移及HX錯誤，自動記錄RAW／時間。從台北22:16:58.965～22:21:59.531在同一COM3連續被動擷取，未送裝置命令；[原始serial](docs/calibration/20261027-hx711-366g-unload-observe-222159.serial.log)、[逐行主機接收時間](docs/calibration/20261027-hx711-366g-unload-observe-222159.lines.jsonl)、[主機事件](docs/calibration/20261027-hx711-366g-unload-observe-222159.host.json)。299筆不同RX131668→134405，RAW均值-159380.7391、範圍-159515～-159236；按擷取開始分5個60秒箱各n60/60/59/60/60，均值-159377.0167／-159381.8667／-159384.5593／-159371.05／-159389.2667 counts。僅描述本窗波動，不能宣告零點長期穩定或精度合格。相對先前366g卸載後B1的-159578.75均值高198.0109 counts；兩窗間未擷取，不推當中曲線、速率或原因；物理卸載時刻未知，不擬合鬆弛常數。
+
+全窗IDLE/CAL_USER/HX及ADXL OK、ERR8/AERR1/FIFO0，WiFi CONNECTED，ERR無增加。此前366g末也是ERR8，但缺口中狀態未知，不能宣稱跨窗全程無新增或裝置零漏樣。AGE124～217ms為快取年齡非ADC轉換/SCK高電位；無硬體儀器無法確認波形。Ampere獨立核對100229 bytes、598完整行、SHA/JSONL一致，末64 bytes未完成片段保存未統計；CLOSE/QUIT成功、exit0、埠釋放。保留原有參數，未TARE/CAL/重置、切換WiFi、燒錄或commit/push。
+
+
+## 2026-10-27 366g第二輪連續加卸載
+
+使用者要求保持目前校正參數與供電，重複366g載入卸載、自動記錄RAW與時間，比較前後空載及HX錯誤。單次COM3被動記錄、無設備TX：[原始serial](docs/calibration/20261027-hx711-366g-repeat-223853.serial.log)、[逐行時間](docs/calibration/20261027-hx711-366g-repeat-223853.lines.jsonl)、[主機事件](docs/calibration/20261027-hx711-366g-repeat-223853.host.json)、[操作相位](docs/calibration/20261027-hx711-366g-repeat-223853.phases.jsonl)、[用戶補充](docs/calibration/20261027-hx711-366g-repeat-223853.user-report.json)。依同第一輪預先固定規則：放置通知前60秒B0、用戶放穩回覆處理後60秒L、用戶取下回覆處理後60秒B1；主機時刻非精確物理動作或ADC時刻，完整過渡均保留。
+
+B0/L/B1各60筆不同RX、RAW平均-159458.7/-151842.4/-159384.3167 counts；L−B0=7616.3、L−B1=7541.9167、B1−B0=74.3833。先前第一輪按相同規則分別7622.9667/7395.3833/227.5833；本次前後空載差更小，L−B0差約-6.6667，但僅兩次且物理等待/位置/熱歷程不完全相同，不能證明準確度或重複性合格。按保存scale 20.577282158條件換算兩載入增量約370.1315/366.5167g、空載差3.6148g；不能平均消除基線漂移，秤的解析度與不確定度未知。
+
+ERR8→9首次出現於22:31:48.558 RX139806 RAW-159426 ERR8與22:31:49.562 RX139815 RAW-159382 ERR9之間，在載入通知至放穩回覆的間隔內；主要RAW載入階躍首次在22:32:04.624→05.628觀察，不能確定實際動作時刻或將握手異常歸因載入。相較第一輪ERR變化位置不同，兩次均不能歸因操作。另22:34:38.188於卸載通知至回覆間記一筆RAW -594、RX141358、AGE252、HXOK ERR9，前後分別-151878/-151829、ERR不變；原始記錄真實存在且窗外，不抹除或當實際重量，原因未知。該尖峰AGE252為本輪576 STATUS唯一大於217ms的資料，從上一STATUS至尖峰ΔRX7亦為唯一的7（其餘8/9/10），屬伴隨現象，不能推漏樣量或確立因果。前後數值算術右移8位都等於-594，事後模式僅供讀碼/時序候選檢視，不證明錯碼或可修值；離線掃描本次先前18個新串列JSONL共3092個STATUS，僅此筆符合預先針對該異常構造的比對，非預先設計之發生率。使用者回報除取下物品外沒有按壓托盤/移動治具/碰線，物理動作與異常相對時刻仍未知。
+
+Ampere核對576筆不同RX、1152完整行/32 bytes尾片、SHA與JSONL一致，完整狀態IDLE/CAL_USER/HX OK，AERR1/FIFO0不變，ERR8→9；failure=null或HXOK不消除尖峰異常。尾片保留不統計，設備零TX，CLOSE/QUIT成功、exit0、COM3釋放；未TARE/CAL/RESET/WiFi切換/燒錄/commit/push。詳見[第二輪實驗紀錄](docs/calibration/2026-10-27-hx711-366g-repeat-load-unload.md)。
+
+
+## 2026-10-27 RAW -594/HX錯誤10分鐘純被動續查
+
+使用者要求保持校正參數及供電，續查RAW -594跳變、HX錯誤並自動記錄RAW與時間。主代理無設備TX、固定空載及WiFi狀態，COM3單次串列10分鐘；[serial](docs/calibration/20261027-hx711-raw594-passive-225947.serial.log)、[逐行時間](docs/calibration/20261027-hx711-raw594-passive-225947.lines.jsonl)、[主機資料](docs/calibration/20261027-hx711-raw594-passive-225947.host.json)。22:49:46.626～22:59:47.361（台北）598個不同RX149700→155184，RAW mean-159600.6639、範圍-159758～-159461，最大相鄰差176 counts；先設|ΔRAW|≥1000 counts作事件檢索，並非驗收門檻，本窗未見。沒有-594，對中心與前後差各至少1000 counts、前後算術右移k=1..23均等於中心的規則亦無候選；此規則受先前異常啟發，非全部ADC框可靠度測試。主機約1Hz STATUS快照非所有ADC框，不能以未見宣稱問題消失或無漏樣。
+
+十個按capture start的60秒箱n=60/59/60/60/60/60/59/60/60/60，RAW均值-159646.4667/-159652.6441/-159617.5333/-159600.4333/-159581.7333/-159592.95/-159581.1864/-159578.6833/-159586.4/-159569.15 counts；非單調，本窗不宣稱長期穩定或精度合格。全窗IDLE/CAL_USER/HX及ADXL OK、ERR9/AERR1/FIFO0不增，AGE124～217ms；前次末ERR9僅兩端一致，跨窗空缺不可說連續零錯。Ampere核對200490bytes、1196完整行、SHA/JSONL一致，另160bytes未完成尾片原樣保存不納統計；CLOSE/QUIT成功、exit0、COM3釋放。
+
+Gibbs讀碼：RAW為24個讀入位元補數解碼，前次-594的位元模型可表述為高位補1後取鄰值高16位，而非已證實丟8位；模型對可能原值仍有256種，不可還原或修改RAW。程式沒有可定位的自動右移錯誤，HXOK/ERR不增不能保證整個字正確；AGE在接收後可受同步主迴圈影響，不是SCK高位脈寬。保持參數，不TARE/CAL/RESET/WiFi切換，無燒錄、commit/push。
+
+
+## 2026-10-27 23:22 RAW -594與HX延長20分鐘
+
+使用者要求保持既有校正與供電、延長自動RAW及時間記錄追查-594與HX錯誤；主代理COM3單次被動、無裝置TX，23:22:49.994～23:42:50.203（台北）共1200.209秒，[原始serial](docs/calibration/20261027-hx711-raw594-extended-234250.serial.log)、[逐行主機時間](docs/calibration/20261027-hx711-raw594-extended-234250.lines.jsonl)、[host](docs/calibration/20261027-hx711-raw594-extended-234250.host.json)。1196不同RX167853→178840，RAW mean-159574.7216，範圍-159812～-159412；全窗IDLE/CAL_USER/HX及ADXL OK、ERR9/AERR1/FIFO0未增、AGE124～217ms、WiFi CONNECTED。全窗未見RAW -594，1195個相鄰STATUS最大|ΔRAW|187 counts，無>=1000；此門檻僅作預設事件檢索非精度驗收。1194個可檢中心中，沒有前後差各>=1000的中心，因此先前異常啟發的k=1..23兩側算術右移候選也0；不能解讀全部ADC框可靠度/故障率或判定原異常消失。
+
+依host start固定20個60秒箱，其中最後三箱RAW平均-159635.3333/-159673.1167/-159724.3729，呈負向變化，不判長期穩定；未同期測溫或操作實況，已詢問使用者23:39～23:42期間是否碰觸托盤/裝置/線材或環境變化，待回覆。Ampere核對400788 bytes、2392完整行、128 bytes尾片原樣保留不統計、SHA/JSONL及時間一致；無overflow/設備TX，CLOSE/QUIT ACK成功exit0，COM3已釋放。過去窗ERR9與本窗ERR9僅兩端相同，不將缺口視為連續無錯；未TARE/CAL/RESET/WiFi切換/燒錄/commit/push。
+
+
+## 2026-10-27 新授權自動校正與一次TARE
+
+使用者明確授權「後續授權自動完成校正工作，不用再詢問」，已足以執行必要TARE/CAL與後續記錄，不再為軟體命令重問同意；實體物件需用戶實際放置／取下後確認，不能僅由RAW猜其質量。選已知366g總重建新比例，241g作另一重量點，容差/獨立標準追溯未知。保留前輪記錄、異常及原參數歷史，不以新去皮宣稱漂移或-594/HX錯誤已修復。
+
+空載前檢179筆STATUS、3個60秒箱均值-160036.85/-160103.0667/-160139.339 counts，ERR9/AERR1/FIFO0、HX OK，該窗仍負向變化，空載長期穩定及精度待驗；[serial](docs/calibration/20261027-hx711-auto-cal-precheck-235035.serial.log)、[逐行](docs/calibration/20261027-hx711-auto-cal-precheck-235035.lines.jsonl)、[host](docs/calibration/20261027-hx711-auto-cal-precheck-235035.host.json)。一次新TARE取得TARE_START→TARE_OK offset=-160216.281，隨後UNCAL、HX OK，舊scale已失效；[serial](docs/calibration/20261027-hx711-366g-authorized-tare-235135.serial.log)、[逐行](docs/calibration/20261027-hx711-366g-authorized-tare-235135.lines.jsonl)、[host](docs/calibration/20261027-hx711-366g-authorized-tare-235135.host.json)。WiFi在TARE時因既有程式暫停，不能記作未切換；32個內部框沒有逐筆輸出。新TARE是程序接受不是精度驗收；若CAL失敗無法宣稱舊scale恢復。已請用戶在原位置放穩366g，待現場確認後自動送一次CAL 366，然後保存留載/卸載/另一重量點/重放與回零結果。無重置/燒錄/commit/push，COM3已釋放。
+
+
+## 2026-10-28 跨夜CAL前檢與近時零點計畫
+
+使用者回覆366g已放穩，仍沿用已授權自動校正。10/27 23:51:26.800 TARE_OK距10/28 07:05:47.123首STATUS 7小時14分20.323秒；跨日不必然重啟，未觀察中間資料亦不能確認全程。前檢[serial](docs/calibration/20261028-hx711-366g-authorized-cal-070616.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-authorized-cal-070616.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-authorized-cal-070616.host.json) 30筆HXOK/UNCAL/IDLE，ERR31/AERR2/FIFO0，平均RAW-151624.2，計數窗內不增；前次TARE末ERR9/AERR1，22/1次累計增加發現於7h14m未擷取間隔，不能定事件時間、根因或漏樣。因硬編ERR9/AERR1的護欄不符，明確無DEVICE_TX、沒有CAL送出，裝置仍UNCAL；歷史ERR不清不抹。
+
+為確認是否持續，保存[後續載重serial](docs/calibration/20261028-hx711-366g-cal-error-observe-070907.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-cal-error-observe-070907.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-cal-error-observe-070907.host.json)：119筆HXOK/UNCAL、ERR31/AERR2/FIFO0本窗不增、RAW mean-151591.1933。已請使用者取下366g以建立近時空載基線，不在有重量時自動TARE；之後依授權一次新TARE、實際放穩後一次CAL366。這次新TARE有7小時缺口及未知零點漂移的具體理由，不是重複追零；如出現新錯誤/暫停條件則停止、保留原文，不盲重試。近時係數仍需241g/卸載/重放驗證，不宣稱精度合格，秤不確定度未知。兩次CLOSE/QUIT成功exit0、COM3釋放；無RESET/燒錄/commit/push。
+
+
+## 2026-10-28 07:12 空載尖峰、錯誤及校正暫停
+
+用戶已按自動校正流程取下366g並回報空托盤靜止。依用戶既有授權，主代理進行近時空載前檢：[serial](docs/calibration/20261028-hx711-366g-fresh-empty-precheck-071224.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-fresh-empty-precheck-071224.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-fresh-empty-precheck-071224.host.json)。120筆不同RX，07:12:17.517 RAW-159114 RX425983 AGE165 ERR31→07:12:18.520 RAW-156 RX425990 AGE250 ERR31→07:12:19.523 RAW-159122 RX426000 AGE149 ERR31，均HXOK。07:12:20.524 ERR31至07:12:21.529 ERR32首次觀察增加，距尖峰收行約3.009s，不等於確知物理錯誤時刻或同一根因。空載確認後、未送設備命令／未要求新載卸仍出現異常，降低必須載卸才觸發的假說，但未同步證明完全無碰觸。前後近值算術>>10均為-156，與上一異常>>8候選不同，僅事後數值模式，不能認定丟位、電氣根因或還原/修值。Ampere核對原文/JSONL/SHA一致、64-byte尾片保留不統計，TX0、正常關埠；資料品質前檢未通過，停止後續新TARE/CAL，不以末ERR32重新當基線立即過關。
+
+追查期間維持空載供電，[5分鐘serial](docs/calibration/20261028-hx711-366g-empty-fault-followup-071826.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-empty-fault-followup-071826.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-empty-fault-followup-071826.host.json)：299筆，ERR32/AERR2/FIFO0本窗不增、無>=1000counts跳值，RAW 5個1分鐘均值-159122.3/-159097.3898/-159077.2333/-159040.0667/-158978.75，呈上移；無再現不能消除前異常或認定已穩定。後續在UNCAL/IDLE條件僅各送VERSION/ADXL_DIAG：[serial](docs/calibration/20261028-hx711-366g-fault-readonly-071919.serial.log)、[逐行](docs/calibration/20261028-hx711-366g-fault-readonly-071919.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-fault-readonly-071919.host.json)；v1-layout2-fifo-diag1-wifi1-d220-right-optical1，開機累計FIFO FULL/DEPTH/OVR/DIAG_ERR=0、POLL_GAP_MAX246206us、OLED_MAX144992us均非HX讀bit時脈，不得當時序通過或指定根因。用戶自動校正授權仍有效，現階段因明確資料異常保留UNCAL/供電、待原因釐清/必要修復，不重新TARE/CAL或刪值。各窗完成CLOSE/QUIT、exit0、COM3釋放；未reset/燒錄/commit/push。
+
+
+## 2026-10-28 唯讀STATUS頻率對照與離線位元模型
+
+在空載UNCAL、-156與ERR31→32前檢失敗後保留供電、不執行TARE/CAL。Gibbs分析自然STATUS及只讀查詢均為快取輸出，增加查詢會改Serial負載/主迴圈相位。主代理作有界單次A1被動60秒→B約每500ms一條STATUS 60秒→A2被動60秒對照，不改韌體/狀態；[serial](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.serial.log)、[逐行時間](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.lines.jsonl)、[host](docs/calibration/20261028-hx711-366g-status-rate-aba-072939.host.json)。B實送111次STATUS，間距525.4844～549.6403ms（不補發，不稱精確2Hz），A1/B/A2分別59/171/60個STATUS及59/165/60個不同RX，B六行同RX同RAW重印；無request ID不逐行認領回應。AGE中位173/41/168ms（A2 171為上中位），分別範圍127～215/2～235/124～213ms；只說查詢與快取觀察相位變化，不能當ADC週期、SCK脈寬、故障或因果證據。不同RX RAW均值-159056.339/-159161.1758/-159282.6333 counts，時序趨勢不以單次對照歸因額外查詢。全窗UNCAL/HXOK、ERR32/AERR2/FIFO0未增，無>=1000跳值；不能用本窗沒再現清除前窗異常或恢復校正。Ampere獨立核對96454bytes、580完整行無尾，SHA/JSONL/時序一致，唯讀STATUS且無mutating TX，CLOSE/QUIT成功、exit0、COM3釋放。
+
+Gibbs完成[純主機位元模型結果](docs/calibration/20261028-hx711-bit-alignment-host-model.json)，可重現temp源 C:/Users/tseng/AppData/Local/Temp/irt-hx711-bit-model-20261028-gibbs.cjs，SHA256 dbb551b7d484d964fea08e4a0e959d40555d797b3a48b94caaf9d643d765689a；主代理獨立重跑，16777216個24bit decode往返及1302模型斷言成功，結果與保存JSON一致。假設全部字固定算術右移8或10位，輸出幅度不能包含正常約-159k；特定「初始缺clock/維持低」模型給正數而非兩次負尖峰；特定「首個高位之後缺clock、不允許任何恢復」模型可產生尖峰但隨後停滯，與已見RX前進不符。以上只排除明確受限模型，不能排除真實器件未建模的邊緣/恢復/供電/資料延遲，也不能定位軟硬體原因或還原RAW。固定25有效脈衝加假設資料觀測延遲的模型在數值上可吻合，沒有證明實際存在。模擬非實板波形/精度驗證。未更動韌體/去皮/校正/重置或燒錄，現UNCAL，自動授權仍有效但資料品質前檢失敗，未commit/push。
+
+
+## 2026-10-28 保持現況自動排查：被動窗與密集只讀對照
+
+使用者要求保持供電及目前狀態、繼續自動排查RAW/HX，釐清原因後完成366g校正，不再詢問。已保存原-156/ERR31→32資料，當前UNCAL，不改參數或重置，校正仍因資料品質未通過而暫停。
+
+10分鐘空載無TX：[serial](docs/calibration/20261028-hx711-uncal-fault-continuous-074914.serial.log)、[逐行](docs/calibration/20261028-hx711-uncal-fault-continuous-074914.lines.jsonl)、[host](docs/calibration/20261028-hx711-uncal-fault-continuous-074914.host.json)。07:39:14.141～07:49:14.728台北，598不同RX，RAW均值-160445.2492 counts，固定10個60秒箱由-160296.7逐箱降至-160575.6167，不能判穩定。ERR32→33第一次觀察07:41:17.977 RX441952 RAW-160360 AGE205與07:41:18.981 RX441961 RAW-160419 AGE199之間；无主機長斷點、該步並無大尖峰，不得推漏樣量或與原-156事件同/異因。598STATUS無-156/-594/≥1000跳，約1Hz不涵蓋每框；保留160-byte未完成尾片，不納統計。Ampere核對原文/逐行/SHA與CLOSE/QUIT成功。
+
+基於先前只讀STATUS頻率對照，只在IDLE/UNCAL/HXOK中做有界A1被動60秒→B最短200ms單STATUS 240秒→A2被動60秒，不改FW、WiFi或校正；[serial](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.serial.log)、[逐行](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.lines.jsonl)、[host](docs/calibration/20261028-hx711-uncal-dense-status-aba-075717.host.json)。B增加輸出會改排程/觀察條件，不稱純被動或精確5Hz。實際TX1110次、無補發/背壓；三段STATUS59/1348/60、不同RX59/1284/60，B含64個同RX同RAW重印。首末已接受RX跨度537/2149/544，所見不同RX比例10.99%/59.75%/11.03%只指已接受更新的可見比例，不是全部ADC框覆蓋或漏樣率；AGE中位173/17/162ms反映快取觀察相位，不當ADC週期。全窗ERR33/AERR2/FIFO0不增、無≥1000跳/新尖峰；不能抹除先前-156/ERR新增或以短窗無錯恢復校正，逐框原始bit與SCK/DATA波形仍未得到，現有資料不能唯一分離供電、類比/機械或取位時序根因。所有資料保留，CLOSE/QUIT成功exit0、COM3釋放。未重新TARE/CAL、reset/燒錄或commit/push。
+
+
+## 2026-10-28 保持現況成對STATUS有界追查
+
+使用者明確要求保持供電及目前狀態、繼續自動取得RAW/HX診斷，釐清原因後完成366g校正、不用再詢問。現仍UNCAL，過往近零字/錯誤和漂移原因未定位，不能以後續無錯重校、清警示或改參數掩蓋。單次COM3連線，[原始serial](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.serial.log)、[逐行時間](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.lines.jsonl)、[host](docs/calibration/20261028-hx711-uncal-paired-status-aba-082438.host.json)。固定設計A1被動60秒、B最多120秒每≥500ms一批兩條只讀STATUS、A2被動60秒；多輸出增加串列負載及排程擾動，不是純被動或ADC取樣命令。實際B開始08:21:38.611，08:21:47.866 ERR36至08:21:48.382 ERR37首次觀察增加、RX464177→464181、RAW-161273→-161282；新錯誤事件後sticky inhibit不排新批，實際19次socket batch、38條STATUS（已排入的回應不得假設已被撤回），後續保存被動直至08:24:38.692。前窗末ERR33、本窗首36，+3只發現於兩窗缺口，不能推時刻/原因；本窗+1不推因為STATUS，因前一無TX被動窗亦有ERR新增。
+
+全窗277 STATUS/253不同RX；19個相同RX群24次重印RAW一致，沒有同RX不同RAW，不能證明未觀測ADC框正確。其中RX464140同RAW-161268三次AGE89→112→258ms且ERR36、無大跳，故約250ms AGE本身不能當錯位判準；沒有request ID，不將三行認領為指定命令回應。RAW平均（全行）-161281.2166、範圍-161407～-161175，未見-594/-156；閾值、時間與實際資料等候獨立QC，不以「當窗無尖峰」抹除原事件。物理電氣/脈衝及完整每框取得資訊在目前韌體下無法讀回；單靠STATUS不能唯一定位根因。維持供電/UNCAL，無設備TARE/CAL/UNCAL/STOP、RESET、WiFi切換或燒錄，COM3關閉；未commit/push。
+
+
+### 保持狀態下的證據界線與離線方案
+
+Gibbs依現有程式與數據建立[逐框診斷離線候選設計](docs/calibration/2026-10-28-hx711-per-read-diagnostic-design.md)（僅設計，未修改/編譯/燒錄/重置）。目前沒有讀取每次嘗試原始24-bit／失敗框／脈衝時序的介面；如日後以韌體實作，須考慮改動對時序的干擾，燒錄會重啟並失去目前RAM狀態，不能在用戶目前保持狀態的條件下部署。軟體時間不能自證SCK真實波形，原碼異常仍不能單獨排除ADC／供電／機械/取位因素。保持UNCAL及供電，既有自動校正授權有效，但必須待異常原因與必要修復經適當驗證才能TARE/CAL；不重覆測到暫無錯就宣稱解決。
+
+
+## 2026-10-28 逐框診斷版與校正暫停
+
+使用者授權供電不中斷重啟及燒錄，授權自動排查及待原因釐清完成366g校正；實際更改為逐框摘要韌體，不清NVS、不以診斷修RAW、不恢復重啟前RAM校正。公開程式hash、主機測試、編譯、晶片識別及四區Hash校驗詳見[session](docs/calibration/2026-10-28-hx711-per-read-diagnostic-session.md)與[獨立QC](docs/quality/reports/2026-10-28-hxread1-qc.md)。
+
+[逐框原文](docs/calibration/20261028-hx711-per-read-observe-091925.serial.log)、[逐行時間](docs/calibration/20261028-hx711-per-read-observe-091925.lines.jsonl)、[主機操作](docs/calibration/20261028-hx711-per-read-observe-091925.host.json)、[離線解析](docs/calibration/20261028-hx711-per-read-observe-091925.analysis.json)已保存；boot CPU時間及主機匯出時間不能互換。第1922次拒絕後下一個極端字被接受；來源根因與原RAW跳值是否相同未定。DUMP阻塞造成新觀察條件，與HX觸發分開。DUMP後[90秒被動窗](docs/calibration/20261028-hx711-postdump-passive-092158.serial.log) ERR1/FIFO2未增，但狀態快照不是逐框。
+
+接續應依QC的HXREAD1-Q02/Q03追查，留存錯誤與原資料；沒有GPIO波形或獨立電氣量測，不能把串接模型當已確診。新boot為UNCAL，資料品質未通過；在原因及校正前提釐清前不要TARE/CAL、清警示或將舊係數套入。實際放置366g仍需現場操作。COM3已釋放，USB供電持續；此次未commit/push。
+
+後續一次[ADXL唯讀快取](docs/calibration/20261028-hx711-postdump-adxl-cache-093022.serial.log)顯示FULL_OBS2／DEPTH_OBS1／OVR_OBS2、最大輪詢間隔2521078us、最後FIFO事件boot_us221329074 N32 SRC83。最新窗首筆ERR2，而09:21:57前窗末ERR1；中間未擷取，無法判定增量時刻或原因，凍結ring無該新事件逐框。此窗僅STATUS／ADXL_DIAG，COM3正常關閉；不將未監看區間稱連續記錄。
+
+最後[90秒被動快照](docs/calibration/20261028-hx711-postdump-passive-093308.serial.log)09:31:38～09:33:07（台北），90 STATUS，RAW −162331～−162180、ERR2/FIFO2未增；無TX、COM正常釋放。這是約1Hz快照，不是每個讀框，也不排除未見異常。
+
+
+## 2026-10-28 失敗後DATA與雙記錄區診斷
+
+使用者授權保持供電自動設計並燒錄診斷，待釐清原因完成366g校正；這一輪已做hxfail1及因ANY先凍結而妨礙LINK觀察的hxfail2修正，各自經正式編譯、正確COM3晶片MAC識別、四區Hash校驗及即刻Ampere新版QC。兩次重啟的新epoch與先前RAM係數分開；未清NVS、未TARE/CAL。
+
+[hxfail1 逐框](docs/calibration/20261028-hx711-hxfail-observe-104516.serial.log) seq2346 −162826→2347 −80 accepted/ERR0→2348 −162813，兩側>>11與−80相容但不證物理丟位或能修RAW；HXF12點NA、本次無hold。主代理第一個衍生analysis截尾202bytes，原文無損、檔案保留；[修正工具分析](docs/calibration/20261028-hx711-hxfail-observe-104516.analysis-v1.1.0.json)已重算驗證。
+
+[hxfail2 雙槽原文](docs/calibration/20261028-hx711-hxdual-observe-112033.serial.log)、[逐行時間](docs/calibration/20261028-hx711-hxdual-observe-112033.lines.jsonl)、[主機操作](docs/calibration/20261028-hx711-hxdual-observe-112033.host.json)、[v2分析](docs/calibration/20261028-hx711-hxdual-observe-112033.analysis-v2.json)。兩槽相同600s起點，實際freeze晚88.153ms；兩槽frozen attempts5473、各保存相同127次seq5347–5473、preoverwrite5346，無觸發；12個失敗後DATA點皆NA且未hold。依程式首觸發契約只能說5473次到hook的完成attempt未觸發LINK/SAT/相鄰accepted大跳≥1000；無法離線驗真所有原字，也不是所有ADC轉換、實際SCK波形或精度驗證。[匯出後90秒](docs/calibration/20261028-hx711-postdump-passive-112258.serial.log)僅1Hz快照ERR0/FIFO2未增；DUMP同步阻塞及FIFO警示另列，不能回推HX事件根因。
+
+Ampere [hxfail2 QC](docs/quality/reports/2026-10-28-hxfail2-qc.md)確認部署、期限封存及完整bundle通過，真LINK/DATA與JUMP先於LINK之實板路徑未觸發，boot/目視/FIFO缺項及舊量測品質異常仍保留。不能以一窗無重現、ADC後檢HIGH或CRC通過解除−80／−317／極端字及漂移問題；待根因與資料完整性充分處理後才重新近時TARE/CAL366及回零／重放/241g驗證。裝置現UNCAL、供電保持，COM各窗已關閉，無commit/push。
+
+
+## 2026-10-28 雙記錄區授權重啟兩輪
+
+使用者授權保持USB供電重新啟動雙槽並自動記錄、不重問；前一session已封存匯出後執行一次，無LINK後明確通知再做一次有界觀察。兩次皆單次RTS assert/release，DTR false、guard為IDLE/UNCAL，捕獲自然boot；USB未拔不表示可沿用新boot前RAM校正，也不由ROM rst:0x1推斷外部斷電。未修改／燒錄韌體。
+
+第一輪C7B7BD64：[boot](docs/calibration/20261028-hxdual-authorized-restart-1145.serial.log)、[逐行](docs/calibration/20261028-hxdual-authorized-restart-1145.lines.jsonl)、[host](docs/calibration/20261028-hxdual-authorized-restart-1145.host.json)、[bundle](docs/calibration/20261028-hx711-hxdual-restart-observe-115650.serial.log)、[逐行](docs/calibration/20261028-hx711-hxdual-restart-observe-115650.lines.jsonl)、[分析](docs/calibration/20261028-hx711-hxdual-restart-observe-115650.analysis-v2.json)。兩槽WINDOW，5476完成hook未觸發預設LINK/SAT/相鄰accepted大跳，原字僅保留末127。
+
+第二輪99C7AFD6：[boot](docs/calibration/20261028-hxdual-authorized-restart-2.serial.log)、[逐行](docs/calibration/20261028-hxdual-authorized-restart-2.lines.jsonl)、[host](docs/calibration/20261028-hxdual-authorized-restart-2.host.json)、[bundle](docs/calibration/20261028-hx711-hxdual-restart-observe-120811.serial.log)、[逐行](docs/calibration/20261028-hx711-hxdual-restart-observe-120811.lines.jsonl)、[分析](docs/calibration/20261028-hx711-hxdual-restart-observe-120811.analysis-v2.json)。封存5487=5359覆寫＋127保存＋1在截止後未分類；只有前5486受既定觸發判斷。兩槽逐字重疊，254列為127個唯一attempt；DATA 12NA、未hold。主機60秒完整箱首末差約−35.991counts、非單調，非精度驗證、不跨boot合併。兩輪都未取得失敗後DATA，不能解除既有異常；完整外層END及CRC已核對。
+
+第二輪DUMP約2.586秒後出現STALE／MISSING及FIFO1→2，與DUMP前條件分列，不能判物理根因；第一輪啟動前即有額外FIFO警示，詳見[兩輪資料與QC](docs/calibration/2026-10-28-hxdual-restart-session.md)。本輪已完成自動有界捕獲，兩個session皆封存不能繼續同boot取得LINK profile；根因/量測完整性未解，保持UNCAL而未進行366g TARE/CAL。USB保持、COM3已釋放；未新flash、commit或push。
+
+
+## 2026-10-28 已捕獲LINK後DATA／PCNT診斷設計中
+
+使用者明確要求保持供電重啟雙槽並持續記錄直到取得HX失敗後DATA；第一輪未取得已留存，第二輪A1C20320在同一新epoch先後捕獲accepted −320及LINK拒絕−160。主代理在捕獲後停止進一步reset，保存[完整原文](docs/calibration/20261028-hx711-hxdual-continuous-observe-124442.serial.log)、[逐行時間](docs/calibration/20261028-hx711-hxdual-continuous-observe-124442.lines.jsonl)、[host/control](docs/calibration/20261028-hx711-hxdual-continuous-observe-124442.host.json)、[v2分析](docs/calibration/20261028-hx711-hxdual-continuous-observe-124442.analysis-v2.json)；[獨立QC](docs/quality/reports/2026-10-28-hxfail2-continuous02-qc.md)確認512讀框/103word DATA CRC與session對應。12點中9個有效LOW，2/10/150000µs目標3點missed，不能稱全程LOW；hold273810µs後下一框正常不證修復。
+
+[匯出後90秒](docs/calibration/20261028-hx711-postdump-passive-124855.serial.log)為約1Hz快照、ERR1/FIFO2不增，無法視為全框或故障消失。Gibbs與Kierkegaard指出，假設固定原字且只由後續clock推進的受限殘字模型不符觀察，但不能排除其它時序／線路／供電假說。為在使用者無外接儀器下進一步辨識，正在試作既有GPIO25/33之PCNT邊緣觀察；須核對pin input/output/pull不破壞SCK、資源/計數/overflow/盲區/CRC與實板QC，未完成前不得當已部署或根因已確定。任何固件交付按AGENTS先測試、編譯、確目標、寫入驗證並立即本版QC；各新boot不可沿用RAM校正。現仍UNCAL，DATA目標已取得但資料品質不通過，禁止盲目TARE/CAL366；COM已釋放、USB保持，無commit/push。
+
+
+## 2026-10-28 PCNT真LINK／每讀框診斷設計中
+
+PCNT1以固定source hash正式編譯、COM3晶片MAC核對、四區Hash校驗寫入並立即獨立QC，USB保持供電；自然boot banner首次未捕獲，版本/session由實板HX_DIAG讀回。[正式PCNT QC](docs/quality/reports/2026-10-28-pcnt1-qc.md)核實GPIO與4組SCK50/DATA計數正對照，no-LINK首窗到期不證根因。依使用者原授權guard後同版一次RTS重啟，新session DF497E3D，保存[自然boot](docs/calibration/20261028-hxpcnt-continuous-02-boot.serial.log)及[新boot控制/時間](docs/calibration/20261028-hxpcnt-continuous-02-boot.host.json)。
+
+[真事件原始bundle](docs/calibration/20261028-hx711-hxpcnt-continuous-observe-140454.serial.log)、[逐行時間](docs/calibration/20261028-hx711-hxpcnt-continuous-observe-140454.lines.jsonl)、[host](docs/calibration/20261028-hx711-hxpcnt-continuous-observe-140454.host.json)、[修正分析v3.0.1](docs/calibration/20261028-hx711-hxpcnt-continuous-observe-140454.analysis-v3.0.1.json)、[真事件獨立QC](docs/quality/reports/2026-10-28-pcnt1-continuous02-qc.md)。ANY2430被接受−641先於LINK3449拒絕−529408；原HX frame postcheck後PCNT SCK start_end377977206 ≤ DATA start_begin377977215，DATA stop_end378228571 ≤ SCK stop_begin378228637；均valid/no overflow，計DATA4、SCK0。這是MCU接收窗內數位邊緣，不知edge時刻/脈寬/極性，無法證HX端有效SCK或供電。DATA前343–346µs與end後均有未覆蓋段；8 LOW離散/4 NA不證連續LOW。原analysis-v3的早於故障proof誤作unsigned相對時間，已保留並另存v3.0.1修正，不改raw/事件/HOLD/CRC。
+
+[事件後90秒](docs/calibration/20261028-hx711-pcnt-event-postdump-passive-141043.serial.log)90 STATUS/ERR1 FIFO3持平，不是逐框；96 bytes不完整尾與close期間32bytes均保留不補造。DUMP引起STALE/MISSING與FIFO警示同樣另列，不推原因。正評估並試作每個既有讀框的PCNT sidecar，捕捉異常發生時MCU端edge總數；會增每次讀框前後API開銷但不能插入原SCK loop/隱藏異常/改校正，需bounded RAM/overflow/雙槽seq/CRC/實板QC；source目前試作中、尚未READY/編譯/燒錄。現UNCAL、COM3已釋放、USB保持，未commit/push。
+
+
+## 2026-10-28 14:46 被動快照新尖峰
+
+[原文](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.serial.log)、[逐行](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.lines.jsonl)、[host](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.host.json)：14:46:30.283／31.285／32.285台北，−164000／−1282／−164028，RX26491／26498／26508，ERR3/HX OK。位移7與兩鄰數值相容只是事後檢索候選，不能修值、定來源或驗精度；約1Hz快照與已凍結ring限制均保留。五分鐘299 STATUS、無TX、COM已釋放；PCNT每框sidecar開發／測試中，未部署，CAL仍暫停。
+
+
+## 2026-10-28 校正資料封存與逐框候選狀態
+
+校正數據、限制與建議見 [README 校正量測分析](README.md)及[完整分析報告](docs/calibration/2026-10-28-calibration-assessment.md)；歷史原始資料和分析檔保留於 `docs/calibration/`。241 g 的兩次成功命令屬不同啟動期，不能混用零點或係數；366 g 為載卸比較，沒有成功的 `CAL 366` 記錄。異常證據只能縮小假說，仍不足以確定硬體或韌體根因，也不能據此宣布重量驗收通過。
+
+PCNT2 每框候選的連結失敗、外部備份與 PCNT1 源碼復原見頂部最新交接；後續若重做候選須重新進行主機檢查、正式編譯、正確目標燒錄及該版本獨立 QC。增加動態配置等方案仍需驗證可用記憶體、失敗處理和實際時序，不得只靠主機模擬判定實板安全。最後一次被動記錄後 COM3 已關閉，裝置保持供電；本次文件整理未重新燒錄或校正。

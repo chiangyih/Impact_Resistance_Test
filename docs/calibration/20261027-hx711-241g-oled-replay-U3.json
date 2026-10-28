@@ -1,0 +1,89 @@
+{
+  "schema": "hx711-oled-timed-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "U3_unloaded_timed",
+  "conversation_date": "2026-10-27",
+  "timezone_context": "Asia/Taipei",
+  "host_recorded_at": "2026-10-27T18:02:17.3283679+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "17:58:10 -158517、17:58:30 -158476、17:58:50 -158508；HX:OK",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "load_condition": {
+    "nominal_external_mass_g": 0,
+    "source": "User previously responded 已取下 to instruction to remove 241g and supplied subsequent RAW readings.",
+    "removal_source": "docs/calibration/20261027-hx711-241g-oled-replay-U3-removal.json",
+    "removal_source_sha256": "5AE0227F1ECB439FECCBD3117E9550968367902FA3804C6AC9F6218264BF4CCA",
+    "stationarity_independently_verified": false
+  },
+  "readings": [
+    {
+      "RAW_counts": -158517,
+      "user_reported_local_time": "17:58:10"
+    },
+    {
+      "RAW_counts": -158476,
+      "user_reported_local_time": "17:58:30"
+    },
+    {
+      "RAW_counts": -158508,
+      "user_reported_local_time": "17:58:50"
+    }
+  ],
+  "reported_intervals_seconds": [
+    20,
+    20
+  ],
+  "reported_clock_span_seconds": 40,
+  "date_note": "Date is conversation context, not separately supplied with the three clock times.",
+  "clock_note": "User-reported clock times are not synchronized with host or device; none is an ADC conversion timestamp.",
+  "HX_health_report": "OK",
+  "HX_health_exact_observation_time": null,
+  "CAL_flag": null,
+  "phase": null,
+  "statistics": {
+    "n": 3,
+    "mean_counts": -158500.33333333334,
+    "min_counts": -158517,
+    "max_counts": -158476,
+    "span_counts": 41,
+    "first_to_middle_counts": 41,
+    "middle_to_last_counts": -32,
+    "first_to_last_counts": 9
+  },
+  "sources": {
+    "T1": {
+      "path": "docs/calibration/20261027-hx711-241g-oled-replay-T1.json",
+      "sha256": "846A4D1CEEEFDD9D919C29BB8BB46336A3FE4A7760A86E696BCAAFBCCF5857F5",
+      "mean_counts": -158388.66666666666
+    },
+    "L2": {
+      "path": "docs/calibration/20261027-hx711-241g-oled-replay-L2.json",
+      "sha256": "DB279F5D5E110AAA1836792ECE87E6BE9AC3FA179F9F8449809DFBFB83D2D75B",
+      "mean_counts": -153538.66666666666
+    }
+  },
+  "comparison": {
+    "U3_minus_T1_counts": -111.66666666668607,
+    "L2_minus_T1_counts": 4850,
+    "L2_minus_U3_counts": 4961.666666666686,
+    "time_L2_last_to_U3_first_if_same_day_same_clock_seconds": 200,
+    "time_T1_last_to_L2_first_if_same_day_same_clock_seconds": 540,
+    "conditional_U3_minus_T1_g": -5.470267889590511,
+    "conditional_U3_against_saved_tare_g": -57.512339117252054,
+    "saved_counts_per_g": 20.413381743,
+    "saved_offset_printed_counts": -157326.312,
+    "condition": "Weight conversions use prior saved parameters only conditionally; exact current RAM coefficients, uninterrupted power, actual location, and synchronized clocks have not been verified.",
+    "formal_zero_error": false,
+    "independent_accuracy_validation": false,
+    "instrument_repeatability_validation": false
+  },
+  "interpretation": "The average of three user-reported unloaded OLED values differs from the earlier three-value unloaded mean after one loaded period. This limited observation does not establish long-term drift, sensor accuracy, root cause, stable mechanical state or independent ADC samples. Do not interpolate between separate baselines.",
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "pending": "Asked user for current CAL flag and any remembered loaded-stage HX/CAL; no response recorded in this immutable stage snapshot."
+}
+

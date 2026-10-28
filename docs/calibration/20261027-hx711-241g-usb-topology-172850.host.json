@@ -1,0 +1,74 @@
+{
+  "schema": "read-only-USB-path-observation-v1",
+  "observed_at": "2026-10-27T17:28:49.9981987+08:00",
+  "nodes": [
+    {
+      "status": "OK",
+      "class": "Ports",
+      "name": "USB-SERIAL CH340 (COM3)",
+      "instance_id": "USB\\VID_1A86&PID_7523\\6&2BCCCFA4&0&1",
+      "properties": [
+        {
+          "KeyName": "DEVPKEY_Device_ProblemCode",
+          "Data": 0
+        },
+        {
+          "KeyName": "DEVPKEY_Device_Parent",
+          "Data": "USB\\VID_174C&PID_2074\\5&cc3f949&0&10"
+        },
+        {
+          "KeyName": "DEVPKEY_Device_IsPresent",
+          "Data": true
+        },
+        {
+          "KeyName": "DEVPKEY_Device_LastArrivalDate",
+          "Data": "2026-10-27T17:08:06.362744+08:00"
+        },
+        {
+          "KeyName": "DEVPKEY_Device_DriverVersion",
+          "Data": "3.9.2024.9"
+        }
+      ]
+    },
+    {
+      "status": "OK",
+      "class": "USB",
+      "name": "Generic USB Hub",
+      "instance_id": "USB\\VID_174C&PID_2074\\5&cc3f949&0&10",
+      "properties": [
+        {
+          "KeyName": "DEVPKEY_Device_ProblemCode",
+          "Data": 0
+        },
+        {
+          "KeyName": "DEVPKEY_Device_Parent",
+          "Data": "USB\\ROOT_HUB30\\4&2fd48294&0&0"
+        },
+        {
+          "KeyName": "DEVPKEY_Device_IsPresent",
+          "Data": true
+        },
+        {
+          "KeyName": "DEVPKEY_Device_LastArrivalDate",
+          "Data": "2026-10-27T16:26:31.077906+08:00"
+        },
+        {
+          "KeyName": "DEVPKEY_Device_DriverVersion",
+          "Data": "10.0.26100.9711"
+        }
+      ]
+    }
+  ],
+  "system_log": {
+    "enabled": true,
+    "record_count": 38435,
+    "last_write_time": "2026-10-27T16:49:06.775479+08:00"
+  },
+  "pnp_configuration_log": {
+    "enabled": true,
+    "record_count": 1180,
+    "previous_query_start_local": "2026-10-27T16:50:00+08:00",
+    "previous_query_error": "No events were found that match the specified selection criteria."
+  },
+  "limitations": "Read only; no serial access. Hub parent is a Windows topology node and does not prove an external hub or explain serial silence. A query returning no events does not prove no interruption."
+}

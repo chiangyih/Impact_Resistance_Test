@@ -1,0 +1,295 @@
+{
+  "schema": "host-serialmonitor-passive-v1",
+  "port": "COM3",
+  "tool_version": "v0.15.0 commit 13b8e80",
+  "user_observations": {
+    "usb_reconnected": true,
+    "tray_empty": true,
+    "usb_connection": "direct_to_computer",
+    "extra_TX0_RX0_wiring": false
+  },
+  "configuration_before_open": {
+    "baudrate": "115200",
+    "bits": "8",
+    "parity": "none",
+    "stop_bits": "1",
+    "dtr": "off",
+    "rts": "off"
+  },
+  "open_command_issued": true,
+  "open_acknowledged": true,
+  "tcp_peer_connected": true,
+  "capture_planned_ms": 568500,
+  "serial_bytes_received": 187061,
+  "stored_bytes": 187061,
+  "overflow": false,
+  "device_commands_sent": [
+    "WIFI OFF",
+    "WIFI ON"
+  ],
+  "control_events": [
+    {
+      "at_utc": "2026-10-27T11:06:46.520Z",
+      "monotonic_elapsed_ms": 15.9429,
+      "action": "LISTEN",
+      "address": "127.0.0.1",
+      "port": 64253
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.527Z",
+      "monotonic_elapsed_ms": 21.9199,
+      "action": "CONTROL_TX",
+      "command": "HELLO 1 \"Codex diagnostic\""
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.4035,
+      "action": "CONTROL_EVENT",
+      "event_type": "hello",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.5502,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE baudrate 115200"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.641,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.6883,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE bits 8"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.7603,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.7936,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE parity none"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.8371,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.8813,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE stop_bits 1"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.9277,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 37.9741,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE dtr off"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.0066,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.0362,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE rts off"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.1069,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.1517,
+      "action": "CONTROL_TX",
+      "command": "DESCRIBE"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.2969,
+      "action": "CONTROL_EVENT",
+      "event_type": "describe",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.543Z",
+      "monotonic_elapsed_ms": 38.3244,
+      "action": "CONFIGURATION_VERIFIED",
+      "baudrate": "115200",
+      "bits": "8",
+      "parity": "none",
+      "stop_bits": "1",
+      "dtr": "off",
+      "rts": "off"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.544Z",
+      "monotonic_elapsed_ms": 38.3671,
+      "action": "CONTROL_TX",
+      "command": "OPEN 127.0.0.1:64253 COM3"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.546Z",
+      "monotonic_elapsed_ms": 40.6298,
+      "action": "DATA_CHANNEL_CONNECTED",
+      "remote": "127.0.0.1"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.546Z",
+      "monotonic_elapsed_ms": 40.7082,
+      "action": "CONTROL_EVENT",
+      "event_type": "open",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:06:46.546Z",
+      "monotonic_elapsed_ms": 40.7332,
+      "action": "OPEN_ACKNOWLEDGED"
+    },
+    {
+      "at_utc": "2026-10-27T11:06:50.056Z",
+      "monotonic_elapsed_ms": 3551.1182,
+      "action": "A1_START"
+    },
+    {
+      "at_utc": "2026-10-27T11:09:50.065Z",
+      "monotonic_elapsed_ms": 183559.382,
+      "action": "DEVICE_TX",
+      "command": "WIFI OFF"
+    },
+    {
+      "at_utc": "2026-10-27T11:09:55.065Z",
+      "monotonic_elapsed_ms": 188559.4771,
+      "action": "B_CONFIRMED_OFF"
+    },
+    {
+      "at_utc": "2026-10-27T11:12:55.072Z",
+      "monotonic_elapsed_ms": 368566.8652,
+      "action": "DEVICE_TX",
+      "command": "WIFI ON"
+    },
+    {
+      "at_utc": "2026-10-27T11:13:15.082Z",
+      "monotonic_elapsed_ms": 388576.9386,
+      "action": "A2_CONNECTED"
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.087Z",
+      "monotonic_elapsed_ms": 568581.9674,
+      "action": "CAPTURE_END",
+      "total_bytes": 187061
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.087Z",
+      "monotonic_elapsed_ms": 568582.5213,
+      "action": "WIFI_RESTORE_RESULT",
+      "confirmed": true,
+      "observed_state": "CONNECTED",
+      "observed_radio": "1",
+      "last_wifi_received_at_utc": "2026-10-27T11:16:14.325Z"
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.088Z",
+      "monotonic_elapsed_ms": 568582.7101,
+      "action": "CONTROL_TX",
+      "command": "CLOSE"
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.093Z",
+      "monotonic_elapsed_ms": 568588.0351,
+      "action": "DATA_CHANNEL_CLOSED"
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.093Z",
+      "monotonic_elapsed_ms": 568588.1633,
+      "action": "CONTROL_EVENT",
+      "event_type": "close",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.093Z",
+      "monotonic_elapsed_ms": 568588.309,
+      "action": "CONTROL_TX",
+      "command": "QUIT"
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.094Z",
+      "monotonic_elapsed_ms": 568589.2208,
+      "action": "CONTROL_EVENT",
+      "event_type": "quit",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-27T11:16:15.097Z",
+      "monotonic_elapsed_ms": 568592.2851,
+      "action": "PROCESS_EXIT",
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "port_released_by_process_exit": true,
+  "failure": null,
+  "public_secret_scan": "completed_locally_no_secret_values_logged",
+  "public_redacted": false,
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-monitor-passive-TqKKeU",
+  "raw_sha256": "919ebbb6de475ee9862d201d0006b2a412040bfb6fe7dc073992c120e91d80f6",
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-wifi-aba-191615.serial.log",
+  "public_control_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-wifi-aba-191615.control.log",
+  "public_stderr_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-wifi-aba-191615.stderr.log",
+  "limitations": [
+    "OPEN acknowledgement describes monitor/port and TCP connection, not an ESP32 command response.",
+    "WIFI OFF and WIFI ON only after corresponding pre-command STATUS guard; see control events for actual transitions; no explicit DTR/RTS transitions.",
+    "Line timestamps are host receipt of complete line, not HX conversion times.",
+    "STATUS lines are cached snapshots, not every HX conversion.",
+    "Boot text may have occurred before opening and cannot be recovered."
+  ],
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-wifi-aba-191615.lines.jsonl",
+  "complete_lines": 1136,
+  "trailing_incomplete_bytes": 0,
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

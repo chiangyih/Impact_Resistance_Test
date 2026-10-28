@@ -1,0 +1,1363 @@
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=307 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163353 RX=316 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163355 RX=325 ERR=0 AGE_ms=15 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# HX_DIAG schema=2 slot=ANY trigger_mask=7 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 mode=LIVE freeze_reason=0 records=127 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=0
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=516311 window_us=600000000 trigger_us=0 freeze_us=0 trigger_seq=0 trigger_flags=0 pre=0 post=0 post_target=128 post_complete=0
+# HX_DIAG_COUNTS scope=live attempts=333 pre_overwritten=206 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+# HX_DIAG schema=2 slot=LINK trigger_mask=1 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 mode=LIVE freeze_reason=0 records=127 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=0
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=516311 window_us=600000000 trigger_us=0 freeze_us=0 trigger_seq=0 trigger_flags=0 pre=0 post=0 post_target=128 post_complete=0
+# HX_DIAG_COUNTS scope=live attempts=333 pre_overwritten=206 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+# HX_FAIL schema=1 session=A1C20320 profile=SCK_LOW_250MS mode=WAITING mode_id=0 stop_reason=0 captured=0 points=12 next=0 valid=0 missed=0 early_target_us=2000 hold_target_us=250000
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163373 RX=333 ERR=0 AGE_ms=285 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163393 RX=343 ERR=0 AGE_ms=125 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163279 RX=352 ERR=0 AGE_ms=205 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163417 RX=362 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163387 RX=371 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=380 ERR=0 AGE_ms=179 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163448 RX=389 ERR=0 AGE_ms=170 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163411 RX=397 ERR=0 AGE_ms=159 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163390 RX=406 ERR=0 AGE_ms=148 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163458 RX=415 ERR=0 AGE_ms=143 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163424 RX=424 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163339 RX=434 ERR=0 AGE_ms=125 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163340 RX=443 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163370 RX=452 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163361 RX=461 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163412 RX=470 ERR=0 AGE_ms=177 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=479 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163389 RX=487 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163401 RX=497 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163392 RX=506 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163360 RX=516 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163302 RX=525 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163414 RX=534 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163411 RX=544 ERR=0 AGE_ms=191 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163402 RX=553 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163340 RX=562 ERR=0 AGE_ms=177 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163445 RX=571 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=579 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163345 RX=589 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163417 RX=598 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163465 RX=608 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163411 RX=617 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163351 RX=626 ERR=0 AGE_ms=205 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=636 ERR=0 AGE_ms=193 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163417 RX=645 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163421 RX=654 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163372 RX=663 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=671 ERR=0 AGE_ms=160 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=680 ERR=0 AGE_ms=154 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163383 RX=690 ERR=0 AGE_ms=144 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163373 RX=699 ERR=0 AGE_ms=137 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163372 RX=709 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163394 RX=718 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163416 RX=727 ERR=0 AGE_ms=200 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163410 RX=736 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=745 ERR=0 AGE_ms=182 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163382 RX=754 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163422 RX=762 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163461 RX=771 ERR=0 AGE_ms=153 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163393 RX=781 ERR=0 AGE_ms=144 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163325 RX=790 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163389 RX=800 ERR=0 AGE_ms=127 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163368 RX=809 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163333 RX=818 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163367 RX=828 ERR=0 AGE_ms=195 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163355 RX=837 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=846 ERR=0 AGE_ms=178 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163375 RX=855 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163432 RX=863 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163373 RX=872 ERR=0 AGE_ms=153 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163410 RX=882 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163332 RX=891 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163348 RX=901 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=910 ERR=0 AGE_ms=213 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163361 RX=919 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163323 RX=929 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163345 RX=938 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163387 RX=947 ERR=0 AGE_ms=179 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163430 RX=956 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=964 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163314 RX=973 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163359 RX=983 ERR=0 AGE_ms=143 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163341 RX=992 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163360 RX=1001 ERR=0 AGE_ms=217 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163436 RX=1010 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163430 RX=1020 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163304 RX=1030 ERR=0 AGE_ms=193 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163405 RX=1039 ERR=0 AGE_ms=186 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163458 RX=1048 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163419 RX=1057 ERR=0 AGE_ms=172 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163374 RX=1065 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163386 RX=1074 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163355 RX=1084 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163400 RX=1094 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163350 RX=1103 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163387 RX=1113 ERR=0 AGE_ms=127 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163416 RX=1122 ERR=0 AGE_ms=208 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163336 RX=1131 ERR=0 AGE_ms=200 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163413 RX=1141 ERR=0 AGE_ms=193 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=1150 ERR=0 AGE_ms=183 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163426 RX=1159 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163379 RX=1167 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163326 RX=1176 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163339 RX=1186 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163493 RX=1195 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163368 RX=1204 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163441 RX=1214 ERR=0 AGE_ms=127 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163331 RX=1223 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163355 RX=1232 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163434 RX=1241 ERR=0 AGE_ms=191 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163392 RX=1250 ERR=0 AGE_ms=183 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163420 RX=1259 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=1267 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=1276 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163337 RX=1286 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163313 RX=1295 ERR=0 AGE_ms=136 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163354 RX=1305 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163359 RX=1314 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163329 RX=1323 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163387 RX=1332 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=1341 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163465 RX=1350 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163398 RX=1358 ERR=0 AGE_ms=162 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163341 RX=1367 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163337 RX=1377 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163377 RX=1387 ERR=0 AGE_ms=143 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163435 RX=1396 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163287 RX=1405 ERR=0 AGE_ms=217 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163403 RX=1414 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163350 RX=1424 ERR=0 AGE_ms=196 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163351 RX=1433 ERR=0 AGE_ms=190 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163298 RX=1442 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163346 RX=1451 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163400 RX=1459 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=1468 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163338 RX=1478 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=1487 ERR=0 AGE_ms=138 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163334 RX=1497 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163327 RX=1506 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=1515 ERR=0 AGE_ms=200 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163377 RX=1525 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163367 RX=1534 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163408 RX=1543 ERR=0 AGE_ms=172 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163437 RX=1551 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163420 RX=1560 ERR=0 AGE_ms=154 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163493 RX=1570 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163416 RX=1579 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163358 RX=1589 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163422 RX=1598 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163336 RX=1607 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163347 RX=1617 ERR=0 AGE_ms=196 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163385 RX=1626 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163312 RX=1635 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163410 RX=1644 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163362 RX=1652 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=1661 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=1671 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=1680 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163431 RX=1690 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=1699 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=1708 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163432 RX=1717 ERR=0 AGE_ms=186 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163372 RX=1726 ERR=0 AGE_ms=178 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163352 RX=1735 ERR=0 AGE_ms=169 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163425 RX=1743 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163383 RX=1752 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163445 RX=1762 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163403 RX=1772 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=1781 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163469 RX=1790 ERR=0 AGE_ms=217 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163382 RX=1799 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163355 RX=1808 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163436 RX=1817 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163386 RX=1826 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163376 RX=1835 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163485 RX=1843 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163385 RX=1852 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163423 RX=1862 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163329 RX=1871 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=1881 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=1890 ERR=0 AGE_ms=214 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163353 RX=1899 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163407 RX=1909 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163388 RX=1918 ERR=0 AGE_ms=188 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=1927 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163389 RX=1936 ERR=0 AGE_ms=174 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163449 RX=1945 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163397 RX=1953 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163408 RX=1963 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163432 RX=1973 ERR=0 AGE_ms=143 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163422 RX=1982 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163393 RX=1992 ERR=0 AGE_ms=125 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163424 RX=2001 ERR=0 AGE_ms=212 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163372 RX=2010 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163295 RX=2020 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163423 RX=2029 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163407 RX=2038 ERR=0 AGE_ms=177 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163335 RX=2047 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163423 RX=2055 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163400 RX=2065 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=2074 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163425 RX=2083 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163338 RX=2092 ERR=0 AGE_ms=214 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163303 RX=2101 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163374 RX=2111 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=2120 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=2129 ERR=0 AGE_ms=183 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163368 RX=2138 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163398 RX=2146 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=2155 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163310 RX=2165 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=2175 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163383 RX=2184 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163346 RX=2193 ERR=0 AGE_ms=217 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163314 RX=2202 ERR=0 AGE_ms=208 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163385 RX=2211 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163359 RX=2220 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=2229 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=2238 ERR=0 AGE_ms=170 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163314 RX=2246 ERR=0 AGE_ms=160 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163427 RX=2255 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163331 RX=2265 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163375 RX=2274 ERR=0 AGE_ms=137 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163417 RX=2284 ERR=0 AGE_ms=126 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163344 RX=2293 ERR=0 AGE_ms=212 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163464 RX=2302 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163290 RX=2312 ERR=0 AGE_ms=195 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163353 RX=2321 ERR=0 AGE_ms=183 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163362 RX=2330 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163375 RX=2339 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=2347 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163392 RX=2357 ERR=0 AGE_ms=148 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=2366 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163410 RX=2376 ERR=0 AGE_ms=130 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163385 RX=2385 ERR=0 AGE_ms=215 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163457 RX=2394 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163323 RX=2404 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163469 RX=2413 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=2422 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163388 RX=2431 ERR=0 AGE_ms=170 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163394 RX=2439 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163437 RX=2448 ERR=0 AGE_ms=154 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=2458 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163414 RX=2467 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163360 RX=2477 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163398 RX=2486 ERR=0 AGE_ms=212 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163324 RX=2495 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=2505 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163460 RX=2514 ERR=0 AGE_ms=181 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163374 RX=2523 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=2531 ERR=0 AGE_ms=162 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=2540 ERR=0 AGE_ms=153 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=2550 ERR=0 AGE_ms=144 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163449 RX=2559 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=2569 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163393 RX=2578 ERR=0 AGE_ms=212 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163369 RX=2587 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163453 RX=2597 ERR=0 AGE_ms=195 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163455 RX=2606 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163424 RX=2615 ERR=0 AGE_ms=179 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163321 RX=2624 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163379 RX=2632 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=2641 ERR=0 AGE_ms=154 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163429 RX=2651 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=2660 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163403 RX=2670 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=2679 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163335 RX=2688 ERR=0 AGE_ms=205 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163437 RX=2698 ERR=0 AGE_ms=193 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163407 RX=2707 ERR=0 AGE_ms=185 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163354 RX=2716 ERR=0 AGE_ms=172 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163389 RX=2724 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=2733 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163401 RX=2743 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163437 RX=2753 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163354 RX=2763 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163407 RX=2772 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163369 RX=2781 ERR=0 AGE_ms=205 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163367 RX=2791 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163363 RX=2800 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=2809 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163400 RX=2818 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=2826 ERR=0 AGE_ms=160 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163328 RX=2835 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163401 RX=2845 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163350 RX=2854 ERR=0 AGE_ms=137 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163379 RX=2864 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163467 RX=2873 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163419 RX=2882 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163412 RX=2892 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=2901 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163371 RX=2910 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163461 RX=2919 ERR=0 AGE_ms=172 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163420 RX=2927 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163376 RX=2936 ERR=0 AGE_ms=154 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163379 RX=2946 ERR=0 AGE_ms=145 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163394 RX=2955 ERR=0 AGE_ms=138 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163376 RX=2965 ERR=0 AGE_ms=127 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163358 RX=2974 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163308 RX=2983 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163446 RX=2993 ERR=0 AGE_ms=194 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163441 RX=3002 ERR=0 AGE_ms=185 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163488 RX=3011 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163415 RX=3019 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=3027 ERR=0 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163478 RX=3037 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163374 RX=3047 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163433 RX=3057 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163447 RX=3067 ERR=0 AGE_ms=125 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163353 RX=3076 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=3085 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163358 RX=3094 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163439 RX=3103 ERR=0 AGE_ms=182 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163407 RX=3112 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163368 RX=3120 ERR=0 AGE_ms=168 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163388 RX=3128 ERR=0 AGE_ms=159 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163351 RX=3137 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163468 RX=3146 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163365 RX=3155 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163372 RX=3164 ERR=0 AGE_ms=216 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163403 RX=3173 ERR=0 AGE_ms=210 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163353 RX=3182 ERR=0 AGE_ms=201 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163402 RX=3192 ERR=0 AGE_ms=194 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=3201 ERR=0 AGE_ms=185 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=3210 ERR=0 AGE_ms=177 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163457 RX=3219 ERR=0 AGE_ms=165 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163289 RX=3227 ERR=0 AGE_ms=157 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163344 RX=3237 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=3246 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163429 RX=3256 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163352 RX=3265 ERR=0 AGE_ms=213 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163348 RX=3274 ERR=0 AGE_ms=207 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163362 RX=3282 ERR=0 AGE_ms=199 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163415 RX=3291 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163352 RX=3300 ERR=0 AGE_ms=179 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163248 RX=3309 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163382 RX=3317 ERR=0 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=3326 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163335 RX=3336 ERR=0 AGE_ms=142 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163363 RX=3345 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=3355 ERR=0 AGE_ms=131 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=3364 ERR=0 AGE_ms=213 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163486 RX=3373 ERR=0 AGE_ms=202 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163402 RX=3383 ERR=0 AGE_ms=191 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163423 RX=3392 ERR=0 AGE_ms=183 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163433 RX=3401 ERR=0 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163439 RX=3409 ERR=0 AGE_ms=163 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163377 RX=3418 ERR=0 AGE_ms=153 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163409 RX=3428 ERR=0 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=3437 ERR=0 AGE_ms=138 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163381 RX=3447 ERR=0 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=3456 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163378 RX=3465 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163336 RX=3475 ERR=0 AGE_ms=189 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163424 RX=3484 ERR=0 AGE_ms=185 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=3493 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163318 RX=3501 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163465 RX=3509 ERR=0 AGE_ms=160 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163365 RX=3518 ERR=0 AGE_ms=153 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=3528 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163350 RX=3537 ERR=0 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=3546 ERR=0 AGE_ms=213 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163388 RX=3555 ERR=0 AGE_ms=206 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=3564 ERR=0 AGE_ms=195 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163458 RX=3573 ERR=0 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=3582 ERR=0 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=3591 ERR=0 AGE_ms=173 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163406 RX=3599 ERR=0 AGE_ms=168 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163414 RX=3607 ERR=0 AGE_ms=159 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163399 RX=3616 ERR=0 AGE_ms=149 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163415 RX=3625 ERR=0 AGE_ms=141 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163441 RX=3634 ERR=0 AGE_ms=130 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163344 RX=3643 ERR=0 AGE_ms=215 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163413 RX=3652 ERR=0 AGE_ms=203 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163386 RX=3662 ERR=0 AGE_ms=197 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163386 RX=3671 ERR=0 AGE_ms=192 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163439 RX=3680 ERR=0 AGE_ms=185 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163426 RX=3689 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163403 RX=3698 ERR=0 AGE_ms=169 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163507 RX=3706 ERR=0 AGE_ms=160 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163437 RX=3715 ERR=0 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163398 RX=3725 ERR=0 AGE_ms=140 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163383 RX=3734 ERR=0 AGE_ms=135 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163404 RX=3744 ERR=0 AGE_ms=127 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163433 RX=3753 ERR=0 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163391 RX=3762 ERR=0 AGE_ms=202 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163359 RX=3771 ERR=0 AGE_ms=190 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163480 RX=3780 ERR=0 AGE_ms=182 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=3789 ERR=0 AGE_ms=175 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163445 RX=3797 ERR=0 AGE_ms=167 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=LINK_ERR RAW=-163444 RX=3803 ERR=1 AGE_ms=432 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163400 RX=3813 ERR=1 AGE_ms=151 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163414 RX=3823 ERR=1 AGE_ms=143 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163449 RX=3832 ERR=1 AGE_ms=138 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163419 RX=3842 ERR=1 AGE_ms=129 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163395 RX=3851 ERR=1 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163379 RX=3860 ERR=1 AGE_ms=205 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163426 RX=3870 ERR=1 AGE_ms=193 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163393 RX=3879 ERR=1 AGE_ms=187 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163434 RX=3888 ERR=1 AGE_ms=180 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163384 RX=3897 ERR=1 AGE_ms=171 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=3905 ERR=1 AGE_ms=161 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163418 RX=3914 ERR=1 AGE_ms=155 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163325 RX=3924 ERR=1 AGE_ms=148 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# HX_DIAG_FROZEN schema=2 session=A1C20320 slots=2 all_frozen=1 any_reason=1 link_reason=1; HX_DIAG DUMP retained; wait END_HX_CAPTURE
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163446 RX=3933 ERR=1 AGE_ms=136 ADXL=OK AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# BEGIN_HX_CAPTURE schema=2 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 slots=2 profile=DUAL600_LINK_LOW250MS output_blocks_polling=1
+# BEGIN_HX_DIAG schema=2 slot=ANY trigger_mask=7 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 rows=256 crc=CRC32_ISO_HDLC_19_LE_U32 computed_on_export=1 output_blocks_polling=1
+# HX_DIAG schema=2 slot=ANY trigger_mask=7 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 mode=FROZEN freeze_reason=1 records=256 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=1
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=516311 window_us=600000000 trigger_us=358539689 freeze_us=372619617 trigger_seq=3277 trigger_flags=4 pre=127 post=128 post_target=128 post_complete=1
+# HX_DIAG_COUNTS scope=frozen attempts=3405 pre_overwritten=3149 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+kind,seq,start_us,end_us,attempt_gap_us,last_accept_ms_before,bits24,raw,rx_before,rx_after,err_before,err_after,flags,cal_count_after,phase_after,cal_mode_after,accepted,dout_after25,pulses_issued,context_flags,crc32
+HXRD,3150,344552425,344552617,67938,344484,0xFD8154,-163500,3149,3150,0,0,0,0,0,0,1,1,25,3,0xBD536A3C
+HXRD,3151,344736483,344736681,184058,344552,0xFD8190,-163440,3150,3151,0,0,0,0,0,0,1,1,25,3,0x84848F4F
+HXRD,3152,344828425,344828617,91942,344736,0xFD8183,-163453,3151,3152,0,0,0,0,0,0,1,1,25,3,0x1CE93107
+HXRD,3153,344986483,344986681,158058,344828,0xFD8178,-163464,3152,3153,0,0,0,0,0,0,1,1,25,3,0x0CCDAAD0
+HXRD,3154,345015425,345015617,28942,344986,0xFD81DF,-163361,3153,3154,0,0,0,0,0,0,1,1,25,3,0xB9965133
+HXRD,3155,345105425,345105613,90000,345015,0xFD81DB,-163365,3154,3155,0,0,0,0,0,0,1,1,25,3,0x4DAC0B1F
+HXRD,3156,345260503,345260713,155078,345105,0xFD81A3,-163421,3155,3156,0,0,0,0,0,0,1,1,25,3,0x6DE06E75
+HXRD,3157,345291425,345291613,30922,345260,0xFD81E9,-163351,3156,3157,0,0,0,0,0,0,1,1,25,3,0xC78D87AB
+HXRD,3158,345489487,345489689,198062,345291,0xFD81DC,-163364,3157,3158,0,0,0,0,0,0,1,1,25,3,0xE1322E92
+HXRD,3159,345567425,345567617,77938,345489,0xFD81E5,-163355,3158,3159,0,0,0,0,0,0,1,1,25,3,0x8592F525
+HXRD,3160,345739483,345739681,172058,345567,0xFD81E5,-163355,3159,3160,0,0,0,0,0,0,1,1,25,3,0xD3F4F6F0
+HXRD,3161,345755429,345755620,15946,345739,0xFD819E,-163426,3160,3161,0,0,0,0,0,0,1,1,25,3,0x9054DBD0
+HXRD,3162,345843438,345843624,88009,345755,0xFD819D,-163427,3161,3162,0,0,0,0,0,0,1,1,25,3,0x37DDCA12
+HXRD,3163,345989483,345989681,146045,345843,0xFD81AF,-163409,3162,3163,0,0,0,0,0,0,1,1,25,3,0x309945D8
+HXRD,3164,346025439,346025631,35956,345989,0xFD81D4,-163372,3163,3164,0,0,0,0,0,0,1,1,25,3,0xDE480475
+HXRD,3165,346265503,346265713,240064,346025,0xFD8192,-163438,3164,3165,0,0,0,0,0,0,1,1,25,3,0x20BBF69C
+HXRD,3166,346301425,346301613,35922,346265,0xFD81C6,-163386,3165,3166,0,0,0,0,0,0,1,1,25,3,0x9B082C85
+HXRD,3167,346493487,346493689,192062,346301,0xFD8197,-163433,3166,3167,0,0,0,0,0,0,1,1,25,3,0xF8486AAD
+HXRD,3168,346578425,346578617,84938,346493,0xFD8187,-163449,3167,3168,0,0,0,0,0,0,1,1,25,3,0x5EE7D737
+HXRD,3169,346743483,346743681,165058,346578,0xFD818E,-163442,3168,3169,0,0,0,0,0,0,1,1,25,3,0xEA49B797
+HXRD,3170,346763425,346763617,19942,346743,0xFD81BF,-163393,3169,3170,0,0,0,0,0,0,1,1,25,3,0x860BC987
+HXRD,3171,346854425,346854613,91000,346763,0xFD819D,-163427,3170,3171,0,0,0,0,0,0,1,1,25,3,0x4D14C766
+HXRD,3172,346996483,346996681,142058,346854,0xFD8198,-163432,3171,3172,0,0,0,0,0,0,1,1,25,3,0x0C36C5E8
+HXRD,3173,347038425,347038617,41942,346996,0xFD81B5,-163403,3172,3173,0,0,0,0,0,0,1,1,25,3,0x72DA14BE
+HXRD,3174,347272503,347272713,234078,347038,0xFD8188,-163448,3173,3174,0,0,0,0,0,0,1,1,25,3,0x846BBCF1
+HXRD,3175,347316425,347316613,43922,347272,0xFD81A3,-163421,3174,3175,0,0,0,0,0,0,1,1,25,3,0xBFC44FAF
+HXRD,3176,347500487,347500689,184062,347316,0xFD81BF,-163393,3175,3176,0,0,0,0,0,0,1,1,25,3,0xA78A36C1
+HXRD,3177,347589425,347589617,88938,347500,0xFD819C,-163428,3176,3177,0,0,0,0,0,0,1,1,25,3,0xBCFEBCD0
+HXRD,3178,347750483,347750681,161058,347589,0xFD817C,-163460,3177,3178,0,0,0,0,0,0,1,1,25,3,0x575CEEB8
+HXRD,3179,347774425,347774617,23942,347750,0xFD8192,-163438,3178,3179,0,0,0,0,0,0,1,1,25,3,0x4D8EE660
+HXRD,3180,347868439,347868628,94014,347774,0xFD818A,-163446,3179,3180,0,0,0,0,0,0,1,1,25,3,0x3ADE2B6D
+HXRD,3181,348003483,348003681,135044,347868,0xFD81A3,-163421,3180,3181,0,0,0,0,0,0,1,1,25,3,0x6F78A6F4
+HXRD,3182,348051425,348051617,47942,348003,0xFD81E7,-163353,3181,3182,0,0,0,0,0,0,1,1,25,3,0x6F4E81ED
+HXRD,3183,348276503,348276713,225078,348051,0xFD8173,-163469,3182,3183,0,0,0,0,0,0,1,1,25,3,0x23B35474
+HXRD,3184,348327425,348327613,50922,348276,0xFD8199,-163431,3183,3184,0,0,0,0,0,0,1,1,25,3,0xAE0EA45C
+HXRD,3185,348503487,348503689,176062,348327,0xFD81B3,-163405,3184,3185,0,0,0,0,0,0,1,1,25,3,0xC1A47298
+HXRD,3186,348519429,348519620,15942,348503,0xFD81A8,-163416,3185,3186,0,0,0,0,0,0,1,1,25,3,0x227BA460
+HXRD,3187,348602425,348602613,82996,348519,0xFD81A1,-163423,3186,3187,0,0,0,0,0,0,1,1,25,3,0xC484F62B
+HXRD,3188,348756483,348756681,154058,348602,0xFD81B8,-163400,3187,3188,0,0,0,0,0,0,1,1,25,3,0xF7601588
+HXRD,3189,348786425,348786617,29942,348756,0xFD8171,-163471,3188,3189,0,0,0,0,0,0,1,1,25,3,0x7F9F6F99
+HXRD,3190,348879425,348879613,93000,348786,0xFD8186,-163450,3189,3190,0,0,0,0,0,0,1,1,25,3,0x11C84A90
+HXRD,3191,349005811,349006011,126386,348879,0xFD81A0,-163424,3190,3191,0,0,0,0,0,0,1,1,25,3,0x4270AEFB
+HXRD,3192,349062425,349062617,56614,349006,0xFD81B6,-163402,3191,3192,0,0,0,0,0,0,1,1,25,3,0xF1783BEE
+HXRD,3193,349280503,349280713,218078,349062,0xFD81A9,-163415,3192,3193,0,0,0,0,0,0,1,1,25,3,0x130E2161
+HXRD,3194,349339425,349339613,58922,349280,0xFD81A3,-163421,3193,3194,0,0,0,0,0,0,1,1,25,3,0x89668A44
+HXRD,3195,349508487,349508689,169062,349339,0xFD818D,-163443,3194,3195,0,0,0,0,0,0,1,1,25,3,0x9EB1061E
+HXRD,3196,349524429,349524620,15942,349508,0xFD818A,-163446,3195,3196,0,0,0,0,0,0,1,1,25,3,0x92B65745
+HXRD,3197,349617425,349617613,92996,349524,0xFD81A9,-163415,3196,3197,0,0,0,0,0,0,1,1,25,3,0x5B2719A3
+HXRD,3198,349758483,349758681,141058,349617,0xFD81D2,-163374,3197,3198,0,0,0,0,0,0,1,1,25,3,0x31A16E49
+HXRD,3199,349799425,349799617,40942,349758,0xFD81D4,-163372,3198,3199,0,0,0,0,0,0,1,1,25,3,0x7D1FF12B
+HXRD,3200,350007805,350008002,208380,349799,0xFD8170,-163472,3199,3200,0,0,0,0,0,0,1,1,25,3,0x228212AF
+HXRD,3201,350075425,350075617,67620,350008,0xFD81B4,-163404,3200,3201,0,0,0,0,0,0,1,1,25,3,0x6D160709
+HXRD,3202,350284503,350284713,209078,350075,0xFD81AB,-163413,3201,3202,0,0,0,0,0,0,1,1,25,3,0xDD723349
+HXRD,3203,350350437,350350625,65934,350284,0xFD81BB,-163397,3202,3203,0,0,0,0,0,0,1,1,25,3,0xCB34D173
+HXRD,3204,350511487,350511689,161050,350350,0xFD81D8,-163368,3203,3204,0,0,0,0,0,0,1,1,25,3,0xC28D0727
+HXRD,3205,350534425,350534617,22938,350511,0xFD81BF,-163393,3204,3205,0,0,0,0,0,0,1,1,25,3,0x96035F8D
+HXRD,3206,350626425,350626613,92000,350534,0xFD81A8,-163416,3205,3206,0,0,0,0,0,0,1,1,25,3,0xD05C18A5
+HXRD,3207,350762483,350762681,136058,350626,0xFD81C8,-163384,3206,3207,0,0,0,0,0,0,1,1,25,3,0xAE4350E6
+HXRD,3208,350810425,350810617,47942,350762,0xFD81C6,-163386,3207,3208,0,0,0,0,0,0,1,1,25,3,0xDE0A4840
+HXRD,3209,351014483,351014681,204058,350810,0xFD81D7,-163369,3208,3209,0,0,0,0,0,0,1,1,25,3,0xB077DBE7
+HXRD,3210,351086425,351086617,71942,351014,0xFD81AF,-163409,3209,3210,0,0,0,0,0,0,1,1,25,3,0xC0F71844
+HXRD,3211,351287503,351287713,201078,351086,0xFD81C9,-163383,3210,3211,0,0,0,0,0,0,1,1,25,3,0x8E10FE6F
+HXRD,3212,351362425,351362613,74922,351287,0xFD81A4,-163420,3211,3212,0,0,0,0,0,0,1,1,25,3,0x8ADC176D
+HXRD,3213,351514487,351514689,152062,351362,0xFD818C,-163444,3212,3213,0,0,0,0,0,0,1,1,25,3,0xABE30A2D
+HXRD,3214,351548425,351548617,33938,351514,0xFD81C4,-163388,3213,3214,0,0,0,0,0,0,1,1,25,3,0x5509030A
+HXRD,3215,351638425,351638613,90000,351548,0xFD81CC,-163380,3214,3215,0,0,0,0,0,0,1,1,25,3,0x338BA13B
+HXRD,3216,351764483,351764681,126058,351638,0xFD81D4,-163372,3215,3216,0,0,0,0,0,0,1,1,25,3,0xFA0F785E
+HXRD,3217,351823425,351823617,58942,351764,0xFD81C1,-163391,3216,3217,0,0,0,0,0,0,1,1,25,3,0x1122F9A7
+HXRD,3218,352015483,352015681,192058,351823,0xFD816F,-163473,3217,3218,0,0,0,0,0,0,1,1,25,3,0x11344FA9
+HXRD,3219,352100425,352100617,84942,352015,0xFD817F,-163457,3218,3219,0,0,0,0,0,0,1,1,25,3,0xEE392697
+HXRD,3220,352289503,352289713,189078,352100,0xFD81D8,-163368,3219,3220,0,0,0,0,0,0,1,1,25,3,0x27EDFFBA
+HXRD,3221,352374437,352374634,84934,352289,0xFD81CC,-163380,3220,3221,0,0,0,0,0,0,1,1,25,3,0x0AA1871F
+HXRD,3222,352517487,352517689,143050,352374,0xFD81B5,-163403,3221,3222,0,0,0,0,0,0,1,1,25,3,0x936EDFE9
+HXRD,3223,352560425,352560617,42938,352517,0xFD81AA,-163414,3222,3223,0,0,0,0,0,0,1,1,25,3,0x53B0A54C
+HXRD,3224,352768483,352768681,208058,352560,0xFD81C7,-163385,3223,3224,0,0,0,0,0,0,1,1,25,3,0xAFBAC544
+HXRD,3225,352835425,352835617,66942,352768,0xFD81BB,-163397,3224,3225,0,0,0,0,0,0,1,1,25,3,0x4ABE2E39
+HXRD,3226,353019483,353019681,184058,352835,0xFD81DE,-163362,3225,3226,0,0,0,0,0,0,1,1,25,3,0x095D57B5
+HXRD,3227,353111425,353111617,91942,353019,0xFD8227,-163289,3226,3227,0,0,0,0,0,0,1,1,25,3,0x8DD002EC
+HXRD,3228,353292503,353292713,181078,353111,0xFD81CB,-163381,3227,3228,0,0,0,0,0,0,1,1,25,3,0x5E4D1A1D
+HXRD,3229,353311429,353311616,18926,353292,0xFD8197,-163433,3228,3229,0,0,0,0,0,0,1,1,25,3,0xB5B176BE
+HXRD,3230,353388425,353388613,76996,353311,0xFD819C,-163428,3229,3230,0,0,0,0,0,0,1,1,25,3,0xC86A862F
+HXRD,3231,353519487,353519689,131062,353388,0xFD8166,-163482,3230,3231,0,0,0,0,0,0,1,1,25,3,0x60E43943
+HXRD,3232,353573425,353573617,53938,353519,0xFD819E,-163426,3231,3232,0,0,0,0,0,0,1,1,25,3,0x4AF7B70C
+HXRD,3233,353771483,353771681,198058,353573,0xFD81BB,-163397,3232,3233,0,0,0,0,0,0,1,1,25,3,0xED54F90A
+HXRD,3234,353849425,353849617,77942,353771,0xFD81BA,-163398,3233,3234,0,0,0,0,0,0,1,1,25,3,0x8A273EF8
+HXRD,3235,354020483,354020681,171058,353849,0xFD81E7,-163353,3234,3235,0,0,0,0,0,0,1,1,25,3,0xEA4803E2
+HXRD,3236,354036441,354036632,15958,354020,0xFD81D2,-163374,3235,3236,0,0,0,0,0,0,1,1,25,3,0x2BAA33DD
+HXRD,3237,354124425,354124613,87984,354036,0xFD81F0,-163344,3236,3237,0,0,0,0,0,0,1,1,25,3,0x241C75C0
+HXRD,3238,354295503,354295713,171078,354124,0xFD81EF,-163345,3237,3238,0,0,0,0,0,0,1,1,25,3,0x647D1F83
+HXRD,3239,354313429,354313616,17926,354295,0xFD81B2,-163406,3238,3239,0,0,0,0,0,0,1,1,25,3,0x005A52C3
+HXRD,3240,354525516,354525717,212087,354313,0xFD816D,-163475,3239,3240,0,0,0,0,0,0,1,1,25,3,0x3478EA4B
+HXRD,3241,354583425,354583617,57909,354525,0xFD81A4,-163420,3240,3241,0,0,0,0,0,0,1,1,25,3,0xF1C01F2B
+HXRD,3242,354775483,354775681,192058,354583,0xFD81DD,-163363,3241,3242,0,0,0,0,0,0,1,1,25,3,0x376C18F3
+HXRD,3243,354860425,354860617,84942,354775,0xFD81C7,-163385,3242,3243,0,0,0,0,0,0,1,1,25,3,0xCE1CE9F4
+HXRD,3244,355026483,355026681,166058,354860,0xFD81CE,-163378,3243,3244,0,0,0,0,0,0,1,1,25,3,0xE809D828
+HXRD,3245,355046425,355046617,19942,355026,0xFD8171,-163471,3244,3245,0,0,0,0,0,0,1,1,25,3,0xF3AB0823
+HXRD,3246,355135425,355135613,89000,355046,0xFD81B4,-163404,3245,3246,0,0,0,0,0,0,1,1,25,3,0xE5F3F0A3
+HXRD,3247,355300503,355300713,165078,355135,0xFD81C9,-163383,3246,3247,0,0,0,0,0,0,1,1,25,3,0x626DD5D4
+HXRD,3248,355323425,355323613,22922,355300,0xFD81A7,-163417,3247,3248,0,0,0,0,0,0,1,1,25,3,0xF26597C3
+HXRD,3249,355527487,355527689,204062,355323,0xFD81B8,-163400,3248,3249,0,0,0,0,0,0,1,1,25,3,0x85D098DC
+HXRD,3250,355598425,355598617,70938,355527,0xFD8197,-163433,3249,3250,0,0,0,0,0,0,1,1,25,3,0x28A44A0D
+HXRD,3251,355778483,355778681,180058,355598,0xFD819E,-163426,3250,3251,0,0,0,0,0,0,1,1,25,3,0x23CC0FAD
+HXRD,3252,355794429,355794620,15946,355778,0xFD819B,-163429,3251,3252,0,0,0,0,0,0,1,1,25,3,0xC03271B4
+HXRD,3253,355871425,355871613,76996,355794,0xFD81AA,-163414,3252,3253,0,0,0,0,0,0,1,1,25,3,0x7B28E715
+HXRD,3254,356030483,356030681,159058,355871,0xFD81CF,-163377,3253,3254,0,0,0,0,0,0,1,1,25,3,0x69605AA6
+HXRD,3255,356056425,356056617,25942,356030,0xFD81E9,-163351,3254,3255,0,0,0,0,0,0,1,1,25,3,0xCF17FE47
+HXRD,3256,356150425,356150613,94000,356056,0xFD819B,-163429,3255,3256,0,0,0,0,0,0,1,1,25,3,0x55A98A68
+HXRD,3257,356303503,356303713,153078,356150,0xFD819A,-163430,3256,3257,0,0,0,0,0,0,1,1,25,3,0x547D75EF
+HXRD,3258,356332425,356332613,28922,356303,0xFD81B8,-163400,3257,3258,0,0,0,0,0,0,1,1,25,3,0x89375DDA
+HXRD,3259,356530487,356530689,198062,356332,0xFD81AC,-163412,3258,3259,0,0,0,0,0,0,1,1,25,3,0xA16198B8
+HXRD,3260,356608425,356608617,77938,356530,0xFD817C,-163460,3259,3260,0,0,0,0,0,0,1,1,25,3,0x4B497F1B
+HXRD,3261,356782483,356782681,174058,356608,0xFD81A2,-163422,3260,3261,0,0,0,0,0,0,1,1,25,3,0xA7670514
+HXRD,3262,356798429,356798620,15946,356782,0xFD81D0,-163376,3261,3262,0,0,0,0,0,0,1,1,25,3,0x56092145
+HXRD,3263,356883427,356883615,84998,356798,0xFD81E9,-163351,3262,3263,0,0,0,0,0,0,1,1,25,3,0xE4DEBB47
+HXRD,3264,357031811,357032009,148384,356883,0xFD8205,-163323,3263,3264,0,0,0,0,0,0,1,1,25,3,0xBEFB5829
+HXRD,3265,357068425,357068617,36614,357032,0xFD81E8,-163352,3264,3265,0,0,0,0,0,0,1,1,25,3,0x23F4ED36
+HXRD,3266,357306503,357306713,238078,357068,0xFD81B8,-163400,3265,3266,0,0,0,0,0,0,1,1,25,3,0xA0428625
+HXRD,3267,357343425,357343613,36922,357306,0xFD81A5,-163419,3266,3267,0,0,0,0,0,0,1,1,25,3,0x70237412
+HXRD,3268,357536487,357536689,193062,357343,0xFD81D9,-163367,3267,3268,0,0,0,0,0,0,1,1,25,3,0xF7555D28
+HXRD,3269,357620425,357620617,83938,357536,0xFD8198,-163432,3268,3269,0,0,0,0,0,0,1,1,25,3,0x0C5BDFC2
+HXRD,3270,357787483,357787681,167058,357620,0xFD81B6,-163402,3269,3270,0,0,0,0,0,0,1,1,25,3,0x05C75CD9
+HXRD,3271,357808425,357808617,20942,357787,0xFD81C0,-163392,3270,3271,0,0,0,0,0,0,1,1,25,3,0x14BCF6C1
+HXRD,3272,357896425,357896613,88000,357808,0xFD81B9,-163399,3271,3272,0,0,0,0,0,0,1,1,25,3,0xB29F024C
+HXRD,3273,358037483,358037681,141058,357896,0xFD81DA,-163366,3272,3273,0,0,0,0,0,0,1,1,25,3,0x2ED67C38
+HXRD,3274,358081425,358081617,43942,358037,0xFD81EC,-163348,3273,3274,0,0,0,0,0,0,1,1,25,3,0xCA2F6327
+HXRD,3275,358312503,358312713,231078,358081,0xFD8194,-163436,3274,3275,0,0,0,0,0,0,1,1,25,3,0x925EE990
+HXRD,3276,358357425,358357613,44922,358312,0xFD8199,-163431,3275,3276,0,0,0,0,0,0,1,1,25,3,0x7CC3CFDC
+HXRD,3277,358539487,358539689,182062,358357,0xFFFEC0,-320,3276,3277,0,0,4,0,0,0,1,1,25,3,0x32C7603F
+HXRD,3278,358789483,358789684,249996,358539,0xFD81D8,-163368,3277,3278,0,0,4,0,0,0,1,1,25,3,0x243A4526
+HXRD,3279,358817425,358817613,27942,358789,0xFD81FD,-163331,3278,3279,0,0,0,0,0,0,1,1,25,3,0xE8A04DE4
+HXRD,3280,358908425,358908613,91000,358817,0xFD81B1,-163407,3279,3280,0,0,0,0,0,0,1,1,25,3,0x401A4B0E
+HXRD,3281,359042483,359042681,134058,358908,0xFD819E,-163426,3280,3281,0,0,0,0,0,0,1,1,25,3,0x6FC8CCCF
+HXRD,3282,359092425,359092617,49942,359042,0xFD81DE,-163362,3281,3282,0,0,0,0,0,0,1,1,25,3,0x80DF3CFB
+HXRD,3283,359315503,359315713,223078,359092,0xFD81A9,-163415,3282,3283,0,0,0,0,0,0,1,1,25,3,0x4333BF2A
+HXRD,3284,359368425,359368613,52922,359315,0xFD81D7,-163369,3283,3284,0,0,0,0,0,0,1,1,25,3,0x1E24411A
+HXRD,3285,359542556,359542778,174131,359368,0xFD81C5,-163387,3284,3285,0,0,0,0,0,0,1,1,25,3,0xB3B4F738
+HXRD,3286,359558429,359558620,15873,359542,0xFD8183,-163453,3285,3286,0,0,0,0,0,0,1,1,25,3,0x0B1FC426
+HXRD,3287,359645438,359645626,87009,359558,0xFD819A,-163430,3286,3287,0,0,0,0,0,0,1,1,25,3,0xEDD84FD1
+HXRD,3288,359794483,359794681,149045,359645,0xFD81EF,-163345,3287,3288,0,0,0,0,0,0,1,1,25,3,0x9BFD34D4
+HXRD,3289,359830425,359830617,35942,359794,0xFD81BC,-163396,3288,3289,0,0,0,0,0,0,1,1,25,3,0xA0E0F3D7
+HXRD,3290,360043483,360043681,213058,359830,0xFD81C5,-163387,3289,3290,0,0,0,0,0,0,1,1,25,3,0x75C04429
+HXRD,3291,360106425,360106617,62942,360043,0xFD81A9,-163415,3290,3291,0,0,0,0,0,0,1,1,25,3,0xF4A7530B
+HXRD,3292,360317503,360317713,211078,360106,0xFD818B,-163445,3291,3292,0,0,0,0,0,0,1,1,25,3,0x0D85BB4D
+HXRD,3293,360380425,360380613,62922,360317,0xFD81BB,-163397,3292,3293,0,0,0,0,0,0,1,1,25,3,0x09139CE6
+HXRD,3294,360544487,360544689,164062,360380,0xFD819F,-163425,3293,3294,0,0,0,0,0,0,1,1,25,3,0xAB721287
+HXRD,3295,360565425,360565617,20938,360544,0xFD8193,-163437,3294,3295,0,0,0,0,0,0,1,1,25,3,0x1001F365
+HXRD,3296,360656425,360656613,91000,360565,0xFD81B3,-163405,3295,3296,0,0,0,0,0,0,1,1,25,3,0x55B98DBF
+HXRD,3297,360794542,360794750,138117,360656,0xFD81AB,-163413,3296,3297,0,0,0,0,0,0,1,1,25,3,0xE5BEC310
+HXRD,3298,360840425,360840617,45883,360794,0xFD81BB,-163397,3297,3298,0,0,0,0,0,0,1,1,25,3,0x86DD81FF
+HXRD,3299,361046483,361046681,206058,360840,0xFD81DA,-163366,3298,3299,0,0,0,0,0,0,1,1,25,3,0x12C4E0FF
+HXRD,3300,361116425,361116617,69942,361046,0xFD81E8,-163352,3299,3300,0,0,0,0,0,0,1,1,25,3,0x4E0A9C7A
+HXRD,3301,361319503,361319713,203078,361116,0xFD8145,-163515,3300,3301,0,0,0,0,0,0,1,1,25,3,0x104EAB6E
+HXRD,3302,361392425,361392613,72922,361319,0xFD8185,-163451,3301,3302,0,0,0,0,0,0,1,1,25,3,0x5B281C10
+HXRD,3303,361546487,361546689,154062,361392,0xFD81F8,-163336,3302,3303,0,0,0,0,0,0,1,1,25,3,0x76B7DE26
+HXRD,3304,361578425,361578617,31938,361546,0xFD821E,-163298,3303,3304,0,0,0,0,0,0,1,1,25,3,0xA99CEB77
+HXRD,3305,361668425,361668613,90000,361578,0xFD81C6,-163386,3304,3305,0,0,0,0,0,0,1,1,25,3,0xBC30F7D1
+HXRD,3306,361798483,361798681,130058,361668,0xFD8187,-163449,3305,3306,0,0,0,0,0,0,1,1,25,3,0xE3232D42
+HXRD,3307,361854425,361854617,55942,361798,0xFD81D1,-163375,3306,3307,0,0,0,0,0,0,1,1,25,3,0x5E2BAFCF
+HXRD,3308,362048483,362048681,194058,361854,0xFD81FD,-163331,3307,3308,0,0,0,0,0,0,1,1,25,3,0x5B3EDCBD
+HXRD,3309,362131425,362131617,82942,362048,0xFD8250,-163248,3308,3309,0,0,0,0,0,0,1,1,25,3,0xBAF29D7C
+HXRD,3310,362322503,362322713,191078,362131,0xFD8178,-163464,3309,3310,0,0,0,0,0,0,1,1,25,3,0xDAD861E7
+HXRD,3311,362405425,362405613,82922,362322,0xFD8169,-163479,3310,3311,0,0,0,0,0,0,1,1,25,3,0x0310F39A
+HXRD,3312,362551487,362551689,146062,362405,0xFD81C0,-163392,3311,3312,0,0,0,0,0,0,1,1,25,3,0x5A2DB5A8
+HXRD,3313,362589425,362589617,37938,362551,0xFD81B3,-163405,3312,3313,0,0,0,0,0,0,1,1,25,3,0x04F37894
+HXRD,3314,362801483,362801681,212058,362589,0xFD819E,-163426,3313,3314,0,0,0,0,0,0,1,1,25,3,0x2670A715
+HXRD,3315,362864425,362864617,62942,362801,0xFD817C,-163460,3314,3315,0,0,0,0,0,0,1,1,25,3,0xBC71D1DC
+HXRD,3316,363052483,363052681,188058,362864,0xFD81BE,-163394,3315,3316,0,0,0,0,0,0,1,1,25,3,0x7C38ACFE
+HXRD,3317,363142425,363142617,89942,363052,0xFD81CA,-163382,3316,3317,0,0,0,0,0,0,1,1,25,3,0x8DD5D229
+HXRD,3318,363327503,363327713,185078,363142,0xFD81D6,-163370,3317,3318,0,0,0,0,0,0,1,1,25,3,0x58AC21CA
+HXRD,3319,363418425,363418613,90922,363327,0xFD81CF,-163377,3318,3319,0,0,0,0,0,0,1,1,25,3,0xF930CE70
+HXRD,3320,363554487,363554689,136062,363418,0xFD81CF,-163377,3319,3320,0,0,0,0,0,0,1,1,25,3,0x4C3F34EB
+HXRD,3321,363601425,363601617,46938,363554,0xFD81B8,-163400,3320,3321,0,0,0,0,0,0,1,1,25,3,0x7380752E
+HXRD,3322,363804483,363804681,203058,363601,0xFD81AB,-163413,3321,3322,0,0,0,0,0,0,1,1,25,3,0x7190083E
+HXRD,3323,363880425,363880617,75942,363804,0xFD81C2,-163390,3322,3323,0,0,0,0,0,0,1,1,25,3,0x729EA7BC
+HXRD,3324,364056483,364056681,176058,363880,0xFD81CE,-163378,3323,3324,0,0,0,0,0,0,1,1,25,3,0x567E2659
+HXRD,3325,364072429,364072620,15946,364056,0xFD81D1,-163375,3324,3325,0,0,0,0,0,0,1,1,25,3,0x41C5A30C
+HXRD,3326,364155425,364155613,82996,364072,0xFD81B2,-163406,3325,3326,0,0,0,0,0,0,1,1,25,3,0x3EEBFA44
+HXRD,3327,364330503,364330713,175078,364155,0xFD817D,-163459,3326,3327,0,0,0,0,0,0,1,1,25,3,0x93375C39
+HXRD,3328,364348429,364348616,17926,364330,0xFD818F,-163441,3327,3328,0,0,0,0,0,0,1,1,25,3,0x672A99D4
+HXRD,3329,364432427,364432615,83998,364348,0xFD818F,-163441,3328,3329,0,0,0,0,0,0,1,1,25,3,0xBF7B9515
+HXRD,3330,364558487,364558689,126060,364432,0xFD8185,-163451,3329,3330,0,0,0,0,0,0,1,1,25,3,0xE1FC220D
+HXRD,3331,364614425,364614617,55938,364558,0xFD819D,-163427,3330,3331,0,0,0,0,0,0,1,1,25,3,0x944BAB3D
+HXRD,3332,364810483,364810681,196058,364614,0xFD81C4,-163388,3331,3332,0,0,0,0,0,0,1,1,25,3,0x45F16948
+HXRD,3333,364890437,364890628,79954,364810,0xFD8192,-163438,3332,3333,0,0,0,0,0,0,1,1,25,3,0x96BAE7A5
+HXRD,3334,365058804,365059003,168367,364890,0xFD81C1,-163391,3333,3334,0,0,0,0,0,0,1,1,25,3,0x003DAD4A
+HXRD,3335,365074429,365074620,15625,365059,0xFD81FE,-163330,3334,3335,0,0,0,0,0,0,1,1,25,3,0x33F9EB4C
+HXRD,3336,365166425,365166613,91996,365074,0xFD81F9,-163335,3335,3336,0,0,0,0,0,0,1,1,25,3,0x79317891
+HXRD,3337,365333503,365333713,167078,365166,0xFD8202,-163326,3336,3337,0,0,0,0,0,0,1,1,25,3,0x97EC6E7C
+HXRD,3338,365351429,365351616,17926,365333,0xFD81EA,-163350,3337,3338,0,0,0,0,0,0,1,1,25,3,0x38209A6B
+HXRD,3339,365563487,365563689,212058,365351,0xFD8174,-163468,3338,3339,0,0,0,0,0,0,1,1,25,3,0x3026FBB6
+HXRD,3340,365625425,365625617,61938,365563,0xFD8199,-163431,3339,3340,0,0,0,0,0,0,1,1,25,3,0x8B46F7DF
+HXRD,3341,365816483,365816681,191058,365625,0xFD81D7,-163369,3340,3341,0,0,0,0,0,0,1,1,25,3,0x0B78F96D
+HXRD,3342,365904425,365904617,87942,365816,0xFD81A5,-163419,3341,3342,0,0,0,0,0,0,1,1,25,3,0x9BEE968B
+HXRD,3343,366065483,366065681,161058,365904,0xFD81B1,-163407,3342,3343,0,0,0,0,0,0,1,1,25,3,0x65D169BB
+HXRD,3344,366086425,366086617,20942,366065,0xFD81E7,-163353,3343,3344,0,0,0,0,0,0,1,1,25,3,0xF93DC221
+HXRD,3345,366180425,366180613,94000,366086,0xFD81DD,-163363,3344,3345,0,0,0,0,0,0,1,1,25,3,0xD0DDA8C2
+HXRD,3346,366339503,366339713,159078,366180,0xFD8196,-163434,3345,3346,0,0,0,0,0,0,1,1,25,3,0x98E4D627
+HXRD,3347,366362425,366362613,22922,366339,0xFD81AB,-163413,3346,3347,0,0,0,0,0,0,1,1,25,3,0x604BCA92
+HXRD,3348,366566487,366566689,204062,366362,0xFD8198,-163432,3347,3348,0,0,0,0,0,0,1,1,25,3,0xB9501A90
+HXRD,3349,366637425,366637617,70938,366566,0xFD81B1,-163407,3348,3349,0,0,0,0,0,0,1,1,25,3,0xC215C124
+HXRD,3350,366817483,366817681,180058,366637,0xFD81FA,-163334,3349,3350,0,0,0,0,0,0,1,1,25,3,0xCF984BE1
+HXRD,3351,366833429,366833620,15946,366817,0xFD81B3,-163405,3350,3351,0,0,0,0,0,0,1,1,25,3,0xC1F6629E
+HXRD,3352,366915435,366915622,82006,366833,0xFD818C,-163444,3351,3352,0,0,0,0,0,0,1,1,25,3,0x5B74F084
+HXRD,3353,367069483,367069681,154048,366915,0xFD81D0,-163376,3352,3353,0,0,0,0,0,0,1,1,25,3,0x70B8140F
+HXRD,3354,367099425,367099617,29942,367069,0xFD81D3,-163373,3353,3354,0,0,0,0,0,0,1,1,25,3,0x8B1DA4F2
+HXRD,3355,367190425,367190613,91000,367099,0xFD81CE,-163378,3354,3355,0,0,0,0,0,0,1,1,25,3,0xB56CDF97
+HXRD,3356,367345503,367345713,155078,367190,0xFD8210,-163312,3355,3356,0,0,0,0,0,0,1,1,25,3,0xFC10D3B0
+HXRD,3357,367375425,367375613,29922,367345,0xFD81F2,-163342,3356,3357,0,0,0,0,0,0,1,1,25,3,0xBE9A7EFB
+HXRD,3358,367572487,367572689,197062,367375,0xFD8181,-163455,3357,3358,0,0,0,0,0,0,1,1,25,3,0xA0B5E0F5
+HXRD,3359,367651425,367651617,78938,367572,0xFD818E,-163442,3358,3359,0,0,0,0,0,0,1,1,25,3,0x7C899388
+HXRD,3360,367822483,367822681,171058,367651,0xFD819B,-163429,3359,3360,0,0,0,0,0,0,1,1,25,3,0x0246282C
+HXRD,3361,367837435,367837626,14952,367822,0xFD81E3,-163357,3360,3361,0,0,0,0,0,0,1,1,25,3,0xEAF6E3F9
+HXRD,3362,367926425,367926613,88990,367837,0xFD81D0,-163376,3361,3362,0,0,0,0,0,0,1,1,25,3,0x3CFA879C
+HXRD,3363,368075483,368075681,149058,367926,0xFD819D,-163427,3362,3363,0,0,0,0,0,0,1,1,25,3,0xD8F63F4F
+HXRD,3364,368111425,368111617,35942,368075,0xFD81BD,-163395,3363,3364,0,0,0,0,0,0,1,1,25,3,0xDC190748
+HXRD,3365,368348583,368348814,237158,368111,0xFD81CA,-163382,3364,3365,0,0,0,0,0,0,1,1,25,3,0xFB16222E
+HXRD,3366,368387425,368387613,38842,368348,0xFD8203,-163325,3365,3366,0,0,0,0,0,0,1,1,25,3,0x9495562F
+HXRD,3367,368575521,368575734,188096,368387,0xFD81F2,-163342,3366,3367,0,0,0,0,0,0,1,1,25,3,0xE72DC103
+HXRD,3368,368663425,368663617,87904,368575,0xFD81E4,-163356,3367,3368,0,0,0,0,0,0,1,1,25,3,0xA69E1FF0
+HXRD,3369,368825483,368825681,162058,368663,0xFD8170,-163472,3368,3369,0,0,0,0,0,0,1,1,25,3,0x3724AC80
+HXRD,3370,368846425,368846617,20942,368825,0xFD8186,-163450,3369,3370,0,0,0,0,0,0,1,1,25,3,0xAE9E9FA6
+HXRD,3371,368938425,368938613,92000,368846,0xFD81CD,-163379,3370,3371,0,0,0,0,0,0,1,1,25,3,0xEC62C43D
+HXRD,3372,369076483,369076681,138058,368938,0xFD81D2,-163374,3371,3372,0,0,0,0,0,0,1,1,25,3,0x003D711D
+HXRD,3373,369123425,369123617,46942,369076,0xFD8162,-163486,3372,3373,0,0,0,0,0,0,1,1,25,3,0x75B83542
+HXRD,3374,369349503,369349713,226078,369123,0xFD81DB,-163365,3373,3374,0,0,0,0,0,0,1,1,25,3,0xBEA6B7B2
+HXRD,3375,369399425,369399613,49922,369349,0xFD8188,-163448,3374,3375,0,0,0,0,0,0,1,1,25,3,0x62105EE4
+HXRD,3376,369576487,369576689,177062,369399,0xFD81AC,-163412,3375,3376,0,0,0,0,0,0,1,1,25,3,0xD7C90516
+HXRD,3377,369592429,369592620,15942,369576,0xFD81B0,-163408,3376,3377,0,0,0,0,0,0,1,1,25,3,0x843B37AF
+HXRD,3378,369674425,369674613,81996,369592,0xFD8197,-163433,3377,3378,0,0,0,0,0,0,1,1,25,3,0xC39EDB89
+HXRD,3379,369826483,369826681,152058,369674,0xFD8195,-163435,3378,3379,0,0,0,0,0,0,1,1,25,3,0xEAD4292E
+HXRD,3380,369860425,369860617,33942,369826,0xFD8195,-163435,3379,3380,0,0,0,0,0,0,1,1,25,3,0x71CEF1CF
+HXRD,3381,369950425,369950613,90000,369860,0xFD8182,-163454,3380,3381,0,0,0,0,0,0,1,1,25,3,0x1D90A672
+HXRD,3382,370078483,370078681,128058,369950,0xFD8167,-163481,3381,3382,0,0,0,0,0,0,1,1,25,3,0x606D2EB3
+HXRD,3383,370136425,370136617,57942,370078,0xFD81B6,-163402,3382,3383,0,0,0,0,0,0,1,1,25,3,0x8A977F96
+HXRD,3384,370351503,370351713,215078,370136,0xFD81E2,-163358,3383,3384,0,0,0,0,0,0,1,1,25,3,0x6ABE947E
+HXRD,3385,370412425,370412613,60922,370351,0xFD8172,-163470,3384,3385,0,0,0,0,0,0,1,1,25,3,0xB6627D88
+HXRD,3386,370578487,370578689,166062,370412,0xFD8173,-163469,3385,3386,0,0,0,0,0,0,1,1,25,3,0x0824EF84
+HXRD,3387,370598425,370598617,19938,370578,0xFD81B9,-163399,3386,3387,0,0,0,0,0,0,1,1,25,3,0xC562F161
+HXRD,3388,370688425,370688613,90000,370598,0xFD81DF,-163361,3387,3388,0,0,0,0,0,0,1,1,25,3,0x6558FA43
+HXRD,3389,370828546,370828754,140121,370688,0xFD81BC,-163396,3388,3389,0,0,0,0,0,0,1,1,25,3,0x312ED1CA
+HXRD,3390,370871425,370871617,42879,370828,0xFD817F,-163457,3389,3390,0,0,0,0,0,0,1,1,25,3,0x827CB3F2
+HXRD,3391,371079483,371079681,208058,370871,0xFD818E,-163442,3390,3391,0,0,0,0,0,0,1,1,25,3,0x24D0B58A
+HXRD,3392,371147425,371147617,67942,371079,0xFD81A1,-163423,3391,3392,0,0,0,0,0,0,1,1,25,3,0x7D8DB239
+HXRD,3393,371354503,371354713,207078,371147,0xFD81D8,-163368,3392,3393,0,0,0,0,0,0,1,1,25,3,0x588B2AEB
+HXRD,3394,371423425,371423613,68922,371354,0xFD81EA,-163350,3393,3394,0,0,0,0,0,0,1,1,25,3,0xC096658D
+HXRD,3395,371581487,371581689,158062,371423,0xFD81CB,-163381,3394,3395,0,0,0,0,0,0,1,1,25,3,0xC7E58460
+HXRD,3396,371610425,371610617,28938,371581,0xFD81DD,-163363,3395,3396,0,0,0,0,0,0,1,1,25,3,0x8165B6A6
+HXRD,3397,371700425,371700613,90000,371610,0xFD8197,-163433,3396,3397,0,0,0,0,0,0,1,1,25,3,0x7D9042DD
+HXRD,3398,371829844,371830053,129419,371700,0xFD81B3,-163405,3397,3398,0,0,0,0,0,0,1,1,25,3,0xF8006171
+HXRD,3399,371885425,371885617,55581,371830,0xFD81BA,-163398,3398,3399,0,0,0,0,0,0,1,1,25,3,0xFEDBCB47
+HXRD,3400,372083483,372083681,198058,371885,0xFD817B,-163461,3399,3400,0,0,0,0,0,0,1,1,25,3,0x71778D93
+HXRD,3401,372161425,372161617,77942,372083,0xFD8197,-163433,3400,3401,0,0,0,0,0,0,1,1,25,3,0x76F9CBC5
+HXRD,3402,372356503,372356713,195078,372161,0xFD81C3,-163389,3401,3402,0,0,0,0,0,0,1,1,25,3,0xADB6BCBE
+HXRD,3403,372437425,372437613,80922,372356,0xFD81CB,-163381,3402,3403,0,0,0,0,0,0,1,1,25,3,0x4C97ED6C
+HXRD,3404,372583487,372583689,146062,372437,0xFD8195,-163435,3403,3404,0,0,0,0,0,0,1,1,25,3,0x5A0170EB
+HXRD,3405,372619425,372619617,35938,372583,0xFD81B3,-163405,3404,3405,0,0,0,0,0,0,1,1,25,3,0x35897A9B
+# END_HX_DIAG slot=ANY rows=256 retained=1 read_only=1; CPU times are not pin waveform or ADC timestamps
+# BEGIN_HX_DIAG schema=2 slot=LINK trigger_mask=1 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 rows=256 crc=CRC32_ISO_HDLC_19_LE_U32 computed_on_export=1 output_blocks_polling=1
+# HX_DIAG schema=2 slot=LINK trigger_mask=1 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 mode=FROZEN freeze_reason=1 records=256 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=1
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=516311 window_us=600000000 trigger_us=417250681 freeze_us=431312680 trigger_seq=3804 trigger_flags=1 pre=127 post=128 post_target=128 post_complete=1
+# HX_DIAG_COUNTS scope=frozen attempts=3932 pre_overwritten=3676 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+kind,seq,start_us,end_us,attempt_gap_us,last_accept_ms_before,bits24,raw,rx_before,rx_after,err_before,err_after,flags,cal_count_after,phase_after,cal_mode_after,accepted,dout_after25,pulses_issued,context_flags,crc32
+HXRD,3677,402944804,402945002,140379,402804,0xFD81C2,-163390,3676,3677,0,0,0,0,0,0,1,1,25,3,0x6AF7FBFC
+HXRD,3678,402987425,402987617,42621,402945,0xFD819D,-163427,3677,3678,0,0,0,0,0,0,1,1,25,3,0x57A28307
+HXRD,3679,403197483,403197681,210058,402987,0xFD8190,-163440,3678,3679,0,0,0,0,0,0,1,1,25,3,0x4660DE5F
+HXRD,3680,403263425,403263617,65942,403197,0xFD8191,-163439,3679,3680,0,0,0,0,0,0,1,1,25,3,0x65023A15
+HXRD,3681,403472512,403472724,209087,403263,0xFD8208,-163320,3680,3681,0,0,0,0,0,0,1,1,25,3,0x3521D58F
+HXRD,3682,403539425,403539613,66913,403472,0xFD8216,-163306,3681,3682,0,0,0,0,0,0,1,1,25,3,0xFCEB8CBA
+HXRD,3683,403699555,403699771,160130,403539,0xFD818B,-163445,3682,3683,0,0,0,0,0,0,1,1,25,3,0x35C288F9
+HXRD,3684,403722425,403722617,22870,403699,0xFD81CA,-163382,3683,3684,0,0,0,0,0,0,1,1,25,3,0x7215C0C8
+HXRD,3685,403814425,403814613,92000,403722,0xFD81C1,-163391,3684,3685,0,0,0,0,0,0,1,1,25,3,0xFA93609C
+HXRD,3686,403950483,403950681,136058,403814,0xFD818A,-163446,3685,3686,0,0,0,0,0,0,1,1,25,3,0xF3827DD6
+HXRD,3687,403998425,403998617,47942,403950,0xFD81B3,-163405,3686,3687,0,0,0,0,0,0,1,1,25,3,0xE55BD3BB
+HXRD,3688,404201483,404201681,203058,403998,0xFD81A7,-163417,3687,3688,0,0,0,0,0,0,1,1,25,3,0x1B8515EE
+HXRD,3689,404275425,404275617,73942,404201,0xFD819E,-163426,3688,3689,0,0,0,0,0,0,1,1,25,3,0xC932B394
+HXRD,3690,404475503,404475713,200078,404275,0xFD81AD,-163411,3689,3690,0,0,0,0,0,0,1,1,25,3,0x12340670
+HXRD,3691,404550425,404550613,74922,404475,0xFD8193,-163437,3690,3691,0,0,0,0,0,0,1,1,25,3,0x96ED8722
+HXRD,3692,404703487,404703688,153062,404550,0xFD81C0,-163392,3691,3692,0,0,0,0,0,0,1,1,25,3,0x3402EBFA
+HXRD,3693,404735425,404735617,31938,404703,0xFD81E6,-163354,3692,3693,0,0,0,0,0,0,1,1,25,3,0x1B984F9B
+HXRD,3694,404827425,404827613,92000,404735,0xFD81F2,-163342,3693,3694,0,0,0,0,0,0,1,1,25,3,0xCC5F1E35
+HXRD,3695,404955483,404955681,128058,404827,0xFD81F2,-163342,3694,3695,0,0,0,0,0,0,1,1,25,3,0x3F5A85F3
+HXRD,3696,405011425,405011617,55942,404955,0xFD819D,-163427,3695,3696,0,0,0,0,0,0,1,1,25,3,0xA85E73C5
+HXRD,3697,405205483,405205681,194058,405011,0xFD819A,-163430,3696,3697,0,0,0,0,0,0,1,1,25,3,0xF4928916
+HXRD,3698,405286425,405286617,80942,405205,0xFD81B5,-163403,3697,3698,0,0,0,0,0,0,1,1,25,3,0x317952DD
+HXRD,3699,405479503,405479713,193078,405286,0xFD81BF,-163393,3698,3699,0,0,0,0,0,0,1,1,25,3,0x09939399
+HXRD,3700,405562425,405562613,82922,405479,0xFD8194,-163436,3699,3700,0,0,0,0,0,0,1,1,25,3,0x323BE9D0
+HXRD,3701,405706487,405706688,144062,405562,0xFD8172,-163470,3700,3701,0,0,0,0,0,0,1,1,25,3,0x255E527B
+HXRD,3702,405746425,405746617,39938,405706,0xFD81A7,-163417,3701,3702,0,0,0,0,0,0,1,1,25,3,0x2F85B045
+HXRD,3703,405957483,405957681,211058,405746,0xFD81EB,-163349,3702,3703,0,0,0,0,0,0,1,1,25,3,0xBAD231B2
+HXRD,3704,406022425,406022617,64942,405957,0xFD81B4,-163404,3703,3704,0,0,0,0,0,0,1,1,25,3,0xDD460234
+HXRD,3705,406207483,406207681,185058,406022,0xFD81A9,-163415,3704,3705,0,0,0,0,0,0,1,1,25,3,0xD7FE1721
+HXRD,3706,406299425,406299617,91942,406207,0xFD814D,-163507,3705,3706,0,0,0,0,0,0,1,1,25,3,0x7282AE69
+HXRD,3707,406483503,406483713,184078,406299,0xFD8186,-163450,3706,3707,0,0,0,0,0,0,1,1,25,3,0xFBFB6D0C
+HXRD,3708,406576425,406576613,92922,406483,0xFD8186,-163450,3707,3708,0,0,0,0,0,0,1,1,25,3,0x7307BF65
+HXRD,3709,406711487,406711688,135062,406576,0xFD81E7,-163353,3708,3709,0,0,0,0,0,0,1,1,25,3,0xAA13714D
+HXRD,3710,406760425,406760617,48938,406711,0xFD81DB,-163365,3709,3710,0,0,0,0,0,0,1,1,25,3,0x76A3DED1
+HXRD,3711,406962483,406962681,202058,406760,0xFD8192,-163438,3710,3711,0,0,0,0,0,0,1,1,25,3,0x807F1D6A
+HXRD,3712,407035425,407035617,72942,406962,0xFD819E,-163426,3711,3712,0,0,0,0,0,0,1,1,25,3,0xCC843665
+HXRD,3713,407213483,407213681,178058,407035,0xFD81AE,-163410,3712,3713,0,0,0,0,0,0,1,1,25,3,0x09C94DC0
+HXRD,3714,407229429,407229620,15946,407213,0xFD81A7,-163417,3713,3714,0,0,0,0,0,0,1,1,25,3,0xDB98EC8C
+HXRD,3715,407312425,407312613,82996,407229,0xFD8193,-163437,3714,3715,0,0,0,0,0,0,1,1,25,3,0x6F280A84
+HXRD,3716,407487582,407487814,175157,407312,0xFD81C0,-163392,3715,3716,0,0,0,0,0,0,1,1,25,3,0x33FFD02E
+HXRD,3717,407506429,407506617,18847,407487,0xFD81C2,-163390,3716,3717,0,0,0,0,0,0,1,1,25,3,0xA36857DD
+HXRD,3718,407587427,407587616,80998,407506,0xFD817C,-163460,3717,3718,0,0,0,0,0,0,1,1,25,3,0x281D8FAB
+HXRD,3719,407715487,407715688,128060,407587,0xFD815D,-163491,3718,3719,0,0,0,0,0,0,1,1,25,3,0x36E13583
+HXRD,3720,407772439,407772626,56952,407715,0xFD8192,-163438,3719,3720,0,0,0,0,0,0,1,1,25,3,0x7C8B210A
+HXRD,3721,407965483,407965681,193044,407772,0xFD818C,-163444,3720,3721,0,0,0,0,0,0,1,1,25,3,0xF5B75BF2
+HXRD,3722,408047425,408047617,81942,407965,0xFD818F,-163441,3721,3722,0,0,0,0,0,0,1,1,25,3,0xEDB4B1B9
+HXRD,3723,408213860,408214065,166435,408047,0xFD81E7,-163353,3722,3723,0,0,0,0,0,0,1,1,25,3,0x8CB2FE47
+HXRD,3724,408233425,408233617,19565,408214,0xFD81D8,-163368,3723,3724,0,0,0,0,0,0,1,1,25,3,0xE54F0AC2
+HXRD,3725,408324425,408324613,91000,408233,0xFD81BA,-163398,3724,3725,0,0,0,0,0,0,1,1,25,3,0xCBE1CED8
+HXRD,3726,408489588,408489812,165163,408324,0xFD817E,-163458,3725,3726,0,0,0,0,0,0,1,1,25,3,0x493F13D8
+HXRD,3727,408507429,408507617,17841,408489,0xFD8159,-163495,3726,3727,0,0,0,0,0,0,1,1,25,3,0x43FA32D6
+HXRD,3728,408719487,408719688,212058,408507,0xFD81A4,-163420,3727,3728,0,0,0,0,0,0,1,1,25,3,0xCC756D13
+HXRD,3729,408785425,408785617,65938,408719,0xFD81AE,-163410,3728,3729,0,0,0,0,0,0,1,1,25,3,0x7A0EA6E5
+HXRD,3730,408969483,408969681,184058,408785,0xFD81A7,-163417,3729,3730,0,0,0,0,0,0,1,1,25,3,0xF184B686
+HXRD,3731,409062425,409062617,92942,408969,0xFD8164,-163484,3730,3731,0,0,0,0,0,0,1,1,25,3,0xD015841F
+HXRD,3732,409218805,409219002,156380,409062,0xFD8194,-163436,3731,3732,0,0,0,0,0,0,1,1,25,3,0xF1CB3269
+HXRD,3733,409244425,409244617,25620,409219,0xFD818A,-163446,3732,3733,0,0,0,0,0,0,1,1,25,3,0xFB0CDB43
+HXRD,3734,409336425,409336613,92000,409244,0xFD81C9,-163383,3733,3734,0,0,0,0,0,0,1,1,25,3,0x2B43637F
+HXRD,3735,409495503,409495713,159078,409336,0xFD81F1,-163343,3734,3735,0,0,0,0,0,0,1,1,25,3,0x153DCFC2
+HXRD,3736,409520425,409520613,24922,409495,0xFD81D1,-163375,3735,3736,0,0,0,0,0,0,1,1,25,3,0xD43AE6DF
+HXRD,3737,409722487,409722688,202062,409520,0xFD81C2,-163390,3736,3737,0,0,0,0,0,0,1,1,25,3,0x37E7D46C
+HXRD,3738,409795425,409795617,72938,409722,0xFD81DE,-163362,3737,3738,0,0,0,0,0,0,1,1,25,3,0x6608EF5D
+HXRD,3739,409973483,409973681,178058,409795,0xFD81CC,-163380,3738,3739,0,0,0,0,0,0,1,1,25,3,0x2850456D
+HXRD,3740,409989429,409989620,15946,409973,0xFD81D5,-163371,3739,3740,0,0,0,0,0,0,1,1,25,3,0x50ACF104
+HXRD,3741,410072425,410072613,82996,409989,0xFD81B8,-163400,3740,3741,0,0,0,0,0,0,1,1,25,3,0xB7E17B1A
+HXRD,3742,410224483,410224681,152058,410072,0xFD81B0,-163408,3741,3742,0,0,0,0,0,0,1,1,25,3,0x7157E611
+HXRD,3743,410256425,410256617,31942,410224,0xFD81C9,-163383,3742,3743,0,0,0,0,0,0,1,1,25,3,0x174BF907
+HXRD,3744,410347425,410347613,91000,410256,0xFD81B4,-163404,3743,3744,0,0,0,0,0,0,1,1,25,3,0x2514685F
+HXRD,3745,410498503,410498713,151078,410347,0xFD81A4,-163420,3744,3745,0,0,0,0,0,0,1,1,25,3,0x7E8139D2
+HXRD,3746,410535425,410535613,36922,410498,0xFD8188,-163448,3745,3746,0,0,0,0,0,0,1,1,25,3,0xD543CA80
+HXRD,3747,410725487,410725688,190062,410535,0xFD81C5,-163387,3746,3747,0,0,0,0,0,0,1,1,25,3,0xB58881C7
+HXRD,3748,410811425,410811617,85938,410725,0xFD817F,-163457,3747,3748,0,0,0,0,0,0,1,1,25,3,0x26DC76B8
+HXRD,3749,410977483,410977681,166058,410811,0xFD818B,-163445,3748,3749,0,0,0,0,0,0,1,1,25,3,0x50DF47F2
+HXRD,3750,410993429,410993620,15946,410977,0xFD81C5,-163387,3749,3750,0,0,0,0,0,0,1,1,25,3,0x106610C7
+HXRD,3751,411086425,411086613,92996,410993,0xFD81D7,-163369,3750,3751,0,0,0,0,0,0,1,1,25,3,0x36FCC9F0
+HXRD,3752,411228483,411228681,142058,411086,0xFD81BB,-163397,3751,3752,0,0,0,0,0,0,1,1,25,3,0xA5D47D0C
+HXRD,3753,411269425,411269617,40942,411228,0xFD8197,-163433,3752,3753,0,0,0,0,0,0,1,1,25,3,0x6818CBFC
+HXRD,3754,411502503,411502713,233078,411269,0xFD8167,-163481,3753,3754,0,0,0,0,0,0,1,1,25,3,0x6B168AA6
+HXRD,3755,411545425,411545613,42922,411502,0xFD81D7,-163369,3754,3755,0,0,0,0,0,0,1,1,25,3,0xFA3D7ABC
+HXRD,3756,411731487,411731688,186062,411545,0xFD81AE,-163410,3755,3756,0,0,0,0,0,0,1,1,25,3,0xAF184F23
+HXRD,3757,411821425,411821617,89938,411731,0xFD8182,-163454,3756,3757,0,0,0,0,0,0,1,1,25,3,0x4B09AA85
+HXRD,3758,411981483,411981681,160058,411821,0xFD8167,-163481,3757,3758,0,0,0,0,0,0,1,1,25,3,0xFFE4A2EA
+HXRD,3759,412004425,412004617,22942,411981,0xFD819B,-163429,3758,3759,0,0,0,0,0,0,1,1,25,3,0x3A66FC91
+HXRD,3760,412097425,412097613,93000,412004,0xFD81ED,-163347,3759,3760,0,0,0,0,0,0,1,1,25,3,0x70F4B53A
+HXRD,3761,412230483,412230681,133058,412097,0xFD81E7,-163353,3760,3761,0,0,0,0,0,0,1,1,25,3,0x452E6AED
+HXRD,3762,412280425,412280617,49942,412230,0xFD81C1,-163391,3761,3762,0,0,0,0,0,0,1,1,25,3,0x9117DA74
+HXRD,3763,412506572,412506781,226147,412280,0xFD81A3,-163421,3762,3763,0,0,0,0,0,0,1,1,25,3,0xCA2883E7
+HXRD,3764,412557425,412557613,50853,412506,0xFD8195,-163435,3763,3764,0,0,0,0,0,0,1,1,25,3,0x72B8E60B
+HXRD,3765,412734487,412734688,177062,412557,0xFD81C5,-163387,3764,3765,0,0,0,0,0,0,1,1,25,3,0x8B6E4D80
+HXRD,3766,412750429,412750620,15942,412734,0xFD81B1,-163407,3765,3766,0,0,0,0,0,0,1,1,25,3,0xE9735873
+HXRD,3767,412832425,412832613,81996,412750,0xFD816A,-163478,3766,3767,0,0,0,0,0,0,1,1,25,3,0xAF721D26
+HXRD,3768,412984483,412984681,152058,412832,0xFD8171,-163471,3767,3768,0,0,0,0,0,0,1,1,25,3,0x0DDEA211
+HXRD,3769,413016425,413016617,31942,412984,0xFD818B,-163445,3768,3769,0,0,0,0,0,0,1,1,25,3,0x74549FA2
+HXRD,3770,413235483,413235681,219058,413016,0xFD81E6,-163354,3769,3770,0,0,0,0,0,0,1,1,25,3,0x8CD01D50
+HXRD,3771,413293425,413293617,57942,413235,0xFD81E1,-163359,3770,3771,0,0,0,0,0,0,1,1,25,3,0x4714A83D
+HXRD,3772,413507580,413507800,214155,413293,0xFD81EE,-163346,3771,3772,0,0,0,0,0,0,1,1,25,3,0x6D7B4E00
+HXRD,3773,413570425,413570613,62845,413507,0xFD81E3,-163357,3772,3773,0,0,0,0,0,0,1,1,25,3,0xDE49163A
+HXRD,3774,413736487,413736688,166062,413570,0xFD81E5,-163355,3773,3774,0,0,0,0,0,0,1,1,25,3,0x20778571
+HXRD,3775,413756425,413756617,19938,413736,0xFD8192,-163438,3774,3775,0,0,0,0,0,0,1,1,25,3,0x3D9FC87B
+HXRD,3776,413845425,413845613,89000,413756,0xFD8173,-163469,3775,3776,0,0,0,0,0,0,1,1,25,3,0x2F6480CE
+HXRD,3777,413989483,413989681,144058,413845,0xFD81BD,-163395,3776,3777,0,0,0,0,0,0,1,1,25,3,0x8BADC9F1
+HXRD,3778,414029425,414029617,39942,413989,0xFD8193,-163437,3777,3778,0,0,0,0,0,0,1,1,25,3,0x8E649742
+HXRD,3779,414239483,414239681,210058,414029,0xFD81A3,-163421,3778,3779,0,0,0,0,0,0,1,1,25,3,0xFCEBB4D1
+HXRD,3780,414306425,414306617,66942,414239,0xFD8168,-163480,3779,3780,0,0,0,0,0,0,1,1,25,3,0x2D1515DA
+HXRD,3781,414512503,414512713,206078,414306,0xFD81C8,-163384,3780,3781,0,0,0,0,0,0,1,1,25,3,0x87E86D84
+HXRD,3782,414581425,414581613,68922,414512,0xFD81E7,-163353,3781,3782,0,0,0,0,0,0,1,1,25,3,0x27407957
+HXRD,3783,414742487,414742688,161062,414581,0xFD81BC,-163396,3782,3783,0,0,0,0,0,0,1,1,25,3,0x66D9258E
+HXRD,3784,414766425,414766617,23938,414742,0xFD81C6,-163386,3783,3784,0,0,0,0,0,0,1,1,25,3,0xFDDFBA01
+HXRD,3785,414858425,414858613,92000,414766,0xFD81C3,-163389,3784,3785,0,0,0,0,0,0,1,1,25,3,0xB0E5FD16
+HXRD,3786,414993483,414993681,135058,414858,0xFD81E6,-163354,3785,3786,0,0,0,0,0,0,1,1,25,3,0x1183BE3C
+HXRD,3787,415042436,415042627,48953,414993,0xFD81F1,-163343,3786,3787,0,0,0,0,0,0,1,1,25,3,0x7DA69097
+HXRD,3788,415243483,415243681,201047,415042,0xFD817E,-163458,3787,3788,0,0,0,0,0,0,1,1,25,3,0xCE0B7EF1
+HXRD,3789,415319425,415319617,75942,415243,0xFD81BD,-163395,3788,3789,0,0,0,0,0,0,1,1,25,3,0x2D2B2231
+HXRD,3790,415518503,415518713,199078,415319,0xFD8182,-163454,3789,3790,0,0,0,0,0,0,1,1,25,3,0x493D77BB
+HXRD,3791,415595425,415595613,76922,415518,0xFD8194,-163436,3790,3791,0,0,0,0,0,0,1,1,25,3,0x4A15697C
+HXRD,3792,415745487,415745688,150062,415595,0xFD8184,-163452,3791,3792,0,0,0,0,0,0,1,1,25,3,0x698B5FAD
+HXRD,3793,415779425,415779617,33938,415745,0xFD816E,-163474,3792,3793,0,0,0,0,0,0,1,1,25,3,0x478B8950
+HXRD,3794,415995483,415995681,216058,415779,0xFD81BB,-163397,3793,3794,0,0,0,0,0,0,1,1,25,3,0xEBD27DA4
+HXRD,3795,416055425,416055617,59942,415995,0xFD81BE,-163394,3794,3795,0,0,0,0,0,0,1,1,25,3,0x264C55E2
+HXRD,3796,416248483,416248681,193058,416055,0xFD8191,-163439,3795,3796,0,0,0,0,0,0,1,1,25,3,0xBFA17FDE
+HXRD,3797,416330425,416330617,81942,416248,0xFD818B,-163445,3796,3797,0,0,0,0,0,0,1,1,25,3,0x273AC5B5
+HXRD,3798,416521503,416521713,191078,416330,0xFD8173,-163469,3797,3798,0,0,0,0,0,0,1,1,25,3,0x173D0542
+HXRD,3799,416606442,416606629,84939,416521,0xFD8161,-163487,3798,3799,0,0,0,0,0,0,1,1,25,3,0xFA18FDF4
+HXRD,3800,416748487,416748688,142045,416606,0xFD8152,-163502,3799,3800,0,0,0,0,0,0,1,1,25,3,0x18716997
+HXRD,3801,416792425,416792617,43938,416748,0xFD8194,-163436,3800,3801,0,0,0,0,0,0,1,1,25,3,0xB111031C
+HXRD,3802,417000483,417000681,208058,416792,0xFD8182,-163454,3801,3802,0,0,0,0,0,0,1,1,25,3,0x7B261AEF
+HXRD,3803,417068425,417068617,67942,417000,0xFD818C,-163444,3802,3803,0,0,0,0,0,0,1,1,25,3,0xB240F6B7
+HXRD,3804,417250483,417250681,182058,417068,0xFFFF60,-160,3803,3803,0,1,1,0,0,0,0,0,25,3,0xE95CAF81
+HXRD,3805,417524518,417524728,274035,417068,0xFD81DD,-163363,3803,3804,1,1,0,0,0,0,1,1,25,3,0xA2AA6D29
+HXRD,3806,417542429,417542617,17911,417524,0xFD81BD,-163395,3804,3805,1,1,0,0,0,0,1,1,25,3,0x5EFF985D
+HXRD,3807,417620425,417620613,77996,417542,0xFD81C1,-163391,3805,3806,1,1,0,0,0,0,1,1,25,3,0xF21E7CFF
+HXRD,3808,417754487,417754693,134062,417620,0xFD81A3,-163421,3806,3807,1,1,0,0,0,0,1,1,25,3,0x2A25D4FB
+HXRD,3809,417804425,417804613,49938,417754,0xFD81AB,-163413,3807,3808,1,1,0,0,0,0,1,1,25,3,0x1DA0E36E
+HXRD,3810,418004483,418004684,200058,417804,0xFD81B5,-163403,3808,3809,1,1,0,0,0,0,1,1,25,3,0xC711733F
+HXRD,3811,418079425,418079613,74942,418004,0xFD81C2,-163390,3809,3810,1,1,0,0,0,0,1,1,25,3,0xCA23985F
+HXRD,3812,418255483,418255684,176058,418079,0xFD81BE,-163394,3810,3811,1,1,0,0,0,0,1,1,25,3,0x7740B5F0
+HXRD,3813,418271429,418271617,15946,418255,0xFD81BA,-163398,3811,3812,1,1,0,0,0,0,1,1,25,3,0x15EF3BF1
+HXRD,3814,418355427,418355614,83998,418271,0xFD81B8,-163400,3812,3813,1,1,0,0,0,0,1,1,25,3,0x49914A75
+HXRD,3815,418530503,418530713,175076,418355,0xFD81A0,-163424,3813,3814,1,1,0,0,0,0,1,1,25,3,0x4F046876
+HXRD,3816,418548429,418548617,17926,418530,0xFD8189,-163447,3814,3815,1,1,0,0,0,0,1,1,25,3,0xCBDA06DC
+HXRD,3817,418632425,418632613,83996,418548,0xFD81C3,-163389,3815,3816,1,1,0,0,0,0,1,1,25,3,0x94AD1E5C
+HXRD,3818,418760487,418760689,128062,418632,0xFD81D4,-163372,3816,3817,1,1,0,0,0,0,1,1,25,3,0x82C324C0
+HXRD,3819,418816425,418816617,55938,418760,0xFD81B3,-163405,3817,3818,1,1,0,0,0,0,1,1,25,3,0xEEEC0F93
+HXRD,3820,419009483,419009680,193058,418816,0xFD8183,-163453,3818,3819,1,1,0,0,0,0,1,1,25,3,0xA9E3C84B
+HXRD,3821,419092425,419092617,82942,419009,0xFD8197,-163433,3819,3820,1,1,0,0,0,0,1,1,25,3,0x4D66E64A
+HXRD,3822,419260483,419260680,168058,419092,0xFD8191,-163439,3820,3821,1,1,0,0,0,0,1,1,25,3,0xC3CE3DCF
+HXRD,3823,419276429,419276620,15946,419260,0xFD81B0,-163408,3821,3822,1,1,0,0,0,0,1,1,25,3,0x9184B418
+HXRD,3824,419369437,419369624,93008,419276,0xFD81AA,-163414,3822,3823,1,1,0,0,0,0,1,1,25,3,0xE3139599
+HXRD,3825,419536503,419536713,167066,419369,0xFD81B1,-163407,3823,3824,1,1,0,0,0,0,1,1,25,3,0x95648E25
+HXRD,3826,419554429,419554617,17926,419536,0xFD8180,-163456,3824,3825,1,1,0,0,0,0,1,1,25,3,0xAA0B615B
+HXRD,3827,419764487,419764689,210058,419554,0xFD81CA,-163382,3825,3826,1,1,0,0,0,0,1,1,25,3,0x9F7AC100
+HXRD,3828,419829425,419829617,64938,419764,0xFD8187,-163449,3826,3827,1,1,0,0,0,0,1,1,25,3,0x46F4E955
+HXRD,3829,420015483,420015680,186058,419829,0xFD81DF,-163361,3827,3828,1,1,0,0,0,0,1,1,25,3,0xF32859E0
+HXRD,3830,420105425,420105617,89942,420015,0xFD81DC,-163364,3828,3829,1,1,0,0,0,0,1,1,25,3,0xCFF3AB49
+HXRD,3831,420267483,420267680,162058,420105,0xFD81C5,-163387,3829,3830,1,1,0,0,0,0,1,1,25,3,0x04DB8E98
+HXRD,3832,420291425,420291617,23942,420267,0xFD8177,-163465,3830,3831,1,1,0,0,0,0,1,1,25,3,0x56E0CF69
+HXRD,3833,420381425,420381613,90000,420291,0xFD8187,-163449,3831,3832,1,1,0,0,0,0,1,1,25,3,0x5D380AE0
+HXRD,3834,420543503,420543713,162078,420381,0xFD81B5,-163403,3832,3833,1,1,0,0,0,0,1,1,25,3,0x95D0AB3C
+HXRD,3835,420565425,420565613,21922,420543,0xFD81AD,-163411,3833,3834,1,1,0,0,0,0,1,1,25,3,0x2916C765
+HXRD,3836,420770487,420770689,205062,420565,0xFD81E2,-163358,3834,3835,1,1,0,0,0,0,1,1,25,3,0xCA51B74A
+HXRD,3837,420843425,420843617,72938,420770,0xFD81EB,-163349,3835,3836,1,1,0,0,0,0,1,1,25,3,0x892BAFB9
+HXRD,3838,421021483,421021680,178058,420843,0xFD81B9,-163399,3836,3837,1,1,0,0,0,0,1,1,25,3,0x97CAF64E
+HXRD,3839,421037429,421037620,15946,421021,0xFD81C6,-163386,3837,3838,1,1,0,0,0,0,1,1,25,3,0x0E84543E
+HXRD,3840,421118425,421118613,80996,421037,0xFD81C5,-163387,3838,3839,1,1,0,0,0,0,1,1,25,3,0xB4459AF6
+HXRD,3841,421274483,421274680,156058,421118,0xFD81A1,-163423,3839,3840,1,1,0,0,0,0,1,1,25,3,0x8BB20F4F
+HXRD,3842,421302425,421302617,27942,421274,0xFD81B1,-163407,3840,3841,1,1,0,0,0,0,1,1,25,3,0xF6436A43
+HXRD,3843,421394425,421394613,92000,421302,0xFD81A5,-163419,3841,3842,1,1,0,0,0,0,1,1,25,3,0x08081DB0
+HXRD,3844,421547503,421547713,153078,421394,0xFD81CA,-163382,3842,3843,1,1,0,0,0,0,1,1,25,3,0x0ED0FDD9
+HXRD,3845,421578425,421578613,30922,421547,0xFD8218,-163304,3843,3844,1,1,0,0,0,0,1,1,25,3,0x3B2283F4
+HXRD,3846,421774487,421774689,196062,421578,0xFD8195,-163435,3844,3845,1,1,0,0,0,0,1,1,25,3,0x8E349F7E
+HXRD,3847,421854425,421854617,79938,421774,0xFD8195,-163435,3845,3846,1,1,0,0,0,0,1,1,25,3,0x0716926C
+HXRD,3848,422026483,422026680,172058,421854,0xFD81B0,-163408,3846,3847,1,1,0,0,0,0,1,1,25,3,0x55F1EE34
+HXRD,3849,422042429,422042620,15946,422026,0xFD8171,-163471,3847,3848,1,1,0,0,0,0,1,1,25,3,0x594D9664
+HXRD,3850,422129425,422129613,86996,422042,0xFD818F,-163441,3848,3849,1,1,0,0,0,0,1,1,25,3,0xE7D5F406
+HXRD,3851,422275805,422276002,146380,422129,0xFD81A1,-163423,3849,3850,1,1,0,0,0,0,1,1,25,3,0x96F5B927
+HXRD,3852,422316425,422316617,40620,422276,0xFD81BD,-163395,3850,3851,1,1,0,0,0,0,1,1,25,3,0x89F9B40D
+HXRD,3853,422551503,422551713,235078,422316,0xFD81B2,-163406,3851,3852,1,1,0,0,0,0,1,1,25,3,0xFDBD001A
+HXRD,3854,422592425,422592613,40922,422551,0xFD81FD,-163331,3852,3853,1,1,0,0,0,0,1,1,25,3,0x1CC550FD
+HXRD,3855,422780487,422780689,188062,422592,0xFD81BC,-163396,3853,3854,1,1,0,0,0,0,1,1,25,3,0x2777CEE3
+HXRD,3856,422868425,422868617,87938,422780,0xFD819C,-163428,3854,3855,1,1,0,0,0,0,1,1,25,3,0x4CCBCCD4
+HXRD,3857,423029483,423029684,161058,422868,0xFD8186,-163450,3855,3856,1,1,0,0,0,0,1,1,25,3,0x251E445C
+HXRD,3858,423050425,423050617,20942,423029,0xFD81B7,-163401,3856,3857,1,1,0,0,0,0,1,1,25,3,0x93FC4425
+HXRD,3859,423142425,423142613,92000,423050,0xFD819A,-163430,3857,3858,1,1,0,0,0,0,1,1,25,3,0x4D1AE54A
+HXRD,3860,423280483,423280680,138058,423142,0xFD81BD,-163395,3858,3859,1,1,0,0,0,0,1,1,25,3,0x4611DE91
+HXRD,3861,423326425,423326617,45942,423280,0xFD81CD,-163379,3859,3860,1,1,0,0,0,0,1,1,25,3,0x065ACD24
+HXRD,3862,423555503,423555713,229078,423326,0xFD820C,-163316,3860,3861,1,1,0,0,0,0,1,1,25,3,0xD4359A95
+HXRD,3863,423602425,423602613,46922,423555,0xFD81D9,-163367,3861,3862,1,1,0,0,0,0,1,1,25,3,0x15CD7212
+HXRD,3864,423782487,423782689,180062,423602,0xFD820F,-163313,3862,3863,1,1,0,0,0,0,1,1,25,3,0x9EB96E0F
+HXRD,3865,423798429,423798620,15942,423782,0xFD81F9,-163335,3863,3864,1,1,0,0,0,0,1,1,25,3,0xD6D6A5E4
+HXRD,3866,423878425,423878613,79996,423798,0xFD81BD,-163395,3864,3865,1,1,0,0,0,0,1,1,25,3,0x97E247D8
+HXRD,3867,424031483,424031680,153058,423878,0xFD81A7,-163417,3865,3866,1,1,0,0,0,0,1,1,25,3,0xFAAE8115
+HXRD,3868,424065425,424065617,33942,424031,0xFD818F,-163441,3866,3867,1,1,0,0,0,0,1,1,25,3,0x6ADA5ADF
+HXRD,3869,424155425,424155613,90000,424065,0xFD818C,-163444,3867,3868,1,1,0,0,0,0,1,1,25,3,0x04E34B53
+HXRD,3870,424285483,424285680,130058,424155,0xFD81AF,-163409,3868,3869,1,1,0,0,0,0,1,1,25,3,0x8D775707
+HXRD,3871,424341425,424341617,55942,424285,0xFD819E,-163426,3869,3870,1,1,0,0,0,0,1,1,25,3,0xC597AA2B
+HXRD,3872,424558503,424558713,217078,424341,0xFD81C6,-163386,3870,3871,1,1,0,0,0,0,1,1,25,3,0x54262E12
+HXRD,3873,424617425,424617613,58922,424558,0xFD81C8,-163384,3871,3872,1,1,0,0,0,0,1,1,25,3,0x0BF4DD1C
+HXRD,3874,424785487,424785689,168062,424617,0xFD81C2,-163390,3872,3873,1,1,0,0,0,0,1,1,25,3,0x5C3AA8D0
+HXRD,3875,424801429,424801620,15942,424785,0xFD81BE,-163394,3873,3874,1,1,0,0,0,0,1,1,25,3,0xC65E690F
+HXRD,3876,424892425,424892613,90996,424801,0xFD81C5,-163387,3874,3875,1,1,0,0,0,0,1,1,25,3,0x33BB03F7
+HXRD,3877,425038483,425038680,146058,424892,0xFD81F9,-163335,3875,3876,1,1,0,0,0,0,1,1,25,3,0x3375F5D7
+HXRD,3878,425076425,425076617,37942,425038,0xFD81AA,-163414,3876,3877,1,1,0,0,0,0,1,1,25,3,0x8DFCF02D
+HXRD,3879,425287805,425288002,211380,425076,0xFD81C4,-163388,3877,3878,1,1,0,0,0,0,1,1,25,3,0x89BA2E17
+HXRD,3880,425352425,425352617,64620,425288,0xFD81BF,-163393,3878,3879,1,1,0,0,0,0,1,1,25,3,0x627958A9
+HXRD,3881,425563503,425563713,211078,425352,0xFD81DD,-163363,3879,3880,1,1,0,0,0,0,1,1,25,3,0x983A944B
+HXRD,3882,425628425,425628613,64922,425563,0xFD81C9,-163383,3880,3881,1,1,0,0,0,0,1,1,25,3,0x3E6BA1CE
+HXRD,3883,425790487,425790689,162062,425628,0xFD81D5,-163371,3881,3882,1,1,0,0,0,0,1,1,25,3,0xE93C0B93
+HXRD,3884,425812425,425812617,21938,425790,0xFD81BA,-163398,3882,3883,1,1,0,0,0,0,1,1,25,3,0xC56D70F6
+HXRD,3885,425903425,425903613,91000,425812,0xFD818E,-163442,3883,3884,1,1,0,0,0,0,1,1,25,3,0x77548DC9
+HXRD,3886,426041483,426041680,138058,425903,0xFD819B,-163429,3884,3885,1,1,0,0,0,0,1,1,25,3,0xF5DC6B54
+HXRD,3887,426088425,426088617,46942,426041,0xFD81DE,-163362,3885,3886,1,1,0,0,0,0,1,1,25,3,0xB68826EF
+HXRD,3888,426291483,426291680,203058,426088,0xFD81BA,-163398,3886,3887,1,1,0,0,0,0,1,1,25,3,0x770524AE
+HXRD,3889,426363425,426363617,71942,426291,0xFD8196,-163434,3887,3888,1,1,0,0,0,0,1,1,25,3,0x368C2AB4
+HXRD,3890,426567503,426567713,204078,426363,0xFD81B2,-163406,3888,3889,1,1,0,0,0,0,1,1,25,3,0x769BD483
+HXRD,3891,426642425,426642613,74922,426567,0xFD81C4,-163388,3889,3890,1,1,0,0,0,0,1,1,25,3,0x0BAF564D
+HXRD,3892,426794487,426794689,152062,426642,0xFD81C2,-163390,3890,3891,1,1,0,0,0,0,1,1,25,3,0xCF70C829
+HXRD,3893,426823425,426823617,28938,426794,0xFD8181,-163455,3891,3892,1,1,0,0,0,0,1,1,25,3,0x30740756
+HXRD,3894,426915425,426915613,92000,426823,0xFD818F,-163441,3892,3893,1,1,0,0,0,0,1,1,25,3,0x2DEE4183
+HXRD,3895,427046548,427046756,131123,426915,0xFD8199,-163431,3893,3894,1,1,0,0,0,0,1,1,25,3,0x3301376A
+HXRD,3896,427099425,427099617,52877,427046,0xFD81CE,-163378,3894,3895,1,1,0,0,0,0,1,1,25,3,0xB45E9FC9
+HXRD,3897,427297483,427297680,198058,427099,0xFD81A4,-163420,3895,3896,1,1,0,0,0,0,1,1,25,3,0xC5A56AEE
+HXRD,3898,427375425,427375617,77942,427297,0xFD81C8,-163384,3896,3897,1,1,0,0,0,0,1,1,25,3,0x613F2C5D
+HXRD,3899,427570503,427570713,195078,427375,0xFD81D8,-163368,3897,3898,1,1,0,0,0,0,1,1,25,3,0x54CA149A
+HXRD,3900,427653425,427653613,82922,427570,0xFD81CD,-163379,3898,3899,1,1,0,0,0,0,1,1,25,3,0x961A0933
+HXRD,3901,427797487,427797689,144062,427653,0xFD81A9,-163415,3899,3900,1,1,0,0,0,0,1,1,25,3,0xAF7ABE55
+HXRD,3902,427837425,427837617,39938,427797,0xFD81D1,-163375,3900,3901,1,1,0,0,0,0,1,1,25,3,0x47CAC0D9
+HXRD,3903,428050483,428050680,213058,427837,0xFD81A4,-163420,3901,3902,1,1,0,0,0,0,1,1,25,3,0xD6EC332A
+HXRD,3904,428112425,428112617,61942,428050,0xFD81A2,-163422,3902,3903,1,1,0,0,0,0,1,1,25,3,0xDA061F21
+HXRD,3905,428303483,428303680,191058,428112,0xFD81BF,-163393,3903,3904,1,1,0,0,0,0,1,1,25,3,0xA72993A8
+HXRD,3906,428391425,428391617,87942,428303,0xFD81E4,-163356,3904,3905,1,1,0,0,0,0,1,1,25,3,0x25B1E28D
+HXRD,3907,428576503,428576713,185078,428391,0xFD81D0,-163376,3905,3906,1,1,0,0,0,0,1,1,25,3,0x39D54B26
+HXRD,3908,428667425,428667613,90922,428576,0xFD8207,-163321,3906,3907,1,1,0,0,0,0,1,1,25,3,0xD4F5028A
+HXRD,3909,428803487,428803689,136062,428667,0xFD81E0,-163360,3907,3908,1,1,0,0,0,0,1,1,25,3,0x8AC56584
+HXRD,3910,428849425,428849617,45938,428803,0xFD81B3,-163405,3908,3909,1,1,0,0,0,0,1,1,25,3,0x63B398C9
+HXRD,3911,429053483,429053680,204058,428849,0xFD8174,-163468,3909,3910,1,1,0,0,0,0,1,1,25,3,0x91D060F6
+HXRD,3912,429124425,429124617,70942,429053,0xFD8171,-163471,3910,3911,1,1,0,0,0,0,1,1,25,3,0xABA370C0
+HXRD,3913,429304483,429304680,180058,429124,0xFD81A6,-163418,3911,3912,1,1,0,0,0,0,1,1,25,3,0xE1A6C91B
+HXRD,3914,429320429,429320620,15946,429304,0xFD81C5,-163387,3912,3913,1,1,0,0,0,0,1,1,25,3,0x5671CDDE
+HXRD,3915,429400425,429400613,79996,429320,0xFD81A6,-163418,3913,3914,1,1,0,0,0,0,1,1,25,3,0xCBFBB8C1
+HXRD,3916,429579503,429579713,179078,429400,0xFD818A,-163446,3914,3915,1,1,0,0,0,0,1,1,25,3,0x7DFCD45F
+HXRD,3917,429597429,429597617,17926,429579,0xFD8169,-163479,3915,3916,1,1,0,0,0,0,1,1,25,3,0xCB499C3C
+HXRD,3918,429677425,429677613,79996,429597,0xFD815A,-163494,3916,3917,1,1,0,0,0,0,1,1,25,3,0x54511446
+HXRD,3919,429809487,429809689,132062,429677,0xFD8180,-163456,3917,3918,1,1,0,0,0,0,1,1,25,3,0x5F8E0E61
+HXRD,3920,429861425,429861617,51938,429809,0xFD81EE,-163346,3918,3919,1,1,0,0,0,0,1,1,25,3,0xA99DCA4A
+HXRD,3921,430060483,430060680,199058,429861,0xFD81F4,-163340,3919,3920,1,1,0,0,0,0,1,1,25,3,0x7D1DAEF2
+HXRD,3922,430137425,430137617,76942,430060,0xFD81E0,-163360,3920,3921,1,1,0,0,0,0,1,1,25,3,0x1D97E9CF
+HXRD,3923,430308809,430309008,171384,430137,0xFD81CA,-163382,3921,3922,1,1,0,0,0,0,1,1,25,3,0x5C5D79B8
+HXRD,3924,430324438,430324631,15629,430309,0xFD81C8,-163384,3922,3923,1,1,0,0,0,0,1,1,25,3,0x5001F349
+HXRD,3925,430413425,430413613,88987,430324,0xFD8203,-163325,3923,3924,1,1,0,0,0,0,1,1,25,3,0xEA32000D
+HXRD,3926,430585503,430585713,172078,430413,0xFD81BD,-163395,3924,3925,1,1,0,0,0,0,1,1,25,3,0xC356C00F
+HXRD,3927,430603429,430603617,17926,430585,0xFD8197,-163433,3925,3926,1,1,0,0,0,0,1,1,25,3,0xF40EF29F
+HXRD,3928,430812487,430812689,209058,430603,0xFD81AB,-163413,3926,3927,1,1,0,0,0,0,1,1,25,3,0x3E6AEA15
+HXRD,3929,430873425,430873617,60938,430812,0xFD81D7,-163369,3927,3928,1,1,0,0,0,0,1,1,25,3,0x0B12042E
+HXRD,3930,431062483,431062680,189058,430873,0xFD81C0,-163392,3928,3929,1,1,0,0,0,0,1,1,25,3,0x76CD4059
+HXRD,3931,431150425,431150617,87942,431062,0xFD81DB,-163365,3929,3930,1,1,0,0,0,0,1,1,25,3,0x31B7E5E7
+HXRD,3932,431312483,431312680,162058,431150,0xFD81E5,-163355,3930,3931,1,1,0,0,0,0,1,1,25,3,0x104BF508
+# END_HX_DIAG slot=LINK rows=256 retained=1 read_only=1; CPU times are not pin waveform or ADC timestamps
+# BEGIN_HX_FAIL schema=1 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail2 session=A1C20320 profile=SCK_LOW_250MS points=12 crc=CRC32_ISO_HDLC_META19_POINTS7_LE_U32
+# HX_FAIL schema=1 session=A1C20320 profile=SCK_LOW_250MS mode=COMPLETE mode_id=2 stop_reason=1 captured=1 points=12 next=12 valid=9 missed=3 early_target_us=2000 hold_target_us=250000
+# HX_FAIL_META seq=3804 read_start_us=417250483 read_end_us=417250681 probe_start_us=417250706 probe_end_us=417524491 rx=3803 err_before=0 err_after=1 bits24=0xFFFF60 raw=-160 phase_before=0 cal_before=0 postcheck=0
+# HX_FAIL_RESUME valid=1 start_us=417524518 seq=3805
+# HX_FAIL_LIMIT anchor=original_postcheck_end_cpu_us original_reject_retained=1 extra_sck_pulses=0 interrupts_enabled=1 next_hx_attempt_held=1 long_hold_nonblocking=1 deadline_is_target=1 discrete_points_only=1 pin_waveform=0; ADXL/OLED/WiFi continue; valid0=NA canonical_zero; no_filter/no_auto_cal
+kind,index,target_us,begin_us,end_us,dout,valid,missed
+HXFP,0,2,NA,NA,NA,0,1
+HXFP,1,10,NA,NA,NA,0,1
+HXFP,2,50,417250732,417250737,0,1,0
+HXFP,3,200,417250882,417250883,0,1,0
+HXFP,4,1000,417251682,417251684,0,1,0
+HXFP,5,2000,417252682,417252683,0,1,0
+HXFP,6,5000,417268416,417268429,0,1,0
+HXFP,7,20000,417273412,417273425,0,1,0
+HXFP,8,50000,417301412,417301425,0,1,0
+HXFP,9,100000,417353414,417353427,0,1,0
+HXFP,10,150000,NA,NA,NA,0,1
+HXFP,11,250000,417524461,417524491,0,1,0
+# END_HX_FAIL points=12 crc32=0x6DFD4AEA retained=1 read_only=1
+# END_HX_CAPTURE schema=2 session=A1C20320 slots=2 retained=1 read_only=1 complete=1
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=STALE RAW=-163364 RX=3934 ERR=1 AGE_ms=5047 ADXL=MISSING AERR=0 FIFO_FULL=1 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163430 RX=3943 ERR=1 AGE_ms=133 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163396 RX=3953 ERR=1 AGE_ms=125 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163402 RX=3962 ERR=1 AGE_ms=209 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-163356 RX=3971 ERR=1 AGE_ms=202 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated

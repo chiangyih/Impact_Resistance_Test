@@ -1,0 +1,37 @@
+{
+  "schema": "host-serial-capture-v1",
+  "purpose": "one CAL 241 on user-confirmed loaded pan; keep load during post-CAL observation",
+  "start": "2026-10-27T16:59:24.1409341+08:00",
+  "end": "2026-10-27T16:59:39.7210687+08:00",
+  "port": "COM3",
+  "baud": 115200,
+  "format": "8N1",
+  "handshake": "None",
+  "dtr": false,
+  "rts": false,
+  "events": [
+    {
+      "time": "2026-10-27T16:59:24.1448752+08:00",
+      "action": "OPEN",
+      "port": "COM3",
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "time": "2026-10-27T16:59:26.3702120+08:00",
+      "action": "TX",
+      "command": "CAL 241",
+      "user_confirmed_mass_g": 241,
+      "user_reply": "241g已放穩"
+    }
+  ],
+  "cal_command_sent": true,
+  "terminal_reply": "# CAL_USER counts_per_g=20.413381743; static user calibration, not independently validated",
+  "capture_error": null,
+  "port_closed": true,
+  "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-cal-165924.serial.log",
+  "individual_32_CAL_frames_not_logged": true,
+  "host_times_are_not_ADC_timestamps": true,
+  "offset_source": "20261027-hx711-241g-tare-165741.serial.log",
+  "offset_printed_counts": -157326.312
+}

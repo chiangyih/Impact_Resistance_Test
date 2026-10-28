@@ -1,0 +1,82 @@
+{
+  "schema": "hx711-calibration-recovery-observation-v1",
+  "record_id": "20261027-hx711-241g-recovery",
+  "date": "2026-10-27",
+  "timezone": "Asia/Taipei",
+  "user_observation": {
+    "OLED_reply": "顯示CAL_USER",
+    "power_USB_reset_continuity_reply": "不確定",
+    "new_RAW_values": null,
+    "phase": null,
+    "HX_state": null,
+    "source": "user textual reply; no direct model visual observation"
+  },
+  "host_observation_before_readback": {
+    "chunk_id": "d00815",
+    "wall_time_seconds": 1.5062576,
+    "exit_code": 0,
+    "original_token_count": 116,
+    "output": "{\r\n  \"Status\": \"OK\",\r\n  \"Class\": \"Ports\",\r\n  \"FriendlyName\": \"USB-SERIAL CH340 (COM3)\",\r\n  \"InstanceId\": \"USB\\\\VID_1A86&PID_7523\\\\6&2BCCCFA4&0&1\"\r\n}\r\n[\r\n  {\r\n    \"KeyName\": \"DEVPKEY_Device_IsPresent\",\r\n    \"Type\": 17,\r\n    \"Data\": true\r\n  },\r\n  {\r\n    \"KeyName\": \"DEVPKEY_Device_ProblemCode\",\r\n    \"Type\": 7,\r\n    \"Data\": 0\r\n  },\r\n  {\r\n    \"KeyName\": \"DEVPKEY_Device_ProblemStatus\",\r\n    \"Type\": 0,\r\n    \"Data\": null\r\n  }\r\n]\r\n2026-10-27T17:08:46.6625892+08:00\r\n"
+  },
+  "readback": {
+    "serial": "docs/calibration/20261027-hx711-241g-unload-readback-171013.serial.log",
+    "host": "docs/calibration/20261027-hx711-241g-unload-readback-171013.host.json",
+    "metadata": {
+      "schema": "host-serial-capture-v1",
+      "purpose": "read-only unloaded status after COM3 reappeared; calibration continuity uncertain",
+      "user_OLED_reply": "顯示CAL_USER",
+      "user_power_continuity_reply": "不確定",
+      "external_load_g": 0,
+      "load_condition_source": "prior user reply: 241g已取下，空托盤靜止",
+      "start": "2026-10-27T17:10:13.8229765+08:00",
+      "end": "2026-10-27T17:10:16.3584373+08:00",
+      "elapsed_ms": 2534,
+      "port": "COM3",
+      "baud": 115200,
+      "format": "8N1",
+      "handshake": "None",
+      "dtr": false,
+      "rts": false,
+      "events": [
+        {
+          "time": "2026-10-27T17:10:13.8274060+08:00",
+          "action": "OPEN",
+          "port": "COM3",
+          "dtr": false,
+          "rts": false
+        }
+      ],
+      "capture_error": "No passive normal IDLE evidence; no query sent",
+      "port_closed": true,
+      "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-unload-readback-171013.serial.log",
+      "prior_offset_printed_counts": -157326.312,
+      "prior_counts_per_g_printed": 20.413381743,
+      "current_exact_calibration_parameters_not_read_back": true,
+      "host_times_are_not_ADC_timestamps": true,
+      "raw_is_STATUS_snapshots_not_all_ADC_frames": true
+    },
+    "serial_characters": 0,
+    "status_snapshots": 0,
+    "mass_g": null
+  },
+  "QC": {
+    "reviewer": "Ampere",
+    "outcome": "Port became present and could open; no serial data or TX in 2.534-second passive guard window. Current parameters and same-calibration continuity not confirmed; return to zero remains untested.",
+    "capture_error_meaning": "Protective stop because passive normal IDLE evidence was not observed; no located serial or firmware root cause."
+  },
+  "pending": "User asked to observe 3 OLED RAW values about 3 seconds apart and report phase/HX without touching USB or resetting.",
+  "operations": {
+    "reset": false,
+    "TARE": false,
+    "CAL": false,
+    "CLEAR": false,
+    "driver_or_hardware_mutations": false,
+    "port_closed": true
+  },
+  "limitations": [
+    "OLED CAL_USER alone does not read back exact coefficients or prove continuous boot state.",
+    "Zero serial characters are not zero grams.",
+    "No saved coefficients were written back; prior calibration summary remains a historical snapshot."
+  ]
+}
+

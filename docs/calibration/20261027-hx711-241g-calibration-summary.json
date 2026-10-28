@@ -1,0 +1,142 @@
+{
+  "schema": "hx711-static-calibration-observation-v1",
+  "record_id": "20261027-hx711-241g",
+  "date": "2026-10-27",
+  "timezone": "Asia/Taipei",
+  "firmware_readback": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1",
+  "operator": "root; physical load actions and observations supplied by user",
+  "user_confirmed": {
+    "empty_pan_static": true,
+    "calibration_mass_g": 241,
+    "power_cycle_or_USB_reconnection_since_previous_session": true,
+    "loadcell_wiring_changed": false,
+    "weight_placed_static_reply": "241g已放穩",
+    "weight_removed_static_reply": "241g已取下，空托盤靜止"
+  },
+  "parameters": {
+    "offset_printed_counts": -157326.312,
+    "counts_per_g_printed": 20.413381743,
+    "formula": "mass_g = (RAW - offset_printed_counts) / counts_per_g_printed",
+    "precision_limit": "host calculations use printed parameters; internal TARE/CAL 32-frame means are not separately logged",
+    "storage": "device RAM only; no automatic restore"
+  },
+  "evidence": {
+    "readonly": {
+      "serial": "docs/calibration/20261027-hx711-241g-readonly-165458.serial.log",
+      "host": "docs/calibration/20261027-hx711-241g-readonly-165458.host.json"
+    },
+    "baseline": {
+      "serial": "docs/calibration/20261027-hx711-241g-empty-baseline-165536.serial.log",
+      "host": "docs/calibration/20261027-hx711-241g-empty-baseline-165536.host.json"
+    },
+    "tare": {
+      "serial": "docs/calibration/20261027-hx711-241g-tare-165741.serial.log",
+      "host": "docs/calibration/20261027-hx711-241g-tare-165741.host.json"
+    },
+    "cal": {
+      "serial": "docs/calibration/20261027-hx711-241g-cal-165924.serial.log",
+      "host": "docs/calibration/20261027-hx711-241g-cal-165924.host.json"
+    },
+    "unload_attempt": {
+      "serial": "docs/calibration/20261027-hx711-241g-unload1-170057.serial.log",
+      "host": "docs/calibration/20261027-hx711-241g-unload1-170057.host.json"
+    }
+  },
+  "sha256": {
+    "docs/calibration/20261027-hx711-241g-readonly-165458.serial.log": "04b87d3507511809929c125550f24c77d8b7aa19f79210500ec93989e015f201",
+    "docs/calibration/20261027-hx711-241g-readonly-165458.host.json": "4b36df843f0457ce06c6695b2ddc024fdc48cdfebffe0e65f0309ae2526ed936",
+    "docs/calibration/20261027-hx711-241g-empty-baseline-165536.serial.log": "3f4cfb01697fb7e61276741a72e7697119c59debd8c8a02fca54f5c3b6f98df1",
+    "docs/calibration/20261027-hx711-241g-empty-baseline-165536.host.json": "2e8f22f76b43b48e843d0b878c028d2bad9c53fe165566c4474e4f13d8eff8c1",
+    "docs/calibration/20261027-hx711-241g-tare-165741.serial.log": "97cbfc629047f0cd98817d580cc74edeb2a71a4d5b159454a8da6b474dea52d9",
+    "docs/calibration/20261027-hx711-241g-tare-165741.host.json": "3842673e94507cedd0a9712e55cc1cd2926524c00f3c8a248b00b10a5d4ae083",
+    "docs/calibration/20261027-hx711-241g-cal-165924.serial.log": "a6f9bc6c47f647ec582c292985f2ac4129e11622bd02330b1ae693a1cad3f58b",
+    "docs/calibration/20261027-hx711-241g-cal-165924.host.json": "817ad2e98f77402dfb430d8749e2e941dabc4983c51b0911e08fcef735370676",
+    "docs/calibration/20261027-hx711-241g-unload1-170057.serial.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/calibration/20261027-hx711-241g-unload1-170057.host.json": "ac408ef116d2a045da7afbbf353e63d18613c963a5d3c2fde37ef88adb9dc87a"
+  },
+  "baseline": {
+    "status_snapshots": 45,
+    "distinct_RX": 45,
+    "first_RX": 861,
+    "last_RX": 1277,
+    "raw_mean_counts": -157369.0888888889,
+    "raw_min_counts": -157464,
+    "raw_max_counts": -157262,
+    "mean_mass_g": null,
+    "min_mass_g": null,
+    "max_mass_g": null,
+    "ERR_first": 0,
+    "ERR_last": 0,
+    "AERR_first": 0,
+    "AERR_last": 0,
+    "FIFO_FULL_first": 1,
+    "FIFO_FULL_last": 1,
+    "all_HX_OK": true,
+    "scope": "roughly one-second STATUS snapshots; not all ADC frames",
+    "consecutive_groups_of_15_raw_mean_counts": [
+      -157379,
+      -157398.2,
+      -157330.06666666668
+    ]
+  },
+  "tare": {
+    "terminal_reply": "# TARE_OK offset=-157326.312; UNCAL; use known mass with CAL grams",
+    "TX_count": 1,
+    "individual_32_frames_logged": false
+  },
+  "cal": {
+    "terminal_reply": "# CAL_USER counts_per_g=20.413381743; static user calibration, not independently validated",
+    "TX_count": 1,
+    "individual_32_frames_logged": false
+  },
+  "post_CAL_same_load": {
+    "status_snapshots": 11,
+    "distinct_RX": 11,
+    "first_RX": 3052,
+    "last_RX": 3145,
+    "raw_mean_counts": -152425.27272727274,
+    "raw_min_counts": -152468,
+    "raw_max_counts": -152368,
+    "mean_mass_g": 240.0895321720961,
+    "min_mass_g": 237.9964310257403,
+    "max_mass_g": 242.89517838955183,
+    "ERR_first": 1,
+    "ERR_last": 1,
+    "AERR_first": 0,
+    "AERR_last": 0,
+    "FIFO_FULL_first": 1,
+    "FIFO_FULL_last": 1,
+    "all_HX_OK": true,
+    "scope": "roughly one-second STATUS snapshots; not all ADC frames",
+    "mean_difference_from_user_mass_g": -0.9104678279038865,
+    "mean_difference_percent": -0.37778748045804417,
+    "independent_accuracy_validation": false
+  },
+  "unload_attempt": {
+    "external_load_g": 0,
+    "serial_characters": 0,
+    "capture_error": "Exception calling \"Open\" with \"0\" argument(s): \"Could not find file 'COM3'.\"",
+    "status_snapshots": 0,
+    "mean_mass_g": null,
+    "min_mass_g": null,
+    "max_mass_g": null,
+    "commands": [],
+    "port_closed": true
+  },
+  "acceptance": {
+    "TARE_procedure": "accepted",
+    "CAL_241_procedure": "accepted",
+    "post_CAL_loaded_observation": "short-window consistency only",
+    "return_to_zero": "not_observed_due_to_port_absent",
+    "reload_repeatability": "not_tested",
+    "accuracy": "not_validated",
+    "dynamic_force": "not_tested",
+    "current_RAM_calibration": "unconfirmed_after_COM3_disappeared"
+  },
+  "limitations": [
+    "COM3 absence does not itself prove MCU reset or RAM loss. Await user power/OLED state and new readback.",
+    "ERR was 0 at last TARE snapshot and already 1 in first CAL snapshot, staying 1 in CAL window; increment occurred in unsaved gap with unknown cause/time.",
+    "AERR/FIFO counts from before user-confirmed USB reconnect are a separate observation window; no claim that previous anomalies were fixed.",
+    "Baseline was WiFi CONNECTED/radio1; TARE and CAL post-windows show SUSPENDED/radio0. No causal inference from these observations."
+  ]
+}

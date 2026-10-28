@@ -1,0 +1,88 @@
+{
+  "schema": "hx711-OLED-user-observation-v1",
+  "record_id": "20261027-hx711-241g-OLED-unloaded",
+  "date": "2026-10-27",
+  "timezone": "Asia/Taipei",
+  "user_reply": "-157785、-157622、-157642；IDLE都是:A:0 H:0",
+  "source": "User textual report of OLED values; model/QC did not directly view hardware",
+  "physical_observation_timestamps": null,
+  "requested_interval_seconds": 3,
+  "actual_intervals_confirmed": false,
+  "load_condition": {
+    "source": "prior user reply: 241g已取下，空托盤靜止",
+    "new_independent_empty_pan_confirmation": false
+  },
+  "OLED": {
+    "RAW_counts": [
+      -157785,
+      -157622,
+      -157642
+    ],
+    "phase": "IDLE",
+    "acc_trial_records": 0,
+    "hx_trial_records": 0,
+    "HX_health": null,
+    "prior_CAL_flag_reply": "顯示CAL_USER"
+  },
+  "raw_statistics": {
+    "mean_counts": -157683,
+    "min_counts": -157785,
+    "max_counts": -157622,
+    "span_counts": 163
+  },
+  "conditional_calculation": {
+    "condition": "Only if the device still uses the saved offset and scale; current exact RAM coefficients and power continuity are unconfirmed",
+    "offset_printed_counts": -157326.312,
+    "counts_per_g_printed": 20.413381743,
+    "mass_g": [
+      -22.469966308119645,
+      -14.485008105106823,
+      -15.464757577869133
+    ],
+    "mean_mass_g": -17.47324399703187,
+    "formula": "(RAW - offset_printed_counts) / counts_per_g_printed",
+    "formal_same_session_zero_return_result": false
+  },
+  "power_continuity_user_reply": "不確定",
+  "serial_followup": {
+    "host": "docs/calibration/20261027-hx711-241g-oled-followup-171835.host.json",
+    "serial": "docs/calibration/20261027-hx711-241g-oled-followup-171835.serial.log",
+    "elapsed_ms": 8127,
+    "TX": [
+      "VERSION",
+      "STATUS",
+      "SPEED STATUS"
+    ],
+    "received_characters": 0,
+    "command_delivery_confirmed": false,
+    "port_closed": true,
+    "capture_error": "No device characters after bounded read-only queries; no retry or reset"
+  },
+  "USB_diagnostics": "docs/calibration/20261027-hx711-241g-USB-readonly-diagnostics.json",
+  "sha256": {
+    "docs/calibration/20261027-hx711-241g-oled-followup-171835.host.json": "c9a6c374153908a21d32643ff8273aadad376b749b70906e722435d52f673080",
+    "docs/calibration/20261027-hx711-241g-oled-followup-171835.serial.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/calibration/20261027-hx711-241g-USB-readonly-diagnostics.json": "f810ab466860035bb1c581885669986e2a9f2e7b0e4f5eb4553bb3697761d9e1"
+  },
+  "acceptance": {
+    "changing_OLED_values": "supported_by_user_report",
+    "trial_buffer_counts_are_HX_health": false,
+    "zero_return": "not_confirmed; conditional negative offset indication",
+    "accuracy": "not_validated",
+    "cause": "not_located"
+  },
+  "operations": {
+    "TARE": false,
+    "CAL": false,
+    "reset": false,
+    "CLEAR": false,
+    "firmware_modified": false,
+    "port_closed": true
+  },
+  "limitations": [
+    "Three displayed values are not a complete independent ADC sequence.",
+    "OLED A/H are trial record counts, not HX RX or health.",
+    "No serial response does not locate UART/USB/firmware root cause.",
+    "Do not re-TARE to erase an unverified offset; preserve original parameters and raw observations."
+  ]
+}

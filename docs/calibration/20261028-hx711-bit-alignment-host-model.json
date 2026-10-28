@@ -1,0 +1,236 @@
+{
+  "schema": "hx711-pure-host-alignment-model-v1",
+  "deterministic": true,
+  "sideEffects": "stdout only; no imports, COM, network, or filesystem access",
+  "exhaustiveDecodeCount": 16777216,
+  "assertions": 1302,
+  "assumptions": [
+    "Neighbor values are hypothetical input surrogates; the true ADC word during either event was not recorded independently.",
+    "StrictShiftDevice holds DOUT between effective edges and starts a new conversion only after >=25 effective edges. Sub-25 recovery behavior is outside the datasheet contract and is not established for the physical module.",
+    "observationLag is fault injection after the ready gate, not a verified electrical mechanism or a model of every real GPIO propagation delay.",
+    "Any missing-edge model with extra glitches, autonomous conversion/reset, or other recovery is a different model and is not excluded by the strict-model stall.",
+    "A matching transform proves numerical compatibility only, not a root cause or permission to repair/filter RAW.",
+    "The observed STATUS streams show further accepted RX after both spikes; this contradicts only the strict no-recovery missing-edge model.",
+    "Actual SCK durations, physical edge counts, ADC input, supply, or UART integrity cannot be recovered by this simulation."
+  ],
+  "cases": [
+    {
+      "id": "20261027_223438",
+      "before": -151878,
+      "observed": -594,
+      "after": -151829,
+      "k": 8,
+      "words": {
+        "before": "FDAEBA",
+        "observed": "FFFDAE",
+        "after": "FDAEEB"
+      },
+      "commonArithmeticRightShifts": [
+        8
+      ],
+      "commonZeroFillRightShifts": [],
+      "commonAdvanceWithHighTailShifts": [],
+      "fixedGlobalShiftOutputRange": {
+        "min": -32768,
+        "max": 32767
+      },
+      "inverseInterval": {
+        "min": -152064,
+        "max": -151809,
+        "possibilities": 256,
+        "highPostBitCandidates": 128
+      },
+      "normal": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FDAEBA",
+          "raw": -151878,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        },
+        "conversionCouldComplete": true,
+        "next": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FDAEEB",
+          "raw": -151829,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        }
+      },
+      "firstEdgesMissing": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "00FDAE",
+          "raw": 64942,
+          "physicalEdges": 17,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": false
+        },
+        "conversionCouldComplete": false,
+        "next": {
+          "entered": false,
+          "accepted": false,
+          "clock": 17
+        }
+      },
+      "repeatedFirstOne": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FFFDAE",
+          "raw": -594,
+          "physicalEdges": 17,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": false
+        },
+        "conversionCouldComplete": false,
+        "next": {
+          "entered": false,
+          "accepted": false,
+          "clock": 17
+        }
+      },
+      "observationLag": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FFFDAE",
+          "raw": -594,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        },
+        "conversionCouldComplete": true,
+        "next": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FDAEEB",
+          "raw": -151829,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        }
+      }
+    },
+    {
+      "id": "20261028_071218",
+      "before": -159114,
+      "observed": -156,
+      "after": -159122,
+      "k": 10,
+      "words": {
+        "before": "FD9276",
+        "observed": "FFFF64",
+        "after": "FD926E"
+      },
+      "commonArithmeticRightShifts": [
+        10
+      ],
+      "commonZeroFillRightShifts": [],
+      "commonAdvanceWithHighTailShifts": [],
+      "fixedGlobalShiftOutputRange": {
+        "min": -8192,
+        "max": 8191
+      },
+      "inverseInterval": {
+        "min": -159744,
+        "max": -158721,
+        "possibilities": 1024,
+        "highPostBitCandidates": 512
+      },
+      "normal": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FD9276",
+          "raw": -159114,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        },
+        "conversionCouldComplete": true,
+        "next": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FD926E",
+          "raw": -159122,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        }
+      },
+      "firstEdgesMissing": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "003F64",
+          "raw": 16228,
+          "physicalEdges": 15,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": false
+        },
+        "conversionCouldComplete": false,
+        "next": {
+          "entered": false,
+          "accepted": false,
+          "clock": 15
+        }
+      },
+      "repeatedFirstOne": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FFFF64",
+          "raw": -156,
+          "physicalEdges": 15,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": false
+        },
+        "conversionCouldComplete": false,
+        "next": {
+          "entered": false,
+          "accepted": false,
+          "clock": 15
+        }
+      },
+      "observationLag": {
+        "first": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FFFF64",
+          "raw": -156,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        },
+        "conversionCouldComplete": true,
+        "next": {
+          "entered": true,
+          "accepted": true,
+          "observedWord": "FD926E",
+          "raw": -159122,
+          "physicalEdges": 25,
+          "postObserved": 1,
+          "physicalPostDout": 1,
+          "conversionArmed": true
+        }
+      }
+    }
+  ]
+}

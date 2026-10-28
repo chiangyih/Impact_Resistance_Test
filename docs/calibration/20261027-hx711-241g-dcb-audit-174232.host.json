@@ -1,0 +1,65 @@
+{
+  "schema": "host-serial-dcb-audit-v1",
+  "purpose": "bounded non-reset audit after user confirmed OLED IDLE and HX OK",
+  "start": "2026-10-27T17:42:32.0623792+08:00",
+  "end": "2026-10-27T17:42:42.9489762+08:00",
+  "elapsed_ms": 10886,
+  "port": "COM3",
+  "port_open_request": {
+    "baud": 115200,
+    "format": "8N1",
+    "handshake": "None",
+    "dtr": false,
+    "rts": false
+  },
+  "user_state": {
+    "phase_reply": "對",
+    "HX": "OK",
+    "CAL": "CAL_USER",
+    "external_load": "none, per preceding user reply"
+  },
+  "events": [
+    {
+      "time": "2026-10-27T17:42:32.6886269+08:00",
+      "action": "OPEN",
+      "port": "COM3",
+      "dtr": false,
+      "rts": false,
+      "state_basis": "user confirmed OLED IDLE after unloaded HX:OK CAL_USER"
+    }
+  ],
+  "dcb_after_open": {
+    "baud": 115200,
+    "byte_size": 8,
+    "parity_code": 0,
+    "stop_bits_code": 0,
+    "raw_flags": 1,
+    "binary": true,
+    "cts_output_flow": false,
+    "dsr_output_flow": false,
+    "dsr_input_sensitivity": false,
+    "xonxoff_output": false,
+    "xonxoff_input": false,
+    "dtr_control_code": 0,
+    "rts_control_code": 0,
+    "meaning": "Windows DCB after SerialPort opened and configured as requested; not a readback of the pre-open DCB or device firmware"
+  },
+  "modem_status": {
+    "status_bits": 0,
+    "CTS": false,
+    "DSR": false,
+    "RING": false,
+    "RLSD": false,
+    "meaning": "Host-observed input modem status, not sensor or firmware health"
+  },
+  "passive_receive_byte_count": 0,
+  "device_commands_sent": [],
+  "capture_error": null,
+  "port_closed": true,
+  "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-dcb-audit-174232.serial.log",
+  "limitations": [
+    "DCB describes settings after this process configured and opened port; it does not prove prior DCB, UART connectivity or absence of device errors.",
+    "No device commands were sent. No RX bytes does not locate root cause.",
+    "No manual DTR/RTS transitions, reset, queue discard, or ClearCommError were issued."
+  ]
+}

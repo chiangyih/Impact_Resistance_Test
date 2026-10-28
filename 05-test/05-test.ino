@@ -19,10 +19,14 @@
 #include <math.h> // 載入合成加速度、絕對值與有限數判斷。
 #include <stdlib.h> // 載入具完整字尾檢查的數值解析函式。
 #include <string.h> // 載入固定緩衝區命令比對功能。
+#include <esp_random.h> // 只在新boot建立診斷session標籤，不導出私密記憶體。
 #include "network_wifi.h" // 僅待機處理WiFi，活動記錄與校正前先關閉無線電。
 #include "manual_optical.h" // 手動光學計時不借用ARM緩衝或荷重校正。
+#include "hx_read_diag.h" // 固定RAM讀取摘要，不改SCK脈衝或校正判斷。
+#include "hx_failure_diag.h" // 首LINK後只讀DATA，另列對下一HX attempt的有界LOW介入。
+#include "hx_pcnt_adapter.h" // 既有pad的PCNT正對照與首LINK hold計數，非示波器。
 
-const char FIRMWARE_VERSION[] = "v1-layout2-fifo-diag1-wifi1-d220-right-optical1"; // 啟動與VERSION共用識別。
+const char FIRMWARE_VERSION[] = "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail3-pcnt1"; // 新PCNT觀測條件，仍未修復量測異常或恢復舊RAM校正。
 
 const uint8_t HX_SCK = 25, HX_DATA = 33, UP_PIN = 34, DN_PIN = 35; // NMK99的GPIO32留給板載RGB，HX711時脈須實際移到GPIO25。
 const uint8_t BOARD_RGB_PIN = 32; // NMK99教學標示單顆WS2812使用GPIO32，不以LED_BUILTIN推測RGB接腳。
@@ -79,6 +83,11 @@ uint32_t cal_start_ms = 0; // 限制收集最長八秒，避免缺席時永遠�
 char command_line[80]; // 固定命令長度，避免使用持續增長的字串。
 uint8_t command_length = 0; // 保存目前命令長度。
 bool command_overflow = false; // 過長命令整行捨棄，不執行被截斷的 ARM 等命令。
+HxDiagState hx_diag, hx_link_diag; uint32_t hx_attempt_seq = 0, hx_diag_session = 0, hx_diag_service_ms = 0; bool hx_diag_notice_sent = false; // ANY/LINK獨立固定槽、唯一完成attempt配號。
+static_assert(sizeof(hx_diag.records) + sizeof(hx_link_diag.records) == 28672, "Two HX rings must remain bounded"); // 不占用trial/cal容量，也不分配heap。
+HxFailureDiag hx_fail; // 首次窗口內LINK固定離散點，不提供重arm或清除。
+static_assert(sizeof(hx_diag) + sizeof(hx_link_diag) + sizeof(hx_fail) <= 30000, "Diagnostic state RAM budget exceeded"); // 固定診斷RAM上限，trial/cal陣列容量保持原值。
+static_assert(sizeof(hx_diag) + sizeof(hx_link_diag) + sizeof(hx_fail) + sizeof(hx_pcnt) + sizeof(hx_pcnt_rt) <= 33000, "All diagnostic static RAM budget exceeded"); // 新增PCNT正對照/快取有上限，IDF setup heap另列。
 
 bool isRecording() { // 判斷是否正在保存試驗原始資料。
   return phase == ARMED || phase == WAIT_DN || phase == CAPTURE; // 三個活動狀態都暫停慢速畫面與一般輸出。
@@ -301,8 +310,46 @@ void collectCalibration(int32_t raw) { // 去皮及比例校正只消費新收�
   cal_mode = 0; // 每次命令只收集一組，不持續自動校正。
 } // 結束校正收集。
 
+void recordHxDiagnostic(uint32_t bits, bool accepted, uint32_t begin_us, uint32_t end_us, uint32_t last_accept_before, bool seen_before) { // 原處理完成後才複製固定摘要。
+  HxDiagRecord r = {}; r.start_us = begin_us; r.end_us = end_us; r.last_accept_ms_before = last_accept_before; // CPU觀察時間，不是管腳波形。
+  r.bits24 = bits & 0xFFFFFFUL; r.raw = decodeHx(bits); r.rx_after = hx_rx; r.rx_before = hx_rx - (accepted ? 1UL : 0UL); // 拒絕框解碼只供診斷，不寫hx_raw。
+  r.err_after = hx_errors; r.err_before = hx_errors - (accepted ? 0UL : 1UL); // 保留原警示增量，不清除或補造。
+  r.cal_count_after = cal_count; r.phase_after = phase; r.cal_mode_after = cal_mode; // 明示為原量測/校正處理後脈絡。
+  r.accepted = accepted; r.dout_after25 = accepted ? HIGH : LOW; r.pulses_issued = 25; r.context_flags = seen_before ? 1 : 0; // gate已見LOW；未新增GPIO讀取，旗標不依RX是否wrap。
+  r.seq = ++hx_attempt_seq; hxdiagObserveShared(hx_diag, r); hxdiagObserveShared(hx_link_diag, r); // 每個完成attempt只配一次序號，同一取得點資料分送ANY/LINK。
+  hxdiagSeal(hx_diag); hxdiagSeal(hx_link_diag); // 僅已凍結槽封存匯出計數，後續live統計不改payload/CRC。
+} // 結束原始嘗試摘要。
+
+void serviceHxFailure() { // 僅在首LINK的診斷hold期間讀DATA，不寫SCK、不改原接受判斷。
+  if (hx_fail.mode != HXF_HOLD) return; // 一般量測路徑沒有新增DATA輪詢。
+  const uint32_t now = micros(); // 實際服務CPU時間，不假造目標點準時。
+  if (hxdiagDelta(now, hx_link_diag.start_us) >= HXD_WINDOW_US) { hxfStop(hx_fail, HXF_STOP_WINDOW, now); return; } // 共同總窗先到即截斷。
+  if (!hxdiagCanRetain(hx_link_diag, now)) { hxfStop(hx_fail, HXF_STOP_RING, now); return; } // 僅LINK槽決定後窗/凍結，ANY已凍結不妨礙等待。
+  if (hxfDue(hx_fail, now) < 0) return; // 未到點即返回，不在長窗忙等。
+  const uint32_t before = micros(); // Due與before之間也可能被中斷跨越期限。
+  if (!hxdiagCanRetain(hx_link_diag, before)) { hxfStop(hx_fail, hxdiagDelta(before, hx_link_diag.start_us) >= HXD_WINDOW_US ? HXF_STOP_WINDOW : HXF_STOP_RING, before); return; } // 過期不讀DATA；before在窗內但after跨界則保留真括弧。
+  const bool high = digitalRead(HX_DATA) == HIGH; const uint32_t after = micros(); // 只新增DATA讀取及外側CPU括弧。
+  hxfSample(hx_fail, before, after, high); // 中斷可能使括弧或末點晚到，原樣保存。
+} // 結束離散DATA服務。
+
+void captureHxFailure(uint32_t bits, uint32_t begin_us, uint32_t end_us, uint8_t phase_before, uint8_t cal_before) { // 原失敗路徑已更新ERR，後來HIGH仍是拒絕。
+  if (hx_fail.mode != HXF_WAITING) return; // 第一LINK鎖定，不讓後續錯誤延長hold。
+  if (hxdiagDelta(end_us, hx_link_diag.start_us) >= HXD_WINDOW_US) { hxfStop(hx_fail, HXF_STOP_WINDOW, end_us); return; } // 原讀取跨共同截止仍可能在LINK槽保留，但不再介入。
+  if (!hxdiagCanRetain(hx_link_diag, begin_us)) { hxfStop(hx_fail, HXF_STOP_RING, end_us); return; } // 只有LINK槽窗口內的可介入失敗，無trace不代表無LINK。
+  hxfStart(hx_fail, hx_attempt_seq + 1, begin_us, end_us, bits, hx_rx, hx_errors, phase_before, cal_before, phase_before == IDLE && !cal_before, micros()); // 活動/校正時只記SKIPPED，不延後原責任。
+  startHxPcntHold(hx_attempt_seq + 1, end_us, hx_fail.mode == HXF_HOLD, hx_link_diag); // PCNT額外前置時間另存，原anchor不延長。
+  while (hx_fail.mode == HXF_HOLD && hxdiagDelta(micros(), end_us) < HXF_EARLY_US) serviceHxFailure(); // 僅早期2ms目標短觀察，中斷維持開啟。
+  serviceHxFailure(); // 處理已到的2ms或late點；後250ms窗交回主迴圈。
+  finishHxPcntHold(hx_fail.mode == HXF_HOLD); // early服務若已晚到完成/截斷，同圈Serial之前先停兩counter。
+} // 結束第一階段觀察。
+
 void pollHx() { // 延續第四版的固定二十五脈衝與讀後回高檢查。
+  finishHxPcntHold(hx_fail.mode == HXF_HOLD); // 下一合法clock前兩個counter必須已停，失敗則guard阻擋。
+  if (hx_pcnt.clock_blocked) return; // GPIO恢復/停止未證實時不裝作正常量測，保留STALE與診斷NA。
+  if (hx_fail.mode == HXF_HOLD) return; // 刻意延後下一HX clock，ADXL/OLED/WiFi仍由主迴圈服務。
   if (digitalRead(HX_DATA) != LOW) return; // 資料未就緒立即返回，不等待轉換。
+  if (phase == IDLE && !cal_mode) prepareHxPcntProof(); // 最多八個既有read外側正對照，不加SCK脈衝。
+  const uint32_t diag_begin_us = micros(); // 唯一新增的傳輸前CPU括弧，位於脈衝迴圈外。
   uint32_t bits = 0; // 保存本輪原始二十四位元。
   delayMicroseconds(2); // 保留資料下降到第一個時脈的間隔。
   for (uint8_t i = 0; i < 25; ++i) { // 最後一脈衝選擇下一筆 A128。
@@ -313,14 +360,119 @@ void pollHx() { // 延續第四版的固定二十五脈衝與讀後回高檢查�
     portEXIT_CRITICAL(&hx_mux); delayMicroseconds(2); // 低電位允許 Tracker 中斷，不長時間封鎖計時。
   } // 結束固定脈衝。
   hx_frame_ok = digitalRead(HX_DATA) == HIGH; // 握手不通過就不覆寫最近有效框。
-  if (!hx_frame_ok) { ++hx_errors; if (cal_mode) { cal_mode = 0; Serial.println("# CAL_ABORT LINK_ERR"); } return; } // 保留握手異常計數。
+  const uint32_t diag_end_us = micros(), diag_last_accept_before = hx_last_ms; // 迴圈後CPU括弧；不聲稱量到SCK高寬。
+  const bool diag_seen_before = hx_seen; // 在原更新前保存有效性，零RX不代表未見過資料。
+  finishHxPcntProof(hx_attempt_seq + 1, bits, hx_frame_ok); // 先停validation再進首LINK，不與hold混窗。
+  hxfResume(hx_fail, diag_begin_us, hx_attempt_seq + 1, hxdiagCanRetain(hx_link_diag, diag_begin_us)); // 只綁LINK仍可保留的真正attempt；封存後CRC不再改。
+  if (!hx_frame_ok) { const uint8_t cal_before = cal_mode, phase_before = phase; ++hx_errors; cal_mode = 0; captureHxFailure(bits, diag_begin_us, diag_end_us, phase_before, cal_before); if (cal_before) Serial.println("# CAL_ABORT LINK_ERR"); recordHxDiagnostic(bits, false, diag_begin_us, diag_end_us, diag_last_accept_before, diag_seen_before); return; } // 原拒絕/校正中止不變，首LINK另記LOW介入。
   hx_raw = decodeHx(bits); hx_seen = true; hx_last_ms = millis(); ++hx_rx; // 即使滿量程也保留真實原始值與時間。
   if (isRecording()) { // 活動視窗內保存每個收到的框。
     if (hx_count >= HX_CAPACITY) abortTrial(BUFFER_FULL); // 不默默覆寫舊資料。
     else { const bool sat = hx_raw == -8388608L || hx_raw == 8388607L; hx_records[hx_count++] = {micros() - armed_us, hx_raw, static_cast<uint8_t>(sat)}; if (sat) ++trial_sat; } // 保存接收時間而非晶片精確取樣時間。
   } // 結束荷重記錄。
   collectCalibration(hx_raw); // 只有明確校正命令才收集資料。
+  recordHxDiagnostic(bits, true, diag_begin_us, diag_end_us, diag_last_accept_before, diag_seen_before); // 原成功/記錄/校正流程完成後保存，不濾除跳值。
 } // 結束荷重輪詢。
+
+const char *hxDiagModeName(const HxDiagState &slot) { // 輸出只代表該診斷槽狀態。
+  return slot.mode == HXD_FROZEN ? "FROZEN" : slot.mode == HXD_POST_CAPTURE ? "POST" : "LIVE"; // 不混用一般phase。
+} // 結束狀態文字。
+
+void printHxDiagSlot(const HxDiagState &slot, const char *name, bool frozen_export) { // STATUS列live計數，DUMP列一次封存快照。
+  Serial.printf("# HX_DIAG schema=2 slot=%s trigger_mask=%lu version=%s session=%08lX mode=%s freeze_reason=%u records=%u capacity=%u record_bytes=%u ring_bytes=%u export_sealed=%d\n", name, static_cast<unsigned long>(slot.trigger_mask), FIRMWARE_VERSION, static_cast<unsigned long>(hx_diag_session), hxDiagModeName(slot), slot.freeze_reason, slot.count, HXD_CAPACITY, static_cast<unsigned>(sizeof(HxDiagRecord)), static_cast<unsigned>(sizeof(slot.records)), slot.export_sealed); // 每槽角色明示，不以LINK槽丟掉原JUMP/SAT flags。
+  Serial.printf("# HX_DIAG_TIME clock=boot_micros_u32 start_us=%lu window_us=%lu trigger_us=%lu freeze_us=%lu trigger_seq=%lu trigger_flags=%lu pre=%u post=%u post_target=%u post_complete=%d\n", static_cast<unsigned long>(slot.start_us), static_cast<unsigned long>(HXD_WINDOW_US), static_cast<unsigned long>(slot.trigger_us), static_cast<unsigned long>(slot.freeze_us), static_cast<unsigned long>(slot.trigger_seq), static_cast<unsigned long>(slot.trigger_flags), slot.pre_count, slot.post_count, HXD_POST, slot.post_count == HXD_POST); // 共用600s起點，無trigger時零欄位無效。
+  Serial.printf("# HX_DIAG_COUNTS scope=%s attempts=%lu pre_overwritten=%lu omitted_after_freeze=%lu overflow=%d seq_wrapped=%d\n", frozen_export ? "frozen" : "live", static_cast<unsigned long>(frozen_export ? slot.export_attempts : slot.attempts), static_cast<unsigned long>(frozen_export ? slot.export_pre_overwritten : slot.pre_overwritten), static_cast<unsigned long>(frozen_export ? slot.export_omitted : slot.omitted_after_freeze), slot.overflow, frozen_export ? slot.export_seq_wrapped : slot.seq_wrapped); // 封存後DUMP metadata不隨live attempts漂移。
+  Serial.println("# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal"); // 明列觀察與校正界線。
+} // 結束唯讀快取。
+
+void printHxDiagStatus() { // 即使HX失聯也能分槽唯讀；不做重新武裝。
+  printHxDiagSlot(hx_diag, "ANY", false); printHxDiagSlot(hx_link_diag, "LINK", false); // 兩槽分列，不將一槽凍結當整體完成。
+} // 結束雙槽STATUS。
+
+const char *hxFailureModeName() { // 只表示診斷trace，不改HX健康狀態。
+  static const char *names[] = {"WAITING", "HOLD", "COMPLETE", "SKIPPED_BUSY", "CLOSED_NO_LINK", "TRUNCATED"}; return names[hx_fail.mode]; // 固定列舉與公開schema一致。
+} // 結束trace狀態文字。
+
+bool hxFailureHolding() { // 新診斷低電位介入時的命令護欄。
+  return hx_fail.mode == HXF_HOLD; // 一般活動/校正不能啟動這個hold。
+} // 結束hold判斷。
+
+bool hxFailureReadOnlyCommand(const char *cmd, const char *one, const char *two, const char *extra) { // hold只允許已知唯讀命令，串列輸出本身仍可能延遲點位。
+  if (!one && (!strcmp(cmd, "HELP") || !strcmp(cmd, "VERSION") || !strcmp(cmd, "STATUS") || !strcmp(cmd, "ADXL_DIAG"))) return true; // 不修改phase/校正/無線電。
+  return one && !two && !extra && ((!strcmp(cmd, "WIFI") && !strcmp(one, "STATUS")) || (!strcmp(cmd, "SPEED") && !strcmp(one, "STATUS")) || (!strcmp(cmd, "HX_DIAG") && (!strcmp(one, "STATUS") || !strcmp(one, "DUMP")))); // DUMP另有不可匯出active trace的檢查。
+} // 結束唯讀命令分類。
+
+void printHxFailureStatus() { // 同session唯讀固定快取，不讀新GPIO。
+  uint8_t valid = 0, missed = 0; for (uint8_t i = 0; i < HXF_POINTS; ++i) { valid += hx_fail.points[i].valid; missed += hx_fail.points[i].missed; } // 未採樣不當LOW。
+  Serial.printf("# HX_FAIL schema=1 session=%08lX profile=SCK_LOW_250MS_PCNT mode=%s mode_id=%u stop_reason=%u captured=%d points=%u next=%u valid=%u missed=%u early_target_us=%lu hold_target_us=%lu\n", static_cast<unsigned long>(hx_diag_session), hxFailureModeName(), hx_fail.mode, hx_fail.stop_reason, hx_fail.captured, HXF_POINTS, hx_fail.next, valid, missed, static_cast<unsigned long>(HXF_EARLY_US), static_cast<unsigned long>(HXF_HOLD_US)); // PCNT前置會改early點，與舊profile分開。
+} // 結束trace摘要。
+
+void dumpHxFailure() { // 原逐讀DUMP END之後另立區塊，不改舊十九word協定。
+  Serial.printf("# BEGIN_HX_FAIL schema=1 version=%s session=%08lX profile=SCK_LOW_250MS_PCNT points=%u crc=CRC32_ISO_HDLC_META19_POINTS7_LE_U32\n", FIRMWARE_VERSION, static_cast<unsigned long>(hx_diag_session), HXF_POINTS); // 舊103word不變，新的觀測條件用profile區分。
+  printHxFailureStatus(); // 包含mode/stop/valid/missing，不把未完成當成功。
+  if (hx_fail.captured) Serial.printf("# HX_FAIL_META seq=%lu read_start_us=%lu read_end_us=%lu probe_start_us=%lu probe_end_us=%lu rx=%lu err_before=%lu err_after=%lu bits24=0x%06lX raw=%ld phase_before=%u cal_before=%u postcheck=0\n", static_cast<unsigned long>(hx_fail.seq), static_cast<unsigned long>(hx_fail.read_start_us), static_cast<unsigned long>(hx_fail.read_end_us), static_cast<unsigned long>(hx_fail.probe_start_us), static_cast<unsigned long>(hx_fail.probe_end_us), static_cast<unsigned long>(hx_fail.rx), static_cast<unsigned long>(hx_fail.err_before), static_cast<unsigned long>(hx_fail.err_after), static_cast<unsigned long>(hx_fail.bits24), static_cast<long>(hx_fail.raw), hx_fail.phase_before, hx_fail.cal_before); else Serial.println("# HX_FAIL_META NA; captured=0 no LINK fields available"); // 無事件不造零RAW/時刻。
+  if (hx_fail.resume_valid) Serial.printf("# HX_FAIL_RESUME valid=1 start_us=%lu seq=%lu\n", static_cast<unsigned long>(hx_fail.resume_start_us), static_cast<unsigned long>(hx_fail.resume_seq)); else Serial.println("# HX_FAIL_RESUME valid=0 start_us=NA seq=NA"); // 下一真正attempt原開始時刻，不是新ADC時間。
+  Serial.println("# HX_FAIL_LIMIT anchor=original_postcheck_end_cpu_us original_reject_retained=1 extra_sck_pulses=0 interrupts_enabled=1 next_hx_attempt_held=1 long_hold_nonblocking=1 deadline_is_target=1 discrete_points_only=1 pin_waveform=0; ADXL/OLED/WiFi continue; valid0=NA canonical_zero; no_filter/no_auto_cal"); // 後來HIGH不是完整ADC字或恢復證明。
+  Serial.println("kind,index,target_us,begin_us,end_us,dout,valid,missed"); // CRC逐點採七個uint32，invalid三個值以零canonical表示。
+  for (uint8_t i = 0; i < HXF_POINTS; ++i) { const HxFailPoint &p = hx_fail.points[i]; Serial.printf("HXFP,%u,%lu,", i, static_cast<unsigned long>(HXF_TARGET_US[i])); if (p.valid) Serial.printf("%lu,%lu,%u", static_cast<unsigned long>(p.begin_us), static_cast<unsigned long>(p.end_us), p.dout); else Serial.print("NA,NA,NA"); Serial.printf(",%u,%u\n", p.valid, p.missed); } // 不補採錯過點，不把missing換成LOW。
+  Serial.printf("# END_HX_FAIL points=%u crc32=0x%08lX retained=1 read_only=1\n", HXF_POINTS, static_cast<unsigned long>(hxfCrc(hx_fail))); // CRC僅支持匯出完整性。
+} // 結束失敗後DATA快取匯出。
+
+void printHxPcntStatus() { // 活動時僅印狀態摘要，實際count只在固定DUMP中呈現。
+  Serial.printf("# HX_PCNT_STATUS schema=1 session=%08lX profile=PAD_EDGES_PROOF4OF8 mode_id=%lu setup_code=%lu clock_blocked=%lu proof_count=%lu proof_good=%lu proof_bad=%lu proof_ready=%lu linked=%lu sealed=%lu snapshot_bytes=%u\n", static_cast<unsigned long>(hx_diag_session), static_cast<unsigned long>(hx_pcnt.mode), static_cast<unsigned long>(hx_pcnt.setup_code), static_cast<unsigned long>(hx_pcnt.clock_blocked), static_cast<unsigned long>(hx_pcnt.proof_count), static_cast<unsigned long>(hx_pcnt.proof_good), static_cast<unsigned long>(hx_pcnt.proof_bad), static_cast<unsigned long>(hx_pcnt.proof_ready), static_cast<unsigned long>(hx_pcnt.linked), static_cast<unsigned long>(hx_pcnt.sealed), static_cast<unsigned>(sizeof(hx_pcnt))); // ready僅counter alive，不是ADC通過。
+} // 結束PCNT摘要。
+
+void dumpHxPcntUnit(const char *scope, uint8_t index, uint8_t unit, const HxPcntUnit &u) { // raw_count可無效但有實際API回值，analysis另外呈有效count或NA。
+  Serial.printf("HXPU,%s,%u,%u", scope, index, unit); // scope區分正對照與真正hold，unit0=SCK/1=DATA。
+  const uint32_t words[] = {u.start_begin,u.start_end,u.stop_begin,u.stop_end,u.read_begin,u.read_end,static_cast<uint32_t>(u.count),u.api_mask,u.overflow,u.valid,u.level_start_begin,u.level_start_end,u.level_start,u.level_end_begin,u.level_end_end,u.level_end,u.attempt_mask}; // canonical十七word與header一致。
+  for (uint8_t i = 0; i < 17; ++i) { const bool present = i == 7 || i == 8 || i == 9 || i == 16 || (i <= 1 && (u.attempt_mask & 1)) || (i >= 2 && i <= 3 && (u.attempt_mask & 2)) || (i >= 4 && i <= 5 && (u.attempt_mask & 4)) || (i == 6 && (u.api_mask & 8)) || (i >= 10 && i <= 12 && (u.attempt_mask & 1)) || (i >= 13 && i <= 15 && (u.attempt_mask & 2)); if (!present) Serial.print(",NA"); else if (i == 6) Serial.printf(",%ld", static_cast<long>(u.count)); else Serial.printf(",%lu", static_cast<unsigned long>(words[i])); } // 未嘗試/未讀成功不造0。
+  Serial.println(); // timestamp是獨立API/level括弧，不假同時。
+} // 結束unit行。
+
+void dumpHxPcnt() { // 只在兩槽/HXF/PCNT固定後匯出，仍有同步阻塞。
+  Serial.printf("# BEGIN_HX_PCNT schema=1 version=%s session=%08lX profile=PAD_EDGES_PROOF4OF8 crc=CRC32_ISO_HDLC_405_LE_U32\n", FIRMWARE_VERSION, static_cast<unsigned long>(hx_diag_session)); // canonical固定405word。
+  Serial.printf("# HX_PCNT mode_id=%lu reason=%lu linked=%lu seq=", static_cast<unsigned long>(hx_pcnt.mode), static_cast<unsigned long>(hx_pcnt.reason), static_cast<unsigned long>(hx_pcnt.linked)); if (hx_pcnt.linked) Serial.printf("%lu anchor=%lu", static_cast<unsigned long>(hx_pcnt.seq), static_cast<unsigned long>(hx_pcnt.anchor)); else Serial.print("NA anchor=NA"); // 無LINK不造seq0事件。
+  Serial.printf(" setup_code=%lu clock_blocked=%lu proof_count=%lu proof_good=%lu proof_bad=%lu proof_ready=%lu stage_mask=%lu event_begin=", static_cast<unsigned long>(hx_pcnt.setup_code), static_cast<unsigned long>(hx_pcnt.clock_blocked), static_cast<unsigned long>(hx_pcnt.proof_count), static_cast<unsigned long>(hx_pcnt.proof_good), static_cast<unsigned long>(hx_pcnt.proof_bad), static_cast<unsigned long>(hx_pcnt.proof_ready), static_cast<unsigned long>(hx_pcnt.stage_mask)); if (hx_pcnt.linked) Serial.printf("%lu event_end=%lu", static_cast<unsigned long>(hx_pcnt.event_begin), static_cast<unsigned long>(hx_pcnt.event_end)); else Serial.print("NA event_end=NA"); // 額外前置時間另存。
+  Serial.print(" finish_begin="); if (hx_pcnt.mode == HXP_COMPLETE) Serial.printf("%lu finish_end=%lu", static_cast<unsigned long>(hx_pcnt.finish_begin), static_cast<unsigned long>(hx_pcnt.finish_end)); else Serial.print("NA finish_end=NA"); Serial.printf(" sealed=%lu gpio_function=%lu gpio_signal=%lu\n", static_cast<unsigned long>(hx_pcnt.sealed), static_cast<unsigned long>(hx_pcnt.gpio_function), static_cast<unsigned long>(hx_pcnt.gpio_signal)); // 非運作窗finish未知。
+  Serial.println("# HX_PCNT_LIMIT unit0=SCK25 unit1=DATA33 both_edges=1 high_limit=32767 valid_max=16383 idf_contract=5.5.5 filter=disabled start_order=SCK_DATA stop_order=DATA_SCK valid0=NA raw_count_not_valid_count=1 cpu_brackets=1 pad_digital_only=1 analog_waveform=0 early_blind_gap=1 no_filter_raw/no_auto_cal; proof changes first8 inter_attempt scheduling; levels sampled inside API count windows"); // pending高limit餘數超half也拒用，不宣稱精確overflow次數。
+  Serial.println("kind,stage,unit,function,signal,drive,flags"); // 只有四階段兩個白名單GPIO。
+  for (uint8_t stage = 0; stage < HXP_STAGES; ++stage) for (uint8_t unit = 0; unit < HXP_UNITS; ++unit) { const HxPcntPin &p = hx_pcnt.pins[stage][unit]; Serial.printf("HXPIN,%u,%u,", stage, unit); if (hx_pcnt.stage_mask & (1U << stage)) Serial.printf("%lu,%lu,%lu,%lu\n", static_cast<unsigned long>(p.function), static_cast<unsigned long>(p.signal), static_cast<unsigned long>(p.drive), static_cast<unsigned long>(p.flags)); else Serial.println("NA,NA,NA,NA"); } // stage無效不能冒充readback。
+  Serial.println("kind,index,seq,bits24,accepted,postcheck,expected_data,valid"); // 八筆固定正對照槽，未使用用NA。
+  for (uint8_t i = 0; i < HXP_PROOFS; ++i) { const HxPcntProof &p = hx_pcnt.proof[i]; Serial.printf("HXPV,%u,", i); if (i < hx_pcnt.proof_count) Serial.printf("%lu,0x%06lX,%lu,%lu,%lu,%lu\n", static_cast<unsigned long>(p.seq), static_cast<unsigned long>(p.bits24), static_cast<unsigned long>(p.accepted), static_cast<unsigned long>(p.postcheck), static_cast<unsigned long>(p.expected_data), static_cast<unsigned long>(p.valid)); else Serial.println("NA,NA,NA,NA,NA,NA"); } // 不刪掉不吻合的對照。
+  Serial.println("kind,scope,index,unit,start_begin,start_end,stop_begin,stop_end,read_begin,read_end,raw_count,api_mask,overflow,valid,level_start_begin,level_start_end,level_start,level_end_begin,level_end_end,level_end,attempt_mask"); // raw_count沒有驗收含義。
+  for (uint8_t i = 0; i < HXP_PROOFS; ++i) for (uint8_t unit = 0; unit < HXP_UNITS; ++unit) dumpHxPcntUnit("PROOF", i, unit, hx_pcnt.proof[i].unit[unit]); for (uint8_t unit = 0; unit < HXP_UNITS; ++unit) dumpHxPcntUnit("HOLD", 0, unit, hx_pcnt.unit[unit]); // SCK窗包住DATA窗由主機再檢。
+  Serial.printf("# END_HX_PCNT crc32=0x%08lX words=405 retained=1 read_only=1\n", static_cast<unsigned long>(hxpCrc(hx_pcnt))); // CRC只支持匯出完整性。
+} // 結束PCNT固定snapshot。
+
+void dumpHxDiagSlot(const HxDiagState &slot, const char *name) { // 只輸出已封存槽，匯出不改寫另一槽。
+  Serial.printf("# BEGIN_HX_DIAG schema=2 slot=%s trigger_mask=%lu version=%s session=%08lX rows=%u crc=CRC32_ISO_HDLC_19_LE_U32 computed_on_export=1 output_blocks_polling=1\n", name, static_cast<unsigned long>(slot.trigger_mask), FIRMWARE_VERSION, static_cast<unsigned long>(hx_diag_session), slot.count); // nineteen-word紀錄不改，角色/政策用schema2明列。
+  printHxDiagSlot(slot, name, true); // 匯出固定封存計數，不取live counters。
+  Serial.println("kind,seq,start_us,end_us,attempt_gap_us,last_accept_ms_before,bits24,raw,rx_before,rx_after,err_before,err_after,flags,cal_count_after,phase_after,cal_mode_after,accepted,dout_after25,pulses_issued,context_flags,crc32"); // canonical十九個word順序，最後另附CRC。
+  for (uint16_t i = 0; i < slot.count; ++i) { // 凍結後固定順序，沒有每筆GPIO/I2C操作。
+    const HxDiagRecord &r = slot.records[hxdiagIndex(slot, i)]; // 依時間順序映射該槽。
+    Serial.printf("HXRD,%lu,%lu,%lu,%lu,%lu,0x%06lX,%ld,%lu,%lu,%lu,%lu,%lu,%u,%u,%u,%u,%u,%u,%u,0x%08lX\n", static_cast<unsigned long>(r.seq), static_cast<unsigned long>(r.start_us), static_cast<unsigned long>(r.end_us), static_cast<unsigned long>(r.attempt_gap_us), static_cast<unsigned long>(r.last_accept_ms_before), static_cast<unsigned long>(r.bits24), static_cast<long>(r.raw), static_cast<unsigned long>(r.rx_before), static_cast<unsigned long>(r.rx_after), static_cast<unsigned long>(r.err_before), static_cast<unsigned long>(r.err_after), static_cast<unsigned long>(r.flags), r.cal_count_after, r.phase_after, r.cal_mode_after, r.accepted, r.dout_after25, r.pulses_issued, r.context_flags, static_cast<unsigned long>(hxdiagCrc(r))); // CRC不保證ADC字或先前RAM正確。
+  } // 結束固定匯出。
+  Serial.printf("# END_HX_DIAG slot=%s rows=%u retained=1 read_only=1; CPU times are not pin waveform or ADC timestamps\n", name, slot.count); // 不自動清除、重新武裝或套校正。
+} // 結束單槽匯出。
+
+void dumpHxDiagnostics() { // 必須等待兩槽及profile封存，不讓早期ANY匯出干擾待捕LINK。
+  if (hxFailureHolding()) { Serial.println("# HX_DIAG_DUMP_REJECT DATA probe active; wait retained snapshot"); return; } // 不匯出可變trace。
+  if (hx_diag.mode != HXD_FROZEN || hx_link_diag.mode != HXD_FROZEN) { Serial.println("# HX_DIAG_DUMP_REJECT not frozen; both ANY/LINK must finish within shared window"); return; } // 不清除或強迫凍結任一槽。
+  hxdiagSeal(hx_diag); hxdiagSeal(hx_link_diag); // 本圈poll內凍結的槽亦須在首個BEGIN前封存。
+  if (hx_fail.mode == HXF_WAITING) hxfStop(hx_fail, HXF_STOP_RING, hx_link_diag.freeze_us); // 無可介入profile不等於全ring/boot沒有LINK。
+  sealHxPcnt(true, false); if (!hx_pcnt.sealed) { Serial.println("# HX_DIAG_DUMP_REJECT PCNT not sealed"); return; } // 可變或停止失敗的counter不能冒充完整snapshot。
+  Serial.printf("# BEGIN_HX_CAPTURE schema=3 version=%s session=%08lX slots=2 profile=DUAL600_LINK_LOW250MS_PCNT pcnt_schema=1 output_blocks_polling=1\n", FIRMWARE_VERSION, static_cast<unsigned long>(hx_diag_session)); // 新外層包含PCNT，不讓舊工具默默忽略。
+  dumpHxDiagSlot(hx_diag, "ANY"); dumpHxDiagSlot(hx_link_diag, "LINK"); dumpHxFailure(); dumpHxPcnt(); // 每槽/HXF/PCNT各自完整性。
+  Serial.printf("# END_HX_CAPTURE schema=3 session=%08lX slots=2 retained=1 read_only=1 complete=1\n", static_cast<unsigned long>(hx_diag_session)); // host必須等整體END，不能以PCNT前任何尾行截斷。
+} // 結束唯讀匯出。
+
+void serviceHxDiagnostics() { // 低頻截止服務，不在SCK脈衝期間執行。
+  if (millis() - hx_diag_service_ms >= 100) { hx_diag_service_ms = millis(); const uint32_t now = micros(); hxdiagTick(hx_diag, now); hxdiagTick(hx_link_diag, now); hxdiagSeal(hx_diag); hxdiagSeal(hx_link_diag); } // 兩槽同一CPU時間、同600s截止，不互相延長。
+  serviceHxFailure(); // 長段非阻塞DATA觀察，不妨礙本圈ADXL/OLED/WiFi服務。
+  if (hx_link_diag.mode == HXD_FROZEN && hx_fail.mode == HXF_WAITING) hxfStop(hx_fail, HXF_STOP_RING, hx_link_diag.freeze_us); // ANY凍結不關閉LINK/profile。
+  sealHxPcnt(hx_link_diag.mode == HXD_FROZEN, hx_fail.mode == HXF_HOLD); // 所有exit皆先停PCNT並固定，再允許resume或通知。
+  if (hx_diag.export_sealed && hx_link_diag.export_sealed && hx_fail.mode != HXF_HOLD && hx_fail.mode != HXF_WAITING && hx_pcnt.sealed && !hx_diag_notice_sent && !isRecording() && !cal_mode && !opticalMode()) { hx_diag_notice_sent = true; Serial.printf("# HX_DIAG_FROZEN schema=3 session=%08lX slots=2 all_frozen=1 pcnt_sealed=1 any_reason=%u link_reason=%u; HX_DIAG DUMP retained; wait END_HX_CAPTURE\n", static_cast<unsigned long>(hx_diag_session), hx_diag.freeze_reason, hx_link_diag.freeze_reason); } // 不在早期ANY凍結或PCNT活動時輸出通知。
+} // 結束診斷服務。
 
 void noteFifoPoll(uint32_t now_us) { // 記錄實際輪詢間隔，首次不把開機至今誤當阻塞時間。
   if (fifo_poll_seen) { // 只有前一次輪詢存在才有可比較的間隔。
@@ -481,12 +633,14 @@ void processCommand(char *line) { // 命令區分活動安全操作與待機設�
   char *save = nullptr, *cmd = strtok_r(line, " \t", &save); // 以空白分詞，不要求 Arduino 動態字串。
   if (!cmd) return; // 空行不執行任何動作。
   char *one = strtok_r(nullptr, " \t", &save), *two = strtok_r(nullptr, " \t", &save), *extra = strtok_r(nullptr, " \t", &save); // 最多接受命令及兩個參數。
+  if (hxFailureHolding() && !hxFailureReadOnlyCommand(cmd, one, two, extra)) { Serial.println("# HX_FAIL_BUSY DATA observation active; read-only commands only"); return; } // 不在LOW介入時啟動ARM/CAL/SPEED或改量測狀態。
   if (!strcmp(cmd, "STOP") && !one) { if (opticalMode()) { portENTER_CRITICAL(&gate_mux); opticalStopState(); portEXIT_CRITICAL(&gate_mux); serviceOptical(); return; } cal_mode = 0; abortTrial(USER_STOP); return; } // 各模式分別取消，非物理停止機構。
   if (isRecording()) return; // 活動期間除 STOP 外不通訊、不更動量測條件。
   if (handleOpticalCommand(cmd, one, two, extra)) return; // 光學狀態先攔截衝突設定。
   if (!strcmp(cmd, "VERSION") && !one) { Serial.printf("# VERSION %s\n", FIRMWARE_VERSION); return; } // 晚開埠也可核對版本，不為此重置。
-  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP VERSION | SPEED START/STATUS/DUMP/CLEAR | STATUS | ADXL_DIAG (cached FIFO observations) | WIFI STATUS/ON/OFF (IDLE only) | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 列出一般與獨立模式命令。
+  if (!strcmp(cmd, "HELP") && !one) { Serial.println("# HELP VERSION | SPEED START/STATUS/DUMP/CLEAR | STATUS | ADXL_DIAG (cached FIFO observations) | HX_DIAG STATUS/DUMP (read-only retained attempts) | WIFI STATUS/ON/OFF (IDLE only) | DIST mm (0=no speed) | POL upper lower (0/1) | TARE | CAL known_grams | UNCAL | ARM | STOP | DUMP | CLEAR; UPPERCASE + newline; no relay"); return; } // 列出一般與獨立模式命令。
   if (!strcmp(cmd, "STATUS") && !one) { printStatus(); return; } // 狀態查詢不改動資料。
+  if (!strcmp(cmd, "HX_DIAG")) { if (cal_mode) Serial.println("# HX_DIAG_REJECT finish calibration first"); else if (one && !two && !extra && !strcmp(one, "STATUS")) { printHxDiagStatus(); printHxFailureStatus(); printHxPcntStatus(); } else if (one && !two && !extra && !strcmp(one, "DUMP")) dumpHxDiagnostics(); else Serial.println("# INVALID HX_DIAG STATUS/DUMP"); return; } // 不要求HX健康、不提供重設或清除命令。
   if (!strcmp(cmd, "ADXL_DIAG") && !one) { printFifoDiagnostics(); return; } // 額外診斷只印快取，記錄期間已由上方統一忽略。
   if (!strcmp(cmd, "DUMP") && !one) { dumpTrial(); return; } // 匯出只在已完成或中止時執行。
   if (!strcmp(cmd, "CLEAR") && !one && !cal_mode) { phase = IDLE; reason = NONE; acc_count = hx_count = 0; completion_reported = false; Serial.println("# CLEARED trial RAM; settings/calibration retained"); return; } // 明確命令才捨棄舊試驗，校正設定仍保留。
@@ -535,14 +689,20 @@ void setup() { // 安全初始化，不啟動任何釋放輸出。
   hx_start_ms = millis(); // 首筆資料允許正常穩定時間。
   Wire.begin(SDA_PIN, SCL_PIN); Wire.setClock(I2C_HZ); Wire.setTimeOut(25); // 共用已驗證接腳與匯流排速度。
   initializeOled(); initializeAdxl(); // 分開初始化，缺一裝置仍保留診斷。
+  initializeHxPcnt(HX_SCK, HX_DATA); // 原HX reset後配置，恢復/讀回pull與output，失敗公開拒用。
   attachInterrupt(digitalPinToInterrupt(UP_PIN), upperInterrupt, CHANGE); // 用變化中斷並在處理內篩選已確認極性。
   attachInterrupt(digitalPinToInterrupt(DN_PIN), lowerInterrupt, CHANGE); // 下閘獨立記時，不以畫面輪詢估通過時間。
   Serial.printf("# 05-test NMK99 MEASUREMENT %s; UNCAL; SCK25 DATA33; RGB32 OFF requested; OLED SH1106 safe margins; no relay/no automatic release\n", FIRMWARE_VERSION); // 啟動與VERSION共用識別，不代表精度已驗證。
   Serial.println("# Not fully validated. Set POL to measured entry levels; DIST in mm; ARM records only; HELP lists commands."); // 開機不猜測缺失參數。
+  hx_diag_session = esp_random(); const uint32_t hx_window_start = micros(); hx_link_diag.trigger_mask = HXD_LINK; hxdiagBegin(hx_diag, hx_window_start); hxdiagBegin(hx_link_diag, hx_window_start); // 感測初始化後同起點600s，不等首框或從JUMP再計時。
   pollHx(); pollAdxl(); updateOled(); printStatus(); // 顯示首筆或等待狀態，不阻塞等待感測器。
+  Serial.printf("# HX_DIAG_READY schema=3 session=%08lX slots=2 pcnt_schema=1 window_us=%lu record_bytes=%u rings_bytes=%u pcnt_bytes=%u pcnt_setup=%lu clock_blocked=%lu cpu_bracket_only=1 no_auto_cal=1\n", static_cast<unsigned long>(hx_diag_session), static_cast<unsigned long>(HXD_WINDOW_US), static_cast<unsigned>(sizeof(HxDiagRecord)), static_cast<unsigned>(sizeof(hx_diag.records) + sizeof(hx_link_diag.records)), static_cast<unsigned>(sizeof(hx_pcnt)), static_cast<unsigned long>(hx_pcnt.setup_code), static_cast<unsigned long>(hx_pcnt.clock_blocked)); // 新boot/PCNT條件明示，不恢復校正。
+  printHxFailureStatus(); // 宣告新LOW介入profile，初態沒有假造失敗值。
+  printHxPcntStatus(); // setup readback與counter正對照仍待實板驗證。
 } // 結束開機。
 
 void loop() { // 以感測及試驗終止優先，顯示與匯出降到背景。
+  serviceHxDiagnostics(); // 僅診斷截止與凍結通知，不改量測phase/校正或GPIO。
   if (opticalMode()) { serviceOptical(); serviceSerial(); delay(1); return; } // 光學模式不輪詢ADC、寫記錄、重連或定期刷新OLED。
   serviceTrial(); pollHx(); pollAdxl(); serviceTrial(); serviceSerial(); // 先檢查逾時，再讀資料及處理 STOP。
   if (opticalMode()) { serviceOptical(); delay(1); return; } // 同一圈新啟用SPEED後也不可落回一般畫面或網路服務。

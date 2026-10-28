@@ -1,0 +1,20 @@
+C:/Users/tseng/AppData/Local/Arduino15/packages/esp32/tools/esp-x32/2601/bin/../lib/gcc/xtensa-esp-elf/14.2.0/../../../../xtensa-esp-elf/bin/ld.exe: C:\Users\tseng\AppData\Local\Temp\irt-05-hxframe-20261028-build01/05-test.ino.elf section `.dram0.bss' will not fit in region `dram0_0_seg'
+C:/Users/tseng/AppData/Local/Arduino15/packages/esp32/tools/esp-x32/2601/bin/../lib/gcc/xtensa-esp-elf/14.2.0/../../../../xtensa-esp-elf/bin/ld.exe: DRAM segment data does not fit.
+C:/Users/tseng/AppData/Local/Arduino15/packages/esp32/tools/esp-x32/2601/bin/../lib/gcc/xtensa-esp-elf/14.2.0/../../../../xtensa-esp-elf/bin/ld.exe: DRAM segment data does not fit.
+C:/Users/tseng/AppData/Local/Arduino15/packages/esp32/tools/esp-x32/2601/bin/../lib/gcc/xtensa-esp-elf/14.2.0/../../../../xtensa-esp-elf/bin/ld.exe: region `dram0_0_seg' overflowed by 40400 bytes
+collect2.exe: error: ld returned 1 exit status
+Error during build: exit status 1
+
+Used library            Version Path
+Wire                    3.3.12  C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.12\libraries\Wire
+Adafruit ADXL375        1.1.2   C:\Users\tseng\Documents\Arduino\libraries\Adafruit_ADXL375
+Adafruit ADXL343        1.6.4   C:\Users\tseng\Documents\Arduino\libraries\Adafruit_ADXL343
+Adafruit BusIO          1.17.4  C:\Users\tseng\Documents\Arduino\libraries\Adafruit_BusIO
+SPI                     3.3.12  C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.12\libraries\SPI
+Adafruit Unified Sensor 1.1.15  C:\Users\tseng\Documents\Arduino\libraries\Adafruit_Unified_Sensor
+U8g2                    2.36.19 C:\Users\tseng\Documents\Arduino\libraries\U8g2
+WiFi                    3.3.12  C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.12\libraries\WiFi
+Networking              3.3.12  C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.12\libraries\Network
+
+Used platform Version Path
+esp32:esp32   3.3.12  C:\Users\tseng\AppData\Local\Arduino15\packages\esp32\hardware\esp32\3.3.12

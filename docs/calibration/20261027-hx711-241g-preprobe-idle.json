@@ -1,0 +1,22 @@
+{
+  "schema": "hx711-preprobe-user-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "host_recorded_at": "2026-10-27T18:12:46.1351112+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "為IDLE  ，沒有顯示「CAL n/32 HOLD STILL」",
+  "question_context": "Before a non-reset read-only serial check, user was asked whether the sixth OLED line was IDLE and the last line did not show CAL n/32 HOLD STILL.",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "OLED_phase": "IDLE",
+  "OLED_calibration_collection_hold_displayed": false,
+  "exact_physical_observation_time": null,
+  "previous_USB_visual_observation": {
+    "source": "docs/calibration/20261027-hx711-241g-usb-visual-report.json",
+    "sha256": "34C5575F94E890478422FB9EA015ED2F310EA61FC423BE5847210569A9DA5896"
+  },
+  "limitations": [
+    "User reports a visual state; it does not read exact calibration coefficients or independently prove that power and RAM remained continuous.",
+    "No external load was requested and this observation does not prove precise simultaneous HX or RAW readings."
+  ],
+  "subsequent_passive_probe": "docs/calibration/20261027-hx711-241g-serialmonitor-181136.host.json"
+}
+

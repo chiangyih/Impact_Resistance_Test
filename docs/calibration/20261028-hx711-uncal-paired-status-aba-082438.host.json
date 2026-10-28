@@ -1,0 +1,811 @@
+{
+  "schema": "host-serialmonitor-status-query-aba-v1",
+  "port": "COM3",
+  "tool_version": "v0.15.0 commit 13b8e80",
+  "user_observations": {
+    "user_confirmed_empty_tray": true,
+    "user_authorized_calibration": true,
+    "no_device_commands": false
+  },
+  "configuration_before_open": {
+    "baudrate": "115200",
+    "bits": "8",
+    "parity": "none",
+    "stop_bits": "1",
+    "dtr": "off",
+    "rts": "off"
+  },
+  "open_command_issued": true,
+  "open_acknowledged": true,
+  "tcp_peer_connected": true,
+  "capture_planned_ms": 240000,
+  "serial_bytes_received": 92204,
+  "stored_bytes": 92204,
+  "overflow": false,
+  "device_commands_sent": [
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS",
+    "STATUS"
+  ],
+  "control_events": [
+    {
+      "at_utc": "2026-10-28T00:20:38.582Z",
+      "monotonic_elapsed_ms": 16.1596,
+      "action": "LISTEN",
+      "address": "127.0.0.1",
+      "port": 44217
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.589Z",
+      "monotonic_elapsed_ms": 22.6592,
+      "action": "CONTROL_TX",
+      "command": "HELLO 1 \"Codex diagnostic\""
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.605Z",
+      "monotonic_elapsed_ms": 39.3324,
+      "action": "CONTROL_EVENT",
+      "event_type": "hello",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.4973,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE baudrate 115200"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.599,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.6582,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE bits 8"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.706,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.7361,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE parity none"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.7712,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.8123,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE stop_bits 1"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 39.9806,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 40.0597,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE dtr off"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 40.1652,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 40.2032,
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE rts off"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 40.2669,
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.606Z",
+      "monotonic_elapsed_ms": 40.2905,
+      "action": "CONTROL_TX",
+      "command": "DESCRIBE"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.607Z",
+      "monotonic_elapsed_ms": 40.4301,
+      "action": "CONTROL_EVENT",
+      "event_type": "describe",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.607Z",
+      "monotonic_elapsed_ms": 40.4543,
+      "action": "CONFIGURATION_VERIFIED",
+      "baudrate": "115200",
+      "bits": "8",
+      "parity": "none",
+      "stop_bits": "1",
+      "dtr": "off",
+      "rts": "off"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.607Z",
+      "monotonic_elapsed_ms": 40.5328,
+      "action": "CONTROL_TX",
+      "command": "OPEN 127.0.0.1:44217 COM3"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.609Z",
+      "monotonic_elapsed_ms": 43.0656,
+      "action": "DATA_CHANNEL_CONNECTED",
+      "remote": "127.0.0.1"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.609Z",
+      "monotonic_elapsed_ms": 43.1552,
+      "action": "CONTROL_EVENT",
+      "event_type": "open",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.609Z",
+      "monotonic_elapsed_ms": 43.182,
+      "action": "OPEN_ACKNOWLEDGED"
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.609Z",
+      "monotonic_elapsed_ms": 43.1846,
+      "action": "PASSIVE_CAPTURE_START",
+      "planned_ms": 240000
+    },
+    {
+      "at_utc": "2026-10-28T00:20:38.610Z",
+      "monotonic_elapsed_ms": 43.5732,
+      "action": "A1_PASSIVE_START"
+    },
+    {
+      "at_utc": "2026-10-28T00:21:38.611Z",
+      "monotonic_elapsed_ms": 60044.9121,
+      "action": "B_QUERY_START",
+      "inhibitTx": false
+    },
+    {
+      "at_utc": "2026-10-28T00:21:38.612Z",
+      "monotonic_elapsed_ms": 60045.0385,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 1,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:38.612Z",
+      "monotonic_elapsed_ms": 60045.1691,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 1,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:39.155Z",
+      "monotonic_elapsed_ms": 60587.9987,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 2,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:39.155Z",
+      "monotonic_elapsed_ms": 60588.1101,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 2,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:39.683Z",
+      "monotonic_elapsed_ms": 61116.9817,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 3,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:39.684Z",
+      "monotonic_elapsed_ms": 61117.6276,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 3,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:40.227Z",
+      "monotonic_elapsed_ms": 61660.7044,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 4,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:40.228Z",
+      "monotonic_elapsed_ms": 61661.7298,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 4,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:40.770Z",
+      "monotonic_elapsed_ms": 62203.5467,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 5,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:40.771Z",
+      "monotonic_elapsed_ms": 62204.0864,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 5,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:41.317Z",
+      "monotonic_elapsed_ms": 62749.9677,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 6,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:41.317Z",
+      "monotonic_elapsed_ms": 62750.0646,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 6,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:41.860Z",
+      "monotonic_elapsed_ms": 63292.9721,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 7,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:41.861Z",
+      "monotonic_elapsed_ms": 63294.2326,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 7,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:42.405Z",
+      "monotonic_elapsed_ms": 63837.9712,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 8,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:42.405Z",
+      "monotonic_elapsed_ms": 63838.1458,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 8,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:42.945Z",
+      "monotonic_elapsed_ms": 64378.5778,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 9,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:42.945Z",
+      "monotonic_elapsed_ms": 64378.7538,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 9,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:43.487Z",
+      "monotonic_elapsed_ms": 64920.4817,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 10,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:43.487Z",
+      "monotonic_elapsed_ms": 64920.6873,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 10,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:44.036Z",
+      "monotonic_elapsed_ms": 65469.483,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 11,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:44.037Z",
+      "monotonic_elapsed_ms": 65470.0971,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 11,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:44.577Z",
+      "monotonic_elapsed_ms": 66010.6025,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 12,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:44.578Z",
+      "monotonic_elapsed_ms": 66011.2458,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 12,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:45.117Z",
+      "monotonic_elapsed_ms": 66550.667,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 13,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:45.117Z",
+      "monotonic_elapsed_ms": 66550.918,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 13,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:45.648Z",
+      "monotonic_elapsed_ms": 67081.4906,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 14,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:45.649Z",
+      "monotonic_elapsed_ms": 67081.95,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 14,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:46.192Z",
+      "monotonic_elapsed_ms": 67625.2679,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 15,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:46.193Z",
+      "monotonic_elapsed_ms": 67626.0398,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 15,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:46.730Z",
+      "monotonic_elapsed_ms": 68163.1317,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 16,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:46.730Z",
+      "monotonic_elapsed_ms": 68163.2132,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 16,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:47.272Z",
+      "monotonic_elapsed_ms": 68705.6567,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 17,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:47.272Z",
+      "monotonic_elapsed_ms": 68705.7525,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 17,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:47.816Z",
+      "monotonic_elapsed_ms": 69248.9597,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 18,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:47.816Z",
+      "monotonic_elapsed_ms": 69249.051,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 18,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:48.359Z",
+      "monotonic_elapsed_ms": 69792.1864,
+      "action": "DEVICE_TX_ATTEMPT",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 19,
+      "command_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T00:21:48.359Z",
+      "monotonic_elapsed_ms": 69792.2824,
+      "action": "DEVICE_TX",
+      "command": "STATUS_PAIR",
+      "commands": [
+        "STATUS",
+        "STATUS"
+      ],
+      "pair_id": 19,
+      "command_count": 2,
+      "accepted_without_backpressure": true
+    },
+    {
+      "at_utc": "2026-10-28T00:21:48.383Z",
+      "monotonic_elapsed_ms": 69816.0194,
+      "action": "HX_ERR_INCREASE_OBSERVED",
+      "previous": 36,
+      "current": 37,
+      "raw": -161282,
+      "rx": 464181,
+      "host_data_received_at_utc": "2026-10-28T00:21:48.382Z"
+    },
+    {
+      "at_utc": "2026-10-28T00:23:38.638Z",
+      "monotonic_elapsed_ms": 180071.5871,
+      "action": "A2_PASSIVE_START",
+      "statusTxCount": 38,
+      "inhibitTx": true
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.692Z",
+      "monotonic_elapsed_ms": 240125.5419,
+      "action": "PASSIVE_CAPTURE_END",
+      "total_bytes": 92204
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.692Z",
+      "monotonic_elapsed_ms": 240125.6601,
+      "action": "CONTROL_TX",
+      "command": "CLOSE"
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.694Z",
+      "monotonic_elapsed_ms": 240127.1597,
+      "action": "DATA_CHANNEL_CLOSED"
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.694Z",
+      "monotonic_elapsed_ms": 240127.2104,
+      "action": "CONTROL_EVENT",
+      "event_type": "close",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.694Z",
+      "monotonic_elapsed_ms": 240127.2517,
+      "action": "CONTROL_TX",
+      "command": "QUIT"
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.694Z",
+      "monotonic_elapsed_ms": 240127.5173,
+      "action": "CONTROL_EVENT",
+      "event_type": "quit",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.697Z",
+      "monotonic_elapsed_ms": 240130.7469,
+      "action": "PROCESS_EXIT",
+      "code": 0,
+      "signal": null
+    },
+    {
+      "at_utc": "2026-10-28T00:24:38.801Z",
+      "monotonic_elapsed_ms": 240234.4182,
+      "action": "FINAL_STATUS_TX",
+      "count": 38,
+      "inhibitTx": true
+    }
+  ],
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "port_released_by_process_exit": true,
+  "failure": null,
+  "public_secret_scan": "completed_locally_no_secret_values_logged",
+  "public_redacted": false,
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-monitor-passive-WW6LZ0",
+  "raw_sha256": "52ba01f81bdedb5cb213efa750c4e0a755eafda5224475eb999209969c0b6e6f",
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-uncal-paired-status-aba-082438.serial.log",
+  "public_control_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-uncal-paired-status-aba-082438.control.log",
+  "public_stderr_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-uncal-paired-status-aba-082438.stderr.log",
+  "limitations": [
+    "A private live copy and chunk receipt times are flushed during capture; public evidence is written on controlled shutdown.",
+    "OPEN acknowledgement describes monitor/port and TCP connection, not an ESP32 command response.",
+    "STATUS query pairs only in predefined middle phase with at least 500ms between pair writes; extra serial output perturbs scheduling. No explicit DTR/RTS transitions.",
+    "Line timestamps are host receipt of complete line, not HX conversion times.",
+    "STATUS lines are cached snapshots, not every HX conversion.",
+    "Boot text may have occurred before opening and cannot be recovered."
+  ],
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-uncal-paired-status-aba-082438.lines.jsonl",
+  "complete_lines": 554,
+  "trailing_incomplete_bytes": 0,
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

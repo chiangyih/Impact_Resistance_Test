@@ -1,0 +1,73 @@
+{
+  "schema": "hx711-oled-timed-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "T1_empty_timed",
+  "conversation_date": "2026-10-27",
+  "timezone_context": "Asia/Taipei",
+  "host_recorded_at": "2026-10-27T17:52:49.4865782+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "-158436，17:44:30、-158324，17:44:50、-158406，17:45:10",
+  "user_status_reply": "HX:OK，CAL_USER",
+  "status_observation_time": null,
+  "status_timing_note": "User did not specify whether the status was observed simultaneously with the final reading or when answering the follow-up.",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "load_condition": {
+    "external_load": "none, following user previously confirmed removal and request to keep empty",
+    "current_exact_RAM_coefficients_confirmed": false
+  },
+  "readings": [
+    {
+      "RAW_counts": -158436,
+      "user_reported_local_time": "17:44:30"
+    },
+    {
+      "RAW_counts": -158324,
+      "user_reported_local_time": "17:44:50"
+    },
+    {
+      "RAW_counts": -158406,
+      "user_reported_local_time": "17:45:10"
+    }
+  ],
+  "reported_intervals_seconds": [
+    20,
+    20
+  ],
+  "reported_clock_span_seconds": 40,
+  "date_note": "Date is conversation context, not separately supplied with the three clock times.",
+  "clock_note": "User reported local clock times; synchronization with host clock and device timestamps was not established.",
+  "statistics": {
+    "n": 3,
+    "mean_counts": -158388.66666666666,
+    "min_counts": -158436,
+    "max_counts": -158324,
+    "span_counts": 112,
+    "first_to_middle_counts": 112,
+    "middle_to_last_counts": -82,
+    "first_to_last_counts": 30
+  },
+  "comparison_with_U2": {
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-U2.json",
+    "source_sha256": "3C52B6BD92489D1062BF7F87CF601FDC22B545D6FB7C9DAB6ACD33AA9745EAEE",
+    "U2_mean_counts": -158329.66666666666,
+    "mean_difference_counts": -59,
+    "U2_physical_time": null,
+    "rate_between_U2_and_T1": "unknown; U2 time not supplied"
+  },
+  "conditional_calculation": {
+    "condition": "Only if prior saved scale still applies; current RAM coefficients and power continuity are unconfirmed.",
+    "saved_counts_per_g": 20.413381743,
+    "first_to_last_difference_g": 1.469624209143464,
+    "mean_difference_from_U2_g": -2.8902609446488126,
+    "formal_zero_error": false
+  },
+  "interpretation": "Three non-monotonic user-observed OLED values in a reported 40-second span show variation in those observations but do not establish long-term drift, stability, accuracy, root cause, or complete ADC samples.",
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "next_step": "User requested to replace the same 241g weight at the same position and provide three timed RAW observations and final HX/CAL states; awaiting response."
+}
+

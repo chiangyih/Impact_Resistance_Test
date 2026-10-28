@@ -1,0 +1,62 @@
+{
+  "schema": "hx711-oled-replay-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "L1",
+  "host_recorded_at": "2026-10-27T17:38:57.4758942+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "-153213、-153213、-153302；HX:OK U0 D0；第一行顯示CAL_USER",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "load_condition": {
+    "nominal_weight_g": 241,
+    "source": "user supplied readings in response to instruction to place the 241g at prior calibration position and hold still",
+    "exact_placement_independently_verified": false
+  },
+  "OLED": {
+    "RAW_counts": [
+      -153213,
+      -153213,
+      -153302
+    ],
+    "HX_health": "OK",
+    "tracker_upper_level": 0,
+    "tracker_lower_level": 0,
+    "CAL_flag": "CAL_USER",
+    "phase": null
+  },
+  "requested_interval_s": 3,
+  "actual_intervals_confirmed": false,
+  "physical_observation_times": null,
+  "duplicate_values": "Two consecutive equal readings; whether the ADC conversion or displayed cache was distinct is unknown",
+  "statistics": {
+    "n": 3,
+    "mean_counts": -153242.66666666666,
+    "min_counts": -153302,
+    "max_counts": -153213,
+    "span_counts": 89
+  },
+  "baseline": {
+    "stage": "U1",
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-U1.json",
+    "source_sha256": "62E0BAC42A7EB09B86979BA486546565F8D6B1A49E021148830846F055B72BFB",
+    "mean_counts": -158153.33333333334
+  },
+  "comparison": {
+    "delta_L1_minus_U1_counts": 4910.666666666686,
+    "apparent_counts_per_g_for_241g": 20.376210235131477,
+    "reference_saved_counts_per_g": 20.413381743,
+    "reference_expected_delta_counts": 4919.625000063,
+    "difference_from_reference_counts": -8.95833339631372,
+    "difference_from_reference_percent": -0.18209382617982062,
+    "independent_accuracy_validation": false,
+    "same_ADC_frames_not_proven": true
+  },
+  "interpretation": "Single user-observed loading response after U1 with the same weight used for calibration; independent accuracy, repeatability, stable time, actual placement and same RAM coefficient continuity are not verified.",
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "next_step": "User requested to remove the 241g, then report three OLED RAW values and HX/CAL states; awaiting response."
+}
+

@@ -1,0 +1,41 @@
+{
+  "schema": "host-serial-capture-v1",
+  "purpose": "241g calibration read-only delivery check",
+  "start": "2026-10-27T16:54:58.7785661+08:00",
+  "end": "2026-10-27T16:55:07.3863863+08:00",
+  "port": "COM3",
+  "baud": 115200,
+  "format": "8N1",
+  "handshake": "None",
+  "dtr": false,
+  "rts": false,
+  "events": [
+    {
+      "time": "2026-10-27T16:54:58.7824474+08:00",
+      "action": "OPEN",
+      "port": "COM3",
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "time": "2026-10-27T16:55:01.3114976+08:00",
+      "action": "TX",
+      "command": "VERSION"
+    },
+    {
+      "time": "2026-10-27T16:55:03.3292103+08:00",
+      "action": "TX",
+      "command": "SPEED STATUS"
+    },
+    {
+      "time": "2026-10-27T16:55:05.3502288+08:00",
+      "action": "TX",
+      "command": "STATUS"
+    }
+  ],
+  "capture_error": null,
+  "port_closed": true,
+  "raw_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261027-hx711-241g-readonly-165458.serial.log",
+  "host_times_are_not_ADC_timestamps": true,
+  "raw_is_STATUS_snapshots_not_all_ADC_frames": true
+}

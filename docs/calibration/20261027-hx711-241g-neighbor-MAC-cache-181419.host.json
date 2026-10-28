@@ -1,0 +1,19 @@
+{
+  "schema": "host-neighbor-cache-observation-v1",
+  "observed_at": "2026-10-27T18:14:19.4631126+08:00",
+  "historical_IP": "192.168.52.71",
+  "historical_esptool_MAC": "e0:8c:fe:a8:42:bc",
+  "historical_MAC_source": "docs/quality/2026-10-26-optical1-upload.log",
+  "matches": [],
+  "scope": "Existing local IPv4 neighbor cache filtered by historical IP or normalized esptool MAC; no ping or network packet intentionally sent.",
+  "limitations": [
+    "MAC and IP come from historical records; the latest CAL-window WiFi state was SUSPENDED/radio0/IP NA.",
+    "An empty cache result does not prove the device is offline. A cache match alone does not verify current firmware, UART data, RAM coefficients or power continuity."
+  ],
+  "operations": {
+    "reset": false,
+    "wifi_configuration_changed": false,
+    "COM3_opened": false,
+    "network_probe_sent": false
+  }
+}

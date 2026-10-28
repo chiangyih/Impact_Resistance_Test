@@ -1,0 +1,5 @@
+{"event":"request_place_366g","time_utc":"2026-10-27T13:58:02.657Z","note":"host request time, not physical placement time"}
+{"event":"loaded_window_start_after_user_confirmed_366g_stable","time_utc":"2026-10-27T13:59:34.568Z","note":"Recorded after reply processing; placement/actual reply time earlier and unknown. Use subsequent 60s."}
+{"event":"request_remove_366g","time_utc":"2026-10-27T14:00:57.157Z","note":"host request time, not removal time"}
+{"event":"unloaded_window_start_after_user_confirmed","time_utc":"2026-10-27T14:03:39.449Z","note":"host processing time, physical removal time not known; use following 60s"}
+{"event":"unloaded_window_complete_and_capture_stop_requested","time_utc":"2026-10-27T14:04:56.971Z"}

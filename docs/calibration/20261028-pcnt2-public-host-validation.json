@@ -1,0 +1,192 @@
+{
+  "schema": "pcnt2-public-host-validation-v1",
+  "date": "2026-10-28",
+  "firmware_version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail4-pcnt2",
+  "status": "host_validated_ready_for_parent_formal_compile_then_upload_then_independent_device_qc",
+  "source_sha256": {
+    "05-test/05-test.ino": "CF0B3057AFB5499772878B2934CDE4D8F8BA81433F28CE1E8807C6B884A700F1",
+    "05-test/hx_attempt_pcnt.h": "A3827EC6C630EBE1B896B41D84FDC1E49425A46C598D6CEF49EEFD11D1049E3D",
+    "05-test/hx_pcnt_adapter.h": "EC7A86A55982F9E71A5778B4DB9AD7FBFB0EB899D029C30EE3AC09B46CCA4E55",
+    "05-test/hx_pcnt_diag.h": "276CB3C7FCE9510777C17FEB3CA4C77D2E7A37987508C85D947B56EA64ECF5DE",
+    "05-test/hx_read_diag.h": "A488BA5FA1149123B8CA55592E0048AED23642E486DD462E802453C875090864",
+    "05-test/hx_failure_diag.h": "F210D64AC515A903354CC056CDD1D7670DFD44CCC217F5413A944241D872E818",
+    "05-test/manual_optical.h": "71782ABCDFD85C74DC2D5B7EB3BED7645B9A8E80394969A864854B1FEFF254B1",
+    "05-test/network_wifi.h": "53F1C85E2E25010F4852C69828D805F968F5231976CC7CC7BFD9B5C5C244615F",
+    "tools/hx-failure-diagnostic.cjs": "020AE9466BB1E1C23E3687E7C79BF40496A1AEBDB5FF3CE49203FC9D8810B201",
+    "tools/hx-pcnt-diagnostic.cjs": "24886345BC1797129F1353A5B7302CEA77FE36B409A15CB0621AD27124207B63",
+    "tools/hx-attempt-pcnt-diagnostic.cjs": "7A7C60054B5107D798AAF84FE0A483EF6BB107AC8F06097330F300838195835A",
+    "tools/hx-capture-diagnostic.cjs": "C612101377B8CA0FC970E20692B78BF2E9DA37050EC7D2CEF8D20B41AF6C2C67",
+    "tools/hx-read-diagnostic.cjs": "2312CF63C68E532D246470D82CD1C74ED1F700E75E09B62CB870EF862ACA037F",
+    "tests/05-hx-attempt-pcnt.native.cpp": "7F99BA801395130922B64B9F391C91EB61519F309D78FA6F713530DA1B961CD7",
+    "tests/05-hx-pcnt-adapter.native.cpp": "FCFC9B24C512CA052BB63DC32751216D5363DD406385A33ACB23619722C94ADE",
+    "tests/hx-attempt-pcnt-diagnostic.test.cjs": "A34D94E27706AF7E675947B29EE3AABACFD475C41964A20F91E34FF06A8EBC37",
+    "tests/05-hx-attempt-integration.test.cjs": "D0EAA1D75037F328E87E3C2BDC72EAAF358630E0E83CA8101D4D268A90DB9A86",
+    "tests/05-hx-pcnt-integration.test.cjs": "778671E3FB86474EC20364A4F159081A9D74DEBB1176C4660EC7E3E01AABEB4C",
+    "tests/hx-dual-diagnostic.test.cjs": "4C5B7CE73AB3149EE6AD500ACE6638EF95685DDA2E6B06657CBC67F64D5B2C22",
+    "tests/hx-failure-diagnostic.test.cjs": "3BA53806CC6D407E88D0D7D480BC1EFAC127B7A82A5A6935962A6CCED99D426E",
+    "tests/prepare-hx-attempt-native-export.cjs": "6B44B32BDC54076B373478D22FB89DE4F532B98176420C286A12D4197DF73565",
+    "tests/fixtures/hx-attempt-native-synthetic.log": "B493EFC0FD7898B006E9AAB9C3C5EA2F1DD700FDE49F696D0B5CE0D6767D4245"
+  },
+  "host_validation": {
+    "node_logical_cases": 315,
+    "node_runner_tests": 189,
+    "node_runner_passed": 189,
+    "manual_wrapper_cases": 137,
+    "manual_wrappers_replaced": 11,
+    "node_passed": true,
+    "native_sidecar_cases": 16,
+    "native_actual_adapter_mock_cases": 32,
+    "native_existing_pcnt_state_cases": 18,
+    "native_compiler": "Visual Studio 18 cl /utf-8 /std:c++17 /EHsc /W4",
+    "native_warnings": 0,
+    "actual_ino_complete_export_compiled_and_parsed": true,
+    "synthetic_export_fixture": "tests/fixtures/hx-attempt-native-synthetic.log",
+    "synthetic_only": true,
+    "exporter_functions_sha256": "4D0A4F7F6EEA69D8B68F4D7B0774319363578214EAAE9B45104B7416695E0AC8",
+    "real_sdk_header_syntax": "Arduino 3.3.12 / IDF 5.5.5 / esp-x32 2601 -fsyntax-only passed with combined <=75000 budget and ESP heap-query signatures; only unchanged hx_read_diag.h warnings",
+    "formal_arduino_link_performed": false,
+    "legacy_complete_bundles_semantically_replayed": 7,
+    "legacy_compare_excludes": [
+      "analysis_tool_version",
+      "v3.0.0 proof scope normalized only to approved v3.0.1 fix"
+    ],
+    "historical_files_rewritten": false,
+    "device_operations": false,
+    "device_validation": false,
+    "paper_review": "Kierkegaard final four-source hash review passed; no new blocking issue"
+  },
+  "resources": {
+    "raw_record_bytes": 56,
+    "raw_rings_bytes": 28672,
+    "sidecar_record_bytes": 80,
+    "sidecar_rings_bytes": 40960,
+    "pending_sidecar_bytes": 80,
+    "fixed_diagnostic_object_budget_bytes": 75000,
+    "budget_checked_against_real_target_headers": true,
+    "budget_excludes_small_auxiliary_flags_mutex_seq_and_other_existing_app_globals": true,
+    "trial_capacity_unchanged": {
+      "acc": 2048,
+      "hx": 1536,
+      "cal": 32
+    },
+    "new_driver_units": 0,
+    "new_driver_channels": 0,
+    "existing_pcnt_units": 2,
+    "existing_pcnt_channels": 2,
+    "adapter_allocation_setup_only": true,
+    "actual_device_heap_unmeasured": true,
+    "boot_resource_line": "HX_PCNT_RESOURCES",
+    "heap_fields": [
+      "heap_before_setup",
+      "heap_after_setup",
+      "heap_min",
+      "max_alloc"
+    ],
+    "heap_delta_is_observed_not_exclusive_driver_allocation": true
+  },
+  "protocol": {
+    "outer_schema": 4,
+    "profile": "DUAL600_FRAME_AND_HOLD_PCNT",
+    "unchanged_read_schema": 2,
+    "unchanged_read_crc_words": 19,
+    "attempt_schema": 1,
+    "attempt_row_crc_words": 20,
+    "attempt_block_crc": true,
+    "attempt_slots": [
+      "ANY",
+      "LINK"
+    ],
+    "failure_profile": "SCK_LOW_250MS_FRAME_PCNT",
+    "unchanged_failure_crc_words": 103,
+    "unchanged_pcnt_crc_words": 405,
+    "pcnt_snapshot_clock_guard_scope": "export; may reflect a later per-frame stop failure; immutable past HOLD/frame counts retain original scope",
+    "block_order": [
+      "HX_DIAG ANY",
+      "HX_ATTEMPT_PCNT ANY",
+      "HX_DIAG LINK",
+      "HX_ATTEMPT_PCNT LINK",
+      "HX_FAIL",
+      "HX_PCNT",
+      "END_HX_CAPTURE schema=4"
+    ],
+    "complete_end_required": true,
+    "commands": [
+      "VERSION",
+      "HX_DIAG STATUS",
+      "HX_DIAG DUMP"
+    ],
+    "shared_window_us": 600000000,
+    "rearm_or_clear_command": false,
+    "freeze_notice": "# HX_DIAG_FROZEN schema=4 session=<8HEX> slots=2 all_frozen=1 pcnt_sealed=1 attempt_pcnt_sealed=1 any_reason=<N> link_reason=<N>; HX_DIAG DUMP retained; wait END_HX_CAPTURE",
+    "terminal": "# END_HX_CAPTURE schema=4 session=<8HEX> slots=2 retained=1 read_only=1 complete=1",
+    "sidecar_policy": {
+      "PRESENT": 1,
+      "SETUP": 2,
+      "PRIOR_PROOF_READY": 4,
+      "IDLE_UNCAL_ELIGIBLE": 8,
+      "ENCLOSED": 16,
+      "PROOF_SOURCE": 32,
+      "FRAME_GUARD": 64,
+      "FINISHED": 128,
+      "reason_bits": "16..23; HxPcntReason 0..8"
+    },
+    "unit_flags": {
+      "api_mask": "bits0..3 CLEAR/START/STOP/READ success",
+      "attempt_mask": "bits4..6 START/STOP/READ attempted",
+      "overflow": 128,
+      "valid": 256,
+      "start_level_known": 512,
+      "start_level": 1024,
+      "end_level_known": 2048,
+      "end_level": 4096
+    },
+    "usable_scope": "counter validity independent of RAW acceptance; first four proof-source frames lack prior proof-ready and have valid_count null",
+    "counter_range": "0..16383 only; >16383 range invalid, not necessarily confirmed hardware overflow",
+    "exact_sdk_guard": "ESP_IDF_VERSION == ESP_IDF_VERSION_VAL(5,5,5)"
+  },
+  "timing": {
+    "original_25pulse_loop_unchanged": true,
+    "original_accept_rx_err_calibration_path_unchanged": true,
+    "per_frame_scope": "IDLE && !cal_mode && !calibration_valid; after DATA ready LOW; no further frame APIs after LINK slot/whole capture frozen",
+    "start_order": [
+      "SCK",
+      "DATA"
+    ],
+    "stop_read_order": [
+      "DATA STOP/READ",
+      "SCK STOP/READ"
+    ],
+    "frame_deep_copy_before_first_link_hold": true,
+    "per_frame_counter_apis": {
+      "clear": 2,
+      "start": 2,
+      "stop": 2,
+      "get_count": 2
+    },
+    "per_frame_interior_gpio_level_reads": 4,
+    "additional_cpu_time_unmeasured_until_device_qc": true,
+    "measured_extra_fields": [
+      "prepare_begin before CLEAR",
+      "read_start_us original bracket after preparation",
+      "read_end_us original bracket before counter teardown",
+      "finish_end after teardown/compact snapshot"
+    ],
+    "extra_pre_post_summary": true,
+    "ready_gate_to_clock_is_lengthened": true,
+    "original_attempt_gap_is_not_adc_period": true,
+    "proof_and_frame_share_one_start_stop_lifecycle": true,
+    "whole_capture_dump_blocks_polling": true,
+    "larger_dump_can_increase_stale_and_fifo_warnings": true
+  },
+  "limits": [
+    "MCU pad digital threshold edge totals; not HX-end voltage, edge waveform, pulse width, ordered timing, power integrity or ADC truth",
+    "SCK count50 does not prove25 valid remote clocks or exclude compensating extra/missing edges",
+    "DATA expected transition count is a conditional LOW-to-sampled-bits-to-original-postcheck model; counts include lead-in/tail",
+    "Packed DATA levels are actual interior observations, without exact counter gate endpoint timestamps",
+    "Known boundary incompatibility is separately reported; unknown/NA is not zero or failure recovery",
+    "Every-frame API/locks/micros/copies alter scheduling even though original train body is unchanged",
+    "GPIO readback at setup/first LINK is preserved; not a continuous per-frame GPIO-configuration monitor",
+    "No unique accepted-spike root cause established; no automatic TARE/CAL, filtered or repaired RAW, cleared warning, or acceptance relaxation",
+    "Actual device GPIO/proof/per-frame counts/heap/overhead/early-LINK lifecycle/CRC and measurement quality require new independent QC"
+  ]
+}

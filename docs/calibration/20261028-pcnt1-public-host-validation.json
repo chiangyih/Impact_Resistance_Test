@@ -1,0 +1,104 @@
+{
+  "schema": "pcnt1-public-host-validation-v1",
+  "date": "2026-10-28",
+  "firmware_version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail3-pcnt1",
+  "status": "host_validated_pending_parent_compile_upload_and_independent_device_qc",
+  "source_sha256": {
+    "05-test/05-test.ino": "FA8B56417FE50B305904C831CF1DF8534549A4AA7C94D81896CD8E625ED9B7BF",
+    "05-test/hx_pcnt_diag.h": "0DA4AF29B91D68FFECA6D017CBA718C0BC7CF7FFF56A4889221731F9A56D67A6",
+    "05-test/hx_pcnt_adapter.h": "9E93F7D35BCDD0FBC0E2EFB9B139EB228C1197342CBDDE53ABF69AAFDD146FBB",
+    "05-test/hx_read_diag.h": "A488BA5FA1149123B8CA55592E0048AED23642E486DD462E802453C875090864",
+    "05-test/hx_failure_diag.h": "F210D64AC515A903354CC056CDD1D7670DFD44CCC217F5413A944241D872E818",
+    "05-test/manual_optical.h": "71782ABCDFD85C74DC2D5B7EB3BED7645B9A8E80394969A864854B1FEFF254B1",
+    "05-test/network_wifi.h": "53F1C85E2E25010F4852C69828D805F968F5231976CC7CC7BFD9B5C5C244615F",
+    "tools/hx-failure-diagnostic.cjs": "EE5F30553F3FC32528B29A03AEEA4746918ABC251C2979DAEFD3A1FCCA8A8FDD",
+    "tools/hx-pcnt-diagnostic.cjs": "68398554C77F1C0EE66663F7A33309A526F8861DF893CE134209CDC0A5A1D89A"
+  },
+  "host_validation": {
+    "node_cases": 293,
+    "node_passed": true,
+    "new_native_portable_cases": 18,
+    "new_native_actual_adapter_mock_cases": 15,
+    "native_compiler": "Visual Studio 18 cl /utf-8 /std:c++17 /EHsc /W4",
+    "native_warnings": 0,
+    "real_sdk_header_syntax": "esp-x32/2601 xtensa-esp32-elf-g++ -fsyntax-only with installed Arduino 3.3.12 and IDF 5.5.5 headers passed; existing hx_read_diag.h warnings only",
+    "formal_arduino_link_performed": false,
+    "actual_ino_export_functions_compiled_and_parsed": true,
+    "synthetic_export_fixture": "tests/fixtures/hx-pcnt-native-synthetic.log",
+    "legacy_schema2_bundles_semantically_replayed": 5,
+    "legacy_comparison_excludes": ["analysis_tool_version"],
+    "historical_files_unchanged": true,
+    "device_validation": false
+  },
+  "resources": {
+    "fixed_public_snapshot_bytes": 1620,
+    "snapshot_budget_bytes": 2048,
+    "combined_diagnostic_static_budget_bytes": 33000,
+    "pcnt_units": 2,
+    "pcnt_channels": 2,
+    "new_rmt_channels": 0,
+    "driver_heap": "Allocated once in setup, exact runtime allocation not measured; allocation failure makes PCNT unavailable/NA.",
+    "runtime_struct": "Additional bounded handles and one pending proof included in aggregate static budget.",
+    "trial_acc_capacity_unchanged": 2048,
+    "trial_hx_capacity_unchanged": 1536,
+    "cal_samples_unchanged": 32
+  },
+  "configuration": {
+    "pins": {"SCK": 25, "DATA": 33},
+    "stages": ["BASE", "DRIVER", "READY", "EVENT"],
+    "flag_bits": ["PU", "PD", "IE", "OE", "OECTRL", "OEINV", "OD", "SLP"],
+    "sck_baseline": "GPIO function2, output signal256, OE1, push-pull/no-pull; original IE/OECTRL recorded. SDK default commonly flags24.",
+    "sck_allowed_change": "IE enabled only. Typical BASE24 -> DRIVER29 -> READY/EVENT28. Original OECTRL0 or1 remains identical.",
+    "data": "INPUT_PULLUP flags5, no output; original function/signal/drive unchanged.",
+    "rollback": "Only restore known driver pull side effects to FLOATING/PULLUP_ONLY and verify. Unverified GPIO restoration or counter STOP sets sticky clock_blocked, so no further HX clocks. No silent remap.",
+    "periman": "Raw IDF PCNT does not replace Arduino GPIO bus ownership.",
+    "filter": "Explicitly disabled; no claimed analog or minimum-pulse capture guarantee.",
+    "sdk_guard": "Exact IDF5.5.5 compile-time assertion; another SDK requires renewed overflow review."
+  },
+  "observation": {
+    "positive_control": "At most8 existing read attempts, four accepted comparisons with zero mismatches. SCK total both edges50; DATA transition count compared with LOW -> sampled24bits -> postHIGH. Counter-alive only, not ADC truth.",
+    "hold": "First eligible LINK only, with positive control and EVENT GPIO checks. SCK starts before DATA; DATA stops before SCK, with independent CPU brackets and start/end GPIO samples.",
+    "same_loop_exit": "Late early-service completion/truncation stops counters inside captureHxFailure before same-loop serial service or next HX train.",
+    "deadlines": "Shared600s and existing20s LINK post deadline unchanged. Actual START bracket checked before each unit. Polling targets are not hard real-time limits.",
+    "overflow": "IDF5.5.5 pending compensation plus sticky callback. Only raw_count0..16383 can be valid. Greater raw values remain preserved but range-invalid, without claiming proven overflow. Compensated/latch/negative counts invalid. Window must be less than1s.",
+    "immutable": "No rearm/clear. Both slots, HXF and PCNT snapshot fixed before outer export. Late callbacks cannot mutate sealed public snapshot.",
+    "limits": [
+      "MCU-side digital edge totals are not HIGH event counts, pulse widths, HX-side analog waveform or ADC truth.",
+      "Postcheck to PCNT start is an explicit early blind gap.",
+      "Positive-control and API overhead changes scheduling and can cause more early HXF missed points.",
+      "Zero valid edges do not prove continuous analog LOW.",
+      "Synchronous DUMP still blocks polling after snapshots freeze.",
+      "No automatic calibration and no restoration of historical RAM coefficients."
+    ]
+  },
+  "protocol": {
+    "outer_schema": 3,
+    "outer_profile": "DUAL600_LINK_LOW250MS_PCNT",
+    "read_slot_schema": 2,
+    "read_canonical_words": 19,
+    "hxf_schema": 1,
+    "hxf_profile": "SCK_LOW_250MS_PCNT",
+    "hxf_canonical_words": 103,
+    "pcnt_schema": 1,
+    "pcnt_profile": "PAD_EDGES_PROOF4OF8",
+    "pcnt_canonical_words": 405,
+    "crc": "CRC32_ISO_HDLC little-endian uint32",
+    "block_order": ["ANY HX_DIAG", "LINK HX_DIAG", "HX_FAIL", "HX_PCNT", "END_HX_CAPTURE schema3 complete1"],
+    "commands": ["HX_DIAG STATUS", "HX_DIAG DUMP"],
+    "tool": "node tools/hx-failure-diagnostic.cjs public-serial.log",
+    "tool_version": "hx-failure-diagnostic-v3.0.0",
+    "invalid_values": "Unknown time/count is NA. An actual API raw_count can remain visible when invalid; derived valid_count is null unless its observation is validated."
+  },
+  "primary_sources": [
+    "https://github.com/espressif/esp-idf/blob/v5.5.5/components/esp_driver_pcnt/src/pulse_cnt.c",
+    "https://github.com/espressif/esp-idf/blob/v5.5.5/components/esp_driver_gpio/src/gpio.c",
+    "https://github.com/espressif/esp-idf/blob/v5.5.5/components/hal/esp32/include/hal/gpio_ll.h"
+  ],
+  "operations": {
+    "COM_opened_by_Gibbs": false,
+    "reset_or_flash": false,
+    "secret_or_credential_build_read": false,
+    "handoff_or_QC_edited": false,
+    "commit_or_push": false
+  }
+}

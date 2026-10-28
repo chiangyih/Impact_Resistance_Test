@@ -1,0 +1,71 @@
+{
+  "schema": "hx711-oled-replay-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "U2",
+  "host_recorded_at": "2026-10-27T17:41:30.9597205+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "-158282、-158380、-158327；HX:OK U0 D0；第一行顯示CAL_USER",
+  "user_subsequent_phase_reply": "對",
+  "subsequent_phase_question": "為了繼續做不重置的串列診斷，請看一下OLED第六行是否顯示「IDLE」；目前請保持空托盤與供電不變。",
+  "subsequent_phase_interpretation": "User separately confirmed IDLE after the U2 readings; not necessarily at the exact same instant as each reading.",
+  "observer": "user textual OLED report; assistant and QC did not directly view",
+  "load_condition": {
+    "nominal_external_weight_g": 0,
+    "source": "user supplied readings in response to instruction to remove the entire 241g and keep the pan stationary"
+  },
+  "OLED": {
+    "RAW_counts": [
+      -158282,
+      -158380,
+      -158327
+    ],
+    "HX_health": "OK",
+    "tracker_upper_level": 0,
+    "tracker_lower_level": 0,
+    "CAL_flag": "CAL_USER",
+    "phase_at_raw_readings": null
+  },
+  "requested_interval_s": 3,
+  "actual_intervals_confirmed": false,
+  "physical_observation_times": null,
+  "statistics": {
+    "n": 3,
+    "mean_counts": -158329.66666666666,
+    "min_counts": -158380,
+    "max_counts": -158282,
+    "span_counts": 98
+  },
+  "baseline": {
+    "stage": "U1",
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-U1.json",
+    "source_sha256": "62E0BAC42A7EB09B86979BA486546565F8D6B1A49E021148830846F055B72BFB",
+    "mean_counts": -158153.33333333334
+  },
+  "loaded": {
+    "stage": "L1",
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-L1.json",
+    "source_sha256": "B0534FD3D89C1B798805EA1F996D2B0024B59E5B22375DCC30484F6647EC49A9",
+    "mean_counts": -153242.66666666666
+  },
+  "comparison": {
+    "U2_minus_U1_counts": -176.33333333331393,
+    "L1_minus_U1_counts": 4910.666666666686,
+    "L1_minus_U2_counts": 5087,
+    "conditional_U2_minus_U1_g": -8.638124518186743,
+    "conditional_U2_against_saved_tare_g": -49.15181028301273,
+    "saved_offset_printed_counts": -157326.312,
+    "saved_counts_per_g_printed": 20.413381743,
+    "condition": "Weight conversions are illustrative only if saved parameters remain applicable; exact live RAM calibration and supply continuity are not confirmed.",
+    "acceptance_threshold_specified": false,
+    "independent_accuracy_validation": false
+  },
+  "interpretation": "Single user-observed unloaded comparison after one 241g reload. The post-unload mean differs from the preceding unloaded mean; three values do not determine a drift rate, physical cause, accuracy acceptance or independent ADC frames.",
+  "operations_before_this_record": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "next_step": "One bounded read-only host DCB audit only after the user separately confirms IDLE; preserving existing calibration."
+}
+

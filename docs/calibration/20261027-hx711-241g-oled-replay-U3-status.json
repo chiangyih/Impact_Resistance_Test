@@ -1,0 +1,33 @@
+{
+  "schema": "hx711-oled-status-followup-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "stage": "U3_status_followup",
+  "host_recorded_at": "2026-10-27T18:05:47.3905356+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "OLED第一行是 **CAL_USER**",
+  "source": "user textual report of current OLED display; assistant and QC did not directly view",
+  "OLED_first_line": "CAL_USER",
+  "OLED_HX_health_at_this_observation": null,
+  "OLED_phase_at_this_observation": null,
+  "exact_physical_observation_time": null,
+  "L2_loaded_HX_health": null,
+  "L2_loaded_CAL_flag": null,
+  "L2_status_note": "User did not separately report L2 loaded-stage HX or CAL in this reply; do not infer from current OLED.",
+  "U3_HX_health_earlier": "OK",
+  "U3_CAL_at_each_raw_reading": null,
+  "U3_source": "docs/calibration/20261027-hx711-241g-oled-replay-U3.json",
+  "U3_source_sha256": "1375B8206C1CEE3774E33349F3C1B650318573FD201D9AAB16BC3BB9EEFD7519",
+  "limitations": [
+    "CAL_USER indicates a displayed calibration-valid flag but does not reveal exact live offset or counts_per_g.",
+    "Power/reset history and RAM coefficient continuity remain unconfirmed.",
+    "This status does not establish the exact time or loaded-stage status, nor formal zero return or accuracy."
+  ],
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false
+  },
+  "pending": "User asked for non-contact visual information: USB connection path and whether additional wiring is connected to TX0/GPIO1 or RX0/GPIO3."
+}
+

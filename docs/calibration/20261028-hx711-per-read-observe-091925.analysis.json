@@ -1,0 +1,26 @@
+[
+  {
+    "schema": 1,
+    "version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1",
+    "session": "238002AF",
+    "rows": 256,
+    "accepted": 255,
+    "rejected": 1,
+    "freeze_reason": 1,
+    "trigger_flags": 1,
+    "pre": 127,
+    "post": 128,
+    "post_complete": true,
+    "overflow": false,
+    "first_attempt_us": 191172503,
+    "last_attempt_us": 218266720,
+    "window_start_us": 515113,
+    "trigger_us": 204722715,
+    "freeze_us": 218266720,
+    "candidates": [],
+    "crc_scope": "export_only",
+    "cpu_times_not_pin_waveform": true,
+    "host_receive_utc_not_read_time": true,
+    "independent_adc_truth": false
+  }
+]

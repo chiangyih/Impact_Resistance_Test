@@ -1,0 +1,42 @@
+# SYNTHETIC_NATIVE_EXPORT no_device=1 no_adc=1 generated_from_public_ino_dump_functions=1
+# BEGIN_HX_PCNT schema=1 version=native-pcnt-export session=89ABCDEF profile=PAD_EDGES_PROOF4OF8 crc=CRC32_ISO_HDLC_405_LE_U32
+# HX_PCNT mode_id=2 reason=0 linked=1 seq=9 anchor=90000 setup_code=1 clock_blocked=0 proof_count=4 proof_good=4 proof_bad=0 proof_ready=1 stage_mask=15 event_begin=90001 event_end=90030 finish_begin=363980 finish_end=364010 sealed=1 gpio_function=2 gpio_signal=256
+# HX_PCNT_LIMIT unit0=SCK25 unit1=DATA33 both_edges=1 high_limit=32767 valid_max=16383 idf_contract=5.5.5 filter=disabled start_order=SCK_DATA stop_order=DATA_SCK valid0=NA raw_count_not_valid_count=1 cpu_brackets=1 pad_digital_only=1 analog_waveform=0 early_blind_gap=1 no_filter_raw/no_auto_cal; proof changes first8 inter_attempt scheduling; levels sampled inside API count windows
+kind,stage,unit,function,signal,drive,flags
+HXPIN,0,0,2,256,2,24
+HXPIN,0,1,2,256,2,5
+HXPIN,1,0,2,256,2,29
+HXPIN,1,1,2,256,2,5
+HXPIN,2,0,2,256,2,28
+HXPIN,2,1,2,256,2,5
+HXPIN,3,0,2,256,2,28
+HXPIN,3,1,2,256,2,5
+kind,index,seq,bits24,accepted,postcheck,expected_data,valid
+HXPV,0,1,0xFD818C,1,1,9,1
+HXPV,1,2,0xFD818C,1,1,9,1
+HXPV,2,3,0xFD818C,1,1,9,1
+HXPV,3,4,0xFD818C,1,1,9,1
+HXPV,4,NA,NA,NA,NA,NA,NA
+HXPV,5,NA,NA,NA,NA,NA,NA
+HXPV,6,NA,NA,NA,NA,NA,NA
+HXPV,7,NA,NA,NA,NA,NA,NA
+kind,scope,index,unit,start_begin,start_end,stop_begin,stop_end,read_begin,read_end,raw_count,api_mask,overflow,valid,level_start_begin,level_start_end,level_start,level_end_begin,level_end_end,level_end,attempt_mask
+HXPU,PROOF,0,0,10000,10001,10300,10301,10302,10303,50,15,0,1,10002,10003,0,10297,10298,0,7
+HXPU,PROOF,0,1,10010,10011,10290,10291,10292,10293,9,15,0,1,10012,10013,0,10287,10288,1,7
+HXPU,PROOF,1,0,20000,20001,20300,20301,20302,20303,50,15,0,1,20002,20003,0,20297,20298,0,7
+HXPU,PROOF,1,1,20010,20011,20290,20291,20292,20293,9,15,0,1,20012,20013,0,20287,20288,1,7
+HXPU,PROOF,2,0,30000,30001,30300,30301,30302,30303,50,15,0,1,30002,30003,0,30297,30298,0,7
+HXPU,PROOF,2,1,30010,30011,30290,30291,30292,30293,9,15,0,1,30012,30013,0,30287,30288,1,7
+HXPU,PROOF,3,0,40000,40001,40300,40301,40302,40303,50,15,0,1,40002,40003,0,40297,40298,0,7
+HXPU,PROOF,3,1,40010,40011,40290,40291,40292,40293,9,15,0,1,40012,40013,0,40287,40288,1,7
+HXPU,PROOF,4,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,4,1,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,5,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,5,1,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,6,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,6,1,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,7,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,PROOF,7,1,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,0
+HXPU,HOLD,0,0,90010,90011,364000,364001,364002,364003,0,15,0,1,90012,90013,0,363997,363998,0,7
+HXPU,HOLD,0,1,90020,90021,363990,363991,363992,363993,2,15,0,1,90022,90023,0,363987,363988,1,7
+# END_HX_PCNT crc32=0x4080ED1E words=405 retained=1 read_only=1

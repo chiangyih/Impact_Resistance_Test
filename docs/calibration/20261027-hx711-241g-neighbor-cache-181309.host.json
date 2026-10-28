@@ -1,0 +1,22 @@
+{
+  "schema": "host-neighbor-cache-observation-v1",
+  "observed_at": "2026-10-27T18:13:09.0617374+08:00",
+  "host_observation_time_not_device_time": true,
+  "target_IP": "192.168.52.71",
+  "neighbors": [],
+  "method": "Get-NetNeighbor -IPAddress; read-only local cache query, no ping or packet intentionally sent",
+  "source_of_target": "Historically reported device IP before most recent calibration; not verified as current",
+  "limitations": [
+    "The empty returned list does not prove the ESP32 is disconnected, powered off, or at a different address.",
+    "An IP address alone does not verify device identity, firmware, RAM coefficients, or UART function.",
+    "The latest successful CAL capture reported WiFi suspended/radio off; later reconnect status is unknown."
+  ],
+  "operations": {
+    "COM3_opened": false,
+    "device_commands_sent": [],
+    "network_packets_intentionally_sent": 0,
+    "wifi_configuration_changed": false,
+    "reset": false
+  }
+}
+

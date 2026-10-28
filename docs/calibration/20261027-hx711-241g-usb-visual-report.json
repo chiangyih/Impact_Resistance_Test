@@ -1,0 +1,31 @@
+{
+  "schema": "hx711-usb-user-visual-observation-v1",
+  "session": "20261027-hx711-241g-oled-replay",
+  "host_recorded_at": "2026-10-27T18:07:01.0601214+08:00",
+  "host_time_is_not_physical_observation_time": true,
+  "raw_user_reply": "ESP32的USB線是直接接電腦  ，無另接線",
+  "question_context": "User was asked whether the ESP32 USB connects directly to the computer or through a hub/adapter, and whether TX0/GPIO1 or RX0/GPIO3 has additional wiring.",
+  "observer": "user visual report; assistant and QC did not directly view",
+  "USB_path_reported": "direct connection to computer",
+  "TX0_GPIO1_extra_wiring_reported": false,
+  "RX0_GPIO3_extra_wiring_reported": false,
+  "physical_observation_time": null,
+  "prior_user_status": {
+    "source": "docs/calibration/20261027-hx711-241g-oled-replay-U3-status.json",
+    "source_sha256": "0854E25CADC2D0553E1F3310911CD925B673E6BF48B91E33D4A976C5FDA0F8D9"
+  },
+  "limitations": [
+    "The response is a user visual report, not independent hardware inspection.",
+    "Windows Generic USB Hub can represent internal topology even for a direct physical connection; the two observations need not conflict.",
+    "Physical cable, USB UART converter, UART signal integrity, port stability, and firmware behavior remain unverified.",
+    "No serial open, physical reconnection, DTR/RTS transition, reset, tare or calibration was performed in this observation."
+  ],
+  "operations": {
+    "COM3_opened": false,
+    "tare": false,
+    "cal": false,
+    "reset": false,
+    "physical_wiring_changed": false
+  }
+}
+

@@ -64,7 +64,7 @@ function environment({ enabled = true, ssid = DUMMY_SSID, password = DUMMY_PASSW
     now: 1000, calls: [], output: [], linkStatus: 6, localIp: [0, 0, 0, 0],
     staSucceeds: true, offSucceeds: true, modeDelayMs: 0, fifoSucceeds: true,
     forbidNetwork: false,
-    opticalMode: () => false, handleOpticalCommand: () => false,
+    opticalMode: () => false, handleOpticalCommand: () => false, serviceHxDiagnostics() {}, hxFailureHolding: () => false, hxFailureReadOnlyCommand: () => true,
   };
   const enumMatch = /enum WifiPhase\s*:[^{]+\{([^}]+)\}/.exec(header);
   assert.ok(enumMatch, 'Missing public WifiPhase enum');
