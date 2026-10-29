@@ -1,0 +1,36 @@
+{
+  "schema": "pcnt2m1-host-validation-v1",
+  "firmware_source": {
+    "05-test/05-test.ino": "557329421EC8E7FCFCEF5BE448C2951DDB5604D3B6F888173848C3BECC55414A",
+    "05-test/hx_attempt_pcnt.h": "A3827EC6C630EBE1B896B41D84FDC1E49425A46C598D6CEF49EEFD11D1049E3D",
+    "05-test/hx_attempt_storage.h": "9125DDDCCBA233D278ECCED2D8AFE7C2A4326CB1DFC72BEC89ADC3F36D4FABD8",
+    "05-test/hx_failure_diag.h": "F210D64AC515A903354CC056CDD1D7670DFD44CCC217F5413A944241D872E818",
+    "05-test/hx_pcnt_adapter.h": "EC7A86A55982F9E71A5778B4DB9AD7FBFB0EB899D029C30EE3AC09B46CCA4E55",
+    "05-test/hx_pcnt_diag.h": "276CB3C7FCE9510777C17FEB3CA4C77D2E7A37987508C85D947B56EA64ECF5DE",
+    "05-test/hx_read_diag.h": "A488BA5FA1149123B8CA55592E0048AED23642E486DD462E802453C875090864",
+    "05-test/manual_optical.h": "71782ABCDFD85C74DC2D5B7EB3BED7645B9A8E80394969A864854B1FEFF254B1",
+    "05-test/network_wifi.h": "53F1C85E2E25010F4852C69828D805F968F5231976CC7CC7BFD9B5C5C244615F",
+    "05-test/wifi_secrets.example.h": "8282542D2202CDF116A49F554494B53646F3B29319DD2D6268B08C65FDDCA9C7"
+  },
+  "node_tests": 190,
+  "node_passed": 190,
+  "native_cases": 111,
+  "native_passed": 111,
+  "native_warnings": 0,
+  "actual_cpp_exporter": {
+    "normal_schema4": true,
+    "degraded_schema3_states": [
+      2,
+      3,
+      4
+    ],
+    "both_raw_slots_256_each": true,
+    "degraded_raw_canonical_equal": true,
+    "functions_sha256": "B335CF7B48F6781FBFCC547F1F2000060C9806FB1B497896A4187CA64331AA22"
+  },
+  "original_25_pulse_loop_and_postcheck_identical_to_git_HEAD": true,
+  "original_loop_sha256": "08DFA86D6B694564C4227F9CCE3ABEB51607CC9763BCA848B3BCAF9052BA8E32",
+  "device_validation": false,
+  "compile_and_flash_separate": true,
+  "public_secret_scan": true
+}

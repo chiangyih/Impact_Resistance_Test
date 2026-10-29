@@ -35,7 +35,7 @@ inline uint32_t hxpExpectedData(uint32_t bits, bool postcheck) { // 只供既有
   return edges + (level != (postcheck ? 1U : 0U)); // 最後原postcheck另算一次變化。
 } // 結束正對照預期值。
 inline bool hxpUnitValid(const HxPcntUnit &u) { // 停後get_count包含pending overflow補償，limit本身一律無效。
-  return u.api_mask == 15 && u.attempt_mask == 7 && !u.overflow && u.count >= 0 && static_cast<uint32_t>(u.count) <= HXP_VALID_MAX && hxdiagDelta(u.stop_end, u.start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.start_end, u.start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.stop_begin, u.start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.read_begin, u.stop_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.read_end, u.read_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_start_begin, u.start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_start_end, u.level_start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_end_begin, u.level_start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_end_end, u.level_end_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.stop_begin, u.level_end_end) < HXP_MAX_SPAN_US && u.level_start <= 1 && u.level_end <= 1; // 過長或反序不造零。
+  return u.api_mask == 15 && u.attempt_mask == 7 && !u.overflow && u.count >= 0 && static_cast<uint32_t>(u.count) <= HXP_VALID_MAX && hxdiagDelta(u.stop_end, u.start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.start_end, u.start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.stop_begin, u.start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.stop_end, u.stop_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.read_begin, u.stop_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.read_end, u.read_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_start_begin, u.start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_start_end, u.level_start_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_end_begin, u.level_start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u.level_end_end, u.level_end_begin) < HXP_MAX_SPAN_US && hxdiagDelta(u.stop_begin, u.level_end_end) < HXP_MAX_SPAN_US && u.level_start <= 1 && u.level_end <= 1; // 過長或反序不造零。
 } // 結束unit有效性。
 inline bool hxpEnclosed(const HxPcntUnit *u) { // 用API最保守邊界證DATA窗包在SCK窗內。
   return hxdiagDelta(u[1].start_begin, u[0].start_end) < HXP_MAX_SPAN_US && hxdiagDelta(u[0].stop_begin, u[1].stop_end) < HXP_MAX_SPAN_US; // 不假定兩unit同時啟停。
@@ -50,7 +50,7 @@ inline void hxpAddProof(HxPcntDiag &s, HxPcntProof p) { // caller已停兩個uni
 inline bool hxpLink(HxPcntDiag &s, uint32_t seq, uint32_t anchor, bool eligible, uint32_t now) { // 與原HXF同一首LINK，無proof時保留NA。
   if (s.sealed || s.linked || s.mode != HXP_WAITING) return false; // 不再武裝。
   s.linked = 1; s.seq = seq; s.anchor = anchor; s.event_begin = now; // 原postcheck到此仍有早期盲區。
-  s.reason = !eligible ? HXP_BUSY : s.setup_code != 1 ? HXP_SETUP : !s.proof_ready ? HXP_NO_PROOF : !hxpPinsMatch(s, 3) ? HXP_GPIO : HXP_NONE; // 不把未配置/未驗證當零。
+  s.reason = !eligible ? HXP_BUSY : s.setup_code != 1 ? HXP_SETUP : !s.proof_ready ? HXP_NO_PROOF : !hxpPinsMatch(s, 3) ? HXP_GPIO : s.clock_blocked ? HXP_API : HXP_NONE; // GPIO不符與frame STOP失敗分列，不重新清/啟counter。
   s.mode = s.reason ? HXP_SKIPPED : HXP_RUNNING; return s.mode == HXP_RUNNING; // 只有明確可用才啟硬體counter。
 } // 結束首LINK鎖定。
 inline void hxpComplete(HxPcntDiag &s, uint32_t now) { // caller先stop/read兩unit，後續合法clock不得污染。

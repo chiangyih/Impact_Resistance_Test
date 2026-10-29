@@ -1,0 +1,279 @@
+{
+  "schema": "host-serialmonitor-passive-v1",
+  "port": "COM3",
+  "tool_version": "v0.15.0 commit 13b8e80",
+  "user_observations": {
+    "prior_empty_tray_confirmed": true,
+    "user_authorized_restart_preserving_usb_power": true
+  },
+  "configuration_before_open": {
+    "baudrate": "115200",
+    "bits": "8",
+    "parity": "none",
+    "stop_bits": "1",
+    "dtr": "off",
+    "rts": "off"
+  },
+  "open_command_issued": true,
+  "open_acknowledged": true,
+  "tcp_peer_connected": true,
+  "capture_planned_ms": 620000,
+  "serial_bytes_received": 176846,
+  "stored_bytes": 176846,
+  "overflow": false,
+  "device_commands_sent": [
+    "HX_DIAG STATUS",
+    "HX_DIAG DUMP"
+  ],
+  "expected_session": "8FE7B3DC",
+  "observed_session": "8FE7B3DC",
+  "failed_proof_diagnostic_quarantine": true,
+  "measurement_accepted": false,
+  "run_conflict": null,
+  "pcnt_status_observed": {
+    "schema": "1",
+    "session": "8FE7B3DC",
+    "profile": "PAD_EDGES_PROOF4OF8",
+    "mode_id": "0",
+    "setup_code": "1",
+    "clock_blocked": "0",
+    "proof_count": "8",
+    "proof_good": "7",
+    "proof_bad": "1",
+    "proof_ready": "0",
+    "linked": "0",
+    "sealed": "0",
+    "snapshot_bytes": "1620"
+  },
+  "frozen_notice_observed": true,
+  "dump_end_observed": true,
+  "control_events": [
+    {
+      "at_utc": "2026-10-28T10:32:17.196Z",
+      "action": "LISTEN",
+      "address": "127.0.0.1",
+      "port": 20348
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.204Z",
+      "action": "CONTROL_TX",
+      "command": "HELLO 1 \"Codex diagnostic\""
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.220Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "hello",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.220Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE baudrate 115200"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.220Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.220Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE bits 8"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.220Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE parity none"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE stop_bits 1"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE dtr off"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "CONFIGURE rts off"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "configure",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "DESCRIBE"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "describe",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONFIGURATION_VERIFIED",
+      "baudrate": "115200",
+      "bits": "8",
+      "parity": "none",
+      "stop_bits": "1",
+      "dtr": "off",
+      "rts": "off"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.221Z",
+      "action": "CONTROL_TX",
+      "command": "OPEN 127.0.0.1:20348 COM3"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.224Z",
+      "action": "DATA_CHANNEL_CONNECTED",
+      "remote": "127.0.0.1"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.224Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "open",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.224Z",
+      "action": "OPEN_ACKNOWLEDGED"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:17.224Z",
+      "action": "PRE_COMMAND_CAPTURE_START"
+    },
+    {
+      "at_utc": "2026-10-28T10:32:20.735Z",
+      "action": "DEVICE_TX",
+      "command": "HX_DIAG STATUS",
+      "pre_status_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T10:32:21.093Z",
+      "action": "FAILED_PROOF_DIAGNOSTIC_QUARANTINE",
+      "proof_count": "8",
+      "proof_good": "7",
+      "proof_bad": "1",
+      "proof_ready": "0",
+      "measurement_accepted": false
+    },
+    {
+      "at_utc": "2026-10-28T10:35:01.320Z",
+      "action": "DEVICE_TX",
+      "command": "HX_DIAG DUMP",
+      "pre_status_count": 2
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.865Z",
+      "action": "CAPTURE_END",
+      "total_bytes": 176846
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.865Z",
+      "action": "CONTROL_TX",
+      "command": "CLOSE"
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.871Z",
+      "action": "DATA_CHANNEL_CLOSED"
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.871Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "close",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.871Z",
+      "action": "CONTROL_TX",
+      "command": "QUIT"
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.871Z",
+      "action": "CONTROL_EVENT",
+      "event_type": "quit",
+      "message": "OK",
+      "error": false
+    },
+    {
+      "at_utc": "2026-10-28T10:35:16.874Z",
+      "action": "PROCESS_EXIT",
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "port_released_by_process_exit": true,
+  "failure": null,
+  "public_secret_scan": "completed_locally_no_secret_values_logged",
+  "public_redacted": false,
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-monitor-passive-hVAQ07",
+  "private_live_stream_files": [
+    "live.serial.bin",
+    "live.chunks.jsonl"
+  ],
+  "raw_sha256": "ec412b34940cc841ae9693b148e30fcd57a1bf9163103b927d211bfc4366c762",
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-rmt1-failed-proof-evidence-183516.serial.log",
+  "public_control_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-rmt1-failed-proof-evidence-183516.control.log",
+  "public_stderr_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-rmt1-failed-proof-evidence-183516.stderr.log",
+  "limitations": [
+    "OPEN acknowledgement describes monitor/port and TCP connection, not an ESP32 command response.",
+    "User-authorized HX_DIAG STATUS/DUMP only if latest two STATUS records show IDLE and UNCAL; complete dump requires END_HX_CAPTURE after both slots and END_HX_FAIL. DUMP blocks sensor polling and its effect must be separated. No explicit DTR/RTS transitions.",
+    "Line timestamps are host receipt of complete line, not HX conversion times.",
+    "STATUS lines are cached snapshots, not every HX conversion.",
+    "Boot text may have occurred before opening and cannot be recovered."
+  ],
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-hx711-rmt1-failed-proof-evidence-183516.lines.jsonl",
+  "complete_lines": 1466,
+  "trailing_incomplete_bytes": 0,
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

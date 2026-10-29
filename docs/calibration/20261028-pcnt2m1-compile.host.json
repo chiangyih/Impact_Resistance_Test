@@ -1,0 +1,19 @@
+{
+  "stage": "compile",
+  "start_utc": "2026-10-28T09:19:10.523Z",
+  "end_utc": "2026-10-28T09:22:50.450Z",
+  "code": 0,
+  "signal": null,
+  "executable": "C:/Program Files/Arduino CLI/arduino-cli.exe",
+  "args": [
+    "compile",
+    "--fqbn",
+    "esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40",
+    "--build-path",
+    "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-05-pcnt2m1-20261028-build01",
+    "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\05-test"
+  ],
+  "public_log_sha256": "2732D0540977C212595BB0DF7F906A7BB5378E1793F4C82115161BDA4F191E1D",
+  "public_secret_scan": true,
+  "public_redacted": false
+}

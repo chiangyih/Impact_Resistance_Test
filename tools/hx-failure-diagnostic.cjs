@@ -3,7 +3,7 @@
 const fs=require('node:fs');
 const {WORDS,crc32,parseHxDiagnostics,summarize:readSummary}=require('./hx-read-diagnostic.cjs');
 const pcnt=require('./hx-pcnt-diagnostic.cjs');
-const TOOL_VERSION='hx-failure-diagnostic-v4.0.0';
+const TOOL_VERSION='hx-failure-diagnostic-v6.0.0';
 const TARGETS=[2,10,50,200,1000,2000,5000,20000,50000,100000,150000,250000];
 const COLUMNS=['kind','index','target_us','begin_us','end_us','dout','valid','missed'];
 const META=['mode_id','stop_reason','captured','seq','read_start_us','read_end_us','probe_start_us','probe_end_us','resume_start_us','resume_seq','resume_valid','rx','err_before','err_after','bits24','raw','phase_before','cal_before','next'];
@@ -17,7 +17,7 @@ function parseHxFailures(text){
   for(const line of text.split(/\r?\n/)){
     if(line.startsWith('# BEGIN_HX_FAIL ')){
       need(!c,'Nested HX_FAIL capture');const begin=fields(line);
-      need(begin.schema==='1'&&['SCK_LOW_250MS','SCK_LOW_250MS_PCNT','SCK_LOW_250MS_FRAME_PCNT'].includes(begin.profile)&&/^[0-9A-Fa-f]{8}$/.test(begin.session||'')&&begin.version,'Unsupported HX_FAIL identity/profile');
+      need(begin.schema==='1'&&['SCK_LOW_250MS','SCK_LOW_250MS_PCNT','SCK_LOW_250MS_FRAME_PCNT','SCK_LOW_250MS_FRAME_PCNT_RMT','SCK_LOW_250MS_FRAME_PCNT_RMT_PROOF_PAIR'].includes(begin.profile)&&/^[0-9A-Fa-f]{8}$/.test(begin.session||'')&&begin.version,'Unsupported HX_FAIL identity/profile');
       need(begin.points==='12'&&begin.crc==='CRC32_ISO_HDLC_META19_POINTS7_LE_U32','Unsupported HX_FAIL CRC profile');
       c={begin,status:null,meta:null,resume:null,points:[],columns:false,values:{}};
     }else if(c&&line.startsWith('# HX_FAIL '))c.status=fields(line);

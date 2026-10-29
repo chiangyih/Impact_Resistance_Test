@@ -1,0 +1,16 @@
+05-hx-attempt-storage.native.cpp
+6 native atomic sidecar allocation / RAW fallback cases passed; heap_caps / WiFi / device still require QC.
+05-hx-attempt-pcnt.native.cpp
+16 native per-attempt PCNT cases passed; record=80 bytes, two rings=40960 bytes. Not device validation.
+05-hx-pcnt-adapter.native.cpp
+33 native actual-adapter mock cases passed; not pad/ISR/edge validation.
+05-hx-pcnt-diag.native.cpp
+18 native PCNT cases passed; snapshot=1620 bytes; no device/edge validation.
+05-hx-read-diag.native.cpp
+10 native C++ HX diagnostic cases passed; record=56 ring=14336 bytes. No GPIO/timing validation.
+05-hx-failure-diag.native.cpp
+15 native HX failure-trace cases passed; trace=200 bytes. Not GPIO/physical timing validation.
+05-hx-dual-diag.native.cpp
+14 native dual-slot cases passed; slot_state=14412, two_states_plus_trace=29024, ring_payload=28672 bytes. Not physical timing validation.
+05-hx-rmt-adapter.native.cpp
+36 actual RMT adapter mock cases passed; HxrState=4016 HxrRuntime=4080; not device validation.

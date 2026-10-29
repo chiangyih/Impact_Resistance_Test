@@ -1,0 +1,99 @@
+{
+  "schema": "passive-evidence-summary-v1",
+  "serial_sha256": "759AAF2918BE897C4BF5E02764D9603FF4D770DEE0B7846DDC47CEA182E8CF74",
+  "bytes": 395696,
+  "complete_lines": 2392,
+  "tail_bytes": 128,
+  "statuses": 1195,
+  "distinct_rx": 1195,
+  "first": {
+    "utc": "2026-10-28T10:45:18.211Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164523",
+    "RX": "8464",
+    "ERR": "1",
+    "AGE_ms": "140",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "last": {
+    "utc": "2026-10-28T11:05:17.102Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164546",
+    "RX": "19364",
+    "ERR": "3",
+    "AGE_ms": "203",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "raw": {
+    "n": 1195,
+    "min": -164680,
+    "max": -164385,
+    "mean": -164522.549790795
+  },
+  "phase_values": [
+    "IDLE"
+  ],
+  "cal_values": [
+    "UNCAL"
+  ],
+  "hx_values": [
+    "OK"
+  ],
+  "err_changes": [
+    {
+      "before_utc": "2026-10-28T10:46:03.403Z",
+      "after_utc": "2026-10-28T10:46:04.407Z",
+      "before": "1",
+      "after": "2",
+      "rx": "8884",
+      "hx": "OK"
+    },
+    {
+      "before_utc": "2026-10-28T11:04:11.824Z",
+      "after_utc": "2026-10-28T11:04:12.832Z",
+      "before": "2",
+      "after": "3",
+      "rx": "18782",
+      "hx": "OK"
+    }
+  ],
+  "fifo_changes": [],
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "failure": null,
+  "physical_load_unverified": true,
+  "status_not_every_adc_frame": true,
+  "raw_line_offset_sha_verified": true
+}

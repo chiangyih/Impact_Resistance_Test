@@ -1,0 +1,91 @@
+{
+  "schema": "passive-evidence-summary-v1",
+  "serial_sha256": "18C9AB8B974DCE5C5AB835457CD1C80444541EDD44E59A4232F34B16366FB8D1",
+  "bytes": 239049,
+  "complete_lines": 1448,
+  "tail_bytes": 128,
+  "statuses": 724,
+  "distinct_rx": 724,
+  "first": {
+    "utc": "2026-10-28T10:10:21.097Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164240",
+    "RX": "24640",
+    "ERR": "4",
+    "AGE_ms": "16",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "4",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "last": {
+    "utc": "2026-10-28T10:22:26.843Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164384",
+    "RX": "31429",
+    "ERR": "5",
+    "AGE_ms": "16",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "4",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "raw": {
+    "n": 724,
+    "min": -164478,
+    "max": -164173,
+    "mean": -164320.12983425416
+  },
+  "phase_values": [
+    "IDLE"
+  ],
+  "cal_values": [
+    "UNCAL"
+  ],
+  "hx_values": [
+    "OK"
+  ],
+  "err_changes": [
+    {
+      "before_utc": "2026-10-28T10:14:51.133Z",
+      "after_utc": "2026-10-28T10:14:52.141Z",
+      "before": "4",
+      "after": "5",
+      "rx": "27177",
+      "hx": "OK"
+    }
+  ],
+  "fifo_changes": [],
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "failure": null,
+  "physical_load_unverified": true,
+  "status_not_every_adc_frame": true,
+  "raw_line_offset_sha_verified": true
+}

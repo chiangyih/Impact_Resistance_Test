@@ -1,0 +1,9 @@
+{
+  "expected_mac": "e0:8c:fe:a8:42:bc",
+  "matched": true,
+  "port": "COM3",
+  "usb_device": "VID_1A86&PID_7523",
+  "exit_code": 0,
+  "held_in_download_mode": true,
+  "usb_power_intentionally_maintained": true
+}

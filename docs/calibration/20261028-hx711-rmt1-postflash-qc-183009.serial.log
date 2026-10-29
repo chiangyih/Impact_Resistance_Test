@@ -1,0 +1,26 @@
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164382 RX=236 ERR=0 AGE_ms=148 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164450 RX=245 ERR=0 AGE_ms=139 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164437 RX=255 ERR=0 AGE_ms=128 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164513 RX=264 ERR=0 AGE_ms=211 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164387 RX=266 ERR=0 AGE_ms=32 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164382 RX=273 ERR=0 AGE_ms=208 ADXL=OK AERR=0 FIFO_FULL=2 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated
+# HX_DIAG schema=2 slot=ANY trigger_mask=7 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt1 session=8FE7B3DC mode=LIVE freeze_reason=0 records=127 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=0
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=181001 window_us=600000000 trigger_us=0 freeze_us=0 trigger_seq=0 trigger_flags=0 pre=0 post=0 post_target=128 post_complete=0
+# HX_DIAG_COUNTS scope=live attempts=276 pre_overwritten=149 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+# HX_DIAG schema=2 slot=LINK trigger_mask=1 version=v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt1 session=8FE7B3DC mode=LIVE freeze_reason=0 records=127 capacity=256 record_bytes=56 ring_bytes=14336 export_sealed=0
+# HX_DIAG_TIME clock=boot_micros_u32 start_us=181001 window_us=600000000 trigger_us=0 freeze_us=0 trigger_seq=0 trigger_flags=0 pre=0 post=0 post_target=128 post_complete=0
+# HX_DIAG_COUNTS scope=live attempts=276 pre_overwritten=149 omitted_after_freeze=0 overflow=0 seq_wrapped=0
+# HX_DIAG_LIMIT cpu_bracket_only=1 pin_waveform=0 adc_timestamp=0 issued_pulses_not_verified_edges=1 crc=export_only freeze_clock=read_bracket_or_service; duration=unsigned_end_minus_start; context_bit0=prior_seen bit1=attempt_gap_valid; no_filter/no_auto_cal
+# HX_MEMORY allocation_state=1 allocation_attempts=1 ready=1 requested_bytes=40960 allocated_bytes=40960 reserve_floor=65536 caps=INTERNAL_8BIT setup_only=1 before_free=158912 before_largest=110580 before_min=129892 after_free=115896 after_largest=69620 after_min=86876 wifi_scope=first_connected wifi_seen=1 wifi_free=58408 wifi_largest=55284 wifi_min=54708 current_free=58332 current_largest=55284 current_min=54708; reserve_floor_not_wifi_validation=1
+# HX_RMT_STATUS schema=1 attempted=1 available=1 setup=1 terminal=0 pending=1 closed=0 allocated_bytes=4032 state_budget=4096 resolution_requested=10000000 resolution0=10000000 resolution1=10000000 resolution_scope=driver_computed_not_frequency_measured idle_ns=1000000 filter_min_ns=0 no_dma=1 events=FIRST_LINK_FIRST_DATA_MODEL_DIFFERENCE_ACCEPTED_COUNTER_REFERENCE waveform_complete_proven=0
+# HX_FAIL schema=1 session=8FE7B3DC profile=SCK_LOW_250MS_FRAME_PCNT_RMT mode=WAITING mode_id=0 stop_reason=0 captured=0 points=12 next=0 valid=0 missed=0 early_target_us=2000 hold_target_us=250000
+# HX_PCNT_STATUS schema=1 session=8FE7B3DC profile=PAD_EDGES_PROOF4OF8 mode_id=0 setup_code=1 clock_blocked=0 proof_count=8 proof_good=7 proof_bad=1 proof_ready=0 linked=0 sealed=0 snapshot_bytes=1620
+# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164391 RX=281 ERR=0 AGE_ms=14 ADXL=OK AERR=0 FIFO_FULL=3 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2
+# WIFI state=CONNECTED requested=1 radio=1 IP=192.168.52.71; STA only; radio paused for recording/calibration; not timing-validated

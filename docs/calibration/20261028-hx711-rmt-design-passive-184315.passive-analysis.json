@@ -1,0 +1,82 @@
+{
+  "schema": "passive-evidence-summary-v1",
+  "serial_sha256": "7555CEEC97665C3BD24D756FE3ABE6F722DEE9EE007F7573165C6000352B1800",
+  "bytes": 98373,
+  "complete_lines": 596,
+  "tail_bytes": 33,
+  "statuses": 298,
+  "distinct_rx": 298,
+  "first": {
+    "utc": "2026-10-28T10:38:16.420Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164425",
+    "RX": "4636",
+    "ERR": "1",
+    "AGE_ms": "206",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "last": {
+    "utc": "2026-10-28T10:43:14.695Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164521",
+    "RX": "7348",
+    "ERR": "1",
+    "AGE_ms": "208",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "raw": {
+    "n": 298,
+    "min": -164652,
+    "max": -164380,
+    "mean": -164515.77852348992
+  },
+  "phase_values": [
+    "IDLE"
+  ],
+  "cal_values": [
+    "UNCAL"
+  ],
+  "hx_values": [
+    "OK"
+  ],
+  "err_changes": [],
+  "fifo_changes": [],
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "failure": null,
+  "physical_load_unverified": true,
+  "status_not_every_adc_frame": true,
+  "raw_line_offset_sha_verified": true
+}

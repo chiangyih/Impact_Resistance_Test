@@ -11,3 +11,54 @@ docs/experiments/manual-speed/* -text
 docs/experiments/manual-speed/*.log -whitespace
 docs/experiments/manual-speed/*.csv -whitespace
 docs/experiments/manual-speed/*.speed.txt -whitespace
+
+# Preserve 2026-10-28 RMT2 manifest source and host files byte-for-byte.
+05-test/05-test.ino -text
+05-test/hx_attempt_pcnt.h -text
+05-test/hx_attempt_storage.h -text
+05-test/hx_failure_diag.h -text
+05-test/hx_pcnt_adapter.h -text
+05-test/hx_pcnt_diag.h -text
+05-test/hx_read_diag.h -text
+05-test/hx_rmt_adapter.h -text
+05-test/hx_rmt_diag.h -text
+05-test/manual_optical.h -text
+05-test/network_wifi.h -text
+05-test/wifi_secrets.example.h -text
+tools/hx-capture-diagnostic.cjs -text
+tools/hx-failure-diagnostic.cjs -text
+tools/hx-rmt-diagnostic.cjs -text
+tests/05-hx-attempt-integration.test.cjs -text
+tests/05-hx-pcnt-adapter.native.cpp -text
+tests/05-hx-pcnt-integration.test.cjs -text
+tests/05-hx-rmt-adapter.native.cpp -text
+tests/05-hx-rmt-integration.test.cjs -text
+tests/fixtures/hx-rmt2-adapter-native-synthetic.log -text -whitespace
+tests/fixtures/hx-rmt2-deadline-native-synthetic.log -text -whitespace
+tests/fixtures/hx-rmt2-degraded-native-synthetic.log -text -whitespace
+tests/fixtures/hx-rmt2-native-synthetic.log -text -whitespace
+tests/fixtures/hx-rmt2-roles-native-synthetic.log -text -whitespace
+tests/fixtures/hx-rmt2-unavailable-native-synthetic.log -text -whitespace
+tests/hx-dual-diagnostic.test.cjs -text
+tests/hx-failure-diagnostic.test.cjs -text
+tests/hx-rmt-diagnostic.test.cjs -text
+tests/hx-rmt2-proof-pair.test.cjs -text
+tests/prepare-hx-attempt-native-export.cjs -text
+tests/prepare-hx-rmt-adapter-export.cjs -text
+tests/prepare-hx-rmt-native-export.cjs -text
+tests/prepare-hx-rmt2-adapter-export.cjs -text
+tests/prepare-hx-rmt2-deadline-export.cjs -text
+tests/prepare-hx-rmt2-native-export.cjs -text
+
+# Preserve the new diagnostic evidence as captured, including mixed line endings.
+docs/calibration/20261028-hx711-before-per-read-flash-17* -text -whitespace
+docs/calibration/20261028-hx711-pcnt2m1-* -text -whitespace
+docs/calibration/20261028-hx711-postdump-passive-173* -text -whitespace
+docs/calibration/20261028-hx711-postdump-passive-174* -text -whitespace
+docs/calibration/20261028-hx711-postdump-passive-195* -text -whitespace
+docs/calibration/20261028-hx711-rmt-* -text -whitespace
+docs/calibration/20261028-hx711-rmt1-* -text -whitespace
+docs/calibration/20261028-hx711-rmt2-* -text -whitespace
+docs/calibration/20261028-pcnt2m1-* -text -whitespace
+docs/calibration/20261028-rmt1-* -text -whitespace
+docs/calibration/20261028-rmt2-* -text -whitespace

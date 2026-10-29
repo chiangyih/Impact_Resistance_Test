@@ -1,0 +1,33 @@
+{
+  "schema": "rmt2-final-public-audit-v1",
+  "performed_utc": "2026-10-28T12:02:57.1985956Z",
+  "version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt2",
+  "session": "437B6829",
+  "firmware_files_checked": 12,
+  "tool_test_files_checked": 24,
+  "source_hash_mismatches": [],
+  "public_files_scanned": 811,
+  "credential_values_checked": 2,
+  "credential_match_paths": [],
+  "secrets_ignored": true,
+  "public_binary_or_build_artifact_paths": [],
+  "diff_check_command": "git diff --check (repository line-ending settings)",
+  "diff_check_exit": 0,
+  "diff_check_diagnostics_count": 11,
+  "serial_monitor_or_esptool_processes": [],
+  "last_capture": "docs/calibration/20261028-hx711-postdump-passive-195015.host.json",
+  "all_task_captures_finished": true,
+  "com3_closed_and_released": true,
+  "usb_intentionally_kept_connected": true,
+  "cal366_performed": false,
+  "hx_root_cause_resolved": false,
+  "commit_or_push_performed": false,
+  "git_head": "24ef5cd58f68a2e3795de147af87db37a88c0368",
+  "document_sha256": {
+    "docs/quality/reports/2026-10-28-rmt2-qc.md": "DFF0449DFD4D9A250069DD3DF1F34C48DAA74C9075C333824E4CB6CD9F85E521",
+    "docs/calibration/2026-10-28-rmt2-proof-session.md": "CD6693223803CA63F20F1E4793FD1FF7F325315C99E59BC5D371395DFAAD1631",
+    "README.md": "4635F4F98E7C717A9AFEC0C373D16C327EA8FD90929BE4F072631862F05837CF",
+    "handoff.md": "0771ED106313C7655A9120E8A74C68EF18DC4491AA2C787488E5225F9C506200"
+  },
+  "qc": "Diagnostic use conditional; measurement not passed; CAL not released."
+}

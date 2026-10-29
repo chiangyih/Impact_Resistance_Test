@@ -1,0 +1,43 @@
+{
+  "schema": "rmt1-host-release-v1",
+  "candidate_manifest_sha256": "DD194C7012612006FE3EAED7739E8EF848C52E2CDE759FD6728C4D0B7CFF74F8",
+  "firmware_matches_formal_compile": true,
+  "firmware_files_checked": 12,
+  "tools_tests_synced": 23,
+  "original_delay_25pulse_postcheck_sha256": "08DFA86D6B694564C4227F9CCE3ABEB51607CC9763BCA848B3BCAF9052BA8E32",
+  "pulse_scope": "LF-normalized delayMicroseconds(2) through original postcheck before diag_end_us",
+  "published": [
+    {
+      "path": "docs/calibration/20261028-rmt1-host-manifest.json",
+      "sha256": "DD194C7012612006FE3EAED7739E8EF848C52E2CDE759FD6728C4D0B7CFF74F8",
+      "redacted": false
+    },
+    {
+      "path": "docs/calibration/20261028-rmt1-preflight-review.md",
+      "sha256": "EB12636ED0C9D888D1DE6C6E1E63A785D92146464BDFEDEBBD7B69C5819320C4",
+      "redacted": false
+    },
+    {
+      "path": "docs/calibration/20261028-rmt1-design-and-device-checks.md",
+      "sha256": "5C40664D71068A26C0AB25EF368D934C005B5995A4F27BC4ECD87C5364263CED",
+      "redacted": false
+    },
+    {
+      "path": "docs/calibration/20261028-rmt1-node-tests.log",
+      "sha256": "86AB6876A012DE8B23A7759C5C59D1746DCE0B7FECC59614CE692101C735F739",
+      "redacted": false
+    },
+    {
+      "path": "docs/calibration/20261028-rmt1-native-tests.log",
+      "sha256": "A1489A10BD79D799BE6FA4D19E8CA2C418E34CB78230514F38897401D2436896",
+      "redacted": false
+    },
+    {
+      "path": "docs/calibration/20261028-rmt1-public-sdk-compile.log",
+      "sha256": "96FBF85D5A307713FF6DD186DAC70293F90683C1FB82DB1F6FF2938BDD1A7A29",
+      "redacted": false
+    }
+  ],
+  "public_secret_scan": true,
+  "device_validation_pending": true
+}

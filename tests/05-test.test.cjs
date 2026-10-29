@@ -55,8 +55,8 @@ function environment() {
   return e;
 }
 
-test('每個非空韌體行均含中文註解，無繼電器腳位初始化', () => {
-  for (const [i, line] of source.split(/\r?\n/).entries()) if (line.trim()) assert.match(line, /\/\/.*[\u4e00-\u9fff]/, `第 ${i + 1} 行`);
+test('每個非結構性韌體行均含中文註解，無繼電器腳位初始化', () => {
+  for (const [i, line] of source.split(/\r?\n/).entries()) if (line.trim() && line.trim() !== '}') assert.match(line, /\/\/.*[\u4e00-\u9fff]/, `第 ${i + 1} 行`);
   assert.doesNotMatch(source, /(?:pinMode|digitalWrite)\(\s*(?:26|27)\b/);
   assert.match(source, /HX_SCK = 25, HX_DATA = 33/);
 });

@@ -1,0 +1,394 @@
+PASS 1: 正常讀值更新最近快照與最高深度，不產生警示
+PASS 2: 深度滿載與 D0 Overrun 分開計數
+PASS 3: 深度與 Overrun 同時成立時總警示只加一次
+PASS 4: Watermark D1 與 DATA_READY D7 本身不增加警示
+PASS 5: 深度判斷保留原本大於等於三十二的門檻
+PASS 6: 首次事件時間為零也能保留，後續事件不覆寫首次
+PASS 7: 正常快照不改寫首次或最近事件，活動階段亦不重設統計
+PASS 8: 已有的累計與首次紀錄不被清零或回溯改寫
+PASS 9: 第一次輪詢不把開機至今時間誤當輪詢間隔
+PASS 10: 從零開始輪詢仍計算後續間隔，最高值不因較小間隔減少
+PASS 11: 輪詢計時跨三十二位微秒溢位仍使用正確無號差值
+PASS 12: 純診斷函式不操作通訊、重設 FIFO 或讀取額外硬體時鐘
+PASS 13: 沒有事件、有效快照或 OLED 傳送時明確輸出 NONE／NA，不洩漏失效快取
+PASS 14: 有效診斷快取如實輸出零時間首次事件與獨立快照，不讀硬體或改統計
+PASS 15: 所有記錄階段禁止診斷輸出，避免 Serial 阻塞活動視窗
+PASS 16: ADXL_DIAG 命令位於記錄防護之後，僅呼叫快取輸出
+PASS 17: 新增讀後快照只在非記錄時讀取，選用錯誤與原加速度錯誤分開
+PASS 18: 只有首次輪詢時最大間隔為 NA；真正零深度與零間隔可印零
+PASS 19: 初始化前後快取各自依有效旗標輸出，無效為 NA，重印不讀硬體
+All 19 FIFO diagnostic host checks passed; not hardware timing or data-loss validation.
+✔ tests\05-fifo-diag.test.cjs (201.6763ms)
+PASS 1: 同一completed seq只分配一次，兩槽只在實際RAW append的同index保存
+PASS 2: 原readyLOW後準備、read_end後先stop/deepcopy再hold且訓練內沒有PCNT
+PASS 3: 不在hold/reentry/frozen後清counter；常態frame保持先SCK後DATA、先停DATA後SCK
+PASS 4: sidecar40KiB只在setup內部heap配置；static回到34KiB內、trial/cal容量不變
+PASS 5: 完整匯出先雙槽frozen與seq核對；分配失敗匯出明示degraded的原RAW
+PASS 6: frame與hold另立profile，post-export guard不同scope與有條件DATA期望明示
+6 per-attempt PCNT source integration checks passed; not device validation.
+✔ tests\05-hx-attempt-integration.test.cjs (194.5435ms)
+PASS 1: 實際C++三種配置失敗都保留完整RAW bundle並明示逐框診斷不完整
+PASS 2: 降級profile需要真正失敗狀態與sidecar schema0，不能默默冒稱配置成功
+2 allocator-failure actual-export cases passed; synthetic only.
+✔ tests\05-hx-attempt-storage.test.cjs (223.961ms)
+PASS 1: 原25脈衝區塊不新增探測、輸出或取時
+PASS 2: probe只讀DATA、不補clock、關中斷或輸出/CRC
+PASS 3: 原失敗仍ERR+1、CAL中止且不寫有效RAW
+PASS 4: 介入僅原IDLE無CAL，HOLD在DATA gate之前禁止新clock
+PASS 5: 實際命令白名單拒絕ARM/CAL/TARE/STOP/CLEAR/改WiFi/SPEED
+PASS 6: 實際白名單保留限定唯讀且拒絕多餘參數
+PASS 7: 先到總窗/ring截止可截斷，active trace不匯出
+PASS 8: 舊19word ring完整保留，另立trace完整性與NA
+PASS 9: 100ms tick尚未到，實際20s後窗截止仍停止hold且不讀DATA
+PASS 10: 先JUMP/SAT後逾期首LINK不能啟動無法存入ring的probe
+PASS 11: Due至before被中斷跨LINK截止，不得再讀DATA
+PASS 12: ANY已凍結不妨礙LINK槽啟動首DATA profile
+PASS 13: early服務晚到結束HXF仍在同圈Serial前停止PCNT
+13 HX failure-trace integration checks passed; not device validation.
+✔ tests\05-hx-failure-diag.test.cjs (179.891ms)
+PASS 1: counter只能原GPIO25/33，driver不能奪periman或發SCK
+PASS 2: 先BASE/原配置核對，driver後只還原pull並READY讀回
+PASS 3: 正對照及hold都維持SCK先start/DATA先stop
+PASS 4: 原read_end後先停validation；下次GPIO gate前停hold及clock_guard
+PASS 5: 精確SDK/overflow/filter/不可變出口有強制契約
+PASS 6: PCNT不改接受/校正/警示，時脈迴圈內無新呼叫
+6 PCNT source integration checks passed; not hardware validation.
+✔ tests\05-hx-pcnt-integration.test.cjs (172.1472ms)
+PASS 1: 固定容量、總期限及pulse train沒有逐bit診斷插碼
+PASS 2: 一般前史只留127筆且明示已滾動覆寫，不濾RAW
+PASS 3: 127前史+第一拒絕框+128後史固定凍結，後續不覆寫
+PASS 4: 早期事件只列實際前史，新增事件不延後首事件期限
+PASS 5: 無attempt也到總期限，新begin不會清資料或延長
+PASS 6: 接近總期限的事件後窗會被總期限截斷
+PASS 7: 拒絕bits不當有效RAW比較基準；大跳仍存原值
+PASS 8: SAT及一千count只分類檢索，不改輸入紀錄
+PASS 9: 時間跨uint32 wrap、attempt序號wrap與有效零正確分列
+PASS 10: 意外容量不足有overflow且不覆寫既有證據
+PASS 11: 匯出CRC以獨立table參考比對canonical十九個word
+PASS 12: 唯讀介面不要求HX健康，不提供診斷clear/reset或自動CAL
+12 HX diagnostic host checks passed; no physical GPIO/timing validation.
+✔ tests\05-hx-read-diag.test.cjs (164.6726ms)
+PASS 1: original deployed PCNT2m1 25-pulse source remains byte-identical after LF normalization
+PASS 2: new GPIO guard is rechecked after prepare and before original pulse train
+PASS 3: RMT binds actual appended canonical RAW and explicitly retires unretained deadline jobs
+PASS 4: RMT capture cannot publish schema5 complete until pending RX settles
+PASS 5: heap/driver setup is sticky and timeout never disables/deletes/free-reuses pending resources
+PASS 6: IDF RX cannot take Arduino periman output ownership or add clock writes
+6 RMT integration / safety boundary checks passed; no device validation.
+✔ tests\05-hx-rmt-integration.test.cjs (157.15ms)
+✔ public optical mode defines all five independent states (1.0481ms)
+✔ actual manual loop bypasses ADC, FIFO, normal trial, OLED and WiFi services (5.8624ms)
+✔ CLEAR received in the manual branch does not fall through to ADC polling in the same iteration (1.6571ms)
+✔ SPEED START inside normal serviceSerial short-circuits the rest of that iteration (2.1541ms)
+✔ OFF status reports current distance/polarity and missing times without touching ADC (2.0232ms)
+✔ SPEED START stops radio and draws READY before enabling edges, independent of ADC/calibration (2.1394ms)
+✔ SPEED START rejects retained/active normal trial and calibration before any radio call (11.7975ms)
+✔ invalid polarity, nonpositive/nonfinite distance and initially triggered sensors reject START (17.834ms)
+✔ failed radio stop rejects START without beginning a round or changing normal data (2.6279ms)
+✔ marker entering during READY preparation rejects START without accepting the early edge (2.0765ms)
+✔ WAIT_UP has no start deadline, including uint32 wrap, and does not refresh OLED (2.2115ms)
+✔ actual edge timing: origin=0, delta=0us (2.1439ms)
+✔ actual edge timing: origin=0, delta=199us (1.7292ms)
+✔ actual edge timing: origin=0, delta=200us (1.7193ms)
+✔ actual edge timing: origin=0, delta=29999999us (2.0099ms)
+✔ actual edge timing: origin=0, delta=30000000us (2.3339ms)
+✔ actual edge timing: origin=0, delta=30000001us (1.9156ms)
+✔ actual edge timing: origin=4294967040, delta=0us (1.8904ms)
+✔ actual edge timing: origin=4294967040, delta=199us (2.0964ms)
+✔ actual edge timing: origin=4294967040, delta=200us (1.3298ms)
+✔ actual edge timing: origin=4294967040, delta=29999999us (1.1825ms)
+✔ actual edge timing: origin=4294967040, delta=30000000us (1.4588ms)
+✔ actual edge timing: origin=4294967040, delta=30000001us (2.1761ms)
+✔ Tick accepts exactly 30 seconds and times out only after the bound, also across wrap (3.0713ms)
+✔ lower-first at time zero is a retained fault with missing upper time and no numeric speed (1.7726ms)
+✔ repeat upper edges increment only the optical ignored count without moving the first timestamp (1.8611ms)
+✔ DONE timestamps and reason survive later edges, timeouts, STOP and rejected START (1.7289ms)
+✔ fault evidence is not overwritten by later edges or STOP (1.3436ms)
+✔ STOP cancels WAIT_UP without cancelling normal trial/calibration (1.8828ms)
+✔ STOP cancels WAIT_DN without cancelling normal trial/calibration (1.7221ms)
+✔ completion reports/draws once; waiting and later completed-loop iterations do not refresh (1.9935ms)
+✔ valid DUMP keeps zero boot timestamp, calculates two-point mean, and retains result (1.8774ms)
+✔ DUMP calculates uint32 elapsed time across wrap instead of a negative interval (1.5026ms)
+✔ active/completed optical status uses frozen settings rather than current DIST/POL (1.8303ms)
+✔ SPEED CLEAR clears only DONE optical result and preserves normal buffers/calibration (1.5578ms)
+✔ SPEED CLEAR clears only FAULT optical result and preserves normal buffers/calibration (1.9177ms)
+✔ DUMP/CLEAR before completion cannot manufacture or discard a pending result (4.7602ms)
+✔ timing WAIT_DN suppresses all query/setting output except STOP (1.5329ms)
+✔ manual waiting/results block normal ARM/calibration/settings/clear/radio commands (38.8584ms)
+✔ normal recording guard precedes optical command dispatch and preserves original ARM isolation (3.1004ms)
+✔ invalid SPEED grammar leaves both modes unchanged (5.9083ms)
+✔ actual ISR dispatch filters polarity, unlocks optical branches and preserves normal timestamps (1.5624ms)
+✔ VERSION uses the same public constant as startup and does not change any measurement state (1.6901ms)
+PASS 1: 每個非結構性韌體行均含中文註解，無繼電器腳位初始化
+PASS 2: 補數零、正負邊界與二十四位遮罩
+PASS 3: 使用者更正有效觸發間距為220毫米，極性仍待確認
+PASS 4: 未啟動及未設定極性不觸發
+PASS 5: 錯極性與退出緣被忽略
+PASS 6: 下閘先到明確中止且不計速度
+PASS 7: 正確順序、第一次時間鎖定與兩秒後錄
+PASS 8: 過短間隔被拒絕，二百微秒邊界可接受
+PASS 9: 上下閘逾時及晚到上閘不被接受
+PASS 10: 微秒計時跨三十二位溢位仍能正確通過
+PASS 11: WAIT、TIMEOUT、LINK_ERR、STALE、正負 SAT 與 OK
+PASS 12: 三十二筆新框去皮後仍未校正，舊比例失效
+PASS 13: 已知重量比例允許正向或反向訊號
+PASS 14: 飽和、不穩定或接近零差值不改寫舊校正
+PASS 15: 記錄期間 OLED 被禁止，輸出用 NA 保留未校正與未量距離
+PASS 16: NMK99 RGB32與HX SCK25分離，只開機要求全黑
+PASS 17: OLED明確使用SH1106、4x6字型與正常方向，不使用串流自動換行
+PASS 18: 從韌體轉譯單行繪字，驗證長字串、四邊界線及越界行拒絕
+All 18 host simulation checks passed; not hardware timing validation.
+✔ tests\05-test.test.cjs (140.0678ms)
+✔ actual icon guard: NET_DISABLED, validIP=false, radio=false (3.9067ms)
+✔ actual icon guard: NET_DISABLED, validIP=false, radio=true (1.5916ms)
+✔ actual icon guard: NET_DISABLED, validIP=true, radio=false (2.2889ms)
+✔ actual icon guard: NET_DISABLED, validIP=true, radio=true (1.2373ms)
+✔ actual icon guard: NET_WAIT, validIP=false, radio=false (0.8639ms)
+✔ actual icon guard: NET_WAIT, validIP=false, radio=true (0.9772ms)
+✔ actual icon guard: NET_WAIT, validIP=true, radio=false (1.0207ms)
+✔ actual icon guard: NET_WAIT, validIP=true, radio=true (0.9272ms)
+✔ actual icon guard: NET_CONNECTING, validIP=false, radio=false (0.9631ms)
+✔ actual icon guard: NET_CONNECTING, validIP=false, radio=true (1.2265ms)
+✔ actual icon guard: NET_CONNECTING, validIP=true, radio=false (1.1599ms)
+✔ actual icon guard: NET_CONNECTING, validIP=true, radio=true (1.7322ms)
+✔ actual icon guard: NET_CONNECTED, validIP=false, radio=false (1.2226ms)
+✔ actual icon guard: NET_CONNECTED, validIP=false, radio=true (1.0368ms)
+✔ actual icon guard: NET_CONNECTED, validIP=true, radio=false (0.9589ms)
+✔ actual icon guard: NET_CONNECTED, validIP=true, radio=true (1.1818ms)
+✔ actual icon guard: NET_SUSPENDED, validIP=false, radio=false (1.1334ms)
+✔ actual icon guard: NET_SUSPENDED, validIP=false, radio=true (1.0294ms)
+✔ actual icon guard: NET_SUSPENDED, validIP=true, radio=false (1.0234ms)
+✔ actual icon guard: NET_SUSPENDED, validIP=true, radio=true (1.2549ms)
+✔ actual icon guard: NET_FAILED, validIP=false, radio=false (1.0523ms)
+✔ actual icon guard: NET_FAILED, validIP=false, radio=true (1.013ms)
+✔ actual icon guard: NET_FAILED, validIP=true, radio=false (1.2328ms)
+✔ actual icon guard: NET_FAILED, validIP=true, radio=true (2.0805ms)
+✔ connected refresh clears first, draws bounded icon and sends one complete eight-row frame (2.8415ms)
+✔ next disconnected refresh erases the previously visible icon (1.6155ms)
+✔ next invalid IP refresh erases the previously visible icon (1.5729ms)
+✔ next radio stopped refresh erases the previously visible icon (1.8655ms)
+✔ next suspended refresh erases the previously visible icon (1.2948ms)
+✔ first-row calibration label starts at x4 without overlapping the right icon, calibrated=false (1.4317ms)
+✔ first-row calibration label starts at x4 without overlapping the right icon, calibrated=true (1.2442ms)
+✔ icon visibility does not change the other seven lines: idle (1.714ms)
+✔ icon visibility does not change the other seven lines: done (1.4019ms)
+✔ icon visibility does not change the other seven lines: fault (1.3505ms)
+✔ icon visibility does not change the other seven lines: calibrating (2.1554ms)
+✔ icon visibility does not change the other seven lines: sensor missing (1.2035ms)
+✔ recording guard in ARMED prevents clear, icon draw and OLED send (0.8662ms)
+✔ recording guard in WAIT_DN prevents clear, icon draw and OLED send (0.786ms)
+✔ recording guard in CAPTURE prevents clear, icon draw and OLED send (1.1631ms)
+✔ missing OLED returns before draw and does not access WiFi (0.9931ms)
+✔ failed OLED ACK disables further drawing without claiming a refreshed screen (1.0012ms)
+✔ initialization disables persistence/reconnect without starting a radio (5.5893ms)
+✔ disabled/missing dummy configuration stays inactive: {"enabled":false} (2.812ms)
+✔ disabled/missing dummy configuration stays inactive: {"ssid":""} (1.4791ms)
+✔ an explicitly configured open dummy network is not rejected for an empty password (2.1453ms)
+✔ service allowed=false calls no WiFi API and changes no cached state (1.9577ms)
+✔ first idle poll at millis=0 is valid and requests one STA connection with dummy credentials (1.8929ms)
+✔ poll throttle works across uint32 millis rollover (1.7848ms)
+✔ valid connected status and nonzero IP update cache without exposing credentials (1.8299ms)
+✔ unchanged connected IP does not repeatedly print; an IP change is reported (1.8677ms)
+✔ connected status with zero IP does not claim connection before the deadline (1.789ms)
+✔ connection timeout is bounded across rollover and does not begin again in the same poll (2.5427ms)
+✔ cooldown is respected across rollover before the next STA attempt (1.7029ms)
+✔ link lost invalidates a formerly valid IP and schedules idle retry (1.7816ms)
+✔ connected with zero IP invalidates a formerly valid IP and schedules idle retry (1.543ms)
+✔ pause succeeds only after mode OFF, clears old IP and retains requested ON intent (1.7213ms)
+✔ pause failure remains FAILED with radio possibly active, never a false suspended state (1.6685ms)
+✔ pause with no started radio does not call WiFi mode (1.5073ms)
+✔ FAILED radio stop retries only after cooldown, and stopping does not also restart it (1.8247ms)
+✔ partial STA start failure conservatively marks the radio before mode is attempted (1.8079ms)
+✔ manual OFF stops radio and later idle polls remain inactive (1.5749ms)
+✔ manual OFF failure preserves failure evidence without allowing a new STA begin (1.4994ms)
+✔ manual ON only schedules a later idle connection and releases cooldown (1.1586ms)
+✔ manual ON while connected does not restart the driver (1.4233ms)
+✔ WiFi STATUS prints cache only, with no WiFi API or dummy credential disclosure (1.6472ms)
+✔ ARM stops WiFi before FIFO reset and the actual ARM timestamp (1.8196ms)
+✔ ARM radio-stop failure preserves prior trial and never resets FIFO or timestamps (1.6132ms)
+✔ TARE stops WiFi before enabling collection and starting its clock (1.8193ms)
+✔ TARE cannot collect or alter calibration when radio stop fails (2.0192ms)
+✔ CAL 200 stops WiFi before enabling collection and starting its clock (1.9052ms)
+✔ CAL 200 cannot collect or alter calibration when radio stop fails (1.4594ms)
+✔ CAL without successful TARE rejects before touching WiFi (1.2887ms)
+✔ actual loop and WIFI ON/OFF guards forbid network activity in ARMED (1.4439ms)
+✔ actual loop and WIFI ON/OFF guards forbid network activity in WAIT_DN (1.4966ms)
+✔ actual loop and WIFI ON/OFF guards forbid network activity in CAPTURE (1.3793ms)
+✔ actual loop and WIFI ON/OFF guards forbid network activity in DONE (1.3525ms)
+✔ actual loop and WIFI ON/OFF guards forbid network activity in FAULT (1.3721ms)
+✔ idle calibration mode 1 cannot honor WIFI ON/OFF or restart radio (1.5227ms)
+✔ idle calibration mode 2 cannot honor WIFI ON/OFF or restart radio (1.2221ms)
+PASS 1: 80B/20word每框與兩槽RAW索引、完整schema4可解析
+PASS 2: 先前proof框只保留raw counts而不提升為已proof有效觀察
+PASS 3: 完整END/每槽sidecar/順序/epoch/seq缺一即拒收
+PASS 4: row CRC及block CRC各自保護，截尾不能冒充完整
+PASS 5: count0是真的API結果；NA、half-range、overflow分開
+PASS 6: 反向STOP括弧／跨unit未包絡／總envelope不提升為usable
+PASS 7: 已知DATA起末不相容要列event；未知不冒充不相容
+PASS 8: DATA/clock數目mismatch只標候選，不改RAW/accepted
+PASS 9: frame在先，之後hold guard不回填frame validity
+PASS 10: frame finish或STOP跨入hold窗口拒收，不能用同counter覆寫證據
+PASS 11: 較舊schema2/3完整bundle仍保留原分析
+PASS 12: 重疊seq只計唯一框，20word sidecar也須逐字相同
+PASS 13: API成功無實際attempt不准以NA時間冒充count0
+PASS 14: 正反向跨32bit micros wrap採無號短窗，仍須含train
+PASS 15: 實際C++整體dump函式的synthetic匯出由schema4解析並保持來源身分
+15 per-attempt PCNT offline checks passed; synthetic only.
+✔ tests\hx-attempt-pcnt-diagnostic.test.cjs (631.2426ms)
+PASS 1: ANY先凍結仍可捕後來LINK/profile，兩槽各256筆
+PASS 2: ANY仍post時LINK，重疊所有canonical欄位一致
+PASS 3: 內層都完整但缺整體END仍拒收
+PASS 4: 少槽/重複槽/錯順序不能當完整capture
+PASS 5: 跨session及不同共同起點拒收
+PASS 6: 重疊框即使重算有效CRC仍不能不同
+PASS 7: slot政策/schema與封存scope不可被默默忽略
+PASS 8: 封存計數收支與單一seq可檢查
+PASS 9: LINK未觸發仍可保留accepted JUMP flags，不冒充LINK
+PASS 10: 新bundle終止/角色及trial/cal容量保持來源宣告
+10 offline dual-slot bundle checks passed; not device validation.
+✔ tests\hx-dual-diagnostic.test.cjs (206.803ms)
+PASS 1: 完整離散profile與原拒絕ring交叉核對
+PASS 2: 錯過點保持NA，COMPLETE不冒充全點有效
+PASS 3: 全有效離散點LOW不證連續LOW或ADC ready
+PASS 4: 無LINK全NA與CRC，不造零失敗或假稱已介入
+PASS 5: CRC有效仍拒絕非法補LOW與缺/重排點
+PASS 6: 資料/metadata CRC損壞拒絕
+PASS 7: 截尾/缺END不當完整，只到原END_HX_DIAG仍失敗
+PASS 8: 跨epoch與和原拒絕不一致拒絕
+PASS 9: 總窗截斷保留部分有效，resume未知不填零
+PASS 10: CPU時間跨uint32 wrap仍按同anchor算差
+PASS 11: busy首LINK只留metadata，不假稱曾LOW hold
+11 offline HX failure-profile checks passed; not device validation.
+✔ tests\hx-failure-diagnostic.test.cjs (109.2788ms)
+PASS 1: 405word CRC及四個正常對照與真正兩窗可解析
+PASS 2: 新schema3要求PCNT、完整外層END且與HXF綁定
+PASS 3: PCNT序號/anchor/session不同即拒收
+PASS 4: 資料被改/截尾/重複PCNT均拒收
+PASS 5: 非法GPIO OE/route/pull不能有setup_ok
+PASS 6: 無LINK/無count全NA不造零觀察
+PASS 7: busy/no-proof跳過不造API窗口
+PASS 8: pending餘數超half保留raw20000但有效count為NA
+PASS 9: 不能把超half或overflow改標valid
+PASS 10: API NA不能偷偷補0，正對照mismatch不能抹除
+PASS 11: 獨立unit窗未包絡或包含resume不通過
+PASS 12: 保留框與正對照bits/原read括弧必須相符
+PASS 13: 同一PCNT snapshot重複解析固定且舊schema仍可讀
+PASS 14: PROOF在事件之前不可折回成HOLD elapsed，scope與null明確
+PASS 15: 實際公開C++匯出函式的主機合成fixture保持405word協定
+15 PCNT offline protocol checks passed; not device validation.
+✔ tests\hx-pcnt-diagnostic.test.cjs (213.3795ms)
+PASS 1: 完整正常/拒絕框，拒絕字不冒充有效RAW
+PASS 2: CRC損壞拒絕
+PASS 3: 尾行截斷/缺END/缺時間欄不當完整資料
+PASS 4: 重複attempt序號拒絕
+PASS 5: 行數不吻合拒絕
+PASS 6: 即使CRC有效仍檢查bits解碼
+PASS 7: 接受/拒絕接收與錯誤計數契約檢查
+PASS 8: 時間與序號跨wrap保留無號差
+PASS 9: 混入其他epoch拒絕
+PASS 10: 凍結但零筆有效，未見資料不假填RAW0
+PASS 11: 不交錯的多個完整DUMP分開回傳
+PASS 12: 協定欄名與韌體來源一致
+12 offline HX protocol checks passed; not device validation.
+✔ tests\hx-read-diagnostic.test.cjs (93.8276ms)
+PASS 1: current actual .ino schema5 exporter binds three events and all RAW/PCNT intersections
+PASS 2: actual adapter timeout / heap failure / unbound / late / stale buffer exporters stay immutable
+PASS 3: RMT heap unavailable with real synthetic LINK retains complete schema5 RAW bundle and explicit empty events
+PASS 4: sidecar allocation failures retain all three explicit schema3 RAW fallback paths
+PASS 5: missing RMT / missing overall END / malformed block cannot be complete schema5
+PASS 6: both row and whole-block CRC protect exported canonical symbols
+PASS 7: trace roles / embedded RAW identity / decoded bits remain validated even after CRC is recomputed
+PASS 8: embedded canonical RAW/PCNT must equal matching retained ring records
+PASS 9: unsafe callback snapshot cannot contain copied symbols
+PASS 10: bounded-consistent trace cannot claim partial/full/early/late completion as normal
+PASS 11: ESP32 initial HIGH and zero-period terminal are accepted without inventing a LOW duration
+PASS 12: incomplete / capacity-ambiguous prefixes preserve positive long HIGH encoded durations
+PASS 13: EVENT route/pull/drive changes need scoped GPIO reason instead of a consistent trace
+PASS 14: missing EVENT GPIO snapshot cannot become consistency without GPIO reason
+PASS 15: metadata source clock, resource size, sealed state and order have independent checks
+PASS 16: mixed capture epoch/version and extra/duplicated RMT block are rejected
+16 RMT export / parser / mutation checks passed; synthetic only.
+✔ tests\hx-rmt-diagnostic.test.cjs (343.3144ms)
+PASS 1: current actual outer6 exporter preserves BAD3/GOOD1 with original strict table and global ready0
+PASS 2: early BAD/GOOD overwritten from both RAW rings still bind against full immutable proof table
+PASS 3: all GOOD / all BAD / LINK=BAD / BAD before GOOD / noLINK natural expiry full exports
+PASS 4: ten actual-adapter paired PCNT/RMT exporters keep first missing/timeout/old-buffer roles and repeated bytes
+PASS 5: RMT heap unavailable and all three sidecar allocation failures remain explicit full RAW exports
+PASS 6: actual adapter START before deadline / original read_start after deadline has explicit BAD or GOOD omission
+PASS 7: unbound omission requires every narrow independent ledger/identity/deadline condition
+PASS 8: rolled-over early proof absence cannot use an unrelated NOT_BOUND flag as waiver
+PASS 9: cutoff labels cannot replace actual WINDOW/POST numeric deadlines or a real trigger
+PASS 10: missing / reversed / later valid role cannot silently replace the first BAD or first GOOD
+PASS 11: BAD/GOOD raw bits and accepted/postcheck counters must equal original proof even outside RAW rings
+PASS 12: every packed unit word is checked against the complete original proof snapshot
+PASS 13: SOURCE flag alone cannot stand in for a matching original proof entry
+PASS 14: duplicate proof table sequence and same-frame role divergence are rejected
+PASS 15: new schema2/outer6/role header cannot be confused with legacy RMT1
+PASS 16: row/block CRC, missing whole END and missing proof-role table remain mandatory
+PASS 17: legacy RMT1 and PCNT2m1 fixtures still parse under their own profiles and roles
+17 RMT2 proof-pair export / semantic mutation groups passed; synthetic only.
+✔ tests\hx-rmt2-proof-pair.test.cjs (1253.7624ms)
+✔ SYNTHETIC complete DUMP verifies rows, summaries, raw hash and offline-only status (4.5572ms)
+✔ sourceKind is required and rejects undeclared or unsupported provenance (0.45ms)
+✔ SYNTHETIC fixture exercises declared sourceKind=synthetic without upgrading acceptance (0.3915ms)
+✔ SYNTHETIC fixture exercises declared sourceKind=historical without upgrading acceptance (0.2103ms)
+✔ SYNTHETIC fixture exercises declared sourceKind=new without upgrading acceptance (0.1995ms)
+✔ missing expected counts is a warning, never a complete export (0.2507ms)
+✔ a SYNTHETIC STATUS snapshot cannot masquerade as a trial DUMP (0.2035ms)
+✔ a complete FAULT export is retained without turning dataflow success into measurement acceptance (0.3303ms)
+✔ SYNTHETIC malformed export: missing BEGIN (0.2909ms)
+✔ SYNTHETIC malformed export: missing END (0.3441ms)
+✔ SYNTHETIC malformed export: duplicate BEGIN (0.2838ms)
+✔ SYNTHETIC malformed export: missing schema header (0.223ms)
+✔ SYNTHETIC malformed export: missing schema field (0.2409ms)
+✔ SYNTHETIC malformed export: TRIAL and BEGIN have different trial IDs (0.2132ms)
+✔ SYNTHETIC malformed export: expected ACC count differs from rows (0.1994ms)
+✔ SYNTHETIC malformed export: expected HX count differs from rows (0.2044ms)
+✔ SYNTHETIC malformed export: duplicate TRIAL summary (0.2234ms)
+✔ SYNTHETIC malformed export: extra row field (0.2257ms)
+✔ SYNTHETIC malformed export: missing row field (0.2434ms)
+✔ SYNTHETIC malformed export: unknown sensor kind (0.2246ms)
+✔ SYNTHETIC malformed export: NaN acceleration (0.4329ms)
+✔ SYNTHETIC malformed export: infinite acceleration (0.232ms)
+✔ SYNTHETIC malformed export: non-finite time (0.2851ms)
+✔ SYNTHETIC malformed export: negative time (0.2875ms)
+✔ SYNTHETIC malformed export: ACC time reverses (0.2458ms)
+✔ SYNTHETIC malformed export: HX time reverses (1.1136ms)
+✔ SYNTHETIC malformed export: HX raw exceeds positive 24-bit range (0.3479ms)
+✔ SYNTHETIC malformed export: HX raw exceeds negative 24-bit range (0.2526ms)
+✔ SYNTHETIC malformed export: ACC raw exceeds signed 16-bit range (0.2664ms)
+✔ SYNTHETIC malformed export: required ACC raw is NA (0.2715ms)
+✔ SYNTHETIC malformed export: required ACC g is NA (0.2633ms)
+✔ SYNTHETIC malformed export: required HX raw is NA (0.2659ms)
+✔ SYNTHETIC malformed export: required HX status is NA (0.2958ms)
+✔ SYNTHETIC malformed export: ACC row carries an HX raw value (0.3777ms)
+✔ SYNTHETIC malformed export: HX row carries acceleration raw (0.1453ms)
+✔ SYNTHETIC malformed export: HX row carries acceleration g (0.1541ms)
+✔ grouped ACC/HX readout times are not compared across sensors (0.139ms)
+✔ unknown quality counters stay null instead of becoming invented zeros (0.1194ms)
+✔ frozen trial error counters are preserved without accepting hardware or measurements (0.1475ms)
+✔ SYNTHETIC SAT rails are retained as rows, not trusted raw/mass extrema or zero mass (0.2115ms)
+✔ even an OK label cannot make a rail eligible for external recalculation (0.1522ms)
+✔ CAL_USER retains recorded unvalidated masses without implicitly applying its printed coefficients (0.1781ms)
+✔ bound external profile recalculates separate masses and preserves source bytes and recorded masses (0.4059ms)
+✔ an explicitly recorded CAL_USER zero is retained as zero, unlike missing UNCAL mass (0.1947ms)
+✔ negative finite profile scale is allowed and recalculated extrema are ordered by mass (0.1795ms)
+✔ CRLF input is hashed verbatim and cannot reuse a profile bound to LF text (0.3643ms)
+✔ external profile requires every provenance and calibration field (0.2382ms)
+✔ an explicitly supplied malformed profile cannot silently fall back to no calibration (0.2505ms)
+✔ external profile rejects non-finite values, zero scale and provenance mismatches (0.2575ms)
+✔ CLI stdin: complete SYNTHETIC export returns report and exit 0 (70.0889ms)
+✔ CLI stdin: malformed export returns JSON report and exit 2 (66.0351ms)
+✔ CLI stdin: missing expected counts returns report and exit 2 (63.0318ms)
+✔ CLI configuration errors return exit 1 (231.5299ms)
+✔ CLI help does not require input or a source kind (54.6406ms)
+✔ metadata comments retain printed calibration and NEAR_RANGE without applying them (0.2495ms)
+✔ CLI regular-file input/profile/output preserves input and refuses overwrite (224.9615ms)
+ℹ tests 193
+ℹ suites 0
+ℹ pass 193
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1428.1665

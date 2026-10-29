@@ -1,5 +1,400 @@
 # handoff.md
 
+## 2026-10-29 README 整理與公開資料封存
+
+使用者要求四位代理人討論整理 README，使整份文件更容易理解，並 commit／push。Kierkegaard 核量測／校正界線，Gibbs 核公開韌體、建置及命令，Planck 核結構／導覽，Ampere 獨立核 QC 與操作界線；主代理整合 [README](README.md)，將舊版本矛盾、詳細排查及過時數據留在標註歷史的[整理前快照](docs/archive/README-before-20261029-reorganization.md)，保留原本章節錨點供其他文件使用。
+
+README 的現況、接線、唯讀檢查、資料解讀、建置與後續工作分層；RMT2 為最後已部署版，DRAM 失敗屬較早候選歷史，WiFi／Google Sheets 上傳仍為提案。詳細資料與時間界線仍以下方研究、架構章及原始 QC 為準。此次只整理文件，未修改韌體、操作 COM、變更供電、重啟、燒錄、校正或執行撞擊；最新硬體證據仍截至 2026-10-28 19:50，USB 當時保持連接，COM3 已釋放。RMT2 診斷用途條件通過、量測品質未通過，HX 根因、FIFO 警示及 366 g 校正仍未解。
+
+公開來源 manifest 的 12 個檔案雜湊已核對；README 與快照的本機連結及敏感資料檢查於提交前複核。因 Git 換行轉換會破壞既有來源雜湊與混合換行的原始序列證據，已在 `.gitattributes` 指定本次 manifest 來源／主機檔與新增診斷證據逐位元保留，並核對 36 個 manifest 檔及 198 個診斷證據的 Git 取出內容與本機一致。使用者此次要求封存並推送，納入既有公開韌體、測試、診斷證據與本輪文件；WiFi 私密檔及儲存庫外建置產物不納入。提交與推送結果以 Git 紀錄及工作流程回報為準。
+
+## 2026-10-29 落下撞擊可量資料與材料評估研究（最新，未執行實驗）
+
+使用者希望研究落下撞擊可量哪些資料，以評估材料耐衝擊、吸震與保護效果；已由Kierkegaard、Gibbs、Planck、Ampere交叉研究。**本節為量測目標／方法建議，不是新增實測、標準符合性或材料合格結論。** 本輪僅root整理handoff，未操作落下、撞擊、物件載卸、接線／供電、COM3、韌體／燒錄、校正或Google資料，未commit／push。舊架構／欄位提案仍未實作；HX根因、FIFO與366g未完成維持，不能以本輪研究放行。最後實板證據仍依2026-10-28後文窗口，不是10/29新讀回。
+
+### 五類目的與量測對象
+
+1. **抗破壞／穿透**：材料、結構或配置能否抵抗裂紋、凹痕、穿透、分層及殘餘承載下降。
+2. **緩衝／傳遞負載**：在指定位置與方向，受保護等效物承受的比力、傳遞力、負荷時程與行程利用。
+3. **物件保護**：真正受保護物或關鍵部件的響應、結構／功能是否符合事前規格；台架低峰不能替代物件檢查。
+4. **能量／回彈／變形**：入射與回彈運動、力—位移做功、可回復部分與耗散、最大壓縮及觸底。
+5. **恢復／耐久**：卸載後恢復、殘餘變形、同片第k撞性能退化與失效歷程。
+
+一次性犧牲壓潰與可重用緩衝應事前分profile。塑性變形／材料破壞對不同用途可有不同意義；保留既定失效判準，不在看到結果後改成功定義。研究材料、完整配置與成品保護是不同層次，不用一個「吸震力」或總分代替。
+
+### 建議量測矩陣
+
+| 量測資料／指標 | 單位／可重現定義 | 需要的資料／設備與解釋界線 |
+|---|---|---|
+| 輸入條件 | 完整移動總質量kg、接觸前速度m/s、有效落距m、頭型／面積／位置及支承 | 含平台、頭、配重、感測器與固定件；用可信接觸前運動量測。相同動能但不同質量／速度仍有不同動量、載入速率與響應。 |
+| 入射動能 | `E_in=0.5*m*v_contact^2`，J | 控制量，不直接叫材料吸能；mgh只在合適自由落下／能量模型及損失處理下使用。220mm區間均速不能直接代入接觸速度。 |
+| 指定位置signed軸向比力波形／峰值 | m/s²或明確標acc-g；固定軸、正向、基線、窗口與幅度規則 | 動態合格ACC、安裝、完整DAQ與接觸事件證據。感測器在落體、底座、物件不同位置代表不同反應；名義合成幅度不能直接乘質量當峰力。 |
+| 界面力／底座傳遞力 | N；指定位置與方向的`F(t)`與峰值 | 動態荷重感測器、調理及同步DAQ；底座反力與撞擊頭／材料界面力不能未經模型互代，須驗治具與慣性影響。 |
+| 局部壓力／接觸分布 | Pa、接觸面積與空間分布 | 適用且經驗證的壓力陣列／媒介，記空間與時間響應；`F/A`只是名義平均，不是局部峰壓。印記型媒介不自動產生動態壓力波形。 |
+| 接觸時間／脈衝寬度 | ms；接觸—分離事件與訊號閾值／FWHM等規則分開 | 接觸需獨立事件／影像／位移證據；ACC或力波形持續時間不自動是接觸時間，不能拿ARM長度替代。 |
+| 接觸衝量 | `J=integral(F_contact dt)`，N·s；完整接觸窗、signed方向與基線 | 可靠力波形與時基。和動量差核對需計入重力及其他外力；不是能量，亦非普遍越小越好。 |
+| 最大壓縮／剩餘行程 | mm；材料上下邊界相對位移、初始厚度及可用行程 | 位移感測或經校準同步影像，分離材料與治具變形。折疊結構的整體壓縮比不直接當紙材本體應變。 |
+| 觸底／硬接觸／穿透／破壞 | 分型、發生／充分觀察下未發生／未知；損傷深度mm、面積mm²等 | 事前判準及影像／位移／檢查證據；第二峰、FAULT或單一高峰不能自行判定。內部損傷可能需另檢查，外觀完整不證無損。 |
+| 回彈速度／高度／係數 | m/s、mm、`e=abs(v_out/v_in)`；同一移動體與法向、合適參考位置 | 同步運動量測及模型。低回彈可能來自治具、摩擦、物體損壞等，不直接叫材料吸能率。 |
+| 力—位移載入功／回復功／耗散 | J；指定邊界與窗口的功，完整循環損失另列 | 同步動態力與材料相對變形或完整進出能量帳；載入功含可回復儲能。兩界面力不同或均移動時，單一F乘相對位移不必然是材料功；須處理機構／慣性／摩擦。 |
+| 卸載殘餘變形／恢復 | mm、%及恢復時間；同對象、位置、基準之H0、H1與卸載等待時間 | 量具／位移／影像及條件紀錄；可報`(H0-H1)/H0`。等待時間不同不能直接比，也不能未看恢復就宣稱永久。 |
+| 受保護物功能／結構結果 | 功能保持、損傷型態與範圍、殘餘承載等事前判定 | 感測器放在真正關心的位置，另有試前／試後功能與損傷檢查。低台架峰值仍可能伴隨功能失效。 |
+| 後續振動／頻率相關反應（進階） | 固定窗RMS、頻譜、穩定時間或模型SRS等 | 完整且頻寬合格的物件響應；要有窗口／頻帶／阻尼／模型定義，不把振動總分當能量或通用保護保證。 |
+| 重撞退化／耐久 | 第k撞之比力／力／壓縮／損傷／功能、首次失效撞次或截至k撞尚未見失效 | 每撞記恢復時間、試前幾何與損傷；同片是一條重複觀測序列，不增加獨立試片n，也不外推無限壽命。 |
+| 新片能級—失效特性 | 指定m／v／頭型／幾何／環境下之失效比例／機率與區間 | 各能級用獨立新片；同片逐級加高含累積損傷，不能當未受撞材料的首破壞能。單次未破壞不證該能級普遍安全。 |
+
+### 易混淆的公式與相對比較
+
+- 同一移動體若速度變化受限，可藉延長減速降低峰值，而衝量近似不變；不能把較小衝量普遍解讀為較好緩衝。
+- `W_load=integral(F dδ)`只稱指定邊界載入功；完整載卸循環損失仍要核適當邊界及機構影響。`1-e^2`只在合適質量／法向／能量模型下描述某些未回復運動能比例，不直接稱純材料耗散率。
+- 比吸能`W/m`（J/kg）需明示分母是材料淨質量或整配置質量；不能混用流體、封裝、膠、摺疊與固定件的包含範圍。
+- 若用峰值降低率，先定同工況且可量化的非負峰值幅度A與有意義的參考`A_ref>0`，再報`R_A=100%*(1-A_test/A_ref)`，保留負值／不確定度及參考ID。名稱只指所選測點／方向／窗口的峰值降低率，不改叫吸能率或整體保護率。
+- 表面抗破壞、低峰、長脈衝、低回彈、小殘餘變形、高載入功都非普遍優劣箭頭；以應用profile、受保護物結果及所有失效共同判定，保存後續峰與完整觀察窗。
+
+### 比較條件、兩種protocol與報告
+
+沿現有[試驗規格](docs/experiments/trial-spec-template.md)及[紀錄表](docs/experiments/trial-record-template.md)，第一比較框架為等可用厚度、等面積及固定入射條件；等材料質量是另一研究。固定完整移動質量、實際接觸速度、頭／支承／位置、安裝／線材、剩餘行程與環境；厚度變化會改變相對底板固定釋放高度的有效落距，不能把較小輸入造成的低峰歸為材料改善。裸硬板不是自動成立的等厚對照，須明示比較所問問題。
+
+新片能級研究以獨立試片分能級估條件失效機率；耐久研究才以同片固定條件與恢復規則連續撞擊。參考組交錯，依日期／材料批次／環境／治具作適當區組；獨立n依試片與配置實驗單位，不依ACC點數、重DUMP或同片撞次。報全部點、原波形、參考／輸入、eligible／invalid／unknown及物理失效各分母；SAT、觸底或缺資料不能刪掉後只比較漂亮平均。0/n不等失效機率為0，均值信賴區間與個別試片離散也分開。
+
+本輪未訂數值合格門檻、固定樣本數、人體／成品保護保證或標準認證。正式樣本數與門檻依用途、預期變異、要求精度／效果與適用方法另定，不因測到結果再放寬。
+
+### 本平台能做與尚缺的量測鏈
+
+| 層級 | 可報告／應做內容 | 目前界線 |
+|---|---|---|
+| 已有工程紀錄 | two-gate dt與條件均速；ACC三軸counts／讀出stamp／whole_ARM保存樣本名義極值；HX accepted RAW／SAT／ERR／STALE及有限診斷附件 | 不回稱接觸真峰、瞬時力、能量或材料改善。現場幾何／損傷／功能資料只按實際另附證據。 |
+| 正式緩衝比較目標 | 可信近接觸速度與移動總質量、指定受保護位置signed軸比力、完整事件窗、觸底／破壞／功能結果、壓縮與恢復 | 先完成方向／校準／動態響應、量程、時基、完整性與參考鏈。不是目前已放行的能力。 |
+| 力／能量進階 | 動態合格力感測鏈、調理及同步DAQ；材料／治具相對位移或足以辨識事件的影像；必要時增加測點 | 依目標脈寬／頻帶、允許幅度低估／相位誤差決定設備與取樣，未指定採購、改線或直接提高ODR。 |
+
+ADXL375現100Hz：名義間隔10ms、原廠−3dB頻寬ODR/2約50Hz；FIFO是32層，現時間戳是讀出，不是精確取樣時刻。±200g是量測級別，10,000g shock survival不是量測範圍。不能只升ODR：原廠介面建議、FIFO服務期限、資料格式及2048筆容量都須重核；100kHz I²C的建議ODR上限與高率SPI條件應按原廠表及實測設計。[ADXL375資料表](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL375.pdf)。shock IRQ內部處理與低ODR保存資料可不同，不能用IRQ當保存真峰或接觸時間證明。[ADI AN-1266](https://www.analog.com/en/resources/app-notes/an-1266.html)。
+
+HX711原廠10／80SPS的名義間隔為100／12.5ms，24bit／DOUT-ready／靜態比例不驗短時動態峰力；本板HX根因未解、366g未CAL。即使未來完成靜態CAL，也仍需動態荷重鏈及組裝響應驗證。[HX711資料表](https://cdn.sparkfun.com/assets/b/f/5/a/e/hx711F_EN.pdf)、[NIST衝擊力動態校準](https://www.nist.gov/programs-projects/dynamic-mechanical-metrology-acceleration-force-and-acoustics/impact-force)。WiFi、雙核與Sheets改善資料保存／觀測，不補足頻寬、同步或校準。
+
+### 研究來源與適用範圍
+
+| 官方／primary來源 | 本輪使用範圍與限制 |
+|---|---|
+| [NIST落塔報告公開頁（TN2381，2026）](https://www.nist.gov/publications/instrumented-drop-tower-impact-and-stab-testing) | 公開摘要列加速度、力／力分布、撞速、變形及可換質量／幾何／治具；全文PDF約36MB超web讀取上限，本輪不冒稱已讀完整報告。 |
+| [ASTM D1596公開摘要](https://store.astm.org/standards/d1596) | 包材受導引落下壓板的動態緩衝；材料結果不必等於完整包件，面積／厚度／速率等影響比較。未讀付費全文，不宣稱按標準通過。 |
+| [ISO 4651官方頁](https://www.iso.org/standard/10617.html) | 泡孔橡塑材料的落下質量峰減速度；1988版仍published但正在修訂，本輪僅核公開適用範圍，不當作全部摺疊／複合配置通則。 |
+| [ISO 6603-2官方頁](https://www.iso.org/standard/82175.html) | 硬塑膠平板儀器化穿刺與力／撓度；厚度／工況影響，不能直接套成EVA／STF／成品保護判準。 |
+| [ASTM D3332公開頁](https://store.astm.org/standards/d3332) | 產品脆弱度分速度變化與加速度研究，支持物體功能／自身脆弱度需另驗；未讀完整條文。 |
+| [NIST實驗單位](https://itl.nist.gov/div898/handbook/pri/section7/pri7.htm)、[區組](https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm)、[均值CI](https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm)、[二項區間](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm) | 實驗／統計設計參照，不以資料點或同片重撞增獨立n，不以零觀察失效保證零機率。 |
+
+### 與八組資料及架構的銜接
+
+輸入／幾何／校正引用仍放Setup及Runs，試片／層序／受撞歷史放Specimens，RAW維持ACC／HX／Optical，事件／損傷／功能／條件指標及資格放Observations，原檔、分析版本／窗口／輸入hash可追溯。新增指標不要求每sample複製大量metadata，也不在裝置端硬算未驗峰力或吸能。首次研究建議主目標仍是合格的指定位置軸比力＋觸底／損傷／功能，壓縮／恢復輔助；力／衝量／材料耗散另作進階量測鏈，待驗收後才啟用metric。
+
+四角色分工：Kierkegaard統整量測定義與條件；Gibbs核硬體頻寬／時基／DAQ缺口；Planck核比較protocol、欄位與統計；Ampere核低峰漏樣、假接觸窗、錯能量／衝量、同片增n及事後改判準反例。既有[RMT2 QC](docs/quality/reports/2026-10-28-rmt2-qc.md)的診斷用途條件通過／量測未過維持；本輪無新實板測試、校正或撞擊結果。下方架構與欄位為前輪提案，標「最新」者依此處時序看待。
+
+## 2026-10-28 系統架構第二輪討論（最新，建議基線／未實作）
+
+使用者要求在資料欄位初步確認後，由所有代理人再討論整體架構。Gibbs、Kierkegaard、Planck、Ampere已以前節八組資料為本輪基線交叉核對；主案為**ESP32直接WiFi／HTTPS → Apps Script → Drive原始payload＋Google Sheets完整八組資料／受控看板**，不以PC作必要資料中繼。以下皆為待實作架構，不代表現版已支援WiFi量測、HTTPS、雙工作分流或雲端保存。本輪僅root更新handoff；未改韌體、建表／部署Apps Script、連Google私有資料、開COM3、燒錄、重啟、校正或物理試驗；未commit／push。最後實板證據仍如後文19:50窗口，HX／FIFO未解及366g未完成不變。
+
+### 建議MVP與資料流
+
+MVP採單一run的固定RAW緩衝、封存後分批傳送；小型狀態摘要走獨立通道。保持STA連線、擷取中允許低頻摘要、以及擷取時重疊HTTPS，是不同待驗profile，不能因Core 0／1分工而自動放行。現版ARM／CAL的WiFi OFF守衛目前仍在，不能只刪除守衛冒稱新架構完成。
+
+```mermaid
+flowchart LR
+  S[光閘／ADXL375／HX711] --> A[Core 1 擷取與模式管理]
+  A --> R[固定RAW緩衝與不可變封存]
+  A --> T[小型狀態快照]
+  R --> Q[有界描述佇列]
+  Q --> U[Core 0 應用上傳工作]
+  T --> U
+  U -->|HTTPS批次| G[Apps Script 接收與驗證]
+  G --> D[Drive 原payload與manifest]
+  G --> C[受保護_Control控制ledger]
+  G --> H[Sheets 八組資料與受控看板]
+  G -->|批次ACK／整輪receipt| U
+  U -->|核對後的狀態訊息| A
+  O[人員與外部量測證據] -->|metadata與分析revision| G
+```
+
+圖中人員／外部證據是資料輸入，不是雲端釋放或量測控制；第一版看板不提供遠端ARM／TARE／CAL／CLEAR或釋放機構操作。現有USB可保留維護／本地命令角色，不是主資料傳送路徑；STOP只停止記錄，不是物理煞停。
+
+### 模組責任與單一擁有者
+
+| 模組 | 擁有者／責任 | 跨界限制 |
+|---|---|---|
+| 感測與模式管理 | Core 1的acquisition domain（owner task＋明定的有界ISR）統一管理HX／I²C服務、RAW寫入、校正、run／phase及buffer釋放；光閘ISR只做有界時間／狀態更新 | 這不是宣稱只有單一task會動狀態。ISR不做HTTPS、Serial、I²C或物理分析；中斷配置與實際核心仍須驗證。 |
+| 狀態發布 | Core 1發布小型快照，含boot／run、clock、seen／age、狀態與品質scope | 可以latest-only合併並記略過計數；此策略只用於摘要，不得用於RAW或保存／釋放控制訊息。 |
+| RAW保存與封存 | Core 1維持既有有界陣列；SEAL固定筆數、時間語義、設定引用、run／snapshot generation及manifest | Core 0不讀正在修改的陣列；描述佇列只傳穩定引用／範圍，不複製整run JSON或另建大陣列。 |
+| 應用網路與上傳 | Core 0單一worker統一呼叫應用層WiFi策略、HTTPS、批次序列化、轉址／ACK解析及有界重試；SDK背景task仍由SDK管理 | 不直接改phase、校正、RAW或CLEAR；不得持有感測／gate鎖做TLS。網路慢不能阻塞擷取。 |
+| Google接收服務 | 中央Apps Script writer處理裝置認證、schema／型別／範圍／hash驗證、去重、固定寫入區段及恢復 | 同一writer協調範圍；不讓第二獨立script或人工排序繞過控制ledger。 |
+| 量測與分析 | 以不可變RAW及明確metadata／事件／驗證版本進行後處理，產生新analysis revision | 不在上傳成功時自動計量放行；不改寫歷史UNCAL、FAULT或原RAW。 |
+
+PREPARING取得或確認當輪Setup／Specimen／校正／profile／窗口規則的typed不可變引用，無證據則明列unknown並依required-if限制相關指標。擷取開始後不追著雲端改表換參數；後補證據另建association revision，後分析另建analysis revision。校正適用性除boot外仍需符合時段、位置、荷重及已驗範圍，後來CAL不自動綠化舊UNCAL。
+
+### 三個獨立狀態域
+
+| 狀態域 | 建議狀態／意義 |
+|---|---|
+| Acquisition | `IDLE → PREPARING → CAPTURING → SEALING → SEALED → RETAINED`；CAPTURING內保留原ARMED／WAIT_DN／CAPTURE等子狀態，原DONE／FAULT與reason作不可變擷取結果保存。 |
+| Network | `OFF / CONNECTING / CONNECTED / DISCONNECTED / FAILED`；網路狀態不代表感測器狀態或雲端保存成功。 |
+| Upload | `NONE / PENDING / SENDING / RETRY_WAIT / VERIFYING / VERIFIED / CONFLICT`；不靠將量測phase偽裝成IDLE來啟用WiFi。 |
+
+PREPARING在正式時間原點前，以有界方式確認worker無衝突中的序列化／POST、舊診斷job及RMT pending的seq／token／處置。不能直接stop／free可能仍回呼的RMT buffer，也不能把unknown當已drain。準備不成立則回報原因，不假裝量測已開始。
+
+DONE／FAULT只表示擷取結束原因，不等SEALED。SEALING須先完成當前producer寫入及有界ISR狀態收尾，凍結logical counts／品質scope／設定引用後才發布manifest與descriptor。worker只序列化已初始化的`[0,count)`白名單欄位，不將未用capacity、struct padding或仍可能改變的狀態記憶體當原始payload／hash輸入。
+
+新profile可先驗「保持STA、擷取時暫停應用傳送」，再驗「保持STA、允許受限摘要」。完整RAW在MVP只於SEALED後傳；擷取中掉線只留事件，維持既定擷取策略，不啟動掃描／重連／大批HTTPS，不自動換成另一profile或把網路錯當感測故障。封存後才有界重連／補傳。無線driver、中斷、記憶體與供電仍可能影響擷取，分核不等物理／時序隔離。
+
+### 單run保存、背壓與釋放條件
+
+MVP同時只保留一輪RAW。未取得可驗的整輪保存確認時拒絕覆寫／下一輪，明示待傳或失敗原因；不能丟舊保新、無限重試或先CLEAR恢復網路。摘要可合併，RAW與可靠控制訊息不可合併掉。控制queue滿時保持RAM／未確認狀態，後續以status查回，不提前標saved。
+
+Core 0回覆經Core 1核對同一`boot/run/snapshot generation/manifest`。**只有VERIFIED、該代全部reader lease／serializer／retry／queued descriptor已結束，以及明確本地釋放策略三者同時成立，才可reuse buffer。** VERIFIED不自動CLEAR；舊ACK或舊quiescent通知不能解除下一代buffer。若要明確丟棄未保存資料，需另有可追溯操作及worker收尾契約，不能在仍被讀取時釋放記憶體。
+
+只有RAM時，重啟／掉電仍可遺失待傳run；未register至雲端者也可能完全沒有雲端痕跡，不補造為已保存或已知遺失筆數。若需要多輪離線排隊／重啟續傳，另設持久spool及完整寫入標記／boot恢復／容量與回收驗證；不無限擴充RAM。此為MVP取捨，尚未選用或寫入任何flash／SD儲存。
+
+### Google端：資料真源、控制ledger與協定
+
+| 保存層 | 責任 |
+|---|---|
+| Drive普通JSON／manifest | 不可變canonical measurement payload與資料snapshot真源，保存原bytes／hash；不是serial capture，不含驗證秘密。 |
+| 受保護內部`_Control`頁 | reservation、預留Drive file ID、Sheet固定range、attempt／恢復與commit receipt的持久控制真源；不能只從measurement JSON重建此歷史。這是內部頁，並非第九組量測資料。 |
+| 八組Sheets頁 | Runs／ACC／HX／Optical／Setup／Specimens／Observations／Uploads完整typed資料與可驗投影；Uploads可讀歷程由控制ledger產生。可重建的是量測投影，不是任意覆寫_Control。 |
+| 人員metadata與分析revision | 草稿發布後建立新revision及證據關聯，保留作者／時間／來源；不直接改RAW、ledger或舊分析。 |
+
+建議採單一協定順序（名稱為草案，不是已部署URL）：
+
+1. `begin-run`：裝置SEAL後，以穩定run／snapshot manifest冪等登記預期streams、批次、index space、範圍／筆數及hash版本；回穩定接收generation。
+2. `put-batch`：同key同內容重試恢復／確認，同key異內容轉CONFLICT；attempt ID、retry與server UTC不進canonical measurement內容鍵。
+3. `finalize`：核唯一batch集合、無缺批／重疊、各流範圍／筆數與hash、Drive archive及Sheets投影一致性，才發布穩定receipt。
+4. `status/recovery`：ACK遺失或重送時查回同run／manifest／generation的缺批／衝突／receipt，不新建run或盲目append。
+
+半寫恢復建議選用Apps Script進階Drive服務／Drive API預生成普通JSON的file ID，先將ID、batch key及固定Sheet range寫入_Control、flush及讀回，再建立該ID的檔案。已成功的同ID重試可能回409，仍須GET驗bytes／hash；檔名不是唯一鍵。Sheet半寫只在已驗anchor的同range重寫相同內容；被移動或佔用則REPAIR_REQUIRED／CONFLICT，不盲覆蓋。[Drive預生成ID](https://developers.google.com/workspace/drive/api/guides/manage-uploads#use_a_pre-generated_id_to_upload_files)、[進階Drive服務](https://developers.google.com/apps-script/advanced/drive)。
+
+每批依`RESERVED → ARCHIVE_VERIFIED → PROJECTION_VERIFIED → COMMITTED`恢復。Lock只處理並行，不能推成跨Drive／Sheets ACID；釋鎖前flush，批次讀寫而非逐sample POST／逐cell寫入。[Lock](https://developers.google.com/apps-script/reference/lock/lock)、[批次實務](https://developers.google.com/apps-script/guides/support/best-practices)。`ArchiveSaved/ProjectionPending`只是部分保存，不能回完整ACK或讓裝置reuse。原payload hash與typed projection hash各有演算法／schema／範圍，不混稱同一hash。
+
+### 認證、看板與操作平面
+
+裝置入口使用TLS憑證驗證及專用每device認證；建議HMAC涵蓋操作、run／snapshot／batch與payload hash，canonical bytes規格需在實作前凍結。`key_id/trust_config_id`可記錄，金鑰、Google OAuth token與密碼不進公開來源、Sheet或原payload封存。Google授權留Apps Script端，固定允許的Sheet／資料夾／欄位；部署帳號需支援裝置無互動呼叫。ContentService會轉址，ESP32須驗預期Google轉址及JSON receipt，登入HTML／HTTP200不算ACK。[Web App](https://developers.google.com/apps-script/guides/web)、[轉址](https://developers.google.com/apps-script/guides/content#redirects)。
+
+MVP以Google登入／分享權限控制的Sheets檢視與圖表作儀表；RAW與_Control範圍受保護、不能人工排序／修改，隱藏頁不等權限控制。裝置ingest入口不兼作匿名讀取私人Sheet的公開doGet。後續若做自訂網頁，再建立獨立登入／讀取邊界；訪客刷新只讀Google投影，不逐人輪詢ESP32或新增裝置負載。
+
+看板分開顯示：最後可證的裝置／感測狀態與sensor age、Google收件age、傳輸進度／缺批、已封存歷史、storage／export／metric／experiment資格。正式圖表只讀已發布commit的固定manifest，未完成／半寫資料只進進度視圖。補傳舊run只更新backfill／傳輸歷程，不能把感測器標live；沒有可證的新telemetry就不顯示即時綠燈。網路連線、ACK及保存完整均不代表HX量測有效。
+
+### 物理／分析層與實施順序
+
+Optical保留ISR時間／均速界線；ACC保留FIFO讀出stamp／名義saved-sample統計界線；HX保留RAW／靜態質量／動態力分層。外部可信SCK／DOUT／HX端供電、影像／位移另以原檔附件、儀器設定、coverage、clock mapping及同步不確定度接入；不能以最近時間硬配同步。正式signed比力峰、力／衝量／吸能及材料比較仍依G2／G3及試驗規格驗收，傳輸功能不代替它們。
+
+| 階段 | 建議工作／驗收 | 狀態 |
+|---|---|---|
+| A：契約與模擬 | 凍結canonical bytes／hash scope、snapshot／ID與API錯誤語義；synthetic fixtures驗register／batch／finalize／recovery及八組資料映射 | 本輪只完成討論，未新增測試／服務。 |
+| B：Google接收與受控看板 | 先驗固定range／Drive ID／半寫恢復、published receipt、metadata revisions與權限；看板不讀未完成列 | 尚未建表／部署。 |
+| C：裝置封存後直傳 | Core 1／0所有權、固定buffer／小描述queue、一run保留、TLS／redirect／ACK及late訊息；沿原設定build／flash成功後立即新版QC | 尚未改韌體；現有WiFi OFF守衛保留。 |
+| D：保持連線profile | 同條件比較radio off、connected idle、受控摘要TX，核HX時序／供電、ACC／FIFO、光閘延遲、heap／stack／queue／最壞服務時間 | 待profile／門檻及外部證據，不能因雙核先放行。 |
+| E：量測鏈與材料 | HX根因與366g條件成立後校正／獨驗，各鏈時間／動態與事件窗口，最後流程先導及正式材料比較 | HX／FIFO未解及366g未完成維持；無撞擊新授權／實測。 |
+
+資源基準仍是現版static124,080 bytes與既有since-boot INTERNAL最低heap54,520 bytes；不能將靜態remaining當heap、或將boot minimum當run minimum。新worker stack／TLS／queue／metadata需逐項預算與實測，不複製整run、不盲升ODR。Apps Script配額、Sheet容量及每run cells／檔案量在部署帳號實測並按實驗區組／期間輪替；本輪未建立定時任務或常駐監看。
+
+MVP需再凍結的實作細節：canonical編碼與hash／HMAC範圍、batch bytes／timeout／queue／stack預算、_Control持久記錄與恢復測例、網路profile量測門檻、buffer lease／釋放握手、reset前未register資料遺失的呈現。這些待決項不改變主資料路徑，也不冒充已解根因。
+
+四角色分工：Gibbs負責裝置所有權／狀態／資源；Planck負責協定、Google保存／投影、metadata／看板；Kierkegaard負責時間／物理模型、事件／校正與指標資格；Ampere獨立核斷線、半寫、ACK遺失、late ACK、buffer reuse、重複／衝突／缺批及舊資料假live。既有[RMT2 QC](docs/quality/reports/2026-10-28-rmt2-qc.md)診斷用途條件通過／量測未過不變；本輪沒有新增實板、校正或材料通過。下方是前輪欄位及更早紀錄，其中「最新」均為當時歷史。
+
+## 2026-10-28 量測資料欄位討論草案（最新，尚未實作／凍結）
+
+使用者要求代理人先討論需詳細記錄的資料欄位；目前目標為ESP32直接WiFi／HTTPS上傳至Apps Script及Google Sheets，並評估保持連線、Core 1量測／Core 0應用上傳的分工。四角色已盤點原始資料、物理metadata、品質及上傳確認契約；**以下為討論草案，並非現版已具備全部欄位或已驗證連線量測。** 本輪不改韌體、不建表、不連Google私有資料、不開COM3、不燒錄／重啟／校正／實驗；僅root整理本文件。最後實板證據仍是後文19:50窗口，沒有本次即時讀回；未commit／push。既有HX／FIFO未解及366g未完成不變。
+
+### 欄位字典與資料來源規則
+
+欄位字典本身保存`field_key、table/record_kind、grain、key_role、type、unit、clock_origin、scope、provenance_origin、availability、required_if、value_basis、evidence_ref、missing_reason_rule`，不把這些說明重複塞進每個sample。`provenance_origin`分`device / server / operator / derived`；既有工具的`source_kind=historical/new/synthetic`保留原意，不能重用此名代表新來源分類。設定值與實測值也分開，設定Core 0／1不是每筆資料實際核心的量測。
+
+- **E（既有）**：值可從指定現有輸出取得；不代表普通trial CSV或新上傳協定已自動包含它。VERSION／SPEED／HX_DIAG、STATUS與TRIAL各有不同欄位，須附來源。
+- **D（有據補充／衍生）**：從可證建置、操作紀錄或原始資料產生，保留方法及輸入證據；不得補造缺少的boot或時刻。
+- **N（需新增）**：需新韌體、服務端或現場量測；能力未實作與值未知分開。未知用`null + missing_reason`，例如`not_recorded / not_instrumented / not_measured / not_reported / not_applicable / source_unlinked / insufficient_evidence`。
+- 原始RAW的真0、拒收字、模型差與警示均保留；metric無效不能抹掉原數值。觀察不足的物理事件不填false；不確定度未知不填0。
+- ID、hex與hash作文字；counts為整數；現有短窗µs為u32整數；單位在欄名或字典固定。加速度的`acc_g_nominal`與質量的`mass_g_static`分開，不共用含糊的`g`欄。未來u64需固定傳輸編碼，不能任由試算表轉型造成精度／前導零遺失。
+
+必要程度另分M（第一版契約須有欄位或明確未知）、O（可選觀測）、F（未來新增採集），與E／D／N分開。`required_if`由profile／metric決定：缺接觸、幾何或校正證據只擋依賴它的metric；匯入原始附件／RAW仍可先完成，run／boot關聯未知不強迫補ID，也不拒收既有原始值。現場／試片／環境欄位可在正式材料比較前依規格升為必填。
+
+### 第一版建議八組資料／分頁
+
+| 分頁 | 粒度與主鍵 | 主要責任 |
+|---|---|---|
+| Runs | 每次擷取一筆，`run_id` | 狀態、版本、來源、模式與metadata引用；不是每次HTTP一筆，也不等每次物理撞擊。 |
+| ACC | 每筆保存紀錄，run／stream／record index | 三軸RAW及裝置讀出時刻；不重複所有run設定。 |
+| HX | 每筆保存紀錄，run／stream／record index | 已保存RAW／SAT與profile；普通trial accepted與診斷attempt不可混。 |
+| Optical | 每個光學事件／輪次，run／event index | 原始閘緣、時基、有效旗標與dt；SPEED獨立no_ADC_records。 |
+| Setup | typed `PROFILE / GEOMETRY / CALIBRATION / VALIDATION`紀錄，ID＋不可變revision | 規格、接線／核心設定、幾何、校正與驗證明細。引用須檢查record_type；修正另建revision，不改寫舊run引用。 |
+| Specimens | typed試片／配置／層／履歷紀錄，specimen／config revision | 材料、層序、幾何、安裝、新片／重撞與實際受撞證據。 |
+| Observations | typed `QUALITY / EVENT / METRIC / RESULT / EVIDENCE_LINK`紀錄 | 品質scope、事件與窗口、條件衍生指標、材料失效及證據連結。 |
+| Uploads | batch與request attempt分粒度記錄 | 預期批次、穩定鍵、內容hash、實收範圍、重試、ACK及整輪確認。 |
+
+原始附件／匯出區段索引可放Drive manifest，再由Runs／Observations引用；不把整份serial、RMT symbols或長JSON硬塞試算表單格。八組為建議分頁，邏輯typed record與人員填寫視圖仍可在實作前調整；不得因合併分頁而混淆粒度或單位。
+
+### Runs：身份、狀態、版本與來源
+
+| 欄位群 | 型別／單位及可取得性 | 必要界線 |
+|---|---|---|
+| `run_id、run_mode、required_channels、profile_id/revision` | text／enum／引用；N，現模式可D辨識 | run代表擷取輪次。相同封存資料重傳不生新run；CLEAR後新ARM／SPEED重試須新run。 |
+| `device_id、boot_id、boot_evidence_ref` | text；現可D從部署／boot證據連結，原生新欄N | COM3不當device ID；無可靠boot關聯為null。 |
+| `native_trial_id、native_optical_id、hx_diag_session` | text（原u32計數）／text／hex8；E依原格式 | 分屬不同namespace，僅boot局部；HX診斷隨機標籤不作全球run ID，缺適用值為null。 |
+| `firmware_version、public_source_manifest_hash、core_version、fqbn、native_schema、upload_schema_version` | text／enum；E或D，upload schema N | 普通trial無明確版本／boot欄，不憑距離或LAYOUT猜版本；公開來源hash不冒稱實板映像hash；原格式與上傳schema分開。 |
+| `trial_state、end_reason、cal_state_fw、expected_acc_records、expected_hx_records` | enum／u16；E | DONE／FAULT及保存筆數原樣保留；expected是封存匯出紀錄數，不是ADC轉換總數。 |
+| `spec_id/revision、geometry_id/revision、calibration_id/revision、specimen_id、config_revision、window_definition_id` | text引用；D／N／operator | 物理metadata不由ESP32捏造，當輪實際值缺證仍未知。 |
+| `artifact_instance_id、artifact_kind、artifact_hash/bytes、export_segment_ref、import_id、evidence_refs` | text／u32；D或server N | 保存來源實例、byte身份、匯出區段、匯入動作與擷取／物理受撞身份分開。同run可多附件／匯出／匯入；同hash也不能自動合併兩次真新試驗。 |
+| `capture_state、export_integrity_state、server_storage_state、metric_eligibility、experiment_result_state` | enum＋理由；原值E、各層判定D／server N | 擷取結果、匯出完整、服務端保存、量測資格及實驗結果不可合成一個pass。 |
+
+既有來源觀察鍵建議為`artifact_instance_id + export_segment_ref + stream + export_record_index`；SHA只驗bytes，不當物理試驗身份。內容相同可共用原始bytes物件，但兩次有證據的真新run／來源實例不合併；同run多匯出也不能重複增加樣本或撞次。不能只用timestamp，也不能漏掉同serial多次DUMP的區段。現普通parser多BEGIN會拒收；未來若支援分段，保留原bytes與BEGIN／END邊界，不自行把新區段當新撞擊。原生`stream_seq`若新增，只是裝置紀錄序號，未經證明不稱ADC硬體樣本序號。
+
+### ACC／HX／Optical：每列必要RAW與時間
+
+| 資料 | 首版欄位、型別／單位 | 來源及限制 |
+|---|---|---|
+| 共用列鍵 | `run_id、source_segment_ref、record_index、stream_kind`；text／u32／enum | 現有index可D由驗證區段列序產生；原生stream seq N，時間不能當唯一鍵。 |
+| 共用時間 | `t_read_us` u32 µs、`clock_id/origin`引用；E | 普通ACC／HX是相對ARM的ESP32讀出時刻，非PC或精準ADC時間。`arm_origin_boot_us`目前RAM有但未匯出，新增傳輸為N。 |
+| ACC RAW | `x_raw、y_raw、z_raw` i16 counts；E | 保存原三軸；`x/y/z_nominal_acc_g、mag_nominal_acc_g`為現有名義輸出或D換算，另標scale來源／含重力／未驗個體校準。 |
+| ACC批次／品質 | `fifo_batch_id、record_in_batch、read_begin/end_us、depth_before/after、sample_time_estimate_state`；N | 目前沒有完整批次契約。100Hz是設定值，不能將FIFO列倒推成精確取樣時間；whole_ARM near_range不當每sample已驗SAT。 |
+| HX普通trial | `hx_raw` i32 counts、`hx_sat` bool、`hx_status` enum；E | 只保存已接受框；`accepted=true`可D由來源契約標註，但拒收數／字／時刻未提供不等0。 |
+| HX診斷附件 | `record_kind、attempt_seq、bits24、accepted、postcheck、start/end_us、rx/err_before_after、flags`；E依HX_DIAG | 保留診斷profile／窗口／slot及seq；只屬被保留的attempt，不冒稱trial完整attempt流。PCNT／RMT原symbols、reason512、安全旗標及CRC保留附件引用。 |
+| Optical原值 | `optical_mode、native_optical_id、state/reason、upper/lower_seen、upper/lower_time_us、dt_us、clock_origin`；E依SPEED／TRANSIT，部分FAULT未匯出值為未知 | SPEED為boot micros，trial TRANSIT為相對ARM；零時刻也可能有效，須依有效旗標。未觸發、不輸出或不適用不填假0。 |
+| Optical設定／換算 | `configured_distance_mm` number mm、`polarity_up/down` i8（-1／0／1）E；`effective_spacing_mm、spacing_uncertainty、geometry_evidence_ref` operator／N；`gate_mean_speed_mps` E／D | 配置距離與有效觸發間距的實測分開。未知極性不能壓成false。均速標明距離來源及換算方法，不升格為contact velocity。 |
+
+SPEED的A／H欄為既有trial計數，不是SPEED的ADC資料量；SPEED必記`adc_capture_enabled=false/no_ADC_records`，不借舊ACC／HX列冒充同步資料。`adc_sample_time_us、sample_utc、contact_relative_sample_us`缺少取樣／同步證據時為null；WiFi直傳只有device時刻與server處理時間，不生成不存在的USB逐行主機時間。若有既存PC JSONL附件，主機UTC／monotonic時間只按該附件粒度保存。直傳附件標`artifact_kind=DEVICE_JSON`或實際格式，PC serial行數、byte tail及BEGIN／END欄依該格式可為not_applicable，不假造串列擷取。
+
+### Setup／Specimens：校正、幾何與實驗條件
+
+| 類別 | 詳細欄位群與單位 | 取得與必填條件 |
+|---|---|---|
+| profile／安裝 | `spec_version、required_channels、allowed_metrics、sampling_config、hx_rate_source、pinmap_revision、axis/sign_definition、sensor_mount、profile/core_config、wifi_policy、diag_profile` | 設定E／D、當次快照N；100Hz不當實測ODR，HX RATE未由程式讀回時不得標detected，設定核心不當每列實測核心。 |
+| 幾何／機構 | `total_moving_mass_kg`及含件清單；頭／支承／撞擊位置／偏心；有效閘距、下閘至接觸剩餘行程mm；量具、方法、不確定度、照片與接線／供電revision | operator／現場。模板已有欄≠本次有值；名義／實測及各revision分開。 |
+| 校正建立 | `calibration_id、sensor_chain、applicable_boot、cal_valid_fw、calibration_completed、tare_offset_counts、counts_per_g、reference_nominal_mass_g、reference_measured_mass_g、reference_uncertainty、sample_count、establishment_evidence、valid_range/environment/position` | 程式旗標／trial參數E，其餘D／N／現場。366g僅當計畫／標稱參考，本次未CAL，不填已完成。新的TARE或重啟需重新判適用性。 |
+| 獨立驗證 | `validation_id、calibration_ref、independent_data_ref、tested_range、bias、repeatability、return_zero、drift、uncertainty_type/value、coverage_factor/probability、decision_rule/version、validation_state、valid_for_metrics` | 條件／數值待實測；未驗不填0或預設k／信賴水準。靜態完成不等動態峰力通過。 |
+| 試片／層序 | `specimen_id、material_batch、config_revision、layer_index、material、orientation、thickness_mm、area_mm2、mass_g、fixation、pre_photo、initial_height_mm` | operator／現場；STF製備／封裝、摺疊幾何及EVA材質等依適用配置補，不適用附原因。 |
+| 受撞履歷／操作 | `new_or_reused、physical_exposure_id、exposure_state、previous_run/evidence、prior_damage、confirmed_hit_count、unresolved_exposure_count、planned/actual_order、operator、temperature_C、humidity_pct、supply/mount_changes` | operator／事件證據。擷取FAULT不證未撞；已確認撞數與未知暴露分開，未知時不能宣稱精確受撞總數。 |
+
+### Observations：品質、事件與衍生結果
+
+每筆觀察帶`record_kind、run/chain_ref、observed_scope/window、coverage_state、value/time、unit、validity/eligibility、reason_codes、source/evidence、rule/analysis_revision`。可得RAW與判定資格分欄；已知失敗不能藏成未測。
+
+| 類別 | 欄位群 | scope／使用限制 |
+|---|---|---|
+| trial品質 | `acc/hx_saved_count、hx/acc_error_delta、fifo_warning_delta、hx_sat_count、hx/acc_stale_seen、ignored_gate_edges、buffer_full、state/reason`；E | frozen trial delta／保留筆數。拒收事件未有當框資料不補造sample，後來STATUS不能替代試驗起終。 |
+| boot／快照品質 | `rx/err/aerr/fifo_total、fifo_depth/poll_gap_max、oled_send_last/max、heap_free/largest/min_since_boot、heap_first_connected_*、snapshot_time`；E依輸出 | boot累計／boot最大值／查詢瞬間分開；不能相減成run最大。FIFO／OVR／overflow次數不當唯一故障數或精確漏樣數。 |
+| 新增run／網路觀測 | `heap_run_min、stack_min_free_bytes、loop_gap_run_max_us、queue_capacity/high_water/overrun、core_observed、mode_epoch、pending_diag_seq/token/disposition、wifi_state_start/end、rssi_dbm、disconnect_reason/reconnect_count`；N | 明確窗口、單位及取值方法；現有54,520-byte heap minimum屬boot，不是run minimum；unknown pending不填drained。 |
+| 新鮮度 | `sensor_seen、sensor_age_ms、sensor_state、server_received_utc、server_received_age_ms`；前者E／新快照N，後者server N／D | WAIT且RAW=NA時AGE0不證新資料；伺服器收到新封包與感測器更新分開，不能將UTC與boot µs直接相減。 |
+| 物理事件／窗口 | `event_type/state、detector_state、time或time_bounds、clock_id、frame_ref、sync_uncertainty、contact/separation/window_definition_id、evidence_ref`；多為operator／N | detector未觸發不證物理未發生；接觸／分離／觸底／穿透／破壞需獨立證據，不憑第二峰、FAULT或DUMP狀態自動填false。 |
+| 條件衍生metric | `metric_key、value、unit、input_refs、window_id、axis/sign/gravity/filter/peak_rule、cal/validation_refs、algorithm_version、uncertainty、eligibility/reasons`；D | 均速、靜態等效質量、名義saved-sample最大值與真接觸峰／力／衝量／吸能分開。UNCAL不算假重量；m×mag不當峰值力，入射動能不當材料吸能。 |
+| 材料結果／統計 | `failure_type/state/evidence、H0/H1及位置／基準／等待時間、permanent_deformation、group/block、included_run/specimen_refs、independent_n、quantifiable/failed/unknown_counts、exclusion_rule、effect/interval_method/spec_revision`；operator／D | 新片首撞與同片重撞分開；各指標可獨立無效，保留所有資料。門檻及樣本數不由裝置捏造，不刪壞結果後比較。 |
+
+### Uploads：批次、嘗試與整輪保存
+
+以下均為N，現版沒有Apps Script上傳端點、TLS／queue／ACK欄位。裝置保持WiFi與Core 0上傳也仍是待驗證profile，不能用新欄位名稱宣稱已實作。
+
+此處`sealed_manifest_revision`專指不可變資料snapshot的manifest；metadata及analysis revision另列，不因重新分析或註記修正就重生run／批次內容身份。直傳DEVICE_JSON的資料鍵為`run_id + sealed_manifest_revision + stream + record_index`，並保留`index_space`。同一來源重匯入沿用可證的`artifact_instance_id`；關聯未知時不強合、不自動計新撞，也不拒收RAW。
+
+| 粒度 | 必要欄位群／型別 | 確認規則 |
+|---|---|---|
+| sealed run manifest | `run_id、sealed_manifest_revision/hash、source_schema、upload_schema、expected_stream_counts、expected_batch_set、expected_ranges、archive_refs` | 傳送前固定各流範圍／筆數及hash規則；metadata修訂另revision，原始RAW不覆寫。 |
+| stable batch | `batch_id、run/manifest_ref、stream、index_space、batch_seq、first/last_record_index、record_count、payload_bytes、payload_hash、canonicalization_version、reserved_range、commit/recovery_state` | `index_space`區分export ordinal與未來device seq，均不冒稱ADC序號。相同key／同內容重送可恢復；同key異內容拒收。Lock僅防並行，append與ledger不當跨表ACID；用穩定範圍及可恢復寫入契約。 |
+| upload attempt | `request_attempt_id、batch_ref、attempt_no、device_begin/end/time_origin、TLS_verified/trust_config_id/error、HTTP_status、redirect_count、timeout/backoff/result、server_received_utc` | 每HTTP嘗試可新ID，但不進穩定payload hash。逾時不代表服務端未寫；RTT只從同一裝置clock界定起終，不能用server UTC－device µs算單向延遲。 |
+| batch ACK | `ack_run/manifest/batch/hash、ack_committed_unique_count/range、ack_status、server_committed_utc、error_code` | 裝置逐項核對，HTTP200或JSON本身不算成功。原資料保留至完整確認，不先CLEAR。 |
+| run commit | `received_unique_batch_set、missing/conflicting_batches、received_stream_counts/ranges/hashes、server_storage_state、run_commit_state、archive_verified_state` | 核缺批、唯一範圍、筆數及hash後才能完整；數量相同但重複／缺段不過。上傳完成不改FAULT／UNCAL／metric資格。 |
+
+不得上傳WiFi密碼、Google權杖、裝置上傳金鑰、私鑰或含憑證本文；需要追蹤驗證設定時只存非秘密`key_id/trust_config_id`。只有RAM待傳不能承諾抗斷電；是否增加持久化需另設計及QC。原始上傳payload可由Google端封存，標`structured_device_payload`，不冒稱不存在的完整serial capture。
+
+### 首版必要程度、反例與分工
+
+首版必要的是各run／stream身份、原RAW／讀出clock、模式／封存結果、校正與幾何引用或明確未知、完整性／品質scope、sealed manifest與去重／ACK；物理metadata依該run用途必填或明列缺證。網路／heap／核心／mode boundary等屬新profile驗證必需觀測，但N欄不能回填成歷史已測。RMT完整symbols、擴充診斷及高階動態／材料統計為條件附件／分析，不重複每sample。
+
+驗收反例：不同boot的trial1；同一serial多DUMP；同t_read_us多列；ACK遺失重傳；新run恰有相同RAW；UNCAL／DATA模型差但完整匯出；FIFO舊樣本下閘後才讀；FAULT但物理受撞未知；SPEED帶舊A／H；AGE0但未曾收到資料；heap scope錯用；已寫入但ACK失聯／批次亂序／衝突；server收件時間冒充取樣時刻。這是待執行的schema負測，不是本輪測試已通過。
+
+Gibbs負責來源欄位／記憶體與時序映射；Kierkegaard負責物理定義、單位、校正／事件與指標條件；Planck負責字典、版本關聯、分表與追溯；Ampere獨立核反例、必填層級及未知／失敗界線。來源：[公開韌體](05-test/05-test.ino)、[trial規格](docs/experiments/trial-spec-template.md)、[逐項紀錄模板](docs/experiments/trial-record-template.md)、[既有RMT2 QC](docs/quality/reports/2026-10-28-rmt2-qc.md)。舊QC的診斷用途條件通過／量測未過維持；本輪沒有新增實板、校正或材料通過。
+
+## 2026-10-28 四位子代理人討論：整合撞擊測試量測系統（最新）
+
+使用者要求「請所有子代理人開始討論整合撞擊測試量測系統」。已恢復Gibbs、Kierkegaard、Planck、Ampere四角色，依本檔、公開來源、既有試驗範本及RMT2 QC進行唯讀盤點與交叉討論。**本節是整合提案與驗收契約，尚未實作／部署，也不是新的實板、校正或材料通過報告。** 本輪只由root更新本文件，未開COM3、改韌體、燒錄、重啟、TARE／CAL、移動物件或撞擊；USB保持連接。最後實板證據仍是下方19:50的IDLE／UNCAL、ERR1／AERR0／FIFO5，不能把討論時間當新的實測時間。未commit／push。
+
+### 已有能力與已確認限制
+
+- 現有`SPEED`是獨立光學模式，明示`no_ADC_records`；一般`ARM`則保存ACC三軸counts及HX已接受RAW，並以相對ARM的ESP32讀出時間匯出。[來源](05-test/05-test.ino)、[獨立SPEED證據](docs/experiments/manual-speed/2026-10-26-manual-speed-session.md)。兩種模式的不同輪資料不能直接拼成同步撞擊。
+- 光學為ISR處理時刻，ACC為FIFO讀出時刻，HX為讀框／接受時刻；共用`micros()`不足以證明ADC同步或相對接觸事件的取樣先後。`host_readout_us_from_ARM`現指ESP32讀出，不能誤當PC時間；主機UTC、monotonic接收時間另列。短窗無號模差可用，長缺口不能猜微秒計數回繞次數。
+- 現版活動ARM期間已只允許STOP，大型查詢／DUMP會被攔；DONE／FAULT也已有DIST／POL／TARE／CAL／UNCAL守衛，沒有已確認的設定漂移缺陷。普通DUMP的HX_ERR／ACC_ERR／FIFO_FULL是凍結trial差值，不能拿後來開機累計取代。
+- 同步匯出在IDLE診斷及DONE／FAULT會阻塞背景輪詢；RMT2診斷DUMP已有7.642秒證據。須記EXPORT區間與前後警示，不把這些時段當連續取樣。現有診斷schema6／CRC屬HX_DIAG bundle，一般trial CSV尚無相同身份／schema／CRC契約。
+- `eligible=false`只阻止PCNT／RMT新的硬體觀測；ARM／CAL若診斷窗仍開，RAW摘要仍追加。SPEED雖停ADC輪詢，早退前仍服務舊RMT工作及診斷截止。RMT模式入口未明確拒絕pending或證明自然收尾，舊job／callback可能跨模式；這是待驗證邊界，**不是已證干擾原因**，不能直接stop／free仍可能回呼的buffer。PCNT在pollHx同步讀回後才處理命令，也不足以證明所有晚到ISR均已排空。
+
+### 四角色共識與分工
+
+| 角色 | 整合責任／已提出的關鍵反例 |
+|---|---|
+| Gibbs：ESP32 | 盤點時間、模式、記憶體、FIFO／HX排程、WiFi／OLED及匯出。先host manifest，再評估最小device schema；不增加資料陣列或盲升ODR。未來模式切換需可追溯原job seq／token、pending／完成／timeout及歸屬，不冒稱零診斷開銷。 |
+| Kierkegaard：物理 | 區分兩點均速／接觸速度、比力／界面力／底座反力／吸能。先定目標波形及允許峰值低估、相位誤差與不確定度，再驗感測／結構／排程整鏈；不同物理量不可互代。 |
+| Planck：資料 | 定義run／boot／local trial／校正／幾何與時間契約，保留RAW與衍生值分流、逐指標資格。反例：不同boot各有trial1、FIFO舊樣本下閘後才讀出、同RX重印／雙槽重複；不以近鄰時間配對把一筆HX複製成多筆同步荷重。 |
+| Ampere：QC | 以分階段必要證據與反例檢查整合，區分匯出完整、工程功能、量測及材料判定；已知失敗不能藏成未測。HX故障、UNCAL、FIFO缺口或CRC通過，均不能自動產生完整撞擊量測通過。 |
+
+### 建議的分階段整合
+
+| 層級 | 工作與必要條件 | 本輪狀態 |
+|---|---|---|
+| G0：離線資料整合 | 用既有資料建立host evidence manifest、時間語義、完整性與逐metric資格；保留既有SPEED獨立分析。 | 可繼續離線工作；本輪完成討論，尚未新增manifest工具。 |
+| G1：獨立工程記錄 | 如需光學＋ACC工程模式，明列required channels、模式邊界、診斷profile及禁止產生的指標；驗互斥、buffer滿、缺資料、時間回繞及匯出負載，修改韌體須正式build／flash及新版QC。 | 尚未實作／部署；不繞過現有ARM的HX守衛，不重標完整撞擊通過。 |
+| G2：正式軸向比力量測 | 事前固定signed軸、正向、基線與首次接觸至分離窗口；完成校準、時基／同步、完整性、量程與參考動態響應驗證。 | 未具備；目前只能描述已保存樣本的名義三軸或whole_ARM最大值，不能稱真接觸峰或嚴格下界。 |
+| G3：力／衝量／材料吸能 | 另驗荷重鏈動態傳遞、接觸事件、同步相對壓縮量或完整入出能量帳，區分治具／導軌／回彈與材料。 | 未具備；HX根因未解，366g尚未校正，不能由靜態比例或m×mag產生峰值力／吸能。 |
+
+材料比較另沿用[一頁式規格](docs/experiments/trial-spec-template.md)及[紀錄範本](docs/experiments/trial-record-template.md)：建議維持等厚、等面積、固定入射條件的框架，以軸向比力與觸底／穿透／破壞為主、永久變形為次。各指標須先有合格量測鏈，並凍結窗口、容差、效果門檻、排除規則及統計設計。新片首撞與同片重撞分開，後者不增加獨立試片n；未知條件、樣本數及數值門檻不自行補填。G2或G3成立也不自動等於材料效果成立。
+
+### G0最小資料契約（提案）
+
+每輪包裝host產生的`run_id`及其來源、device local trial／optical ID、可證boot與診斷session、實板版本讀回／公開source hash／建置與目標識別、校正ID及適用boot／參數精度、geometry版本／距離與不確定度／POL／安裝方向，以及試片／受撞履歷／環境／現場影像索引。缺證保留unknown，host ID與檔案row ID不冒充裝置原生ID／sample seq；沒有boot或ARM原點不得猜回。
+
+最小輸出包為manifest、原serial／DUMP／SPEED、逐行主機時間／control／host、BEGIN-END與列數／CRC（僅格式已有時）／file SHA／尾片、完整性及逐metric品質報告、帶演算法版本與輸入hash的衍生分析。**主機收集完整、裝置匯出完整、逐指標可用、實驗結果四種判定獨立保存。** 普通DUMP的legacy parser只按END前綴判斷，尾敘述截斷但仍留`# END`時可能被判complete，需另核bytes、完整行／換行、尾片及END全文。SHA只識別已收bytes，不等裝置端CRC或ADC正確；已有完整948 ACC／109 HX的[trial2](docs/experiments/manual-speed/20261026-trial-002-upper-timeout.dump.csv)仍為UPPER_TIMEOUT／FAULT。`accepted_by_firmware`與`valid_for_metric`分開；每個metric列eligible／invalid／unknown／not_applicable及理由／假設／證據，不能用一個整輪pass取代。原始NA不改成0，原始檔不重寫，儀器不確定度與試片變異分估。
+
+若日後增加device schema，優先小型run／batch metadata：boot／ARM原點、每流seq、ACC batch與排讀括弧／FIFO前後狀態、counter起終／scope、instrumentation profile與mode epoch／pending disposition。現有host `mode_epoch`只能標觀察到的命令／快照區段，不能冒稱裝置原生epoch或精確切換時刻；job seq／token僅引用實際封存證據，pending缺證仍unknown。先核DRAM、setup heap、callback生命週期、FIFO排空期限、stack／DMA／WiFi、最長執行耗時與匯出預算。容量至少滿足`N >= ceil(fs_max * T_capture_max) + N_residual + N_guard`，並驗FIFO的`32/fs`名義容量時長及實際服務裕量；不能只改ODR或以compile成功替代吞吐驗證。目前靜態124,080 bytes及WiFi後minimum heap54,520 bytes不能當新增容量已足夠的保證。
+
+未來完整試驗profile若將HX列為required channel，故障後不得自動降成工程profile再繼續宣告完整impact／力／能量有效；保留RAW及可獨立判定的光學dt，依事前規則中止或標無效。校正或適用boot不明，不能由舊比例升格eligible。現有STOP只停止資料記錄，不是物理煞停或釋放機構控制。
+
+最小反例驗收由Gibbs提供介面／狀態與資源測例、Planck核完整性與身份、Kierkegaard核物理指標、Ampere獨立覆核：跨boot重複trial1；重複STATUS／DUMP及ANY-LINK重疊；保留END前綴但截尾；CRC通卻UNCAL／DATA模型差／trial FAULT；FIFO舊樣本晚於光閘才讀出；時鐘回繞／長缺口；RMT pending跨模式；buffer滿／分配失敗；required HX失效時錯誤fallback。這些是待執行的整合負測，不冒充本輪新測試已通過。
+
+### 保留的量測界線與未解項
+
+220mm是使用者回報距離；首筆1153289µs支持條件換算約0.190759m/s的兩點均速，尚非光學精度或接觸速度驗收。手動通過不能假設自由落下加速度；接觸速度需另有幾何／運動模型。ADXL現為100Hz，原廠名義帶寬為ODR/2；本機動態峰值能力仍待驗證。[ADXL375原廠資料表](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL375.pdf)。HX原廠10／80 SPS及靜態366g比例均不能直接認證動態峰力。[HX711原廠資料表](https://cdn.sparkfun.com/assets/b/f/5/a/e/hx711F_EN.pdf)。入射動能不等材料吸能，ACC合成幅度不可直接乘質量當峰值力。
+
+HX未解不自動抹除有獨立證據的光學dt；受影響的峰值、同步或積分指標分別無效／未知，所有原資料仍保留。FIFO_FULL／OVR／PCNT overflow次數按各自scope保存，不當唯一故障數或精確缺樣量。若只有整輪警示delta而無事件定位，不能刪任意一小段後判接觸指標合格。RMT2的4筆accepted DATA多2、GOOD reason512格式限制、FIFO警示及新增ERR缺口均維持[原QC結論](docs/quality/reports/2026-10-28-rmt2-qc.md)，本輪討論沒有關閉缺陷或補做目視／真BAD／LINK／載卸驗證。
+
+本輪只核對公開來源；12韌體及24工具／測試hash仍與RMT2部署manifest相符，HEAD未變。下方交接與20:02:57稽核是更早快照，其handoff SHA不涵蓋本節；舊檔及原始證據保留。第一個建議落地項目為G0的host manifest與逐metric資格報告，實板、HX校正及撞擊操作仍各依既有條件安排，本次不執行。
+
+## 2026-10-28 交接補記與接手順序
+
+本次依使用者「請寫handoff.md」補齊接手資訊，僅更新本文件，未重新開COM3、燒錄、重啟或校正。實板數值以最後保存的19:50被動窗為準，不代表文件更新時重新量測。USB保持連接；COM3已關閉釋放；最後實測為IDLE／UNCAL、ERR1／AERR0／FIFO5。DRAM修正與部署已完成，診斷用途僅條件通過，量測品質未過，HX根因與366g校正尚未完成；細節及證據見下方本輪收尾摘要。
+
+接手依下列順序進行：
+
+1. 先讀[RMT2最終QC](docs/quality/reports/2026-10-28-rmt2-qc.md)及[完整session](docs/calibration/2026-10-28-rmt2-proof-session.md)，核對最後已驗證版本`hxfail5-pcnt2m1-rmt2`／session`437B6829`；不要將下方歷史exec編號當成仍在執行的程序。
+2. 原RAW ring、proof及RMT已自然封存，無法補回19:45:00.079～19:48:44.853新增ERR的當框資料。先分析既有證據，缺項保留未知；不為湊BAD、改reason512、清警示或取得啟動畫面重啟。若後續依既有授權擷取，先核對目標及非記錄／校正狀態，COM3只由一人操作，保存資料後關閉釋放，不清除舊證據。
+3. 下一個能區分根因的證據是異常當框可信同步PD_SCK／DOUT及HX端VCC／GND量測。現有MCU端計數／有限duration不能替代，不能把DATA模型多2直接判成漏位／毛刺，也不盲改取樣或修RAW。只有確認軟體原因後才修改；韌體若有變更，依原設定檢查、編譯、正確目標寫入校驗，成功後立即交Ampere做該版獨立QC。
+4. 使用者已授權釐清原因後完成366g校正，不重複索取操作同意；但目前根因未解，當下載重與空載／砝碼放穩沒有新的現場證據。條件成立後才建立該boot的新TARE／CAL366及載卸驗證；校正僅存RAM，不沿用舊比例，不以CAL ACK當精度通過。
+
+本輪由Gibbs、Kierkegaard、Planck、Ampere協作並已完成各自分析／文件工作，COM3始終由root統一操作。續接仍用collaboration子代理角色，勿以側欄聊天取代；本次沒有啟動新的監看、定時自動化或實驗。
+
+[前輪最終主機稽核](docs/calibration/20261028-rmt2-final-audit.json)時間為2026-10-28 20:02:57台北：12韌體及24工具／測試hash相符，811個公開檔掃描未命中實際WiFi私密值，私密header受Git忽略，未見公開BIN／ELF等建置產物，`git diff --check`通過，未見serial-monitor／esptool程序。**該JSON保留當時快照，其handoff SHA是本次補記之前的版本**，不覆寫為本次新增文字已經過舊稽核。尚未commit／push，HEAD仍`24ef5cd58f68a2e3795de147af87db37a88c0368`。
+
+## 本輪完整收尾摘要
+
+> **2026-10-28 本輪收尾：DRAM已修正／RMT2已部署並完成獨立QC；HX根因未解、366g仍未校正（最新）**。本輪使用者已授權「修正逐框DRAM，成功編譯後自動燒錄與QC，USB保持，繼續RAW／時間取證，釐清HX原因後完成CAL366，不再詢問」；校正授權仍有先釐清原因的條件。現行實板／repo為 `v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt2`、session `437B6829`、outer schema6／RMT schema2，**所有本輪capture均已結束、COM3關閉釋放，USB保持連接，沒有仍在執行的監看或定時自動化**。下方各工作中檢查點、exec編號及「最新」都是歷史，不可當目前持埠狀態。
+
+> **修正、驗證與部署**：40,960-byte逐框sidecar從靜態DRAM改setup-only INTERNAL_8BIT heap全有或全無配置，保留原RAW／trial容量、25pulse及postcheck；配置失敗有明確degraded匯出，不重試／不冒充正常。原FQBN `esp32:esp32:nodemcu-32s:UploadSpeed=115200,FlashFreq=40`／core3.3.12正式compile成功，程式1,026,873 bytes、全域124,080 bytes，193 Node／148 native通；目標MAC `e0:8c:fe:a8:42:bc`與四區Hash校驗成功，首boot完整留存。[12檔來源](docs/calibration/20261028-rmt2-source.json)、[24工具／測試manifest](docs/calibration/20261028-rmt2-host-manifest.json)、[compile](docs/calibration/20261028-rmt2-compile.log)、[deployment](docs/calibration/20261028-rmt2-deployment.json)相符；最後peer manifest SHA `170596D375CB5C23861C2A6699824B39459D87E3EB71BA0D136B3CD5F7A00AB9`。每次成功寫入後均立即交Ampere新版QC，PCNT2m1、RMT1、RMT2各版報告獨立；RMT1的7good1bad／ready0失敗沒有清除或用新boot抵銷。
+
+> **最終QC與RAW證據**：[RMT2獨立QC](docs/quality/reports/2026-10-28-rmt2-qc.md) SHA `DFF0449DFD4D9A250069DD3DF1F34C48DAA74C9075C333824E4CB6CD9F85E521`：部署、首boot、限定唯讀、自然封存及全部CRC追溯通過；診斷用途僅條件通過，GOOD RMT形狀一致性未過，量測品質未過／CAL未放行。自然600秒窗[原文](docs/calibration/20261028-hx711-rmt2-continuous-observe-194500.serial.log)249,588 bytes／1,568完整行／0尾片、[逐行時間](docs/calibration/20261028-hx711-rmt2-continuous-observe-194500.lines.jsonl)及[v6](docs/calibration/20261028-hx711-rmt2-continuous-observe-194500.analysis-v6.json)均獨核，兩RAW槽完全重疊只有127唯一框，不能當5,419個attempt均已保留。原proof只前4筆good0bad後停止；seq5305／5313／5410／5414被接受但DATA比條件模型多2，沒有這4框RMT。LINK／BAD本窗未觸發，不能宣稱真故障路徑已測。GOOD seq1符合嚴格proof對接，但DATA word5 `0x00B08000`首half是0-period marker，upper176為marker後未定義payload；原reason512／formatfalse保留，prefix在首0停止，不能把upper當波形或HX故障根因。本輪不再為改旗標或湊BAD重燒／重啟。
+
+> **最後狀態與下一個證據缺口**：[最後90秒純被動窗](docs/calibration/20261028-hx711-postdump-passive-195015.serial.log)29,732 bytes／180完整行＋32-byte尾片，90個STATUS、ERR1／AERR0／FIFO5持平、IDLE／UNCAL；close／QUIT／exit0與[host](docs/calibration/20261028-hx711-postdump-passive-195015.host.json)皆留。上一窗19:45:00.079 ERR0至後窗首19:48:44.853 ERR1是224.774秒未擷取缺口，新增錯誤當框／時刻未知，不以後來accepted快取冒充故障字。FIFO啟動、查詢後DUMP前及同步DUMP後新增分列，不推成已知根因／漏樣量。Gibbs與Kierkegaard已核：現有數位計數、有限RMT duration及CRC不足以定位HX原因，仍需異常當框可信同步PD_SCK／DOUT及HX端VCC／GND證據，才能區分接收／時序／線路與供電假說。**未送TARE／CAL366、未宣稱HX修復／校正完成**；目視OLED／RGB、真BAD／LINK RMT、實體校正載卸／精度等未測。公開整理見[RMT2 session](docs/calibration/2026-10-28-rmt2-proof-session.md)與[README](README.md)。本輪沒有清警示／NVS、WiFi失聯注入、撞擊或commit／push；Git HEAD仍 `24ef5cd58f68a2e3795de147af87db37a88c0368`，公開更動尚未提交。秘密留在ignored header、BIN／ELF與含憑證build留儲存庫外。
+
+> **2026-10-28 19:36 RMT2已部署／本版QC與自然捕獲進行中（最新）**：`hxfail5-pcnt2m1-rmt2` 已完成原FQBN/core3.3.12正式compile（1,026,873／124,080 bytes）、193 Node／148 native及HOST READY；12韌體hash與正式build一致、24工具/tests已同步，MAC正確且四區Hash寫入exit0。自然首boot已留，[版本／session437B6829／schema6](docs/calibration/20261028-rmt2-first-boot.host.json)；RMT schema2/setup1／4032 bytes／兩driver10MHz，PCNT首QC4good0bad／ready1、guard0，WiFi後min heap54520 bytes。這只屬本boot限定診斷前提，不撤銷RMT1的7good1bad失敗／既有HX量測品質問題，366g尚未CAL。[首QC原文](docs/calibration/20261028-hx711-rmt2-postflash-qc-193544.serial.log)110完整行、全部只讀命令及正常close已留；Ampere已在寫入成功後立即接手[新報告](docs/quality/reports/2026-10-28-rmt2-qc.md)，完整新role／GPIO／symbols／634word CRC仍待自然封存bundle，不能先宣稱全項通過。root正唯一持COM3觀察同boot（exec **81122**，`irt-serialmonitor-rmt2-observe-20261028.cjs`，預期session437B6829，620秒上限，封存通知後才DUMP並等外層END）；其他人不開埠，勿為湊BAD或good重啟。RMT2保留firstLINK／firstBAD_PROOF／firstGOOD_PROOF，原proof失敗黏性／RAW／clock／校正guard不變；未觸發角色只能未測。資料及後續結論見[RMT2 session](docs/calibration/2026-10-28-rmt2-proof-session.md)。最新主機preflight解除版本另存[final](docs/calibration/20261028-rmt2-preflight-final.json)，較早preflight copy為歷史，不覆寫其host-release hash。USB保持／UNCAL，未TARE/CAL、清警示／NVS、WiFi注入、撞擊或commit/push；下面均為舊階段。
+
+> **2026-10-28 19:14 工作中檢查點：RMT2編譯已成功、尚未部署（最新）**：實板仍RMT1／session8FE7B3DC，UNCAL／USB保持，RMT1功能QC未通過及366g未校正不變。repo的RMT2候選12韌體檔已正式含本機設定compile成功（program1,026,873／static124,080 bytes，exit0），[source](docs/calibration/20261028-rmt2-source.json)與[compile](docs/calibration/20261028-rmt2-compile.log)固定；原25pulse+postcheck SHA08DFA…BA8E32不變。**尚未HOST READY／未燒錄／未RMT2實板QC**：Gibbs在專案外rmt2-wip完成主韌體freeze，工具／actual exporter／negative／legacy最後收尾；Ampere查得proof已新增但RAW因read_start跨期限被正確omit的合法缺口，parser窄分支仍在驗證，C源不需改。root不可沿用舊QC放行新版本。原20min RMT1窗已存[190518](docs/calibration/20261028-hx711-rmt2-design-long-190518.host.json)，ERR1→2／2→3時間與128-byte尾片有證據。root目前另持COM3單次20min零TX窗：exec **14516**，起點19:07:14.838（台北）；helper `C:/Users/tseng/AppData/Local/Temp/irt-serialmonitor-rmt2-design-long-20261028.cjs`，建立Temp的 `irt-rmt2-passive-stop-20261028-1845.signal` 可正常存檔／CLOSE／QUIT，勿另開埠或直接殺程序。下一步僅HOST READY後核最終manifest與已編譯12hash、同步tools/tests、正常關埠、fresh guard／MAC、四區Hash成功後即刻Ampere新報告QC及首boot擷取。root已備 `irt-rmt2-build-deploy.cjs`、first-boot／publish-boot／qc／observe／failed-proof-evidence主機腳本於Temp；不得重跑已完成compile覆寫舊證據。詳[RMT2 session](docs/calibration/2026-10-28-rmt2-proof-session.md)。沒有TARE/CAL、重湊proof、清警示／NVS、WiFi注入、撞擊或commit/push。其下均為歷史階段。
+
+> **2026-10-28 18:55 RMT2公開韌體已整合／正式編譯中（工作中最新）**：實板仍是RMT1／8FE7B3DC／UNCAL／USB保持，RMT1功能QC未過的歷史結論不變。repo公開主韌體12檔現已整合成 `hxfail5-pcnt2m1-rmt2` 候選，**未燒錄**；原FQBN／core3.3.12正式compile進行中，候選新角色／旗標actual native69 cases通但完整host/exporter/parser尚待HOST READY。見[整合manifest](docs/calibration/20261028-rmt2-firmware-integration.json)。本版只保留firstLINK／firstBAD_PROOF／firstGOOD_PROOF、修正未實際啟動proof的來源旗標；不改原proof失敗黏性、ready／RAW／clock／校正守衛或4KiB容量。RMT1已部署公開來源仍完整封存在專案外rmt1-wip含manifest，不能以RMT2候選冒稱實板。root繼續唯一持COM3的20分鐘零TX窗（exec1218，1845 stop marker），已觀察ERR1→2；未CAL366、未commit/push。後續僅HOST READY、固定來源正式build及正目標校驗成功才可燒錄並立即跑新版QC。
+
+> **2026-10-28 18:45 RMT1實板QC未過／同boot證據已封存／RMT2保留策略候選（最新）**：實板與repo來源目前為已完整四區Hash燒錄的 `hxfail5-pcnt2m1-rmt1`，自然boot／session `8FE7B3DC`已保存，USB保持／UNCAL；正式compile1,026,845程式／124,080全域bytes、192 Node／138 native通，公開來源12檔及23工具tests對應。**新版QC未通過**：[報告](docs/quality/reports/2026-10-28-rmt1-qc.md)，PCNT8筆為7good／1bad、ready0，未重啟重湊。隔離取證在同boot自然封存後完整匯出：[raw](docs/calibration/20261028-hx711-rmt1-failed-proof-evidence-183516.serial.log)、[時間](docs/calibration/20261028-hx711-rmt1-failed-proof-evidence-183516.lines.jsonl)、[v5分析](docs/calibration/20261028-hx711-rmt1-failed-proof-evidence-183516.analysis-v5.json)。bad是seq3 accepted FD7D56／−164522、DATA17≠條件模型15；SCK50／API／overflow／窗等已報子項符合，seq4同bits卻DATA15，仍不能定根因。因ready0，後256唯一框PCNT皆NO_PROOF／NA；firstLINK2827拒收FFFAFB／−1285，RMT安全保存SCK25symbols／49正duration（HIGH2.7–10.5µs）及DATA5symbols／9runs（含1.6µs LOW），不證全輸入無漏失／HX端訊號或供電；原badproof波形未保存。全部RAW／sidecar／HXF／PCNT／RMT634word CRC與seq由Ampere獨立核通，不解除QC失敗。依持續診斷授權，Gibbs只在專案外 `C:/Users/tseng/Documents/Codex/rmt2-wip-20261028` 開發單次新profile：沿用3槽改保firstLINK／firstBAD_PROOF／firstGOOD_PROOF，原bad黏性／ready0／RAW／clock／校正守衛不變，另修8筆後未真正開始proof卻誤標PROOF_SOURCE的bookkeeping；**RMT2尚未READY／正式編譯／燒錄／QC**。root正持COM3單次最多20分鐘零TX被動窗（exec1218、10:45:17Z起；主機helper `irt-serialmonitor-rmt2-design-long-20261028.cjs`，控制結束marker為Temp的`irt-rmt2-passive-stop-20261028-1845.signal`）；不要另開埠。詳[RMT工作紀錄](docs/calibration/2026-10-28-rmt-diagnostic-session.md)。未TARE／CAL、未切WiFi／清警示／撞擊、未commit／push；366g校正仍未完成。舊段落皆為歷史，不能以舊QC關閉新問題。
+
+> **2026-10-28 18:17 RMT候選正式建置中（工作中最新）**：實板仍為已QC的 `hxfail4-pcnt2m1`／session71F2BE52，USB供電保持、UNCAL、366g未校正；root正以單次有界零TX記錄COM3，18:10起窗目前已觀察ERR4→5。公開主韌體12檔已從專案外RMT候選整合為 `hxfail5-pcnt2m1-rmt1`，**此刻只是候選，尚未燒錄**；正進原FQBN／core3.3.12含本機設定正式編譯，工具／失敗匯出回歸及最後peer review尚未完成，不可把前版QC當新版已通。見[整合manifest](docs/calibration/20261028-rmt1-firmware-integration.json)、[RMT工作紀錄](docs/calibration/2026-10-28-rmt-diagnostic-session.md)。已部署PCNT2m1完整公開來源備份在 `C:/Users/tseng/Documents/Codex/pcnt2m1-deployed-20261028`，含manifest、不含秘密或build。COM3由root唯一持有；長窗控制與正常關閉方法在RMT工作紀錄，不可另開埠。後續僅待所有檢查與正式編譯成功才依授權核對MAC、燒錄、保存首boot並立即喚回Ampere新版QC。沒有TARE/CAL、清警示、WiFi切換、新實驗或commit/push。
+
+> **2026-10-28 17:43 DRAM修正已部署／RMT時序候選進行中（最新）**：依使用者本輪「修正逐框DRAM、編譯後自動燒錄QC、保持供電繼續診斷、原因釐清後CAL366，不用再詢問」授權，已部署 `hxfail4-pcnt2m1`，將40,960-byte逐框sidecar改為setup一次INTERNAL_8BIT heap全有或全無配置，原RAW／trial容量及25pulse迴圈不變。190 Node／111 native通；原FQBN／core3.3.12正式編譯成功（程式1,018,545、全域124,072 bytes），COM3正MAC與四區Hash校驗成功，保留download後單次RTS首次啟動並完整捕獲版本／session `71F2BE52`。配置ready1／40960 bytes、首連線後heap62912／largest59380／minimum59072；詳[來源與編譯](docs/calibration/20261028-pcnt2m1-source.json)、[部署](docs/calibration/20261028-pcnt2m1-deployment.json)、[session](docs/calibration/2026-10-28-pcnt2-memory-session.md)、[新版獨立QC](docs/quality/reports/2026-10-28-pcnt2m1-qc.md)。QC為**診斷用途條件通過，量測品質未通過**：真事件seq2376拒收FFFD7E／RAW−642／ERR0→1，當框有效SCK50／DATA8（條件模型6），hold有效SCK0／DATA2；另3個accepted框亦DATA+2，不能定根因或濾除RAW。兩RAW及兩sidecar各256列完全重疊，只有256唯一框，完整CRC與seq通。後續ERR1→2在缺口、17:36:06.396～07.404新增ERR2→3／LINK_ERR；17:38:59.058下一窗首筆已ERR4，相對17:36:07.404 ERR3屬未擷取缺口新增，ring已封存而無這些新事件逐框；未TARE／CAL。USB保持，COM3此刻由root執行有界零TX被動窗（勿同時開埠）；最新已完成窗174028正常關閉，正在收RMT設計期間資料。Gibbs／Kierkegaard／Ampere正於專案外 `C:/Users/tseng/Documents/Codex/rmt1-wip-20261028` 設計小型雙RMT RX duration候選，**尚未READY／正式編譯／燒錄／實板QC**，repo維持已部署PCNT2m1源碼。原四位ID均恢復失敗，已重建角色 `/root/gibbs`、`/root/kierkegaard`、`/root/planck`、`/root/ampere`；以collaboration子代理協作、非側欄聊天。尚未commit／push；秘密及建置產物仍不公開。下方較早「最新」均為歷史。
+
 > **2026-10-28 校正分析與 Git 交接（最新）**：實板仍為已燒錄並獨立 QC 的 `hxfail3-pcnt1`，維持 USB 供電、UNCAL、COM3 已釋放；366 g 校正未完成，HX 異常原因及量測品質仍未解。14:46 被動快照捕獲 RAW −1282；15:04–15:09 約 1 Hz 被動記錄中 ERR 由 3 變 5，兩次增量分別位於 15:06:02.629–03.635 與 15:06:36.764–37.767（台北），已封存的 ring 無這兩次逐框資料，不能推定原因。詳見[原文](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.serial.log)、[逐行時間](docs/calibration/20261028-hx711-pcnt-frame-design-passive-150900.lines.jsonl)及[校正整理](README.md)。每框候選 `hxfail4-pcnt2` 主機測試後正式連結因靜態 DRAM 超出 40,400 bytes 失敗，[公開編譯紀錄](docs/calibration/20261028-pcnt2-compile-failed.log)；未燒錄、未實板 QC，不能當成部署版。候選來源與測試已備份到本機專案外 `C:/Users/tseng/Documents/Codex/pcnt2-wip-20261028`，含雜湊清單；主程式及兩個 PCNT header 已按部署來源 SHA-256 恢復 PCNT1。 恢復版以原 FQBN 重新[編譯成功](docs/calibration/20261028-pcnt1-restored-compile.log)：程式 1,013,665 bytes、靜態記憶體 123,928 bytes；本輪未重燒。後續先釐清異常、驗證記憶體與完整 QC，再安排新 boot 的 TARE／CAL 及載卸驗證；勿套用先前 RAM 校正。依使用者要求封存公開資料，實際 commit／push 結果以 Git 紀錄與本次回覆為準；私密帳密與建置產物不提交。下方較早標「最新」的段落均為當時歷史。
 
 > **2026-10-28 14:46 新RAW尖峰（最新）**：每讀框PCNT設計期間，主代理在原PCNT1、ring已封存、保持UNCAL/USB供電下做5分鐘零TX被動快照：[原文](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.serial.log)、[逐行時間](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.lines.jsonl)、[host](docs/calibration/20261028-hx711-pcnt-frame-design-passive-145034.host.json)。14:46:30.283 RAW−164000/RX26491→14:46:31.285 −1282/RX26498→14:46:32.285 −164028/RX26508，ERR3/HX OK；兩鄰算術右移7位皆−1282僅候選，不能定根因/還原原字。ring已封存，該筆沒有逐框或PCNT資料；299快照／ERR3/FIFO3持平不代表全框正常。獨立QC及文件正核對；每框sidecar仍未READY/編譯/燒錄，後續須依AGENTS完成主機測試、正式編譯、正確目標燒錄及立刻新版QC。裝置UNCAL、COM3已釋放、USB持續供電，366g校正未完成，未commit/push。

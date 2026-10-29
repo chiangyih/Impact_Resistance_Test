@@ -1,0 +1,12 @@
+{
+  "schema": "rmt2-preflight-final-public-v1",
+  "source_path": "C:/Users/tseng/Documents/Codex/rmt2-wip-20261028/preflight-review.md",
+  "source_sha256": "02F27A6FA051CE395C851F0B113418F8C63E114AE4A4DADAB9A892D3B4926F26",
+  "public_sha256": "02F27A6FA051CE395C851F0B113418F8C63E114AE4A4DADAB9A892D3B4926F26",
+  "public_secret_scan": true,
+  "redacted": false,
+  "earlier_public_copy": "20261028-rmt2-preflight-review.md",
+  "earlier_copy_retained_as_historical": true,
+  "firmware_tools_tests_unchanged": true,
+  "interpretation": "Later preflight prose resolves former PF2-10; hardware QC remains separate"
+}

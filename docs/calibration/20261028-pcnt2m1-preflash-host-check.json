@@ -1,0 +1,77 @@
+{
+  "schema": "pcnt2m1-preflash-host-guard-v1",
+  "port": "COM3",
+  "device": {
+    "Name": "USB-SERIAL CH340 (COM3)",
+    "DeviceID": "USB\\VID_1A86&PID_7523\\6&2BCCCFA4&0&1",
+    "Status": "OK"
+  },
+  "source_capture": "20261028-hx711-before-per-read-flash-172352",
+  "complete_status_records": [
+    {
+      "line_no": 177,
+      "byte_offset": 29304,
+      "host_line_completed_at_utc": "2026-10-28T09:23:50.851Z",
+      "monotonic_elapsed_ms": 88572.8015,
+      "raw_line": "# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164372 RX=112887 ERR=12 AGE_ms=147 ADXL=OK AERR=0 FIFO_FULL=3 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2",
+      "fields": {
+        "phase": "IDLE",
+        "reason": "NONE",
+        "CAL": "UNCAL",
+        "HX": "OK",
+        "RAW": "-164372",
+        "RX": "112887",
+        "ERR": "12",
+        "AGE_ms": "147",
+        "ADXL": "OK",
+        "AERR": "0",
+        "FIFO_FULL": "3",
+        "UP": "0",
+        "DN": "0",
+        "POL": "-1/-1",
+        "DIST_mm": "220.000",
+        "OLED": "0x3C",
+        "SCK": "25",
+        "DATA": "33",
+        "RGB": "32:OFF_REQ",
+        "LAYOUT": "2"
+      }
+    },
+    {
+      "line_no": 179,
+      "byte_offset": 29637,
+      "host_line_completed_at_utc": "2026-10-28T09:23:51.854Z",
+      "monotonic_elapsed_ms": 89576.3218,
+      "raw_line": "# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164234 RX=112896 ERR=12 AGE_ms=137 ADXL=OK AERR=0 FIFO_FULL=3 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2",
+      "fields": {
+        "phase": "IDLE",
+        "reason": "NONE",
+        "CAL": "UNCAL",
+        "HX": "OK",
+        "RAW": "-164234",
+        "RX": "112896",
+        "ERR": "12",
+        "AGE_ms": "137",
+        "ADXL": "OK",
+        "AERR": "0",
+        "FIFO_FULL": "3",
+        "UP": "0",
+        "DN": "0",
+        "POL": "-1/-1",
+        "DIST_mm": "220.000",
+        "OLED": "0x3C",
+        "SCK": "25",
+        "DATA": "33",
+        "RGB": "32:OFF_REQ",
+        "LAYOUT": "2"
+      }
+    }
+  ],
+  "guard_passed": true,
+  "guard_preceded_identity": true,
+  "incomplete_tail_excluded": true,
+  "capture_close_confirmed": true,
+  "identity_public_log": "20261028-pcnt2m1-identity.log",
+  "operator": "root",
+  "usb_power_intentionally_maintained": true
+}

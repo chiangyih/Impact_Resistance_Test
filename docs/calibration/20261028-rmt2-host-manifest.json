@@ -1,0 +1,214 @@
+{
+  "schema": "rmt2-public-candidate-v1",
+  "date": "2026-10-28",
+  "version": "v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt2",
+  "firmware_source_sha256": {
+    "05-test/05-test.ino": "7CB1846E85E6C22002C9AED507E156BEE1CAF8A098266C101497A771715B4485",
+    "05-test/hx_attempt_pcnt.h": "A3827EC6C630EBE1B896B41D84FDC1E49425A46C598D6CEF49EEFD11D1049E3D",
+    "05-test/hx_attempt_storage.h": "9125DDDCCBA233D278ECCED2D8AFE7C2A4326CB1DFC72BEC89ADC3F36D4FABD8",
+    "05-test/hx_failure_diag.h": "F210D64AC515A903354CC056CDD1D7670DFD44CCC217F5413A944241D872E818",
+    "05-test/hx_pcnt_adapter.h": "556FD51CDB72D4E8469D6234B457A654EFE7E95E805424622BEB30E927E24ADF",
+    "05-test/hx_pcnt_diag.h": "276CB3C7FCE9510777C17FEB3CA4C77D2E7A37987508C85D947B56EA64ECF5DE",
+    "05-test/hx_read_diag.h": "A488BA5FA1149123B8CA55592E0048AED23642E486DD462E802453C875090864",
+    "05-test/hx_rmt_adapter.h": "B2C5817B75D9558790CC965D83AFC3459D243B0F1DB8E098C95A3E9B336185D9",
+    "05-test/hx_rmt_diag.h": "F9275D20E6F1ACC943A4BF87CC3721D45DF421389BFBCFD7F2E4F306677918DE",
+    "05-test/manual_optical.h": "71782ABCDFD85C74DC2D5B7EB3BED7645B9A8E80394969A864854B1FEFF254B1",
+    "05-test/network_wifi.h": "53F1C85E2E25010F4852C69828D805F968F5231976CC7CC7BFD9B5C5C244615F",
+    "05-test/wifi_secrets.example.h": "8282542D2202CDF116A49F554494B53646F3B29319DD2D6268B08C65FDDCA9C7"
+  },
+  "root_final_compile_source_manifest": "docs/calibration/20261028-rmt2-source.json",
+  "root_source_hashes_checked": 12,
+  "root_source_hash_mismatches": [],
+  "tools_and_tests_to_sync": [
+    {
+      "path": "tools/hx-capture-diagnostic.cjs",
+      "sha256": "3EA432ED9E3FA33A4D3F087FD0AAF7CA779A8F3F808054AE0200DB9439942BCC",
+      "bytes": 7416
+    },
+    {
+      "path": "tools/hx-failure-diagnostic.cjs",
+      "sha256": "A738F42598F6FDA86145C5BD8CE1C1CD1853EC4C7ECF5BC6AAA7FFFC40CD207A",
+      "bytes": 9216
+    },
+    {
+      "path": "tools/hx-rmt-diagnostic.cjs",
+      "sha256": "9C3E4210CC7918B697426DD8F327990AFA20517646D389F0EC3A9BC07C09F1E9",
+      "bytes": 13229
+    },
+    {
+      "path": "tests/05-hx-attempt-integration.test.cjs",
+      "sha256": "9AA497DAC176FCE7EB12063C3E07EDEAF5E5AD8BF00455FFCEAAD9CC4FFA73A2",
+      "bytes": 4572
+    },
+    {
+      "path": "tests/05-hx-pcnt-adapter.native.cpp",
+      "sha256": "0AA90C3313F4621BCA53C36CAD65CDEF3EE589C6CC02F381A0C27DFF239E31BF",
+      "bytes": 11621
+    },
+    {
+      "path": "tests/05-hx-pcnt-integration.test.cjs",
+      "sha256": "B269EB6366E4DCEF7D156DAC2103E6DD74A3B959AF20E98678085FB9A80CBE3F",
+      "bytes": 3025
+    },
+    {
+      "path": "tests/05-hx-rmt-adapter.native.cpp",
+      "sha256": "F6381803EB700E17BD80EE4D54FF419B9291D0D360DDC594A8EE2BA4F43B1ACB",
+      "bytes": 11345
+    },
+    {
+      "path": "tests/05-hx-rmt-integration.test.cjs",
+      "sha256": "E1ACCA4B3E709A0F31443D90B3BBC479F56F7000C8DA0AB6EE4AD214969D603D",
+      "bytes": 2911
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-adapter-native-synthetic.log",
+      "sha256": "C6BCBC2874A5CA9DA9F211F31034B8DD74DA7FA64F6F6F83449C938185543FAE",
+      "bytes": 107502
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-deadline-native-synthetic.log",
+      "sha256": "5D5C557741A0052F4C3D951F1E1D78EACB9FAD4C20162129C75FC070C1FBA482",
+      "bytes": 32930
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-degraded-native-synthetic.log",
+      "sha256": "4741A5392E9C89A1ED860754958E149A486A950FBEDEB797DF32252544213FB3",
+      "bytes": 160269
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-native-synthetic.log",
+      "sha256": "043D517F1BFD1D87681BE9983FFFA27C1D96A24B4556C1A83D7351571D4AE924",
+      "bytes": 109079
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-roles-native-synthetic.log",
+      "sha256": "3995839ABA24F6D410DFBFAF446651F510EC0D0EF7C2A1F6BFAEA5386C53ACBA",
+      "bytes": 505734
+    },
+    {
+      "path": "tests/fixtures/hx-rmt2-unavailable-native-synthetic.log",
+      "sha256": "EF65A02F0A514BD73C64BCCC78974DCD4B2A82148CCF3B48788857707070FD92",
+      "bytes": 109079
+    },
+    {
+      "path": "tests/hx-dual-diagnostic.test.cjs",
+      "sha256": "18D020FE29C83CA5DA8B78D79CE3401535C10CC26CEF2D17F45FDCAE471ED8E2",
+      "bytes": 8115
+    },
+    {
+      "path": "tests/hx-failure-diagnostic.test.cjs",
+      "sha256": "D8838667F3FAEC9808FBBC9E6EC8703E160C5D7CDF92A4AADCC4AB00BA89C5B9",
+      "bytes": 7879
+    },
+    {
+      "path": "tests/hx-rmt-diagnostic.test.cjs",
+      "sha256": "8A5800BA3F20BB8169B1101E5E4ACB32846E198005E5C94340F29099BDA9D816",
+      "bytes": 7796
+    },
+    {
+      "path": "tests/hx-rmt2-proof-pair.test.cjs",
+      "sha256": "C72F0B54B0B2962E33295EFCA9B7ACE6EA5B9EEDC845F3A7567EBE2D1DE29575",
+      "bytes": 10574
+    },
+    {
+      "path": "tests/prepare-hx-attempt-native-export.cjs",
+      "sha256": "A4D652B24509A949AE3F4F341409851B7FC1EDBDF7CD25349444D57C6CB191FF",
+      "bytes": 6464
+    },
+    {
+      "path": "tests/prepare-hx-rmt-adapter-export.cjs",
+      "sha256": "10339A35E4A2BD44ADBD00138327FC9486876FCA7BD7AA037F9C5369CF770C60",
+      "bytes": 3219
+    },
+    {
+      "path": "tests/prepare-hx-rmt-native-export.cjs",
+      "sha256": "C7B45EEF2F35209DDC462BA83D2DF819004F045C2982EF384916FD28E7035402",
+      "bytes": 8128
+    },
+    {
+      "path": "tests/prepare-hx-rmt2-adapter-export.cjs",
+      "sha256": "508366DEF20932276B2CA5D2EE1037F1917C86EF5A284D23A04CADC82AE637AD",
+      "bytes": 3665
+    },
+    {
+      "path": "tests/prepare-hx-rmt2-deadline-export.cjs",
+      "sha256": "743A752E68F020D7859AC252A06C119B0601BA82C7D5ECB2080299A26436B63A",
+      "bytes": 3657
+    },
+    {
+      "path": "tests/prepare-hx-rmt2-native-export.cjs",
+      "sha256": "7491F8C309B5F7DE5714DA16DDFF5BD367F9EDD9666B6366056EFA4CAC8058BA",
+      "bytes": 9124
+    }
+  ],
+  "legacy_fixtures": [
+    {
+      "path": "tests/fixtures/hx-attempt-degraded-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-attempt-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-pcnt-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-rmt-adapter-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-rmt-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-rmt-sidecar-degraded-native-synthetic.log",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/hx-rmt-unavailable-native-synthetic.log",
+      "unchanged": true
+    }
+  ],
+  "validation": {
+    "node_runner_tests": 193,
+    "node_runner_passed": 193,
+    "native_cases": 148,
+    "native_actual_pcnt_cases": 33,
+    "native_actual_rmt_cases": 36,
+    "native_compiler": "Visual Studio 18 cl /utf-8 /std:c++17 /EHsc /W4 /wd4505",
+    "unused_static_C4505_suppressed": true,
+    "new_RMT2_parser_semantic_mutation_groups": 17,
+    "actual_complete_export_paths": 10,
+    "actual_complete_export_profiles": [
+      "normal_7GOOD_1BAD",
+      "sidecar_failure2",
+      "sidecar_failure3",
+      "sidecar_failure4",
+      "RMT_heap_unavailable",
+      "all_GOOD",
+      "all_BAD_first_bad0",
+      "LINK_equals_BAD",
+      "BAD_before_GOOD_global_ready0",
+      "no_LINK_600s_expiry"
+    ],
+    "actual_adapter_paired_PCTABLE_RMT_export_modes": 10,
+    "actual_adapter_repeated_full_pair_byte_identical": true,
+    "actual_original_PCTABLE_RMT_RAW_Observe_deadline_complete_exports": 2,
+    "deadline_omission_requires_numeric_deadline_and_all_ledgers": true,
+    "normal_full_export_function_sha256": "731FD92965D803B51343941164234E465DD6BB9AB6B03763DBD4A599089D3AFD",
+    "adapter_export_function_sha256": "3F2F70A5DD7222F95AB71F3B1F2B08F74ACC07DFA47E562D240553000354AF03",
+    "original_25pulse_source_LF_sha256": "b00c0e5bbe74c37ca753ff248a1d03dba79a0c01d6e21f547a0864412eb55bb5",
+    "original_25pulse_plus_postcheck_LF_sha256": "08DFA86D6B694564C4227F9CCE3ABEB51607CC9763BCA848B3BCAF9052BA8E32",
+    "device_validation": false,
+    "device_operations": false,
+    "credentials_read": false
+  },
+  "evidence": [
+    "docs/host-node-tests.log",
+    "docs/host-native-tests.log",
+    "docs/proof-pair-contract.md",
+    "preflight-review.md"
+  ]
+}

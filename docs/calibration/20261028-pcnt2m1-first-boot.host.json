@@ -1,0 +1,682 @@
+{
+  "schema": "verified-flash-first-application-boot-v1",
+  "port": "COM3",
+  "usb_power_intentionally_maintained": true,
+  "opened": true,
+  "reset_asserted": true,
+  "reset_released": true,
+  "port_closed": true,
+  "device_commands_sent": [],
+  "bytes": 9083,
+  "failure": null,
+  "events": [
+    {
+      "action": "CONFIG_BEFORE_OPEN",
+      "host_utc": "2026-10-28T09:26:01.8890257Z",
+      "monotonic_ms": 21.0991,
+      "handshake": "none",
+      "parity": "none",
+      "dtr": false,
+      "stop_bits": 1,
+      "bits": 8,
+      "rts": false,
+      "port": "COM3",
+      "baud": 115200
+    },
+    {
+      "action": "OPEN_IN_DOWNLOAD_MODE",
+      "host_utc": "2026-10-28T09:26:01.9051762Z",
+      "monotonic_ms": 33.0238
+    },
+    {
+      "action": "RTS_ASSERT_FIRST_APPLICATION_BOOT",
+      "host_utc": "2026-10-28T09:26:01.9057017Z",
+      "monotonic_ms": 33.7309,
+      "dtr": false,
+      "rts": true
+    },
+    {
+      "action": "RTS_RELEASE_FIRST_APPLICATION_BOOT",
+      "host_utc": "2026-10-28T09:26:02.1134157Z",
+      "monotonic_ms": 241.68640000000002,
+      "dtr": false,
+      "rts": false
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:02.1588967Z",
+      "monotonic_ms": 287.4042,
+      "offset": 0,
+      "length": 304
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:02.5684701Z",
+      "monotonic_ms": 696.8818,
+      "offset": 304,
+      "length": 84
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0015348Z",
+      "monotonic_ms": 1129.5211000000002,
+      "offset": 388,
+      "length": 151
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0167506Z",
+      "monotonic_ms": 1145.1589000000001,
+      "offset": 539,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0323631Z",
+      "monotonic_ms": 1160.421,
+      "offset": 731,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0323631Z",
+      "monotonic_ms": 1160.9344,
+      "offset": 891,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0486333Z",
+      "monotonic_ms": 1176.7944,
+      "offset": 923,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0496487Z",
+      "monotonic_ms": 1177.7766000000001,
+      "offset": 1083,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0633196Z",
+      "monotonic_ms": 1191.3255000000001,
+      "offset": 1115,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0642995Z",
+      "monotonic_ms": 1192.2066,
+      "offset": 1243,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0777950Z",
+      "monotonic_ms": 1206.4691,
+      "offset": 1275,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.0943695Z",
+      "monotonic_ms": 1222.3765,
+      "offset": 1435,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.1098970Z",
+      "monotonic_ms": 1238.5578,
+      "offset": 1627,
+      "length": 64
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.2529642Z",
+      "monotonic_ms": 1381.1923000000002,
+      "offset": 1691,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.2539572Z",
+      "monotonic_ms": 1382.0115,
+      "offset": 1851,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.2668577Z",
+      "monotonic_ms": 1395.2082,
+      "offset": 1883,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.2813255Z",
+      "monotonic_ms": 1409.6041,
+      "offset": 2043,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.2969851Z",
+      "monotonic_ms": 1425.1163000000001,
+      "offset": 2203,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.3123989Z",
+      "monotonic_ms": 1440.4679,
+      "offset": 2395,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.3123989Z",
+      "monotonic_ms": 1440.7247,
+      "offset": 2555,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.3283206Z",
+      "monotonic_ms": 1456.3884,
+      "offset": 2587,
+      "length": 97
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.4527061Z",
+      "monotonic_ms": 1581.0608,
+      "offset": 2684,
+      "length": 57
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.5752019Z",
+      "monotonic_ms": 1703.373,
+      "offset": 2741,
+      "length": 64
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.5906916Z",
+      "monotonic_ms": 1718.8926000000001,
+      "offset": 2805,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:03.6056677Z",
+      "monotonic_ms": 1733.7785000000001,
+      "offset": 2997,
+      "length": 61
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:04.5891070Z",
+      "monotonic_ms": 2717.0004000000004,
+      "offset": 3058,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:04.5901055Z",
+      "monotonic_ms": 2718.0339,
+      "offset": 3218,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:04.6042158Z",
+      "monotonic_ms": 2732.6069,
+      "offset": 3250,
+      "length": 126
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:05.5849706Z",
+      "monotonic_ms": 3713.5819,
+      "offset": 3376,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:05.5871765Z",
+      "monotonic_ms": 3716.0308,
+      "offset": 3408,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:05.5887265Z",
+      "monotonic_ms": 3716.4911,
+      "offset": 3440,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:05.6148754Z",
+      "monotonic_ms": 3743.2311,
+      "offset": 3472,
+      "length": 222
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:05.6475109Z",
+      "monotonic_ms": 3775.2844,
+      "offset": 3694,
+      "length": 133
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:06.5964068Z",
+      "monotonic_ms": 4724.6212000000005,
+      "offset": 3827,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:06.5964068Z",
+      "monotonic_ms": 4724.8586000000005,
+      "offset": 3955,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:06.6116205Z",
+      "monotonic_ms": 4739.6898,
+      "offset": 3987,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:06.6286643Z",
+      "monotonic_ms": 4756.7883,
+      "offset": 4147,
+      "length": 8
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:07.5978694Z",
+      "monotonic_ms": 5725.620400000001,
+      "offset": 4155,
+      "length": 96
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:07.5988701Z",
+      "monotonic_ms": 5726.5812000000005,
+      "offset": 4251,
+      "length": 1
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:07.5998747Z",
+      "monotonic_ms": 5727.6628,
+      "offset": 4252,
+      "length": 31
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:07.6168593Z",
+      "monotonic_ms": 5744.558,
+      "offset": 4283,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:07.6168593Z",
+      "monotonic_ms": 5744.803,
+      "offset": 4475,
+      "length": 8
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:08.6060801Z",
+      "monotonic_ms": 6733.8455,
+      "offset": 4483,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:08.6060801Z",
+      "monotonic_ms": 6734.6884,
+      "offset": 4611,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:08.6218066Z",
+      "monotonic_ms": 6749.5105,
+      "offset": 4643,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:08.6218066Z",
+      "monotonic_ms": 6750.0521,
+      "offset": 4803,
+      "length": 8
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:09.6044078Z",
+      "monotonic_ms": 7732.9637,
+      "offset": 4811,
+      "length": 64
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:09.6069169Z",
+      "monotonic_ms": 7734.6354,
+      "offset": 4875,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:09.6069169Z",
+      "monotonic_ms": 7734.837500000001,
+      "offset": 4907,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:09.6190407Z",
+      "monotonic_ms": 7746.9973,
+      "offset": 4939,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:09.6356013Z",
+      "monotonic_ms": 7763.5006,
+      "offset": 5067,
+      "length": 72
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:10.6298291Z",
+      "monotonic_ms": 8757.5556,
+      "offset": 5139,
+      "length": 328
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:11.6181690Z",
+      "monotonic_ms": 9746.724,
+      "offset": 5467,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:11.6327245Z",
+      "monotonic_ms": 9761.1983,
+      "offset": 5659,
+      "length": 136
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:12.6130165Z",
+      "monotonic_ms": 10741.735700000001,
+      "offset": 5795,
+      "length": 96
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:12.6270939Z",
+      "monotonic_ms": 10755.5363,
+      "offset": 5891,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:12.6436534Z",
+      "monotonic_ms": 10772.3075,
+      "offset": 6051,
+      "length": 72
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:13.6225878Z",
+      "monotonic_ms": 11751.1594,
+      "offset": 6123,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:13.6381681Z",
+      "monotonic_ms": 11766.7358,
+      "offset": 6251,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:13.6390787Z",
+      "monotonic_ms": 11767.676000000001,
+      "offset": 6411,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:13.6401560Z",
+      "monotonic_ms": 11768.322600000001,
+      "offset": 6443,
+      "length": 8
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:14.6219646Z",
+      "monotonic_ms": 12749.6838,
+      "offset": 6451,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:14.6373171Z",
+      "monotonic_ms": 12765.7466,
+      "offset": 6483,
+      "length": 192
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:14.6528045Z",
+      "monotonic_ms": 12780.9393,
+      "offset": 6675,
+      "length": 105
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:15.6296120Z",
+      "monotonic_ms": 13757.795100000001,
+      "offset": 6780,
+      "length": 96
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:15.6451670Z",
+      "monotonic_ms": 13773.3268,
+      "offset": 6876,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:15.6607974Z",
+      "monotonic_ms": 13789.3575,
+      "offset": 7036,
+      "length": 73
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:16.6291029Z",
+      "monotonic_ms": 14757.828000000001,
+      "offset": 7109,
+      "length": 64
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:16.6598038Z",
+      "monotonic_ms": 14788.0251,
+      "offset": 7173,
+      "length": 265
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:17.6364413Z",
+      "monotonic_ms": 15765.009100000001,
+      "offset": 7438,
+      "length": 64
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:17.6384433Z",
+      "monotonic_ms": 15766.6767,
+      "offset": 7502,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:17.6395186Z",
+      "monotonic_ms": 15768.026000000002,
+      "offset": 7534,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:17.6646363Z",
+      "monotonic_ms": 15794.5244,
+      "offset": 7566,
+      "length": 201
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:18.6443601Z",
+      "monotonic_ms": 16772.5886,
+      "offset": 7767,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:18.6443601Z",
+      "monotonic_ms": 16772.827400000002,
+      "offset": 7895,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:18.6598201Z",
+      "monotonic_ms": 16787.8888,
+      "offset": 7927,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:18.6753380Z",
+      "monotonic_ms": 16803.5433,
+      "offset": 8087,
+      "length": 9
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:19.6421688Z",
+      "monotonic_ms": 17770.2398,
+      "offset": 8096,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:19.6442005Z",
+      "monotonic_ms": 17772.4281,
+      "offset": 8128,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:19.6451645Z",
+      "monotonic_ms": 17773.4843,
+      "offset": 8160,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:19.6712508Z",
+      "monotonic_ms": 17799.6512,
+      "offset": 8192,
+      "length": 233
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:20.6491064Z",
+      "monotonic_ms": 18777.3164,
+      "offset": 8425,
+      "length": 160
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:20.6659415Z",
+      "monotonic_ms": 18793.6235,
+      "offset": 8585,
+      "length": 169
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:21.6506216Z",
+      "monotonic_ms": 19779.626,
+      "offset": 8754,
+      "length": 96
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:21.6520968Z",
+      "monotonic_ms": 19779.8741,
+      "offset": 8850,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:21.6646018Z",
+      "monotonic_ms": 19793.187,
+      "offset": 8882,
+      "length": 128
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:21.6666003Z",
+      "monotonic_ms": 19794.7166,
+      "offset": 9010,
+      "length": 32
+    },
+    {
+      "action": "RX_CHUNK",
+      "host_utc": "2026-10-28T09:26:21.6799476Z",
+      "monotonic_ms": 19808.331700000002,
+      "offset": 9042,
+      "length": 41
+    },
+    {
+      "action": "CAPTURE_END",
+      "host_utc": "2026-10-28T09:26:21.8814378Z",
+      "monotonic_ms": 20009.699200000003,
+      "bytes": 9083
+    },
+    {
+      "action": "CLOSE",
+      "host_utc": "2026-10-28T09:26:21.8879220Z",
+      "monotonic_ms": 20016.1643
+    }
+  ],
+  "private_raw_directory": "C:\\Users\\tseng\\AppData\\Local\\Temp\\irt-pcnt2m1-first-boot-20261028",
+  "public_secret_scan": true,
+  "public_redacted": false,
+  "public_serial_log": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-pcnt2m1-first-boot.serial.log",
+  "public_lines_jsonl": "C:\\Users\\tseng\\Documents\\Codex\\esp32撞擊測試\\docs\\calibration\\20261028-pcnt2m1-first-boot.lines.jsonl",
+  "complete_lines": 64,
+  "trailing_incomplete_bytes": 0,
+  "public_serial_sha256": "53779406C608DA68E1FDD82F8CA2583F4A06FD7110FFDD8094E46EB8DD9AA9BE",
+  "line_times_are_host_receipt_not_adc_conversion": true
+}

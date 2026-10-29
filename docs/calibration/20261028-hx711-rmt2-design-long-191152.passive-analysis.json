@@ -1,0 +1,108 @@
+{
+  "schema": "passive-evidence-summary-v1",
+  "serial_sha256": "8D91A3109947092FDDE940B03CEC8D602CFC1D35DB326AB08BD63BEF2E5EB3B4",
+  "bytes": 91418,
+  "complete_lines": 552,
+  "tail_bytes": 128,
+  "statuses": 276,
+  "distinct_rx": 276,
+  "first": {
+    "utc": "2026-10-28T11:07:15.595Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "OK",
+    "RAW": "-164570",
+    "RX": "20443",
+    "ERR": "3",
+    "AGE_ms": "198",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "last": {
+    "utc": "2026-10-28T11:11:51.743Z",
+    "phase": "IDLE",
+    "reason": "NONE",
+    "CAL": "UNCAL",
+    "HX": "LINK_ERR",
+    "RAW": "-164585",
+    "RX": "22974",
+    "ERR": "6",
+    "AGE_ms": "198",
+    "ADXL": "OK",
+    "AERR": "0",
+    "FIFO_FULL": "5",
+    "UP": "0",
+    "DN": "0",
+    "POL": "-1/-1",
+    "DIST_mm": "220.000",
+    "OLED": "0x3C",
+    "SCK": "25",
+    "DATA": "33",
+    "RGB": "32:OFF_REQ",
+    "LAYOUT": "2"
+  },
+  "raw": {
+    "n": 276,
+    "min": -164684,
+    "max": -164417,
+    "mean": -164540.7427536232
+  },
+  "phase_values": [
+    "IDLE"
+  ],
+  "cal_values": [
+    "UNCAL"
+  ],
+  "hx_values": [
+    "OK",
+    "LINK_ERR"
+  ],
+  "err_changes": [
+    {
+      "before_utc": "2026-10-28T11:09:53.253Z",
+      "after_utc": "2026-10-28T11:09:54.258Z",
+      "before": "3",
+      "after": "4",
+      "rx": "21887",
+      "hx": "OK"
+    },
+    {
+      "before_utc": "2026-10-28T11:11:14.590Z",
+      "after_utc": "2026-10-28T11:11:15.593Z",
+      "before": "4",
+      "after": "5",
+      "rx": "22637",
+      "hx": "OK"
+    },
+    {
+      "before_utc": "2026-10-28T11:11:50.741Z",
+      "after_utc": "2026-10-28T11:11:51.743Z",
+      "before": "5",
+      "after": "6",
+      "rx": "22974",
+      "hx": "LINK_ERR"
+    }
+  ],
+  "fifo_changes": [],
+  "close_confirmed": true,
+  "quit_confirmed": true,
+  "process_exit": {
+    "code": 0,
+    "signal": null
+  },
+  "failure": "Unexpected device state; passive recording stopped",
+  "physical_load_unverified": true,
+  "status_not_every_adc_frame": true,
+  "raw_line_offset_sha_verified": true
+}

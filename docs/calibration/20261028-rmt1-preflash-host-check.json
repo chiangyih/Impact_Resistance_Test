@@ -1,0 +1,73 @@
+{
+  "schema": "rmt1-preflash-guard-v1",
+  "source_capture": "docs/calibration/20261028-hx711-pcnt2m1-preflash-guard-182756",
+  "device": {
+    "Name": "USB-SERIAL CH340 (COM3)",
+    "DeviceID": "USB\\VID_1A86&PID_7523\\6&2BCCCFA4&0&1",
+    "Status": "OK"
+  },
+  "complete_status_records": [
+    {
+      "line_no": 9,
+      "byte_offset": 1320,
+      "host_line_completed_at_utc": "2026-10-28T10:27:55.045Z",
+      "monotonic_elapsed_ms": 4894.1409,
+      "raw_line": "# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164415 RX=34505 ERR=5 AGE_ms=16 ADXL=OK AERR=0 FIFO_FULL=4 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2",
+      "fields": {
+        "phase": "IDLE",
+        "reason": "NONE",
+        "CAL": "UNCAL",
+        "HX": "OK",
+        "RAW": "-164415",
+        "RX": "34505",
+        "ERR": "5",
+        "AGE_ms": "16",
+        "ADXL": "OK",
+        "AERR": "0",
+        "FIFO_FULL": "4",
+        "UP": "0",
+        "DN": "0",
+        "POL": "-1/-1",
+        "DIST_mm": "220.000",
+        "OLED": "0x3C",
+        "SCK": "25",
+        "DATA": "33",
+        "RGB": "32:OFF_REQ",
+        "LAYOUT": "2"
+      }
+    },
+    {
+      "line_no": 11,
+      "byte_offset": 1650,
+      "host_line_completed_at_utc": "2026-10-28T10:27:56.05Z",
+      "monotonic_elapsed_ms": 5898.2749,
+      "raw_line": "# STATUS phase=IDLE reason=NONE CAL=UNCAL HX=OK RAW=-164377 RX=34515 ERR=5 AGE_ms=16 ADXL=OK AERR=0 FIFO_FULL=4 UP=0 DN=0 POL=-1/-1 DIST_mm=220.000 OLED=0x3C SCK=25 DATA=33 RGB=32:OFF_REQ LAYOUT=2",
+      "fields": {
+        "phase": "IDLE",
+        "reason": "NONE",
+        "CAL": "UNCAL",
+        "HX": "OK",
+        "RAW": "-164377",
+        "RX": "34515",
+        "ERR": "5",
+        "AGE_ms": "16",
+        "ADXL": "OK",
+        "AERR": "0",
+        "FIFO_FULL": "4",
+        "UP": "0",
+        "DN": "0",
+        "POL": "-1/-1",
+        "DIST_mm": "220.000",
+        "OLED": "0x3C",
+        "SCK": "25",
+        "DATA": "33",
+        "RGB": "32:OFF_REQ",
+        "LAYOUT": "2"
+      }
+    }
+  ],
+  "closed": true,
+  "guard_passed": true,
+  "operator": "root",
+  "usb_power_intentionally_maintained": true
+}
