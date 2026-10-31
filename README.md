@@ -2,7 +2,7 @@
 
 本專案以 ESP32／NMK99v1、光學感測器、ADXL375 加速度計及 HX711 荷重元介面，建立落下撞擊研究平台，未來用來比較 EVA、STF、三浦摺疊及其他緩衝配置。資料可用於研究材料損傷、傳遞負荷、變形與受保護物的反應；正式比較仍需完成量測鏈驗證與試驗規格。
 
-> **目前階段：診斷與驗證。** 最近實板證據截至 2026-10-28 19:50（台北）；HX 異常原因未明，366 g 校正未完成，量測品質尚未通過。已部署與測得的結果不代表材料或保護效果已驗收。
+> **目前階段：診斷、分階段 Dashboard 建置與燒錄前驗證。** 最近實板證據截至 2026-10-28 19:50（台北）；HX 異常原因未明，366 g 校正未完成，量測品質尚未通過。2026-10-31 的 `gateiram1` 韌體已完成本機與燒錄前 QC，但尚未燒錄；Cloudflare、Apps Script、ESP32 Wi‑Fi 真資料仍未部署或接通。任何已部署或測得的結果都不代表材料或保護效果已驗收。
 
 ## 從哪裡開始
 
@@ -24,14 +24,14 @@
 | 韌體與 QC | 2026-10-28 RMT2 版完成編譯及目標裝置四區寫入校驗；部署、首次啟動、限定唯讀及封存匯出子項通過 | 診斷用途僅條件通過，GOOD RMT 形狀一致性子項及量測品質未通過；[完整 QC](docs/quality/reports/2026-10-28-rmt2-qc.md) 分列未測與限制 |
 | HX711 與校正 | 可保存 RAW 與診斷資料；已有異常讀值、ERR 與逐框觀察證據 | 根因未定位；本次診斷 boot 為 `UNCAL`，366 g 校正、回零及獨立準確度尚未完成。歷次 RAM 校正不可跨重啟套用 |
 | ADXL375 | 近期資料更新及部分診斷可讀 | FIFO 累計警示、取樣完整性與動態響應尚待驗證；累計警示不是已知遺失筆數 |
-| 光學 | 使用者回報間距 220 mm；單次手動上、下通過結果為 1,153.289 ms，換算約 0.1908 m/s，與顯示一致 | 距離不確定度、速度準確度及重複性未驗證；此為兩點間平均速度 |
-| WiFi 與雲端 | 既有韌體可在待機時連線；上次 QC 窗曾取得 IP | 現版 `ARM`、校正及手動 `SPEED` 前會停用 WiFi；Google Sheets 上傳與量測期間保持連線仍是[架構提案](handoff.md)，尚未實作 |
+| 光學 | 使用者回報間距 220 mm；單次手動上、下通過結果為 1,153.289 ms，換算約 0.1908 m/s，與顯示一致；`gateiram1` 的中斷註冊失敗會先拒絕量測 | 沒有邏輯分析儀或雙通道示波器；距離不確定度、實際 dt 誤差、短脈衝漏接、近同時事件順序及 Wi‑Fi 時序影響未驗證；光學 P1 未解除 |
+| WiFi、Dashboard 與雲端 | GitHub Pages 已有公開 synthetic 示範；Cloudflare Free 的 source-off、history、live 及同 SQLite 升版候選已完成本機測試；Google Sheets／Drive 來源維持私人 | Cloudflare 尚未部署，Apps Script publisher 尚未安裝／授權，ESP32 真 Wi‑Fi endpoint、裝置註冊與量測期間持續連線尚未完成；正式網站仍未接真資料 |
 
-已部署完整版本為 `v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt2`，首 boot session `437B6829`。先前 PCNT2 連結因 DRAM 超額失敗，後續調整記憶體配置並部署 RMT2；各階段不能混為同一結果。來源、編譯及部署紀錄見 [RMT2 證據](docs/calibration/2026-10-28-rmt2-proof-session.md)。
+已部署完整版本為 `v1-layout2-fifo-diag1-wifi1-d220-right-optical1-hxread1-hxfail5-pcnt2m1-rmt2`，首 boot session `437B6829`。先前 PCNT2 連結因 DRAM 超額失敗，後續調整記憶體配置並部署 RMT2；各階段不能混為同一結果。2026-10-31 的 `gateiram1` 是後續燒錄前候選：OFF 與完整假設定 ON 均可編譯，主機／native／live／upload 檢查通過，但假設定映像禁止燒錄，尚無新版實板 QC。來源、編譯及部署紀錄見 [RMT2 證據](docs/calibration/2026-10-28-rmt2-proof-session.md) 與 [交接紀錄](handoff.md)。
 
 最後一次擷取完成後 COM3 已關閉並釋放，USB 當時保持連接；這是歷史紀錄，實際現況須另行確認。本次文件整理不操作裝置。
 
-## 系統與資料流程
+## Dashboard 與資料流程
 
 ```mermaid
 flowchart LR
@@ -40,12 +40,16 @@ flowchart LR
     H[荷重元與 HX711] --> E
     E --> D[OLED 狀態]
     E --> S[USB 序列輸出與本機保存]
-    E -. 待實作 .-> W[WiFi HTTPS 上傳]
-    W -. 待實作 .-> G[Google Apps Script]
-    G -. 待實作 .-> C[Drive 原始資料與 Sheets 看板]
+    E -. 待正式啟用 .-> W[ESP32 WiFi HTTPS 上傳]
+    W -. 尚未部署 .-> CF[Cloudflare Free 後端與單一 SQLite DO]
+    G[私人 Google Sheets／Drive] --> P[Apps Script 私有 publisher]
+    P -. 尚未安裝 .-> CF
+    CF -. 公開唯讀 API，尚未接真資料 .-> GH[GitHub Pages Dashboard]
 ```
 
-目前的序列輸出需要由主機保存；輸出完成不等於已自動寫入檔案。未來雲端架構、資料欄位和保存／重傳規則見 [handoff](handoff.md) 頂部最新章節；目前沒有已完成的上傳服務或雲端看板。
+公開頁面目前是 [GitHub Pages synthetic 示範](https://chiangyih.github.io/impact-dashboard-web/)，不是實測資料看板。GitHub Pages 只負責靜態 HTML／CSS／JavaScript；Cloudflare 才負責未來的裝置接收、歷史公開投影、讀取額度與匿名 API。私人試算表不需公開分享，Apps Script 只會發布核准的公開欄位與摘要。Cloudflare 的本機候選已驗證 signed live、歷史重送、同 SQLite 升版及額度保留，但尚未驗證真雲部署、IAM、PITR、跨 isolate 或實際成本。
+
+目前的序列輸出仍需要由主機保存；輸出完成不等於已自動寫入檔案。資料欄位、保存／重傳規則與分階段部署界線見 [handoff](handoff.md) 頂部最新章節。公開 API 未設定時，正式前端不會發出真資料請求；即時資料仍保持關閉。
 
 <a id="wiring"></a>
 
@@ -90,6 +94,7 @@ flowchart LR
 韌體提供 `DIST`／`POL`、`TARE`／`CAL`／`UNCAL`、`ARM`／`STOP`、`DUMP`／`CLEAR` 及獨立 `SPEED` 命令。這些命令會改變設定、校正、量測或保留狀態，應依當次試驗授權與條件操作；目前 HX 原因未釐清，不進行 366 g 校正或正式落下材料驗收。
 
 - 手動速度測試的條件、步驟及保存方式見 [SPEED 指南](docs/experiments/manual-speed/manual-optical-guide.md)。它不記錄 ACC／HX 試驗資料，不控制落體釋放。
+- 現場沒有雙通道時間參考時，仍可依授權做慢速同一標記上→下 SPEED，保存 `SPEED DUMP` 並核對順序、狀態與 220 mm 換算；這只能驗功能與算術，不能驗光學 dt 精度或 WiFi 負載影響。
 - 一般 `ARM` 試驗結束後，`DUMP` 輸出包含設定、品質旗標和 CSV；先完整保存，再考慮 `CLEAR`。`CLEAR` 會清除試驗 RAM 資料。
 - 重啟或斷電會失去 RAM 中的記錄、極性和校正；不要拿歷史係數套用新的 boot。保留資料時避免重置或拔除 USB。
 - 編譯、寫入校驗、實板功能 QC、靜態校正與動態量測驗證須分開判定。每次成功燒錄後依 [QC 清單](docs/quality/post-flash-qc.md) 檢核並建立該版報告。
@@ -128,7 +133,7 @@ $irtBuild = Join-Path $env:TEMP 'irt-05-build'
 if ($LASTEXITCODE -ne 0) { throw '編譯失敗，停止後續作業' }
 ```
 
-上次正式編譯、測試、來源雜湊與寫入結果見 [RMT2 QC](docs/quality/reports/2026-10-28-rmt2-qc.md)；主機測試與編譯通過不能取代實板 QC。WiFi 帳密只存本機 Git 忽略的 `05-test/wifi_secrets.h`；沒有私密設定時公開來源仍可編譯，但 WiFi 預設停用。編譯產物可能含憑證，須留在儲存庫外。目標核對流程、各版差異和歷史命令可查 [整理前文件快照](docs/archive/README-before-20261029-reorganization.md) 與 [交接紀錄](handoff.md)，快照中的舊版本狀態不可當成現況。
+上次正式編譯、測試、來源雜湊與寫入結果見 [RMT2 QC](docs/quality/reports/2026-10-28-rmt2-qc.md)；`gateiram1` 燒錄前證據與限制見 [交接紀錄](handoff.md)。主機測試與編譯通過不能取代實板 QC。WiFi 帳密只存本機 Git 忽略的 `05-test/wifi_secrets.h`；沒有私密設定時公開來源仍可編譯，但 WiFi 預設停用。編譯產物可能含憑證，須留在儲存庫外。目標核對流程、各版差異和歷史命令可查 [整理前文件快照](docs/archive/README-before-20261029-reorganization.md) 與 [交接紀錄](handoff.md)，快照中的舊版本狀態不可當成現況。
 
 <a id="calibration-next"></a>
 
@@ -137,7 +142,8 @@ if ($LASTEXITCODE -ne 0) { throw '編譯失敗，停止後續作業' }
 1. 補足 HX 異常發生當下的可信同步與供電／電氣證據，區分假說並定位原因；保留異常 RAW 和時間範圍。
 2. 釐清並修復後，依既有授權及驗證條件完成 366 g 靜態校正、回零與獨立檢核；不要把歷史校正當作本次結果。
 3. 分開驗證 ADXL FIFO、光學距離與時間、感測器安裝及動態量測鏈；正式設計材料比較前訂好試片、條件與失效判準。
-4. 依 [handoff](handoff.md) 討論中的資料契約與分階段測試，未來實作 WiFi／Google 保存與看板；先驗證資料完整性，再評估量測期間的網路活動。
+4. 依 [handoff](handoff.md) 的分階段契約，先完成 Cloudflare source-off 部署與私人 Apps Script 授權，再核對 v3→history→live 的同一 DO／資料保留與公開 allowlist；任何真資料發布前，保留 GitHub Pages synthetic 版本。
+5. 在沒有獨立雙通道時間參考的限制下，先以授權的手動 SPEED 保存功能證據；取得正式 WiFi endpoint、裝置 boot／capture registry、正確 build 後，才考慮 gateiram1 燒錄並立即做新版 post-flash QC。
 
 <a id="files"></a><a id="history"></a><a id="measurements-20261020"></a>
 
